@@ -1,0 +1,300 @@
+﻿# Deliverable 1 (D1): AI Task Breakdown & Master Developer Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+**Scope:** Full Application (End-to-End)
+
+---
+
+## 1. Reglas de OperaciÃ³n EstÃ¡ndar (SOP)
+
+Antes de escribir la primera lÃ­nea de cÃ³digo, debes apegarte a estas reglas. Si sigues esto a rajatabla, no tendrÃ¡s problemas de arquitectura tÃ©cnica a largo plazo.
+
+### 1.1. Convenciones de Nombres
+- **Backend (Spring Boot):**
+  - Clases/Entidades/Interfaces: `PascalCase` (Ej. `BookingController.java`, `UserRepository.java`).
+  - Variables/MÃ©todos: `camelCase` (Ej. `findByEmail()`).
+  - Paquetes: `minÃºsculas` (Ej. `modules.auth.domain`).
+- **Frontend (Next.js):**
+  - Componentes de React: `PascalCase` para empatar con el backend (Ej. `LoginForm.tsx`, `DatePicker.tsx`).
+  - LÃ³gica/Hooks/Stores: `camelCase` (Ej. `useAuthStore.ts`, `authApi.ts`).
+  - Rutas de App Router: Siempre en minÃºsculas y organizadas en carpetas (Ej. `app/(auth)/login/page.tsx`).
+
+### 1.2. Flujo de Trabajo y DefiniciÃ³n de Terminado (DoD)
+Nunca pases a la siguiente tarea (ticket) sin antes validar lo siguiente:
+- **En Backend:** Tras guardar, ejecuta `.\mvnw clean compile` en la consola. Si falla, arrÃ©glalo de inmediato.
+- **En Frontend:** Tras guardar, ejecuta `npm run lint`. No permitas que se acumulen warnings de ESLint o errores de tipado de TypeScript.
+
+---
+
+## 2. El Roadmap Paso a Paso
+
+Sigue este roadmap estrictamente en orden. EstÃ¡ diseÃ±ado para que nunca necesites un componente que no haya sido programado previamente.
+
+### Sprint 1: Infraestructura y Base de Datos
+
+#### Ticket: `DB-01` - Migraciones SQL (Flyway)
+- **QuÃ© hacer:** Crear el script inicial de la base de datos con las tablas y los Ã­ndices crÃ­ticos (como el del Soft-Lock).
+- **DÃ³nde hacerlo:** Crea el archivo `backend-monolith/src/main/resources/db/migration/V1__init_schema.sql`.
+- **CÃ³mo saber quÃ© poner:** Abre el documento `docs/06-technical-design/2.Physical_Data_Modeling.md` y copia los bloques DDL exactamente como estÃ¡n.
+- **Siguiente paso:** Levanta el Docker con `docker-compose up -d` y comprueba la conexiÃ³n a PostgreSQL.
+
+---
+
+### Sprint 2: MÃ³dulo de AutenticaciÃ³n (MOD-AUTH)
+
+#### Ticket: `AUTH-01` - Domain & Infrastructure
+- **QuÃ© hacer:** Crear la entidad de base de datos y la interfaz del repositorio.
+- **DÃ³nde hacerlo:**
+  - `backend-monolith/src/main/java/com/finca/backend_monolith/modules/auth/domain/User.java`
+  - `backend-monolith/src/main/java/com/finca/backend_monolith/modules/auth/infrastructure/UserRepository.java`
+- **CÃ³mo saber quÃ© poner:** Lee `MOD-AUTH/5.Class_Diagrams.md` para las variables (id, email, password_hash) y `6.Data_Access.md` para las sentencias JPA.
+
+#### Ticket: `AUTH-02` - Security Middleware
+- **QuÃ© hacer:** Configurar el filtro stateless JWT para proteger toda la API.
+- **DÃ³nde hacerlo:**
+  - `backend-monolith/src/main/java/com/finca/backend_monolith/core/security/JwtAuthenticationFilter.java`
+  - `backend-monolith/src/main/java/com/finca/backend_monolith/core/security/SecurityConfig.java`
+- **CÃ³mo saber quÃ© poner:** Lee el seudocÃ³digo en `docs/06-technical-design/4.Security_Implementation.md`. Usa HMAC-SHA256.
+
+#### Ticket: `AUTH-03` - API Controllers
+- **QuÃ© hacer:** Exponer los endpoints HTTP para inicio de sesiÃ³n y registro.
+- **DÃ³nde hacerlo:** `backend-monolith/src/main/java/com/finca/backend_monolith/modules/auth/api/AuthController.java`
+- **CÃ³mo saber quÃ© poner:** Lee `MOD-AUTH/7.API_Contracts.md` para ver las rutas (`/api/v1/auth/login`) y los DTOs requeridos.
+
+#### Ticket: `AUTH-04` - Frontend State & UI
+- **QuÃ© hacer:** Crear la UI y conectar al backend usando Zustand para manejar el estado de la sesiÃ³n.
+- **DÃ³nde hacerlo:**
+  - Estado: `frontend-app/src/features/auth/hooks/useAuthStore.ts`
+  - Componente: `frontend-app/src/features/auth/components/LoginForm.tsx`
+  - PÃ¡gina: `frontend-app/src/app/(auth)/login/page.tsx`
+- **CÃ³mo saber quÃ© poner:** Lee `MOD-AUTH/9.Frontend_Architecture.md` para estructurar los componentes.
+
+---
+
+### Sprint 3: GestiÃ³n de Fincas (MOD-FCNT)
+
+#### Ticket: `FCNT-01` - Domain & Repositories
+- **DÃ³nde hacerlo:**
+  - `.../modules/catalog/domain/Finca.java`, `Amenity.java`, `FincaImage.java`
+  - `.../modules/catalog/infrastructure/FincaRepository.java`
+- **Referencia:** `MOD-FCNT/5.Class_Diagrams.md` y `6.Data_Access.md`. AsegÃºrate de poner cascadas JPA correctas.
+
+#### Ticket: `FCNT-02` - API Controllers
+- **DÃ³nde hacerlo:** `.../modules/catalog/api/FincaController.java`
+- **Referencia:** `MOD-FCNT/7.API_Contracts.md`. Protege las rutas de creaciÃ³n con `@PreAuthorize("hasRole('PROPIETARIO')")`.
+
+#### Ticket: `FCNT-03` - Frontend UI (Propietarios)
+- **DÃ³nde hacerlo:**
+  - MolÃ©culas: `frontend-app/src/features/catalog/components/ImageUploader.tsx`, `AmenitiesSelector.tsx`
+  - Formulario: `frontend-app/src/features/catalog/components/FincaCreateForm.tsx`
+  - PÃ¡gina: `frontend-app/src/app/(propietario)/fincas/nuevo/page.tsx`
+- **Referencia:** `MOD-FCNT/9.Frontend_Architecture.md`.
+
+---
+
+### Sprint 4: BÃºsqueda y CatÃ¡logo (MOD-SRCH)
+
+#### Ticket: `SRCH-01` - BÃºsqueda Backend
+- **DÃ³nde hacerlo:** `.../modules/catalog/infrastructure/SearchRepository.java` (o extender FincaRepository).
+- **Referencia:** `MOD-SRCH/6.Data_Access.md`. AquÃ­ va el JPQL avanzado para filtrar por ciudad, huÃ©spedes y estado = 'APPROVED'.
+
+#### Ticket: `SRCH-02` - Home Page Frontend
+- **DÃ³nde hacerlo:**
+  - MolÃ©cula: `frontend-app/src/features/catalog/components/SearchBar.tsx`
+  - PÃ¡gina Principal: `frontend-app/src/app/page.tsx`
+- **Referencia:** `MOD-SRCH/9.Frontend_Architecture.md`.
+
+---
+
+### Sprint 5: Transaccionalidad Core (MOD-RSV) - [CRÃTICO]
+
+#### Ticket: `RSV-01` - Soft-Lock en Base de Datos
+- **DÃ³nde hacerlo:**
+  - Entidad: `.../modules/booking/domain/Booking.java`
+  - Repo: `.../modules/booking/infrastructure/BookingRepository.java`
+- **AtenciÃ³n CrÃ­tica:** AquÃ­ debes implementar explÃ­citamente el `@Lock(LockModeType.PESSIMISTIC_WRITE)` descrito en `MOD-RSV/6.Data_Access.md`. Este es el corazÃ³n tÃ©cnico del proyecto.
+
+#### Ticket: `RSV-02` - Cron Job Async
+- **DÃ³nde hacerlo:** `.../modules/booking/application/SoftLockPurgerJob.java`
+- **Referencia:** Revisa `MOD-RSV/10.Async_Workers.md` e implementa la anotaciÃ³n `@Scheduled` para limpiar los status `SOFT_LOCKED` vencidos.
+
+#### Ticket: `RSV-03` - DatePicker y Checkout (Frontend)
+- **DÃ³nde hacerlo:**
+  - `frontend-app/src/features/booking/components/DatePicker.tsx`
+  - `frontend-app/src/features/booking/components/CheckoutModal.tsx`
+- **Referencia:** `MOD-RSV/9.Frontend_Architecture.md`.
+
+---
+
+### Sprint 6: Pagos y Notificaciones (MOD-PAY / MOD-NOT)
+
+#### Ticket: `PAY-01` - Webhook Wompi
+- **DÃ³nde hacerlo:** `.../modules/payment/api/PaymentController.java`
+- **AtenciÃ³n CrÃ­tica:** Revisa `MOD-PAY/8.Third_Party_Integrations.md`. Debes leer el Hash SHA-256 para validar la firma. Si el pago es exitoso, cambia la reserva a `HARD_LOCKED` y dispara un Spring Event (`PaymentConfirmedEvent`).
+
+#### Ticket: `PAY-02` - Widget Wompi Frontend
+- **DÃ³nde hacerlo:** Integrar el script de Wompi en `CheckoutModal.tsx` cuando la API de Reservas devuelva Ã©xito al crear el Soft-Lock.
+
+#### Ticket: `NOT-01` - SendGrid Notifier
+- **DÃ³nde hacerlo:** `.../modules/notification/application/EmailListener.java`
+- **Referencia:** Escucha el evento `PaymentConfirmedEvent` y ejecuta una llamada a SendGrid (Revisa `MOD-NOT/8.Third_Party_Integrations.md`).
+
+---
+
+### Sprint 7: Paneles y FinalizaciÃ³n (MOD-POWN / MOD-PADM)
+
+#### Ticket: `PANEL-01` - Admin & Owner Backend
+- **DÃ³nde hacerlo:**
+  - `.../modules/catalog/infrastructure/AdminRepository.java`
+  - `.../modules/booking/infrastructure/DashboardRepository.java`
+- **Referencia:** Implementa las queries de agregaciÃ³n (`COUNT`, `SUM`) definidas en `MOD-POWN` y `MOD-PADM` entregable 6.
+
+#### Ticket: `PANEL-02` - UI Dashboards
+- **DÃ³nde hacerlo:**
+  - Owner: `frontend-app/src/app/(propietario)/dashboard/page.tsx`
+  - Admin: `frontend-app/src/app/(admin)/dashboard/page.tsx`
+- **Referencia:** DiseÃ±a las tablas y grÃ¡ficas basÃ¡ndote en los D9 de ambos mÃ³dulos.
+
+---
+**Â¿Terminaste todo el roadmap?**
+Ejecuta el **D9: Phase 7 Build Review & Brief** corriendo un build completo en producciÃ³n para confirmar la robustez antes de pasar a la Fase de QA (Phase 8).
+# Deliverable 2 (D2): Project Scaffolding Execution Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Execution Context
+El objetivo de este script es inicializar el entorno tÃ©cnico. Dado que en la mÃ¡quina local no se detectÃ³ `npm`/`npx`, el frontend se dejarÃ¡ preparado a nivel de carpeta, pero requerirÃ¡ la ejecuciÃ³n humana del comando de Next.js una vez se instale Node.js.
+
+El Backend (Spring Boot) se inicializa vÃ­a el API de Spring Initializr.
+La Base de Datos (PostgreSQL) se inicializa vÃ­a `docker-compose.yml`.
+
+## Commands to execute manually (Frontend)
+1. Instala Node.js (v18 o superior).
+2. Abre tu terminal en la raÃ­z del proyecto.
+3. Ejecuta:
+```bash
+npx create-next-app@latest frontend-app --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --use-npm
+```
+# Deliverable 3 (D3): Walking Skeleton Execution Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Execution Context
+El objetivo de este script es asegurar que el servidor backend bÃ¡sico pueda levantar sin errores de compilaciÃ³n y responda a una peticiÃ³n HTTP simple (Healthcheck), garantizando que las dependencias estÃ¡n correctamente vinculadas.
+
+## Walking Skeleton Implemented
+Se ha escrito el archivo: `backend-monolith/src/main/java/com/finca/backend_monolith/core/api/HealthController.java`.
+
+Este controlador expone la ruta `/api/health`.
+
+### Verification Steps
+Para verificar que el skeleton funciona, el desarrollador (o la IA) debe:
+1. Abrir una terminal en `backend-monolith`.
+2. Ejecutar `.\mvnw spring-boot:run`
+3. En otra terminal, ejecutar `curl http://localhost:8080/api/health`
+4. Se espera un JSON `{"status": "UP", "message": "Nos Fuimos de Finca API is running", "version": "1.0.0"}`.
+# Deliverable 4 (D4): Database Migrations Implementation Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Purpose
+Esta guÃ­a dicta cÃ³mo inicializar la base de datos PostgreSQL usando migraciones versionadas con Flyway.
+
+## Execution Steps para el Desarrollador
+1. Ve al archivo `P6-D2 (Physical Data Modeling)`.
+2. En la carpeta `backend-monolith/src/main/resources/db/migration/`, crea un archivo llamado `V1__init_schema.sql`.
+3. Copia TODO el contenido DDL de `P6-D2` (incluyendo la creaciÃ³n de tablas `users`, `fincas`, `bookings`, `payments`, etc.) en ese archivo.
+4. En el mismo archivo, en la parte inferior, copia la secciÃ³n `## 3. Indexing & Optimization Scripts` para crear los Ã­ndices (especialmente `idx_bookings_dates` crucial para el Soft-Lock).
+5. Ejecuta `mvn flyway:migrate` para correr el script contra la base de datos PostgreSQL local (configurada vÃ­a `docker-compose`).
+# Deliverable 5 (D5): Backend API Implementation Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Purpose
+GuÃ­a maestra para codificar la capa lÃ³gica del backend (Entidades, Repositorios, Servicios, Controladores).
+
+## Execution Steps para el Desarrollador
+
+Debes iterar por cada carpeta de mÃ³dulo en `backend-monolith/src/main/java/com/finca/backend_monolith/modules/`:
+
+1. **Capa Domain:** Lee `P6-D5 (Class Diagrams)` del mÃ³dulo respectivo. Traduce el diagrama Mermaid a clases Java anotadas con `@Entity`. Respeta los tipos de datos (ej. `UUID`, `BigDecimal`).
+2. **Capa Infrastructure:** Lee `P6-D6 (Data Access)`. Crea las interfaces extendiendo `JpaRepository`. Copia y pega las queries JPQL exactas, prestando especial atenciÃ³n al `@Lock(LockModeType.PESSIMISTIC_WRITE)` en el mÃ³dulo `booking`.
+3. **Capa API (Controladores):** Lee `P6-D7 (API Contracts)`. Crea los RestControllers mapeando los mÃ©todos HTTP (`GET`, `POST`) y las URLs exactas definidas en Swagger.
+4. **Capa Application:** Usa inyecciÃ³n de dependencias (`@Service`) para conectar el Controlador con el Repositorio, implementando las reglas de negocio descritas en la Fase 4.
+# Deliverable 6 (D6): Frontend UI & State Implementation Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Purpose
+GuÃ­a maestra para codificar la interfaz de usuario en Next.js siguiendo Feature-Sliced Design.
+
+## Execution Steps para el Desarrollador
+
+Debes iterar por la carpeta `frontend-app/src/features/`:
+
+1. **Atoms & Molecules:** Revisa `P6-D9 (Frontend Architecture)`. Crea primero los componentes mÃ¡s pequeÃ±os (ej. `StarRating`, `DatePicker`) en la carpeta `components/` de cada feature.
+2. **State Management:** Implementa el estado especificado en `P6-D9` secciÃ³n 3.
+   - Si dice *React Query*, crea un hook en `hooks/` (ej. `useSearchFincas.ts`) que apunte al endpoint correspondiente documentado en `P6-D7`.
+   - Si dice *Zustand*, crea el store en `store/` (ej. `useBookingStore.ts`).
+3. **Organisms:** Une los Atoms/Molecules en las secciones principales (ej. `BookingForm`, `FincaGrid`).
+4. **Pages (App Router):** En `frontend-app/src/app/`, importa los Organisms para renderizar las rutas finales (`/fincas/[id]`, `/dashboard`, etc.). Usa TailwindCSS para el estilizado.
+# Deliverable 7 (D7): Security & Middleware Implementation Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Purpose
+GuÃ­a para proteger el Backend usando Spring Security y filtros JWT sin estado.
+
+## Execution Steps para el Desarrollador
+1. Abre `P6-D4 (Security Implementation)`.
+2. En `backend-monolith/src/main/java/com/finca/backend_monolith/core/security/`, crea la clase `JwtAuthenticationFilter`.
+3. Implementa la lÃ³gica descrita en el seudocÃ³digo: extrae el header `Authorization`, decodifica el token usando la llave simÃ©trica inyectada desde `@Value("${jwt.secret.key}")`, y configura el `SecurityContextHolder`.
+4. En `SecurityConfig.java`, configura el `SecurityFilterChain`:
+   - Desactiva CSRF (es API REST).
+   - Pon la sesiÃ³n en `STATELESS`.
+   - AÃ±ade el filtro JWT antes de `UsernamePasswordAuthenticationFilter`.
+5. Usa las anotaciones `@PreAuthorize("hasRole('PROPIETARIO')")` en los endpoints especificados.
+# Deliverable 8 (D8): External Integrations & Webhooks Guide
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Approved
+
+## Purpose
+GuÃ­a para implementar la comunicaciÃ³n con terceros (S3 para imÃ¡genes, SendGrid para notificaciones, Wompi para pagos).
+
+## Execution Steps para el Desarrollador
+1. **Wompi Webhook:** Ve al controlador `PaymentController` en `MOD-PAY`. Crea el endpoint `POST /api/payments/webhook`. Extrae el cuerpo crudo y compÃ¡ralo con el HMAC SHA-256 generado localmente usando `WOMPI_EVENTS_SECRET` (Ver P6-D4 y P6-D8). Solo si la firma coincide, actualiza la base de datos a `APPROVED`.
+2. **AWS S3:** En `MOD-FCNT`, implementa un servicio usando el AWS SDK para Java. Crea el mÃ©todo `uploadImage(MultipartFile file)` que retorne la URL pÃºblica del CDN.
+3. **SendGrid:** En `MOD-NOT`, implementa un `@EventListener` que escuche el evento de dominio `PaymentConfirmedEvent`. EnvÃ­ale el Payload HTML a la API de SendGrid para el envÃ­o de Vouchers.
+# Deliverable 9 (D9): Phase 7 Build Review & Brief
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 7 â€” Implementation
+**Status:** Pending Execution
+
+## Purpose
+ValidaciÃ³n final para asegurar que la fase de programaciÃ³n ha concluido sin errores tÃ©cnicos y el cÃ³digo estÃ¡ listo para la Fase 8 (QA).
+
+## Checklist del Desarrollador
+- [ ] `mvn clean install` compila exitosamente (0 errores).
+- [ ] `npm run build` genera la carpeta `.next` sin errores de TypeScript.
+- [ ] `npm run lint` no arroja violaciones (ESLint).
+- [ ] Los contenedores en `docker-compose up -d` (PostgreSQL) corren sin crashes en loop.
+- [ ] Flyway ejecutÃ³ exitosamente la migraciÃ³n V1.
+
+Una vez todos los checks estÃ©n marcados, la Fase 7 se considera **CERRADA**.

@@ -1,0 +1,260 @@
+site_name: Nos Fuimos de Finca
+site_description: "Portal de Arquitectura y Diseño Técnico"
+site_author: "Julian"
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js
+
+nav:
+  - 'Inicio': index.md
+  - 00 Reconocimiento Del Problema:
+    - '00 resumen-fase-0': 00-reconocimiento-del-problema/00_resumen-fase-0.md
+    - '1. Declaración del Problema': 00-reconocimiento-del-problema/1. Declaración del Problema.md
+    - '10. Entrada del Registro de Patrones de Problemas': 00-reconocimiento-del-problema/10. Entrada del Registro de Patrones de Problemas.md
+    - '2. Registro de Evidencia': 00-reconocimiento-del-problema/2. Registro de Evidencia.md
+    - '3. Análisis de Soluciones Existentes': 00-reconocimiento-del-problema/3. Análisis de Soluciones Existentes.md
+    - '4. Registro de Clasificación del Problema': 00-reconocimiento-del-problema/4. Registro de Clasificación del Problema.md
+    - '5. Matriz de Impacto': 00-reconocimiento-del-problema/5. Matriz de Impacto.md
+    - '6. Objetivos del Proyecto': 00-reconocimiento-del-problema/6. Objetivos del Proyecto.md
+    - '7. Mapa de Partes Interesadas': 00-reconocimiento-del-problema/7. Mapa de Partes Interesadas.md
+    - '8. Registro de Riesgos': 00-reconocimiento-del-problema/8. Registro de Riesgos.md
+    - '9. Señal de Proceder No-Proceder': 00-reconocimiento-del-problema/9. Señal de Proceder_No-Proceder.md
+  - 01 Viabilidad Temprana:
+    - '1. Perfil de Usuario': 01-viabilidad-temprana/1. Perfil de Usuario.md
+    - '10. Registro de Riesgos': 01-viabilidad-temprana/10. Registro de Riesgos.md
+    - '11. Lista de Suposiciones Críticas': 01-viabilidad-temprana/11. Lista de Suposiciones Críticas.md
+    - '12. Documento de Definición de MVP': 01-viabilidad-temprana/12. Documento de Definición de MVP.md
+    - '13. Lean Canvas': 01-viabilidad-temprana/13. Lean Canvas.md
+    - '14. Documento OKR': 01-viabilidad-temprana/14. Documento OKR.md
+    - '15. Documento de Plan Inicial': 01-viabilidad-temprana/15. Documento de Plan Inicial.md
+    - '16. Documento de Proceso de Trabajo': 01-viabilidad-temprana/16. Documento de Proceso de Trabajo.md
+    - '17. Registro de Decisión Proceder No-Proceder Pivotar': 01-viabilidad-temprana/17. Registro de Decisión Proceder_No-Proceder_Pivotar.md
+    - '18. Resumen': 01-viabilidad-temprana/18. Resumen.md
+    - '2. Documento de Validación de Mercado': 01-viabilidad-temprana/2. Documento de Validación de Mercado.md
+    - '3. Documento de Análisis Competitivo': 01-viabilidad-temprana/3. Documento de Análisis Competitivo.md
+    - '4. Mapa de Partes Interesadas': 01-viabilidad-temprana/4. Mapa de Partes Interesadas.md
+    - '5. Registro de Factibilidad Técnica': 01-viabilidad-temprana/5. Registro de Factibilidad Técnica.md
+    - '6. Registro de Accesibilidad de Datos': 01-viabilidad-temprana/6. Registro de Accesibilidad de Datos.md
+    - '7. Registro de Autorización Legal y Regulatoria': 01-viabilidad-temprana/7. Registro de Autorización Legal y Regulatoria.md
+    - '8. Evaluación de Capacidad del Equipo': 01-viabilidad-temprana/8. Evaluación de Capacidad del Equipo.md
+    - '9. Documento de Viabilidad': 01-viabilidad-temprana/9. Documento de Viabilidad.md
+  - 02 Inicialización Del Proyecto:
+    - '1. Identidad del Proyecto': 02-inicialización-del-proyecto/1. Identidad del Proyecto.md
+    - '10. Herramientas': 02-inicialización-del-proyecto/10. Herramientas.md
+    - '11. Protocolos de Comunicacion y Escalacion': 02-inicialización-del-proyecto/11. Protocolos de Comunicacion y Escalacion.md
+    - '12. Actualizacion de Registro de Riesgos': 02-inicialización-del-proyecto/12. Actualizacion de Registro de Riesgos.md
+    - '13. Resumen de Fase 2': 02-inicialización-del-proyecto/13. Resumen de Fase 2.md
+    - '2. Restricciones NFR': 02-inicialización-del-proyecto/2. Restricciones NFR.md
+    - '3. Decision de Stack': 02-inicialización-del-proyecto/3. Decision de Stack.md
+    - '4. Estructura del Repositorio': 02-inicialización-del-proyecto/4. Estructura del Repositorio.md
+    - '5. Estrategia de Ramificacion': 02-inicialización-del-proyecto/5. Estrategia de Ramificacion.md
+    - '6. Definiciones de Entorno': 02-inicialización-del-proyecto/6. Definiciones de Entorno.md
+    - '7. Estandares de Codificacion': 02-inicialización-del-proyecto/7. Estandares de Codificacion.md
+    - '8. Estrategia de Pruebas': 02-inicialización-del-proyecto/8. Estrategia de Pruebas.md
+    - '9. Definicion de Hecho y Preparado': 02-inicialización-del-proyecto/9. Definicion de Hecho y Preparado.md
+  - 03 Ingenieria De Requisitos:
+    - '1. Diagrama de Contexto del Sistema': 03-ingenieria-de-requisitos/1. Diagrama de Contexto del Sistema.md
+    - '10. Matriz de Trazabilidad de Requisitos': 03-ingenieria-de-requisitos/10. Matriz de Trazabilidad de Requisitos.md
+    - '11. Documento SRS': 03-ingenieria-de-requisitos/11. Documento SRS.md
+    - '2. Definicion de Actores y Roles': 03-ingenieria-de-requisitos/2. Definicion de Actores y Roles.md
+    - '3. Glosario de Dominio': 03-ingenieria-de-requisitos/3. Glosario de Dominio.md
+    - '4. Registros de Elicitacion': 03-ingenieria-de-requisitos/4. Registros de Elicitacion.md
+    - '5. Descomposicion de Modulos Funcionales': 03-ingenieria-de-requisitos/5. Descomposicion de Modulos Funcionales.md
+    - '5.1.P3-MOD-AUTH': 03-ingenieria-de-requisitos/5.1.P3-MOD-AUTH.md
+    - '5.2.P3-MOD-SRCH': 03-ingenieria-de-requisitos/5.2.P3-MOD-SRCH.md
+    - '5.3.P3-MOD-RSV': 03-ingenieria-de-requisitos/5.3.P3-MOD-RSV.md
+    - '5.4.P3-MOD-PAY': 03-ingenieria-de-requisitos/5.4.P3-MOD-PAY.md
+    - '5.5.P3-MOD-POWN': 03-ingenieria-de-requisitos/5.5.P3-MOD-POWN.md
+    - '5.6.P3-MOD-PADM': 03-ingenieria-de-requisitos/5.6.P3-MOD-PADM.md
+    - '5.7.P3-MOD-FCNT': 03-ingenieria-de-requisitos/5.7.P3-MOD-FCNT.md
+    - '5.8.P3-MOD-REV': 03-ingenieria-de-requisitos/5.8.P3-MOD-REV.md
+    - '5.9.P3-MOD-NOT': 03-ingenieria-de-requisitos/5.9.P3-MOD-NOT.md
+    - '6. Requisitos No Funcionales': 03-ingenieria-de-requisitos/6. Requisitos No Funcionales.md
+    - '8. Verificacion de Conflictos Inter-Modulos': 03-ingenieria-de-requisitos/8. Verificacion de Conflictos Inter-Modulos.md
+  - 04 Modelado Del Sistema:
+    - '1.Estrategia de Contenido y AI': 04-modelado-del-sistema/1.Estrategia_de_Contenido_y_AI.md
+    - '11.Matriz de Autorizacion y Seguridad': 04-modelado-del-sistema/11.Matriz_de_Autorizacion_y_Seguridad.md
+    - '12.Sintesis de Senales Arquitectonicas': 04-modelado-del-sistema/12.Sintesis_de_Senales_Arquitectonicas.md
+    - '13.Actualizacion RTM y Resumen Fase 4': 04-modelado-del-sistema/13.Actualizacion_RTM_y_Resumen_Fase_4.md
+    - '4.Sistema de Diseno y UI Kit': 04-modelado-del-sistema/4.Sistema_de_Diseno_y_UI_Kit.md
+    - '6.Modelo de Dominio y ERD Conceptual': 04-modelado-del-sistema/6.Modelo_de_Dominio_y_ERD_Conceptual.md
+    - Modules:
+      - Mod Auth:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-AUTH/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-AUTH/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-AUTH/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-AUTH/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-AUTH/9.Diseno_Conceptual_de_API.md
+      - Mod Fcnt:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-FCNT/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-FCNT/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-FCNT/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-FCNT/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-FCNT/9.Diseno_Conceptual_de_API.md
+      - Mod Not:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-NOT/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-NOT/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-NOT/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-NOT/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-NOT/9.Diseno_Conceptual_de_API.md
+      - Mod Padm:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-PADM/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-PADM/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-PADM/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-PADM/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-PADM/9.Diseno_Conceptual_de_API.md
+      - Mod Pay:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-PAY/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-PAY/2.Flujos_de_Usuario_y_Tareas.md
+        - '3.Wireframes': 04-modelado-del-sistema/modules/MOD-PAY/3.Wireframes.md
+        - '5.Mockups Alta Fidelidad': 04-modelado-del-sistema/modules/MOD-PAY/5.Mockups_Alta_Fidelidad.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-PAY/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-PAY/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-PAY/9.Diseno_Conceptual_de_API.md
+      - Mod Pown:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-POWN/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-POWN/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-POWN/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-POWN/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-POWN/9.Diseno_Conceptual_de_API.md
+      - Mod Rev:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-REV/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-REV/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-REV/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-REV/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-REV/9.Diseno_Conceptual_de_API.md
+      - Mod Rsv:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-RSV/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-RSV/2.Flujos_de_Usuario_y_Tareas.md
+        - '3.Wireframes': 04-modelado-del-sistema/modules/MOD-RSV/3.Wireframes.md
+        - '5.Mockups Alta Fidelidad': 04-modelado-del-sistema/modules/MOD-RSV/5.Mockups_Alta_Fidelidad.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-RSV/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-RSV/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-RSV/9.Diseno_Conceptual_de_API.md
+      - Mod Srch:
+        - '10.Matriz de Notificaciones y Eventos': 04-modelado-del-sistema/modules/MOD-SRCH/10.Matriz_de_Notificaciones_y_Eventos.md
+        - '2.Flujos de Usuario y Tareas': 04-modelado-del-sistema/modules/MOD-SRCH/2.Flujos_de_Usuario_y_Tareas.md
+        - '7.Diagramas de Secuencia del Sistema': 04-modelado-del-sistema/modules/MOD-SRCH/7.Diagramas_de_Secuencia_del_Sistema.md
+        - '8.Diagramas de Maquina de Estado': 04-modelado-del-sistema/modules/MOD-SRCH/8.Diagramas_de_Maquina_de_Estado.md
+        - '9.Diseno Conceptual de API': 04-modelado-del-sistema/modules/MOD-SRCH/9.Diseno_Conceptual_de_API.md
+  - 05 Diseno Arquitectonico:
+    - '1.Mapa de Atributos de Calidad': 05-diseno-arquitectonico/1.Mapa_de_Atributos_de_Calidad.md
+    - '10.Consolidacion ADR': 05-diseno-arquitectonico/10.Consolidacion_ADR.md
+    - '11.Actualizacion RTM y Resumen Fase 5': 05-diseno-arquitectonico/11.Actualizacion_RTM_y_Resumen_Fase_5.md
+    - '2.Formalizacion de Contexto Delimitado': 05-diseno-arquitectonico/2.Formalizacion_de_Contexto_Delimitado.md
+    - '3.Decision de Topologia de Despliegue': 05-diseno-arquitectonico/3.Decision_de_Topologia_de_Despliegue.md
+    - '4.Decision de Descomposicion del Sistema': 05-diseno-arquitectonico/4.Decision_de_Descomposicion_del_Sistema.md
+    - '5.Seleccion de Estilo Arquitectonico': 05-diseno-arquitectonico/5.Seleccion_de_Estilo_Arquitectonico.md
+    - '6.Decision de Patron de Comunicacion': 05-diseno-arquitectonico/6.Decision_de_Patron_de_Comunicacion.md
+    - '7.Preocupaciones Transversales': 05-diseno-arquitectonico/7.Preocupaciones_Transversales.md
+    - '8.Estrategia CI-CD y Entornos': 05-diseno-arquitectonico/8.Estrategia_CI-CD_y_Entornos.md
+    - '9.Diagrama de Componentes': 05-diseno-arquitectonico/9.Diagrama_de_Componentes.md
+  - 06 Diseno Tecnico:
+    - '1.Arquitectura del Codigo': 06-diseno-tecnico/1.Arquitectura_del_Codigo.md
+    - '11.Actualizacion RTM y Resumen Fase 6': 06-diseno-tecnico/11.Actualizacion_RTM_y_Resumen_Fase_6.md
+    - '2.Modelado Fisico de Datos': 06-diseno-tecnico/2.Modelado_Fisico_de_Datos.md
+    - '3.Configuracion y Secretos': 06-diseno-tecnico/3.Configuracion_y_Secretos.md
+    - '4.Implementacion de Seguridad': 06-diseno-tecnico/4.Implementacion_de_Seguridad.md
+    - Modules:
+      - Mod Auth:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-AUTH/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-AUTH/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-AUTH/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-AUTH/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-AUTH/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-AUTH/9.Arquitectura_Frontend.md
+      - Mod Fcnt:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-FCNT/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-FCNT/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-FCNT/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-FCNT/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-FCNT/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-FCNT/9.Arquitectura_Frontend.md
+      - Mod Not:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-NOT/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-NOT/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-NOT/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-NOT/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-NOT/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-NOT/9.Arquitectura_Frontend.md
+      - Mod Padm:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-PADM/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-PADM/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-PADM/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-PADM/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-PADM/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-PADM/9.Arquitectura_Frontend.md
+      - Mod Pay:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-PAY/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-PAY/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-PAY/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-PAY/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-PAY/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-PAY/9.Arquitectura_Frontend.md
+      - Mod Pown:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-POWN/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-POWN/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-POWN/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-POWN/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-POWN/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-POWN/9.Arquitectura_Frontend.md
+      - Mod Rev:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-REV/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-REV/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-REV/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-REV/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-REV/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-REV/9.Arquitectura_Frontend.md
+      - Mod Rsv:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-RSV/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-RSV/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-RSV/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-RSV/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-RSV/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-RSV/9.Arquitectura_Frontend.md
+      - Mod Srch:
+        - '10.Workers Asincronos': 06-diseno-tecnico/modules/MOD-SRCH/10.Workers_Asincronos.md
+        - '5.Diagramas de Clases': 06-diseno-tecnico/modules/MOD-SRCH/5.Diagramas_de_Clases.md
+        - '6.Acceso a Datos': 06-diseno-tecnico/modules/MOD-SRCH/6.Acceso_a_Datos.md
+        - '7.Contratos API': 06-diseno-tecnico/modules/MOD-SRCH/7.Contratos_API.md
+        - '8.Integraciones Terceros': 06-diseno-tecnico/modules/MOD-SRCH/8.Integraciones_Terceros.md
+        - '9.Arquitectura Frontend': 06-diseno-tecnico/modules/MOD-SRCH/9.Arquitectura_Frontend.md
+  - 07 Implementacion:
+    - '1.Desglose de Tareas AI': 07-implementacion/1.Desglose_de_Tareas_AI.md
+    - '2.Guia de Ejecucion Estructura de Proyecto': 07-implementacion/2.Guia_de_Ejecucion_Estructura_de_Proyecto.md
+    - '3.Guia de Ejecucion Walking Skeleton': 07-implementacion/3.Guia_de_Ejecucion_Walking_Skeleton.md
+    - '4.Implementacion de Migraciones de Base de Datos': 07-implementacion/4.Implementacion_de_Migraciones_de_Base_de_Datos.md
+    - '5.Implementacion API Backend': 07-implementacion/5.Implementacion_API_Backend.md
+    - '6.Implementacion UI Frontend': 07-implementacion/6.Implementacion_UI_Frontend.md
+    - '7.Guia de Implementacion de Seguridad': 07-implementacion/7.Guia_de_Implementacion_de_Seguridad.md
+    - '8.Guia de Integraciones Externas': 07-implementacion/8.Guia_de_Integraciones_Externas.md
+    - '9.Revision y Resumen Fase 7': 07-implementacion/9.Revision_y_Resumen_Fase_7.md

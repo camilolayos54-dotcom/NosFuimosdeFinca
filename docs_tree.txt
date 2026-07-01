@@ -1,0 +1,234 @@
+﻿C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\context.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\index.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\00_phase-0-brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\1. Problem Statement.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\10. Problem Pattern Log Entry.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\2. Evidence Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\3. Existing Solutions Analysis.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\4. Problem Classification Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\5. Impact Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\6. Project Objectives.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\7. Stakeholder Map.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\8. Risk Register.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\00-problem-recognition\9. Go_No-Go Signal.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\1. User Profile.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\10. Risk Register.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\11. Critical Assumptions List.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\12. MVP Definition Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\13. Lean Canvas.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\14. OKR Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\15. Initial Plan Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\16. Work Process Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\17. Go_No-Go_Pivot Decision Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\18.Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\2. Market Validation Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\3. Competitive Analysis Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\4. Stakeholder Map.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\5. Technical Feasibility Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\6. Data Accessibility Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\7. Legal and Regulatory Clearance Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\8. Team Capability Assessment.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability\9. Viability Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\1. User Profile.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\1. Value Proposition Hypothesis.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\10. Assumptions and Constraints Log.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\10. Risk Register (Pass 1).md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\11. Critical Assumptions List.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\11. Epics and User Stories.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\12. Early Architecture Strategy.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\12. MVP Definition Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\13. Lean Canvas.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\13. UX_UI Strategy.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\14. OKR Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\14. Security and Privacy Strategy.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\15. Initial Plan Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\15. Product Roadmap.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\16. Resource Allocation Plan.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\16. Work Process Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\17. Risk Register (Final).md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\17. Risk Register Update.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\18. Go-No-Go Pivot Decision Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\18. Phase 1 Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\19. Deliverables.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\19. Phase 1 Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\2. Market Validation Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\20. Deliverables.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\3. Business Model Canvas.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\3. Competitive Analysis Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\4. Minimum Viable Product Definition.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\4. Stakeholder Map.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\5. Success Metrics.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\5. Technical Feasibility Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\6. Data Accessibility Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\6. Resource and Competency Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\7. Legal and Regulatory Clearance Record.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\7. Technical Feasibility Report.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\8. Initial Financial Projections.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\8. Team Capability Assessment.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\9. Regulatory and Compliance Checklist.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\01-early-viability-archive\9. Viability Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\1. Project Identity.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\10. Tooling.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\11. Communication and Escalation Protocols.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\12. Risk Register Update.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\13. Phase 2 Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\2. NFR Constraints.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\3. Stack Decision.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\4. Repository Structure.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\5. Branching Strategy.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\6. Environment Definitions.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\7. Coding Standards.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\8. Testing Strategy.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\02-project-kickoff\9. Definition of Done and Definition of Ready.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\1. System Context Diagram.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\10. Requirements Traceability Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\11. SRS Document.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\2. Actor and Role Definition.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\3. Domain Glossary.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\4. Elicitation Records.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5. Functional Module Decomposition.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.1.P3-MOD-AUTH.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.2.P3-MOD-SRCH.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.3.P3-MOD-RSV.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.4.P3-MOD-PAY.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.5.P3-MOD-POWN.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.6.P3-MOD-PADM.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.7.P3-MOD-FCNT.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.8.P3-MOD-REV.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\5.9.P3-MOD-NOT.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\6. Non-Functional Requirements.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\03-requirements-enginnering-NosFuimosdeFinca\8. Inter-Module Conflict Check.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\1.Content_Strategy_and_IA.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\11.Authorization_and_Security_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\12.Architectural_Signals_Synthesis.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\13.Phase_4_RTM_Update_and_Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\4.Design_System_and_UI_Kit.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\6.Domain_Model_and_Conceptual_ERD.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-AUTH\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-AUTH\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-AUTH\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-AUTH\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-AUTH\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-FCNT\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-FCNT\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-FCNT\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-FCNT\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-FCNT\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-NOT\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-NOT\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-NOT\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-NOT\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-NOT\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PADM\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PADM\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PADM\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PADM\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PADM\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\3.Wireframes.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\5.High_Fidelity_Mockups.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-PAY\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-POWN\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-POWN\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-POWN\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-POWN\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-POWN\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-REV\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-REV\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-REV\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-REV\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-REV\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\3.Wireframes.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\5.High_Fidelity_Mockups.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-RSV\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-SRCH\10.Notification_and_Event_Matrix.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-SRCH\2.User_Flows_and_Task_Flows.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-SRCH\7.System_Sequence_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-SRCH\8.State_Machine_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\04-system-modeling\modules\MOD-SRCH\9.API_Conceptual_Design.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\1.Quality_Attributes_Map.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\10.ADR_Consolidation.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\11.Phase_5_RTM_Update_and_Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\2.Bounded_Context_Formalization.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\3.Deployment_Topology_Decision.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\4.System_Decomposition_Decision.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\5.Architectural_Style_Selection.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\6.Communication_Pattern_Decision.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\7.Cross-Cutting_Concerns.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\8.CI-CD_and_Environments_Strategy.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\05-architectural-design\9.Component_Diagram.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\1.Codebase_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\11.Phase_6_RTM_Update_and_Brief.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\2.Physical_Data_Modeling.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\3.Configuration_Secrets.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\4.Security_Implementation.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-AUTH\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-AUTH\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-AUTH\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-AUTH\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-AUTH\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-AUTH\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-FCNT\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-FCNT\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-FCNT\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-FCNT\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-FCNT\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-FCNT\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-NOT\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-NOT\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-NOT\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-NOT\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-NOT\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-NOT\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PADM\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PADM\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PADM\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PADM\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PADM\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PADM\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PAY\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PAY\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PAY\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PAY\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PAY\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-PAY\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-POWN\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-POWN\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-POWN\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-POWN\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-POWN\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-POWN\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-REV\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-REV\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-REV\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-REV\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-REV\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-REV\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-RSV\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-RSV\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-RSV\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-RSV\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-RSV\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-RSV\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-SRCH\10.Async_Workers.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-SRCH\5.Class_Diagrams.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-SRCH\6.Data_Access.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-SRCH\7.API_Contracts.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-SRCH\8.Third_Party_Integrations.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\06-technical-design\modules\MOD-SRCH\9.Frontend_Architecture.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\1.AI_Task_Breakdown.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\2.Project_Scaffolding_Execution_Guide.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\3.Walking_Skeleton_Execution_Guide.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\4.Database_Migrations_Implementation.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\5.Backend_API_Implementation.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\6.Frontend_UI_Implementation.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\7.Security_Implementation_Guide.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\8.External_Integrations_Guide.md
+C:\PROGRAMMING\PROJECTS\NosFuimosdeFinca\docs\07-implementation\9.Phase_7_Build_Review.md

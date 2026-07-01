@@ -1,0 +1,1584 @@
+﻿# Deliverable 1 (D1): Codebase & Folder Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Status:** Approved
+
+## 2. Backend Repository Structure (Spring Boot)
+
+Dado que la Fase 5 decidiÃ³ usar un **Modular Monolith**, la estructura del proyecto Java no estarÃ¡ agrupada por "capas tontas" (e.g. todos los controllers juntos), sino que usarÃ¡ **Domain-Driven Packaging** (*Package by Feature/Component*). Cada mÃ³dulo de la Fase 4 es un paquete raÃ­z.
+
+```text
+backend-monolith/
+â”œâ”€â”€ src/main/java/com/finca/
+â”‚   â”œâ”€â”€ FincaApplication.java        # Punto de entrada (main)
+â”‚   â”œâ”€â”€ core/                        # Utilidades globales y ConfiguraciÃ³n base
+â”‚   â”‚   â”œâ”€â”€ config/                  # Cors, Swagger, RestTemplate beans
+â”‚   â”‚   â”œâ”€â”€ exceptions/              # GlobalExceptionHandler (D7)
+â”‚   â”‚   â””â”€â”€ security/                # JwtFilters, SecurityConfig (D4)
+â”‚   â”‚
+â”‚   â”œâ”€â”€ modules/                     # LOS CONTEXTOS AISLADOS (Phase 4 MÃ³dulos)
+â”‚   â”‚   â”œâ”€â”€ auth/                    # MOD-AUTH
+â”‚   â”‚   â”‚   â”œâ”€â”€ domain/              # Entidades, Enums
+â”‚   â”‚   â”‚   â”œâ”€â”€ api/                 # Controllers (REST)
+â”‚   â”‚   â”‚   â”œâ”€â”€ application/         # Use Cases / Services
+â”‚   â”‚   â”‚   â””â”€â”€ infrastructure/      # JpaRepositories
+â”‚   â”‚   â”‚
+â”‚   â”‚   â”œâ”€â”€ booking/                 # MOD-RSV (Core Transaccional)
+â”‚   â”‚   â”‚   â”œâ”€â”€ domain/              # Reserva, SoftLockExpirationEvent
+â”‚   â”‚   â”‚   â”œâ”€â”€ api/                 
+â”‚   â”‚   â”‚   â””â”€â”€ infrastructure/      # Repositorios con SELECT FOR UPDATE
+â”‚   â”‚   â”‚
+â”‚   â”‚   â”œâ”€â”€ payment/                 # MOD-PAY
+â”‚   â”‚   â”œâ”€â”€ catalog/                 # MOD-SRCH, MOD-FCNT, MOD-REV
+â”‚   â”‚   â””â”€â”€ notification/            # MOD-NOT (Event Listeners)
+â”‚   â”‚
+â”‚   â””â”€â”€ shared/                      # Interfaces pÃºblicas permitidas entre mÃ³dulos
+â”‚       â””â”€â”€ events/                  # Eventos de dominio (ej. BookingCreatedEvent)
+â”‚
+â”œâ”€â”€ src/main/resources/
+â”‚   â”œâ”€â”€ application.yml              # ConfiguraciÃ³n de base de datos y Cloud
+â”‚   â””â”€â”€ db/migration/                # Scripts de Flyway/Liquibase
+â””â”€â”€ pom.xml / build.gradle           # Dependencias
+```
+
+## 3. Frontend Repository Structure (Next.js)
+
+Para maximizar la escalabilidad, usaremos el **App Router** de Next.js combinado con la filosofÃ­a **Feature-Sliced Design (FSD)**. Esto evita la carpeta `components/` gigante y agrupa la lÃ³gica de UI por mÃ³dulo funcional.
+
+```text
+frontend-app/
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ app/                         # Next.js App Router (PÃ¡ginas y Routing)
+â”‚   â”‚   â”œâ”€â”€ (auth)/                  # Route Group para login/register
+â”‚   â”‚   â”œâ”€â”€ (propietario)/           # Dashboard privado B2B
+â”‚   â”‚   â”œâ”€â”€ fincas/                  # [id]/page.tsx (Ficha de la finca)
+â”‚   â”‚   â”œâ”€â”€ layout.tsx               # Root Layout (Navbar global)
+â”‚   â”‚   â””â”€â”€ page.tsx                 # Home Page (Buscador)
+â”‚   â”‚
+â”‚   â”œâ”€â”€ features/                    # Feature-Sliced Design (MÃ³dulos)
+â”‚   â”‚   â”œâ”€â”€ auth/                    # LÃ³gica de MOD-AUTH
+â”‚   â”‚   â”‚   â”œâ”€â”€ components/          # LoginForm, RegisterForm
+â”‚   â”‚   â”‚   â”œâ”€â”€ hooks/               # useAuth
+â”‚   â”‚   â”‚   â””â”€â”€ api/                 # Llamadas fetch/axios
+â”‚   â”‚   â”‚
+â”‚   â”‚   â”œâ”€â”€ booking/                 # MOD-RSV y MOD-PAY
+â”‚   â”‚   â”‚   â”œâ”€â”€ components/          # CheckoutModal, DatePicker
+â”‚   â”‚   â”‚   â”œâ”€â”€ store/               # Zustand/Redux slice de la reserva
+â”‚   â”‚   â”‚   â””â”€â”€ api/
+â”‚   â”‚   â”‚
+â”‚   â”‚   â””â”€â”€ catalog/                 # MOD-SRCH
+â”‚   â”‚       â”œâ”€â”€ components/          # FincaCard, Filters
+â”‚   â”‚       â””â”€â”€ hooks/               # useSearchFincas
+â”‚   â”‚
+â”‚   â”œâ”€â”€ shared/                      # Componentes estÃºpidos y globales (Design System)
+â”‚   â”‚   â”œâ”€â”€ ui/                      # Button, Input, Modal, Spinner (Tailwind)
+â”‚   â”‚   â”œâ”€â”€ lib/                     # utils.ts, cn() para Tailwind
+â”‚   â”‚   â””â”€â”€ api/                     # Instancia base de Axios/Fetch
+â”‚   â”‚
+â”‚   â””â”€â”€ styles/
+â”‚       â””â”€â”€ globals.css              # Tailwind directives
+â”‚
+â”œâ”€â”€ public/                          # Assets estÃ¡ticos
+â”œâ”€â”€ next.config.mjs
+â”œâ”€â”€ tailwind.config.ts
+â””â”€â”€ package.json
+```
+# Deliverable 11 (D11): Phase 6 RTM Update & Brief
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Status:** Approved
+
+## 2. Traceability Matrix Update
+
+Esta matriz verifica que las reglas funcionales de negocio (Phase 3/4) tengan un reflejo exacto en cÃ³digo, esquemas DDL o especificaciones OpenAPI en la Fase 6, garantizando *Zero Gaps*.
+
+| Requerimiento Funcional | Entregable TÃ©cnico (Blueprint) que lo soluciona |
+| --- | --- |
+| Autenticar Usuarios (JWT) | `D4 (Security Implementation)` y `MOD-AUTH/7.API_Contracts` |
+| BÃºsqueda de Fincas por Ciudad | `MOD-SRCH/6.Data_Access` (JPQL Finder) e Ãndice SQL en `D2` |
+| Bloqueo AtÃ³mico Transaccional | `D2 (SQL DDL Bookings)` y `MOD-RSV/6.Data_Access (@Lock PESSIMISTIC)` |
+| Purgado de Reservas no pagadas | `MOD-RSV/10.Async_Workers` (Cron Job 1 minuto) |
+| RecepciÃ³n del Webhook (Idempotente) | `MOD-PAY/8.Third_Party` (Firma HMAC) y `MOD-PAY/6.Data_Access` |
+| EnvÃ­o de Vouchers | `MOD-NOT/8.Third_Party` (SendGrid Payload) |
+| Subida de ImÃ¡genes | `MOD-FCNT/8.Third_Party` (AWS S3 PutObject) |
+
+## 3. Phase 6 Execution Brief
+
+La **Fase 6 (Technical Design)** ha concluido exitosamente. Se ha transformado la arquitectura conceptual en un plano tÃ©cnico ejecutable, generando estrictamente la arquitectura del repositorio (Monolito Modular en Spring Boot y Feature-Sliced en Next.js), el esquema de base de datos relacional nativo en PostgreSQL (con Ã­ndices crÃ­ticos para el `Soft-Lock`), y definiendo los contratos OpenAPI precisos para todos los mÃ³dulos clave.
+
+Con esta matriz libre de vacÃ­os y todos los diagramas UML, Repositorios, Endpoints y Workers definidos, el proyecto cuenta con el blindaje tÃ©cnico necesario para comenzar a programar. Por consiguiente, declaro el cierre de la Fase 6 y **autorizo formalmente el inicio de la Fase 7 (Implementation / Agil Delivery)**.
+# Deliverable 2 (D2): Physical Data Modeling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Status:** Approved
+
+## 2. Database Creation Scripts (DDL)
+
+Estos scripts estÃ¡n optimizados para el motor **PostgreSQL**, reflejando exactamente el ERD de la Fase 4.
+
+```sql
+-- Habilitar extensiÃ³n para UUID
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- 1. Tabla de Usuarios (MOD-AUTH)
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL CHECK (role IN ('TURISTA', 'PROPIETARIO', 'ADMIN')),
+    full_name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Tabla de Fincas (MOD-FCNT)
+CREATE TABLE fincas (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    owner_id UUID NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    price_per_night DECIMAL(10, 2) NOT NULL,
+    location_city VARCHAR(100) NOT NULL,
+    max_guests INT NOT NULL,
+    status VARCHAR(50) DEFAULT 'PENDING' CHECK (status IN ('PENDING', 'APPROVED', 'REJECTED')),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- 3. Tabla de Amenidades (MOD-FCNT)
+CREATE TABLE amenities (
+    id SERIAL PRIMARY KEY,
+    finca_id UUID NOT NULL,
+    name VARCHAR(50) NOT NULL, -- ej. 'Piscina', 'BBQ'
+    FOREIGN KEY (finca_id) REFERENCES fincas(id) ON DELETE CASCADE
+);
+
+-- 4. Tabla de ImÃ¡genes (MOD-FCNT)
+CREATE TABLE finca_images (
+    id SERIAL PRIMARY KEY,
+    finca_id UUID NOT NULL,
+    image_url VARCHAR(500) NOT NULL,
+    is_primary BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (finca_id) REFERENCES fincas(id) ON DELETE CASCADE
+);
+
+-- 5. Tabla Transaccional de Reservas (MOD-RSV) - CRÃTICA
+CREATE TABLE bookings (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    finca_id UUID NOT NULL,
+    turista_id UUID NOT NULL,
+    check_in DATE NOT NULL,
+    check_out DATE NOT NULL,
+    total_price DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL CHECK (status IN ('SOFT_LOCKED', 'HARD_LOCKED', 'CANCELLED')),
+    locked_until TIMESTAMP WITH TIME ZONE, -- ExpiraciÃ³n del Soft-Lock
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (finca_id) REFERENCES fincas(id) ON DELETE RESTRICT,
+    FOREIGN KEY (turista_id) REFERENCES users(id) ON DELETE RESTRICT
+);
+
+-- 6. Tabla de Pagos (MOD-PAY)
+CREATE TABLE payments (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    booking_id UUID NOT NULL UNIQUE,
+    wompi_transaction_id VARCHAR(255),
+    amount DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL CHECK (status IN ('PENDING', 'APPROVED', 'DECLINED', 'ERROR')),
+    processed_at TIMESTAMP WITH TIME ZONE,
+    FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE RESTRICT
+);
+```
+
+## 3. Indexing & Optimization Scripts
+
+```sql
+-- Ãndice en Owner_ID para acelerar el Dashboard del Propietario (MOD-POWN)
+CREATE INDEX idx_fincas_owner ON fincas(owner_id);
+
+-- Ãndices Compuestos para el Motor de BÃºsqueda (MOD-SRCH)
+-- Acelera querys tipo: "Fincas en QuindÃ­o para 4 personas aprobadas"
+CREATE INDEX idx_fincas_search ON fincas(status, location_city, max_guests);
+
+-- Ãndices en Fechas para Reservas (MOD-RSV)
+-- Crucial para validar colisiones de fechas de forma rÃ¡pida antes del Soft-Lock
+CREATE INDEX idx_bookings_dates ON bookings(finca_id, check_in, check_out) WHERE status != 'CANCELLED';
+
+-- Ãndice para el Job AsÃ­ncrono de purgado de Soft-Locks
+CREATE INDEX idx_bookings_soft_locks ON bookings(status, locked_until) WHERE status = 'SOFT_LOCKED';
+```
+# Deliverable 3 (D3): Configuration & Environment Secrets
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Status:** Approved
+
+## 2. Backend Environment Variables (Spring Boot)
+
+Este es el contrato estricto del archivo `.env.example` que requiere el servidor backend. Las contraseÃ±as reales se inyectarÃ¡n vÃ­a AWS Systems Manager Parameter Store.
+
+```env
+# ==========================================
+# BACKEND SECRETS (.env.example)
+# ==========================================
+
+# 1. CORE APPLICATION
+PORT=8080
+SPRING_PROFILES_ACTIVE=dev
+
+# 2. DATABASE (PostgreSQL RDS)
+# Nunca quemar la contraseÃ±a de DB en cÃ³digo.
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=nosfuimos_db
+DB_USERNAME=postgres
+DB_PASSWORD=your_db_password_here
+
+# 3. SECURITY (JWT & Bcrypt)
+# Secret simÃ©trico para firmar los JWT. Debe tener mÃ­nimo 256 bits.
+JWT_SECRET_KEY=generate_a_strong_random_secret_string
+JWT_EXPIRATION_MS=86400000
+
+# 4. EXTERNAL INTEGRATIONS (Wompi - MOD-PAY)
+WOMPI_PUBLIC_KEY=pub_test_XXXXXX
+WOMPI_PRIVATE_KEY=prv_test_XXXXXX
+# Llave secreta para validar la firma de los Webhooks (Integridad)
+WOMPI_EVENTS_SECRET=events_test_XXXXXX
+
+# 5. NOTIFICATIONS (SendGrid - MOD-NOT)
+SENDGRID_API_KEY=SG.xxxxxxxxxxxxxx
+DEFAULT_SENDER_EMAIL=reservas@nosfuimosdefinca.com
+
+# 6. AWS STORAGE (Amazon S3 - MOD-FCNT)
+AWS_ACCESS_KEY_ID=AKIAXXXXXXX
+AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxx
+AWS_REGION=us-east-1
+S3_BUCKET_NAME=nosfuimos-fincas-assets
+```
+
+## 3. Frontend Environment Variables (Next.js)
+
+Este es el contrato para el cliente de React. Todas las variables que se requieran del lado del cliente en el navegador deben estar precedidas por `NEXT_PUBLIC_`.
+
+```env
+# ==========================================
+# FRONTEND SECRETS (.env.example)
+# ==========================================
+
+# URL Base del backend Spring Boot. 
+# En dev: http://localhost:8080. En prod: https://api.nosfuimosdefinca.com
+NEXT_PUBLIC_API_URL=http://localhost:8080
+
+# Llave PÃšBLICA de Wompi para cargar el Widget de pagos en el navegador.
+# ES SEGURO exponer esta llave en el frontend.
+NEXT_PUBLIC_WOMPI_KEY=pub_test_XXXXXX
+
+# Dominio del CDN de AWS Cloudfront (Para precargar optimizaciÃ³n de imÃ¡genes en Next.js)
+NEXT_PUBLIC_CDN_DOMAIN=https://d123456.cloudfront.net
+```
+# Deliverable 4 (D4): Security Implementation & Middleware
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Status:** Approved
+
+## 2. Cryptography & Token Specification
+
+- **Hashing de ContraseÃ±as:** Se utilizarÃ¡ **Bcrypt** con un Work Factor (Rounds) de `10`. Ninguna contraseÃ±a viajarÃ¡ en texto plano en la BD.
+- **TransmisiÃ³n de Token:** El Frontend (Next.js) almacenarÃ¡ el token en un `HttpOnly Cookie` si se usa Server Components, o lo enviarÃ¡ en el Header `Authorization: Bearer <token>` si se usan Client Components.
+- **Estructura del JWT (JSON Web Token):**
+  - **Algoritmo:** HS256 (HMAC con SHA-256).
+  - **ExpiraciÃ³n:** 24 Horas (No habrÃ¡ Refresh Tokens en V1 por simplicidad).
+  - **Payload (Claims):** No incluirÃ¡ datos sensibles (PII).
+    ```json
+    {
+      "sub": "b2f6b8a1-c7d9-... ", // UUID del usuario
+      "role": "PROPIETARIO",
+      "iat": 1717200000,
+      "exp": 1717286400
+    }
+    ```
+
+## 3. Middleware Pseudocode / Logic
+
+En el backend, configuraremos **Spring Security** con una cadena de filtros (Filter Chain) sin estado (`SessionCreationPolicy.STATELESS`).
+
+### Flujo del `JwtAuthenticationFilter` (Middleware Base)
+Este filtro se ejecuta en CADA peticiÃ³n HTTP que no sea pÃºblica (como Login o Buscar Fincas).
+
+```text
+FUNCION JwtAuthenticationFilter(request):
+  1. Extraer el header "Authorization".
+  2. SI (header NO ESTÃ o NO EMPIEZA con "Bearer "):
+        -> Seguir la cadena (El usuario es ANÃ“NIMO).
+  3. SI (header EMPIEZA con "Bearer "):
+        token = ExtraerToken(header)
+        INTENTAR:
+           claims = DecodificarJWT(token, JWT_SECRET_KEY)
+           SI (claims.exp < AHORA):
+               -> Lanza TokenExpiredException (HTTP 401)
+           SINO:
+               // Construir el objeto de autenticaciÃ³n en memoria
+               contexto = CrearContexto(claims.sub, claims.role)
+               SpringSecurityContext.setAuthentication(contexto)
+               -> Seguir la cadena
+        CAPTURAR_ERROR:
+           -> Retornar HTTP 401 Unauthorized
+```
+
+### Flujo del Control de Acceso basado en Roles (RBAC)
+Las rutas estarÃ¡n protegidas declarativamente usando anotaciones de Spring Boot (`@PreAuthorize`).
+
+```java
+// Ejemplo conceptual (No literal) del uso del RBAC
+@RestController
+@RequestMapping("/api/fincas")
+public class FincaController {
+
+    // Ruta PÃºblica (Turistas y AnÃ³nimos)
+    @GetMapping
+    public List<FincaDTO> buscarFincas() { ... }
+
+    // Ruta Protegida (Solo dueÃ±os pueden crear fincas)
+    @PostMapping
+    @PreAuthorize("hasRole('PROPIETARIO')")
+    public FincaDTO crearFinca(@RequestBody FincaDTO dto) { ... }
+    
+    // Ruta SÃºper Protegida (Solo Admins aprueban fincas para publicarse)
+    @PatchMapping("/{id}/approve")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void aprobarFinca(@PathVariable UUID id) { ... }
+}
+```
+
+### Seguridad EspecÃ­fica: Webhooks de Wompi (MOD-PAY)
+La ruta `/api/payments/webhook` debe ser pÃºblica (Wompi no envÃ­a JWT), pero debe validar criptogrÃ¡ficamente la firma para asegurar que nadie finge un pago.
+
+```text
+FUNCION ValidarWompiWebhook(request_body, firma_wompi):
+  1. CadenaCruda = request_body.transaccion_id + request_body.status + request_body.monto + WOMPI_EVENTS_SECRET
+  2. FirmaEsperada = SHA256(CadenaCruda)
+  3. SI (firma_wompi === FirmaEsperada):
+        -> Procesar Pago
+     SINO:
+        -> Lanzar SecurityException (HTTP 400 Bad Request)
+```
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-AUTH
+**Status:** Approved
+
+## 2. Queues & Payloads
+*(No aplica. El inicio de sesiÃ³n y registro son procesos sÃ­ncronos).*
+
+## 3. Cron Schedules
+*(No aplica).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-AUTH
+**Status:** Approved
+
+## 2. UML Class Diagram
+```mermaid
+classDiagram
+    class User {
+        -UUID id
+        -String email
+        -String passwordHash
+        -Role role
+        -String fullName
+        +register(email: String, hash: String, role: Role) User
+        +updateProfile(name: String) void
+    }
+    class Role {
+        <<enumeration>>
+        TURISTA
+        PROPIETARIO
+        ADMIN
+    }
+    class AuthService {
+        +login(credentials: AuthDTO) String
+        +register(dto: RegisterDTO) User
+    }
+    User *-- Role
+    AuthService --> User
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-AUTH
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+```java
+public interface UserRepository extends JpaRepository<User, UUID> {
+    Optional<User> findByEmail(String email);
+    boolean existsByEmail(String email);
+}
+```
+
+## 3. DTO Definitions
+```java
+public class AuthDTO {
+    @Email @NotNull public String email;
+    @NotNull public String password;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-AUTH
+**Status:** Approved
+
+## 2. OpenAPI YAML Specification
+```yaml
+openapi: 3.0.3
+info:
+  title: Nos Fuimos de Finca - Auth API
+  version: 1.0.0
+paths:
+  /api/v1/auth/login:
+    post:
+      summary: Autenticar usuario y obtener JWT
+      tags: [Auth]
+      requestBody:
+        content:
+          application/json:
+             schema:
+               $ref: '#/components/schemas/AuthDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-AUTH
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+*(No aplica. La autenticaciÃ³n es nativa mediante JWT y base de datos propia, no se usa un proveedor externo como Auth0 en esta versiÃ³n).*
+
+## 3. Inbound Webhook Definitions
+*(No aplica).*
+# Deliverable 7 (D7): Frontend Component & State Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-AUTH
+**Status:** Approved
+
+*(Nota: En la metodologÃ­a este archivo se mapeÃ³ como D9, pero su contenido interno respeta el tÃ­tulo D7 Frontend Component Architecture).*
+
+## 2. Component Tree & Props
+```mermaid
+graph TD
+    A[LoginPage] --> B[AuthForm (Organism)]
+    B --> C[EmailInput (Atom)]
+    B --> D[PasswordInput (Atom)]
+```
+
+## 3. State Management Definitions
+- **Global State (Zustand):** `useAuthStore` que almacena el `token` JWT y los `claims` decodificados (rol, id).
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-FCNT
+**Status:** Approved
+
+## 2. Queues & Payloads
+*(No aplica. La creaciÃ³n de fincas y subida de imÃ¡genes a S3 ocurre en el flujo sÃ­ncrono).*
+
+## 3. Cron Schedules
+*(No aplica).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-FCNT
+**Status:** Approved
+
+## 2. UML Class Diagram
+```mermaid
+classDiagram
+    class Finca {
+        -UUID id
+        -UUID ownerId
+        -String title
+        -FincaStatus status
+        +publish() void
+        +reject() void
+    }
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-FCNT
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+```java
+public interface FincaRepository extends JpaRepository<Finca, UUID> {
+    List<Finca> findByOwnerId(UUID ownerId);
+}
+```
+
+## 3. DTO Definitions
+```java
+public class CreateFincaDTO {
+    @NotNull public String title;
+    @NotNull public String description;
+    @NotNull public BigDecimal pricePerNight;
+    @NotNull public String locationCity;
+    @Min(1) public int maxGuests;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-FCNT
+**Status:** Approved
+
+## 2. OpenAPI YAML
+```yaml
+openapi: 3.0.3
+info:
+  title: Finca Content API
+paths:
+  /api/v1/fincas:
+    post:
+      summary: Crear Finca
+      security:
+        - BearerAuth: []
+      responses:
+        '201':
+          description: Finca en PENDING
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-FCNT
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+- **AWS S3 SDK:** `s3Client.putObject(bucket, key, file)` para subir las imÃ¡genes pre-firmadas.
+# Deliverable 7 (D7): Frontend Component Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-FCNT
+**Status:** Approved
+
+## 2. Component Tree & Props
+```mermaid
+graph TD
+    A[FincaCreatePage] --> B[ImageUploader (Molecule)]
+    A --> C[AmenitiesSelector (Molecule)]
+```
+
+## 3. State Management Definitions
+*(Estado local manejado por React Hook Form para el formulario de creaciÃ³n).*
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-NOT
+**Status:** Approved
+
+## 2. Queues & Payloads
+- **Queue:** Spring ApplicationEvent (In-Memory).
+- **Worker Logic:**
+  - `@Async` `void sendVoucherEmail(PaymentConfirmedEvent event)`
+  - Genera el request hacia SendGrid sin bloquear el hilo HTTP de origen.
+  - **Retry Policy:** 3 reintentos con backoff exponencial.
+
+## 3. Cron Schedules
+*(No aplica cron jobs, solo event listeners).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-NOT
+**Status:** Approved
+
+## 2. UML Class Diagram
+*(MÃ³dulo Headless, accionado por Eventos)*
+```mermaid
+classDiagram
+    class NotificationEventListener {
+        -EmailSender emailSender
+        +onPaymentConfirmed(event: PaymentConfirmedEvent) void
+        +onFincaApproved(event: FincaApprovedEvent) void
+    }
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-NOT
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+*(MÃ³dulo Headless. No tiene repositorio propio, usa memoria RAM/Colas).*
+
+## 3. DTO Definitions
+*(No aplica).*
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-NOT
+**Status:** Approved
+
+## 2. OpenAPI YAML Specification
+*(MÃ³dulo Headless. No expone APIs HTTP al pÃºblico).*
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-NOT
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+- **Proveedor:** SendGrid
+- **MÃ©todo:** REST API (`POST https://api.sendgrid.com/v3/mail/send`)
+- **Payload Base:**
+  ```json
+  {
+    "personalizations": [{"to": [{"email": "turista@test.com"}]}],
+    "from": {"email": "reservas@nosfuimosdefinca.com"},
+    "template_id": "d-1234567890"
+  }
+  ```
+# Deliverable 7 (D7): Frontend Component Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-NOT
+**Status:** Approved
+
+## 2. Component Tree & Props
+*(MÃ³dulo Headless. No posee UI).*
+
+## 3. State Management Definitions
+*(No aplica).*
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PADM
+**Status:** Approved
+
+## 2. Queues & Payloads
+*(No aplica).*
+
+## 3. Cron Schedules
+*(No aplica).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PADM
+**Status:** Approved
+
+## 2. UML Class Diagram
+*(El panel de administraciÃ³n lee y aprueba entidades globales, no tiene entidades propias mas allÃ¡ de los reportes)*
+```mermaid
+classDiagram
+    class AdminService {
+        +approveFinca(fincaId: UUID) void
+        +rejectFinca(fincaId: UUID, reason: String) void
+        +getSystemMetrics() MetricsDTO
+    }
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PADM
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+```java
+public interface AdminFincaRepository extends Repository<Finca, UUID> {
+    // Query para traer Fincas Pendientes de AprobaciÃ³n
+    @Query("SELECT f FROM Finca f WHERE f.status = 'PENDING'")
+    List<Finca> findPendingFincas();
+}
+```
+
+## 3. DTO Definitions
+```java
+public class AdminFincaActionDTO {
+    @NotNull public UUID fincaId;
+    @NotNull public String action; // APPROVE or REJECT
+    public String rejectionReason;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PADM
+**Status:** Approved
+
+## 2. OpenAPI YAML
+```yaml
+openapi: 3.0.3
+info:
+  title: Admin API
+paths:
+  /api/v1/admin/fincas/{id}/approve:
+    patch:
+      summary: Aprobar Finca
+      security:
+        - BearerAuth: []
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PADM
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+*(No aplica).*
+
+## 3. Inbound Webhook Definitions
+*(No aplica).*
+# Deliverable 7 (D7): Frontend Component Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PADM
+**Status:** Approved
+
+## 2. Component Tree & Props
+```mermaid
+graph TD
+    A[AdminDashboard] --> B[PendingFincasList (Organism)]
+    B --> C[ApproveButton (Atom)]
+```
+
+## 3. State Management Definitions
+*(Zustand para estado global del dashboard administrativo).*
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PAY
+**Status:** Approved
+
+*(Nota: En la metodologÃ­a este archivo se mapeÃ³ como D10, pero su contenido interno respeta el tÃ­tulo D8 Async Workers).*
+
+## 2. Queues & Payloads
+
+La validaciÃ³n y mutaciÃ³n del pago es sÃ­ncrona en el momento que llega el webhook. SIN EMBARGO, el envÃ­o de la notificaciÃ³n (voucher) debe encolarse.
+
+- **Broker:** Spring `@Async` + ApplicationEventPublisher (Memoria RAM por ahora, RabbitMQ a futuro).
+- **Queue Name:** `PaymentConfirmedEvent`
+- **Job Payload (Internal Java Record):**
+  ```java
+  public record PaymentConfirmedEvent(
+      UUID bookingId,
+      String turistaEmail,
+      String fincaTitle,
+      BigDecimal amount
+  ) {}
+  ```
+- **Worker Logic (En el MÃ³dulo MOD-NOT):**
+  1. Escucha `PaymentConfirmedEvent`.
+  2. Genera el PDF del Voucher.
+  3. Llama a la API de SendGrid.
+
+## 3. Cron Schedules
+No se requieren Cron Jobs para este mÃ³dulo. Los Webhooks operan de manera Event-Driven (Push), no en Polling (Pull).
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PAY
+**Status:** Approved
+
+## 2. UML Class Diagram
+
+```mermaid
+classDiagram
+    class Payment {
+        -UUID id
+        -UUID bookingId
+        -String wompiTransactionId
+        -BigDecimal amount
+        -PaymentStatus status
+        -Date processedAt
+        +approve(transactionId: String) void
+        +decline(reason: String) void
+    }
+    
+    class PaymentStatus {
+        <<enumeration>>
+        PENDING
+        APPROVED
+        DECLINED
+        ERROR
+    }
+    
+    class PaymentService {
+        -PaymentRepository paymentRepo
+        -BookingClient bookingClient
+        -WompiSignatureValidator validator
+        +initializePayment(bookingId: UUID, amount: BigDecimal) PaymentDTO
+        +processWompiWebhook(payload: WebhookPayload) void
+    }
+    
+    Payment *-- PaymentStatus
+    PaymentService --> Payment
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PAY
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+
+```java
+public interface PaymentRepository extends JpaRepository<Payment, UUID> {
+    
+    // Consulta por transacciÃ³n de Wompi para evitar procesar el mismo webhook 2 veces (Idempotencia)
+    Optional<Payment> findByWompiTransactionId(String transactionId);
+
+    // BÃºsqueda por Booking asociado
+    Optional<Payment> findByBookingId(UUID bookingId);
+}
+```
+
+## 3. DTO Definitions
+
+```java
+public class WebhookPayloadDTO {
+    public EventData data;
+    public Signature signature;
+    
+    public static class EventData {
+        public Transaction transaction;
+    }
+    
+    public static class Transaction {
+        public String id;
+        public String status;
+        public int amount_in_cents;
+        public String reference; // UUID de nuestro Booking
+    }
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PAY
+**Status:** Approved
+
+## 2. OpenAPI YAML Specification
+
+```yaml
+openapi: 3.0.3
+info:
+  title: Nos Fuimos de Finca - Payment Webhooks
+  version: 1.0.0
+paths:
+  /api/v1/payments/webhook:
+    post:
+      summary: Recibir evento transaccional de Wompi
+      tags: [Payments]
+      description: Endpoint pÃºblico consumido por Wompi. La validaciÃ³n de seguridad se hace vÃ­a firmas (Checksums).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WompiWebhookPayload'
+      responses:
+        '200':
+          description: Evento recibido y encolado exitosamente. (Wompi requiere 200 OK rÃ¡pido)
+        '400':
+          description: Firma invÃ¡lida (Bad Request)
+components:
+  schemas:
+    WompiWebhookPayload:
+      type: object
+      properties:
+        event:
+          type: string
+          example: "transaction.updated"
+        data:
+          type: object
+          properties:
+            transaction:
+              type: object
+              properties:
+                id:
+                  type: string
+                status:
+                  type: string
+                  example: "APPROVED"
+                amount_in_cents:
+                  type: integer
+                reference:
+                  type: string
+                  description: "El UUID del Booking"
+        signature:
+          type: object
+          properties:
+            checksum:
+              type: string
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PAY
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+
+- **Proveedor:** Wompi (Bancolombia)
+- **MÃ©todo:** Drop-in Widget en el Frontend (Next.js). No usaremos SDK de backend para iniciar el pago, delegaremos la captura de la tarjeta al SDK de JS de Wompi (`https://checkout.wompi.co/widget.js`).
+- **Payload Inicial (Frontend a Wompi):**
+  ```json
+  {
+    "currency": "COP",
+    "amountInCents": 20000000,
+    "reference": "UUID_DEL_SOFT_LOCK",
+    "publicKey": "pub_test_XXXXX",
+    "redirectUrl": "https://nosfuimosdefinca.com/checkout/success"
+  }
+  ```
+
+## 3. Inbound Webhook Definitions
+
+- **Route:** `POST /api/v1/payments/webhook`
+- **Schema:** Definido en el D7 OpenAPI (WompiWebhookPayload).
+- **Validation Logic (Firma CriptogrÃ¡fica):**
+  Para evitar ataques de denegaciÃ³n de servicio o *spoofing* de pagos, el backend DEBE calcular el hash SHA-256 concatenando `transaction_id + status + amount_in_cents + timestamp + WOMPI_EVENTS_SECRET`. Si el Hash calculado no coincide con el `signature.checksum` del payload entrante, se aborta y retorna 400.
+# Deliverable 7 (D7): Frontend Component & State Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-PAY
+**Status:** Approved
+
+*(Nota: En la metodologÃ­a este archivo se mapeÃ³ como D9, pero su contenido interno respeta el tÃ­tulo D7 Frontend Component Architecture).*
+
+## 2. Component Tree & Props
+
+```mermaid
+graph TD
+    A[CheckoutPage] --> B[WompiWidgetLoader (Atom)]
+    A --> C[PaymentStatusPolling (Molecule)]
+    A --> D[SuccessReceipt (Organism)]
+```
+
+### TypeScript Interfaces
+```typescript
+interface WompiWidgetProps {
+  bookingReference: string;
+  amountInCents: number;
+  onWidgetClosed: () => void;
+}
+```
+
+## 3. State Management Definitions
+
+- **Server State (React Query / SWR):** 
+  - `usePaymentStatusPolling(bookingId)` -> Una vez que el usuario cierra el Widget de Wompi, el Frontend no puede confiar en el Widget. Empieza a hacer Polling (llamadas GET cada 3 segundos) al endpoint `/api/v1/bookings/{id}` para verificar si el status cambiÃ³ de `SOFT_LOCKED` a `HARD_LOCKED` (lo que significa que el Webhook del backend ya hizo su trabajo).
+- **Global State:** N/A.
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-POWN
+**Status:** Approved
+
+## 2. Queues & Payloads
+*(No aplica).*
+
+## 3. Cron Schedules
+*(No aplica).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-POWN
+**Status:** Approved
+
+## 2. UML Class Diagram
+*(Dashboard no tiene entidades propias, lee de Fincas y Reservas)*
+```mermaid
+classDiagram
+    class DashboardService {
+        +getMetrics(ownerId: UUID) MetricsDTO
+    }
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-POWN
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+```java
+public interface DashboardRepository extends Repository<Booking, UUID> {
+    // Query de agregaciÃ³n para el Dashboard del Propietario
+    @Query("SELECT COUNT(b) FROM Booking b JOIN b.finca f WHERE f.ownerId = :ownerId AND b.status = 'HARD_LOCKED'")
+    long countTotalConfirmedBookings(@Param("ownerId") UUID ownerId);
+}
+```
+
+## 3. DTO Definitions
+```java
+public class MetricsDTO {
+    public long totalBookings;
+    public BigDecimal totalRevenue;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-POWN
+**Status:** Approved
+
+## 2. OpenAPI YAML
+```yaml
+openapi: 3.0.3
+info:
+  title: Owner Dashboard API
+paths:
+  /api/v1/owner/metrics:
+    get:
+      summary: Obtener mÃ©tricas
+      security:
+        - BearerAuth: []
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-POWN
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+*(No aplica).*
+
+## 3. Inbound Webhook Definitions
+*(No aplica).*
+# Deliverable 7 (D7): Frontend Component Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-POWN
+**Status:** Approved
+
+## 2. Component Tree & Props
+```mermaid
+graph TD
+    A[OwnerDashboard] --> B[MetricCard (Molecule)]
+    A --> C[BookingListTable (Organism)]
+```
+
+## 3. State Management Definitions
+*(React Query para refetching de mÃ©tricas en tiempo real).*
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-REV
+**Status:** Approved
+
+## 2. Queues & Payloads
+*(No aplica).*
+
+## 3. Cron Schedules
+*(No aplica).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-REV
+**Status:** Approved
+
+## 2. UML Class Diagram
+```mermaid
+classDiagram
+    class Review {
+        -UUID id
+        -UUID fincaId
+        -UUID turistaId
+        -Integer rating
+        -String comment
+        +approve() void
+        +reject() void
+    }
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-REV
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+```java
+public interface ReviewRepository extends JpaRepository<Review, UUID> {
+    List<Review> findByFincaIdAndStatus(UUID fincaId, String status);
+}
+```
+
+## 3. DTO Definitions
+```java
+public class CreateReviewDTO {
+    @NotNull public UUID fincaId;
+    @Min(1) @Max(5) public int rating;
+    public String comment;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-REV
+**Status:** Approved
+
+## 2. OpenAPI YAML
+```yaml
+openapi: 3.0.3
+info:
+  title: Reviews API
+paths:
+  /api/v1/reviews:
+    post:
+      summary: Crear reseÃ±a
+      security:
+        - BearerAuth: []
+      responses:
+        '201':
+          description: OK
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-REV
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+*(No aplica).*
+
+## 3. Inbound Webhook Definitions
+*(No aplica).*
+# Deliverable 7 (D7): Frontend Component Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-REV
+**Status:** Approved
+
+## 2. Component Tree & Props
+```mermaid
+graph TD
+    A[FincaDetailPage] --> B[ReviewSection (Organism)]
+    B --> C[StarRating (Atom)]
+```
+
+## 3. State Management Definitions
+*(React Query para obtener la lista de reseÃ±as desde el servidor).*
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-RSV
+**Status:** Approved
+
+*(Nota: En la metodologÃ­a este archivo se mapeÃ³ como D10, pero su contenido interno respeta el tÃ­tulo D8 Async Workers).*
+
+## 2. Queues & Payloads
+*(Las colas se usan principalmente en MOD-PAY y MOD-NOT. MOD-RSV utiliza Cron Jobs internos).*
+
+## 3. Cron Schedules
+
+La lÃ³gica mÃ¡s crÃ­tica asÃ­ncrona de las Reservas es liberar el inventario si el turista no pagÃ³ a tiempo (Soft-Lock Expiration). Dado que usamos Spring Boot, no requerimos un orquestador externo como BullMQ para esto, usaremos la anotaciÃ³n `@Scheduled`.
+
+| Job Name | Cron Expression | Execution Logic |
+| --- | --- | --- |
+| **Purge Expired Soft-Locks** | `0 * * * * *` (Cada 1 minuto) | 1. `bookingRepo.findExpiredSoftLocks()`<br>2. Para cada reserva: `status = CANCELLED`<br>3. Commit a BD.<br>4. Publicar `BookingCancelledEvent`. |
+
+**Retry Policy:** No aplica (es un cron job idempotente, si falla, vuelve a intentarlo al siguiente minuto).
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-RSV
+**Status:** Approved
+
+## 2. UML Class Diagram
+
+```mermaid
+classDiagram
+    class Booking {
+        -UUID id
+        -UUID fincaId
+        -UUID turistaId
+        -Date checkIn
+        -Date checkOut
+        -BigDecimal totalPrice
+        -BookingStatus status
+        -Date lockedUntil
+        -Date createdAt
+        +softLock(ttlMinutes: int) void
+        +hardLock() void
+        +cancel() void
+        +isExpired() boolean
+    }
+    
+    class BookingStatus {
+        <<enumeration>>
+        SOFT_LOCKED
+        HARD_LOCKED
+        CANCELLED
+    }
+    
+    class BookingService {
+        -BookingRepository bookingRepo
+        -FincaClient fincaClient
+        +createSoftLock(fincaId: UUID, userId: UUID, checkIn: Date, checkOut: Date) BookingDTO
+        +confirmHardLock(bookingId: UUID) void
+        +cancelExpiredLocks() int
+    }
+    
+    Booking *-- BookingStatus
+    BookingService --> Booking
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-RSV
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+
+```java
+public interface BookingRepository extends JpaRepository<Booking, UUID> {
+
+    // QUERY CRÃTICA 1: Evitar Double Booking usando SELECT FOR UPDATE (Pessimistic Write Lock)
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT b FROM Booking b WHERE b.fincaId = :fincaId " +
+           "AND b.status IN ('SOFT_LOCKED', 'HARD_LOCKED') " +
+           "AND (b.checkIn < :checkOut AND b.checkOut > :checkIn)")
+    List<Booking> findOverlappingBookingsWithLock(
+        @Param("fincaId") UUID fincaId, 
+        @Param("checkIn") Date checkIn, 
+        @Param("checkOut") Date checkOut
+    );
+
+    // QUERY 2: Encontrar Soft Locks expirados para el Async Worker
+    @Query("SELECT b FROM Booking b WHERE b.status = 'SOFT_LOCKED' AND b.lockedUntil < CURRENT_TIMESTAMP")
+    List<Booking> findExpiredSoftLocks();
+}
+```
+
+## 3. DTO Definitions
+
+```java
+public class CreateBookingDTO {
+    @NotNull public UUID fincaId;
+    @NotNull @FutureOrPresent public Date checkIn;
+    @NotNull @Future public Date checkOut;
+}
+
+public class BookingResponseDTO {
+    public UUID bookingId;
+    public String status;
+    public Date lockedUntil;
+    public BigDecimal totalPrice;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-RSV
+**Status:** Approved
+
+## 2. OpenAPI YAML Specification
+
+```yaml
+openapi: 3.0.3
+info:
+  title: Nos Fuimos de Finca - Booking API
+  version: 1.0.0
+paths:
+  /api/v1/bookings:
+    post:
+      summary: Crear un Soft-Lock de Reserva
+      tags: [Bookings]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBookingDTO'
+      responses:
+        '201':
+          description: Soft-Lock creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponseDTO'
+        '409':
+          description: Conflicto (Double Booking)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CreateBookingDTO:
+      type: object
+      required: [fincaId, checkIn, checkOut]
+      properties:
+        fincaId:
+          type: string
+          format: uuid
+        checkIn:
+          type: string
+          format: date
+        checkOut:
+          type: string
+          format: date
+    BookingResponseDTO:
+      type: object
+      properties:
+        bookingId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          example: "SOFT_LOCKED"
+        lockedUntil:
+          type: string
+          format: date-time
+        totalPrice:
+          type: number
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 409
+        error:
+          type: string
+          example: "Conflict"
+        message:
+          type: string
+          example: "Fechas no disponibles"
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-RSV
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+*(El mÃ³dulo de reservas per se no hace integraciones externas directas. Esa responsabilidad recae en el MOD-PAY para contactar a Wompi, y MOD-NOT para contactar a SendGrid).*
+
+## 3. Inbound Webhook Definitions
+*(Sin Webhooks externos. MOD-RSV consume eventos internos del bus de Spring `ApplicationEventPublisher`).*
+# Deliverable 7 (D7): Frontend Component & State Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-RSV
+**Status:** Approved
+
+*(Nota: En la metodologÃ­a este archivo se mapeÃ³ como D9, pero su contenido interno respeta el tÃ­tulo D7 Frontend Component Architecture).*
+
+## 2. Component Tree & Props
+
+```mermaid
+graph TD
+    A[FincaDetailPage] --> B[BookingWidget (Organism)]
+    B --> C[DateRangePicker (Molecule)]
+    B --> D[PriceSummary (Atom)]
+    B --> E[BookingSubmitButton (Atom)]
+    E -.-> |onSuccess| F[CheckoutModal (Organism)]
+```
+
+### TypeScript Interfaces
+```typescript
+interface BookingWidgetProps {
+  fincaId: string;
+  pricePerNight: number;
+  maxGuests: number;
+  disabledDates: Date[]; // Fechas ya reservadas traÃ­das del servidor
+}
+
+interface DateRangePickerProps {
+  startDate: Date | null;
+  endDate: Date | null;
+  onChange: (dates: [Date | null, Date | null]) => void;
+  excludeDates: Date[];
+}
+```
+
+## 3. State Management Definitions
+
+- **Local State (`useState`):** Las fechas seleccionadas temporalmente en el `DateRangePicker` antes de presionar el botÃ³n de enviar.
+- **Server State (React Query / SWR):** 
+  - `useFincaAvailability(fincaId)` -> Fetch GET para traer los dÃ­as deshabilitados.
+  - `useCreateSoftLock()` -> MutaciÃ³n POST para intentar bloquear las fechas.
+- **Global State (Zustand):** No es necesario un estado global complejo para la creaciÃ³n de reservas. El `bookingId` retornado por el Soft-Lock se pasa como prop al modal de Checkout (`MOD-PAY`).
+# Deliverable 8 (D8): Async Workers & Job Scheduling
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-SRCH
+**Status:** Approved
+
+## 2. Queues & Payloads
+*(No aplica).*
+
+## 3. Cron Schedules
+*(No aplica).*
+# Deliverable 5 (D5): Class & Entity Diagrams
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-SRCH
+**Status:** Approved
+
+## 2. UML Class Diagram
+```mermaid
+classDiagram
+    class SearchCriteria {
+        -String city
+        -Integer guests
+        -Date checkIn
+        -Date checkOut
+        +isValid() boolean
+    }
+    class SearchService {
+        -FincaRepository fincaRepo
+        +search(criteria: SearchCriteria) List~FincaDTO~
+    }
+```
+# Deliverable 6 (D6): Data Access & Repositories
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-SRCH
+**Status:** Approved
+
+## 2. Repository Interfaces & Complex Queries
+```java
+public interface FincaRepository extends JpaRepository<Finca, UUID> {
+    // BÃºsqueda base con filtros
+    @Query("SELECT f FROM Finca f WHERE f.status = 'APPROVED' AND f.locationCity = :city AND f.maxGuests >= :guests")
+    List<Finca> findBySearchCriteria(String city, int guests);
+}
+```
+
+## 3. DTO Definitions
+```java
+public class FincaSearchResponseDTO {
+    public UUID id;
+    public String title;
+    public String city;
+    public BigDecimal pricePerNight;
+    public String primaryImageUrl;
+}
+```
+# Deliverable 7 (D7): API Contracts (OpenAPI)
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-SRCH
+**Status:** Approved
+
+## 2. OpenAPI YAML Specification
+```yaml
+openapi: 3.0.3
+info:
+  title: Search API
+  version: 1.0.0
+paths:
+  /api/v1/search/fincas:
+    get:
+      summary: Buscar fincas
+      parameters:
+        - in: query
+          name: city
+          schema:
+            type: string
+        - in: query
+          name: guests
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+```
+# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-SRCH
+**Status:** Approved
+
+## 2. Outbound API/SDK Calls
+*(No aplica. El motor de bÃºsqueda consulta directamente la base de datos PostgreSQL, no usa ElasticSearch ni Algolia externo).*
+
+## 3. Inbound Webhook Definitions
+*(No aplica).*
+# Deliverable 7 (D7): Frontend Component & State Architecture
+
+**Project:** Nos Fuimos de Finca
+**Phase:** 6 â€” Technical Design
+**Module:** MOD-SRCH
+**Status:** Approved
+
+## 2. Component Tree & Props
+```mermaid
+graph TD
+    A[HomePage] --> B[SearchBar (Organism)]
+    A --> C[FincaGrid (Organism)]
+    C --> D[FincaCard (Molecule)]
+```
+
+## 3. State Management Definitions
+- **Server State (React Query):** `useSearchFincas(city, guests, dates)`
