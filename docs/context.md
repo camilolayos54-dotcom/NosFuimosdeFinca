@@ -2,73 +2,65 @@
 
 ## 1. Visión General del Sistema
 
-**Nos Fuimos de Finca (FinCapp)** es una plataforma digital centralizada, orientada a la gestión integral de reservas de propiedades turísticas rurales. Su propósito fundacional es establecer un puente transaccional seguro y estructurado entre turistas (arrendatarios) y propietarios, erradicando los procesos informales y manuales que actualmente dominan este nicho de mercado.
+**Nos Fuimos de Finca** es una plataforma digital B2B2C orientada a la gestión de reservas y pagos de propiedades turísticas rurales. Su propósito fundacional es establecer un puente transaccional seguro entre Finqueros y Turistas, erradicando los procesos informales (cuadernos físicos) y el riesgo de estafas en transacciones directas (Nequi/Transferencias no verificadas).
 
 ### 1.1. Problemática Central
-El sector del turismo rural sufre de una severa fragmentación en la gestión de la información. La ausencia de sistemas de control centralizados provoca:
-- Riesgos operativos como reservas duplicadas (Overbooking) y conflictos de disponibilidad.
-- Falta de trazabilidad financiera y opacidad en el manejo de pagos y reembolsos.
-- Dispersión en la comunicación, lo que vulnera la seguridad y confianza de ambas partes.
+El sector del turismo rural sufre de una severa fragmentación en la gestión. Esto provoca:
+- Riesgos operativos como reservas duplicadas (Double-Booking) y conflictos de disponibilidad.
+- Tiempos de respuesta lentos y fricción en la recolección de anticipos.
+- Desconfianza por parte del turista al realizar pagos directos a cuentas personales desconocidas.
 
-La plataforma mitiga estos riesgos proveyendo un flujo digital inmutable desde la publicación inicial del inmueble hasta el procesamiento del pago y la calificación post-estadía.
+La plataforma mitiga estos riesgos proveyendo un motor de reservas atómico (State Machine con TTL) acoplado a una pasarela de pagos (Wompi) que transfiere el dinero directamente al Finquero, cobrando un Service Fee al Turista.
 
 ---
 
-## 2. Alcance y Fronteras Operativas
+## 2. Alcance y Fronteras Operativas (MVP)
 
-El sistema ha sido acotado mediante límites estrictos para garantizar un lanzamiento viable y mantenible, mitigando la inflación del alcance (Feature Creep).
+El sistema ha sido acotado mediante límites estrictos (Definidos en la Fase 1) para garantizar un lanzamiento viable en tiempo récord, operando bajo un modelo donde **el Finquero trae su propio tráfico compartiendo su URL pública**.
 
 ### 2.1. Funciones Dentro del Alcance (In-Scope)
-- **Gestión de Identidades:** Registro, autenticación y control de acceso basado en roles.
-- **Catálogo y Motor de Búsqueda:** Navegación paramétrica con filtros avanzados de capacidad, geolocalización y rangos de fechas.
-- **Transaccionalidad Core:** Ciclo completo de reserva con bloqueo estricto de disponibilidad (Pessimistic Locking).
-- **Procesamiento de Pagos:** Integración con pasarelas externas certificadas para la recaudación segura.
-- **Gobierno de la Plataforma:** Paneles de control independientes para Propietarios (gestión de inventario) y Administradores (moderación y auditoría).
+- **Gestión de Identidades (Finquero):** Registro, Onboarding KYC (RUT/Cuenta) y Row Level Security (RLS).
+- **Checkout Guest:** Flujo de reserva sin fricción, donde el Turista no necesita crear cuenta para pagar.
+- **Transaccionalidad Core:** Ciclo completo de reserva con bloqueo estricto temporal (Soft-Lock) y definitivo (Hard-Lock).
+- **Procesamiento P2P (Wompi):** Recaudación del Service Fee para la plataforma y dispersión directa del costo del alojamiento a la cuenta del Finquero.
+- **Dashboard Básico:** Panel de control para que el Finquero gestione disponibilidad, bloqueos manuales y vea su histórico de reservas.
 
 ### 2.2. Funciones Fuera del Alcance (Out-of-Scope)
-- Desarrollo de aplicaciones móviles nativas (iOS/Android).
-- Procesos de verificación de identidad biométrica o integración gubernamental directa.
-- Generación y gestión de contratos legales o firmas electrónicas vinculantes.
-- Soporte internacional (Soporte multimoneda o multiidioma).
-- Integración automatizada de calendarios con plataformas globales (Airbnb, Booking.com).
+- **Marketplace o Buscador General:** No habrá un "home" tipo Airbnb para buscar fincas. El tráfico es directo al link de la finca.
+- **Sistema de Reseñas y Calificaciones:** Innecesario en la etapa inicial de validación transaccional.
+- **Mensajería / Chat In-App:** El contacto directo seguirá ocurriendo por WhatsApp si hay dudas.
+- **Desarrollo Móvil Nativo:** Solo Web App responsiva (Mobile-First estricto).
 
 ---
 
 ## 3. Ecosistema de Módulos Funcionales
 
-La arquitectura lógica de la plataforma se compone de diez (10) módulos cohesivos y débilmente acoplados:
+La arquitectura lógica de la plataforma se compone estrictamente de siete (7) módulos cohesivos y débilmente acoplados, siguiendo una jerarquía unidireccional:
 
-1. **M-01 — Autenticación y Gestión de Usuarios:** Emisión de tokens de sesión y gestión de perfiles.
-2. **M-02 — Búsqueda y Navegación:** Motor de descubrimiento y consulta de disponibilidad.
-3. **M-03 — Gestión de Reservas:** Motor transaccional para la protección del inventario en tiempo real.
-4. **M-04 — Pagos y Facturación:** Abstracción y orquestación de la pasarela de pagos.
-5. **M-05 — Comunicación:** Servicio de mensajería interna y trazable entre actores.
-6. **M-06 — Panel del Propietario:** Centro de mando para la gestión de disponibilidad y métricas financieras.
-7. **M-07 — Panel del Administrador:** Consola de moderación global y resolución de disputas.
-8. **M-08 — Gestión de Contenido:** Flujo de publicación y revisión de nuevas fincas.
-9. **M-09 — Calificaciones y Reseñas:** Sistema de reputación para mitigar la asimetría de información.
-10. **M-10 — Notificaciones:** Servicio de orquestación de correos electrónicos y alertas in-app.
+1. **MOD-AUTH (Autenticación y KYC):** Emisión de JWTs y validación de documentos bancarios del Finquero.
+2. **MOD-PROP (Propiedad):** Gestión del perfil público de la finca (Fotos, descripciones, precios).
+3. **MOD-CAL (Calendario):** State machine de disponibilidad (Disponible -> Soft-Lock -> Hard-Lock).
+4. **MOD-RSV (Reservas):** Motor de cálculo de totales y creación de la orden transaccional.
+5. **MOD-PAY (Pagos):** Integración idempotente de Webhooks de Wompi.
+6. **MOD-NOT (Notificaciones):** Orquestador de confirmaciones vía SMS/Email asíncronas.
+7. **MOD-DASH (Dashboard):** Panel de visualización de analíticas y estados para el dueño.
 
 ---
 
-## 4. Marco Metodológico y Gobierno
+## 4. Marco Metodológico y Técnico
 
-El ciclo de vida de desarrollo de software (SDLC) se rige bajo un marco ágil fundamentado en principios de **Scrum** y **Kanban**. 
-
-- **Historias de Usuario:** Toda funcionalidad técnica se especifica a través de requerimientos centrados en el valor entregable al actor final, delimitados por criterios de aceptación estrictos y verificables.
-- **Trazabilidad:** La gestión del avance se ejerce a través de estados lógicos (*Pendiente, En Progreso, Completado*), garantizando transparencia mediante artefactos de control visual.
-- **Priorización Orientada al Riesgo:** El desarrollo se planifica mitigando primero los riesgos operativos más altos (Ej. La transaccionalidad de reservas y pasarelas de pago precede a funcionalidades secundarias como las reseñas).
+El ciclo de vida se rige bajo la metodología estructurada **FULLSTACK_DEVELOPMENT**.
+- **Stack Tecnológico:** Next.js 14 (App Router), Supabase (PostgreSQL + Auth), Tailwind CSS.
+- **Arquitectura:** Monolito Modular, garantizando que cada módulo (`MOD-`) tenga fronteras de datos y código limpias, facilitando una futura migración a microservicios si se requiere.
 
 ---
 
-## 5. Análisis Estratégico (Matriz DOFA)
-
-El proyecto opera bajo las siguientes variables estratégicas identificadas:
+## 5. Análisis Estratégico (Matriz DOFA del MVP)
 
 ### Variables Internas
-- **Fortalezas:** Centralización absoluta del flujo de reserva, arquitectura robusta basada en Monolito Modular, e interfaz de usuario de baja fricción operativa.
-- **Debilidades:** Carencia inicial de ecosistema móvil nativo, ausencia de analítica predictiva avanzada y dependencia estructural de pasarelas de pago de terceros.
+- **Fortalezas:** Cero costo de adquisición de usuarios turista (CAC = $0), ya que el Finquero utiliza la plataforma como su datáfono personal compartiendo su propio link. Arquitectura Serverless sin costo operativo base.
+- **Debilidades:** Fricción inicial para el Finquero al tener que pasar el proceso KYC para habilitar cobros P2P.
 
 ### Variables Externas
-- **Oportunidades:** Crecimiento sostenido del turismo rural nacional, bajo nivel de madurez digital en los competidores locales del mismo nicho, y un cambio en las tendencias post-pandemia hacia el turismo hiperlocal.
-- **Amenazas:** Entrada potencial de plataformas hegemónicas internacionales al mercado rural especializado, vulnerabilidad ante la inestabilidad de la infraestructura de telecomunicaciones en zonas rurales, y fluctuaciones en la regulación fiscal local referente a servicios turísticos digitales.
+- **Oportunidades:** El 90% de los anfitriones rurales en LATAM siguen usando cuadernos y WhatsApp para cobrar.
+- **Amenazas:** Caídas del servicio de la pasarela local (Wompi) paralizan el flujo de ingresos de la plataforma.

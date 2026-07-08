@@ -26,17 +26,17 @@ A continuación se detalla el objetivo metodológico de cada artefacto documenta
 ### 📂 00. Reconocimiento del Problema (Problem Recognition)
 **Objetivo de la Fase:** Validar empíricamente la existencia de una problemática de negocio que justifique el desarrollo de software.
 
-- **`00_resumen-fase-0.md`**: Establecer el mandato inicial y alinear expectativas fundacionales.
-- **`1. Declaración del Problema.md`**: Declarar unívocamente la problemática central que afecta al mercado objetivo.
+- **`1. Declaracion del Problema.md`**: Declarar unívocamente la problemática central que afecta al mercado objetivo.
 - **`2. Registro de Evidencia.md`**: Consolidar métricas empíricas que demuestren el impacto y recurrencia del problema.
-- **`3. Análisis de Soluciones Existentes.md`**: Evaluar las alternativas actuales del mercado para identificar deficiencias sistémicas.
-- **`4. Registro de Clasificación del Problema.md`**: Categorizar el riesgo y la complejidad técnica inherente al problema.
+- **`3. Analisis de Soluciones Existentes.md`**: Evaluar las alternativas actuales del mercado para identificar deficiencias sistémicas.
+- **`4. Registro de Clasificacion del Problema.md`**: Categorizar el riesgo y la complejidad técnica inherente al problema.
 - **`5. Matriz de Impacto.md`**: Cuantificar las ramificaciones operativas y financieras derivadas de no solucionar la problemática.
 - **`6. Objetivos del Proyecto.md`**: Definir metas estratégicas medibles que dictarán el éxito de la solución a implementar.
 - **`7. Mapa de Partes Interesadas.md`**: Identificar y clasificar a todos los actores directos e indirectos afectados por el sistema.
 - **`8. Registro de Riesgos.md`**: Documentar amenazas iniciales y factores críticos de fracaso para la fase de ideación.
-- **`9. Señal de Proceder_No-Proceder.md`**: Formalizar la decisión gerencial de proceder o detener la investigación del proyecto.
+- **`9. Senal de Proceder_No-Proceder.md`**: Formalizar la decisión gerencial de proceder o detener la investigación del proyecto.
 - **`10. Entrada del Registro de Patrones de Problemas.md`**: Registrar patrones recurrentes descubiertos durante la fase de reconocimiento para futuras referencias.
+- **`00-brief/01.Project_Brief.md`**: El Brief histórico fundamental que dio origen al proyecto.
 
 ### 📂 01. Viabilidad Temprana (Early Viability)
 **Objetivo de la Fase:** Cuantificar la rentabilidad y evaluar el riesgo técnico antes de comprometer recursos de desarrollo.
@@ -85,7 +85,7 @@ A continuación se detalla el objetivo metodológico de cada artefacto documenta
 - **`3. Glosario de Dominio.md`**: Estandarizar el "Lenguaje Ubicuo" para unificar la semántica de negocio e ingeniería.
 - **`4. Registros de Elicitacion.md`**: Capturar requisitos formales directamente de las fuentes de negocio.
 - **`5. Descomposicion de Modulos Funcionales.md`**: Descomponer la complejidad en contextos modulares.
-- **`5.1` al `5.9` (`MOD-AUTH` a `MOD-NOT`)**: Listado de requisitos funcionales específicos para cada uno de los módulos.
+- **`5.1` al `5.7` (`MOD-AUTH` a `MOD-DASH`)**: Listado de requisitos funcionales, historias de usuario y casos de uso específicos para cada uno de los 7 módulos del sistema.
 - **`6. Requisitos No Funcionales.md`**: Requerimientos sistémicos globales como desempeño y resiliencia.
 - **`8. Verificacion de Conflictos Inter-Modulos.md`**: Prevenir choques lógicos tempranos entre dominios acotados.
 - **`10. Matriz de Trazabilidad de Requisitos.md`**: Vincular matemáticamente cada regla de negocio con un caso de uso (Zero Gaps).
