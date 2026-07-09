@@ -3,6 +3,7 @@
 **Objetivo:** Transformar los wireframes estructurales de esta página en un diseño de Alta Fidelidad utilizando estrictamente la paleta de colores y las reglas tipográficas del Design System ("Rural Sanctuary").
 
 ---
+# RESULTADOS
 
 ## 1. Reglas Tipográficas
 - **Títulos y Encabezados Mayores (H1, H2):** Usar la familia **Epilogue**. Sus pesos gruesos y calidad geométrica son ideales para transmitir profesionalismo y un toque editorial/rústico.

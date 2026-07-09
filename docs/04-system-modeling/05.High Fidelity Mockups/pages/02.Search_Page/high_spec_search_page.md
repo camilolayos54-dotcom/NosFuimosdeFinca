@@ -3,8 +3,10 @@
 **Objetivo:** Transformar los wireframes estructurales de esta página en un diseño de Alta Fidelidad utilizando estrictamente la paleta de colores y las reglas tipográficas del Design System ("Rural Sanctuary").
 
 ---
-
-## 1. Reglas Tipográficas
+# RESULTADO
+![[Nos Fuimos de Finca - Search Results Desktop (Updated).png]]
+## ![[Nos Fuimos de Finca - Search Results Mobile (Updated).png]]
+1. Reglas Tipográficas
 - **Títulos y Encabezados Mayores (H1, H2):** Usar la familia **Epilogue**. Sus pesos gruesos y calidad geométrica son ideales para transmitir profesionalismo y un toque editorial/rústico.
 - **Cuerpo de Texto y Formularios (Body, Labels):** Usar la familia **Be Vietnam Pro**. Ideal para legibilidad alta en datos técnicos y descripciones largas.
 
