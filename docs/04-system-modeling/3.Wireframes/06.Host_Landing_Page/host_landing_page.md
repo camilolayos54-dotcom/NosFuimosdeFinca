@@ -5,6 +5,11 @@
 
 ---
 
+# RESULTADOS
+![Host Landing - Wireframe Desktop.png](<Host Landing - Wireframe Desktop.png>)
+![Host Landing - Wireframe Mobile.png](<Host Landing - Wireframe Mobile.png>)
+
+
 ## 1. Análisis Cognitivo y Patrón UX Recomendado
 
 - **Diagnóstico:** Esta pantalla tiene una sola misión: Convencer a los dueños de fincas de que se registren en nuestra plataforma. El usuario (Finquero) es escéptico. Quiere saber cuánto le cobramos, cómo le pagamos y si es seguro.

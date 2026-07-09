@@ -5,6 +5,11 @@
 
 ---
 
+# RESULTADOS
+![Acceso B2B - Wireframe Mobile.png](<Acceso B2B - Wireframe Mobile.png>)
+![Main.png](Main.png)
+
+
 ## 1. Análisis Cognitivo y Patrón UX Recomendado
 
 - **Diagnóstico:** El finquero o administrador de agencia entra aquí a trabajar. No busca inspiración turística, busca velocidad. Sin embargo, el login puede ser un muro frustrante si olvida la clave o es bloqueado por seguridad.

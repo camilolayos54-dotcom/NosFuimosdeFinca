@@ -5,7 +5,9 @@
 
 ---
 
-## 1. Análisis Cognitivo y Patrón UX Recomendado
+## Resultados
+![Confirmación de Pago - Wireframe Estricto Desktop.png](<Confirmación de Pago - Wireframe Estricto Desktop.png>)
+![Confirmación de Pago - Wireframe Estricto Mobile.png](<Confirmación de Pago - Wireframe Estricto Mobile.png>)
 
 - **Diagnóstico:** El Turista acaba de entregarle su dinero a una plataforma en internet. Su carga cognitiva bajó a cero, pero su nivel de ansiedad por confirmación está al máximo. Necesita saber que todo salió bien y qué debe hacer ahora.
 - **Patrón Principal:** `Success Celebration + Clear Next Steps`.

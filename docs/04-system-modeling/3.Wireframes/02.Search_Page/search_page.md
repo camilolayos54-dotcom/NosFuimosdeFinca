@@ -5,6 +5,12 @@
 
 ---
 
+# RESULTADOS
+![bottom_navigation_bar.png](bottom_navigation_bar.png)
+![search_page_desktop.png](search_page_desktop.png)
+![[search_page_mobile.png]]
+
+
 ## 1. Análisis Cognitivo y Patrón UX Recomendado
 
 - **Diagnóstico:** El usuario ya hizo una búsqueda en el Home y ahora está en modo "Evaluación Comparativa". Su carga cognitiva es alta porque está leyendo precios, comodidades y evaluando fotos. Debemos evitar que se sature visualmente.

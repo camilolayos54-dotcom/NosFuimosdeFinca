@@ -5,6 +5,11 @@
 
 ---
 
+# RESULTADOS
+![Checkout - Wireframe Desktop.png](<Checkout - Wireframe Desktop.png>)
+![Checkout - Wireframe Mobile.png](<Checkout - Wireframe Mobile.png>)
+
+
 ## 1. Análisis Cognitivo y Patrón UX Recomendado
 
 - **Diagnóstico:** El turista está a punto de gastar una cantidad alta de dinero. Su carga cognitiva es máxima, mezclada con estrés (miedo a equivocarse o a que le roben la tarjeta) y urgencia (miedo a perder la finca).

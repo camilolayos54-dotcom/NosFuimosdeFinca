@@ -5,6 +5,11 @@
 
 ---
 
+# RESULTADOS
+![property_page_desktop.png](property_page_desktop.png)
+![property_page_phone.png](property_page_phone.png)
+
+
 ## 1. Análisis Cognitivo y Patrón UX Recomendado
 
 - **Diagnóstico:** Esta es la pantalla que **cierra la venta**. El turista ya hizo click, ahora quiere enamorarse de las fotos y confirmar si la finca está libre en sus fechas. La carga cognitiva debe dirigirse 100% a las imágenes y al precio.

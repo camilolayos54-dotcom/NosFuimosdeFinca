@@ -5,7 +5,10 @@
 
 ---
 
-## 1. Análisis Cognitivo y Patrón UX Recomendado
+# RESULTADOS
+![body.png](body.png)
+![body_phone.png](body_phone.png)
+
 
 - **Diagnóstico:** Esta es la fachada comercial (Marketplace) del proyecto. El Turista B2C tiene una carga cognitiva baja inicial; quiere inspirarse (Ver fincas hermosas) pero también quiere utilidad inmediata (Buscar fechas disponibles).
 - **Patrón Principal:** `Hero Search + Edge-to-Edge Grid`. 
