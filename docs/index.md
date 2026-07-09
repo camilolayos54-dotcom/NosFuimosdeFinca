@@ -94,9 +94,9 @@ A continuación se detalla el objetivo metodológico de cada artefacto documenta
 ### 📂 04. Modelado del Sistema
 **Objetivo de la Fase:** Moldear de forma conceptual y visual el comportamiento del software y su arquitectura de información.
 
-- **`1.Estrategia de Contenido y AI.md`**: Definir la taxonomía y la arquitectura de la información (AI).
-- **`4.Sistema de Diseno y UI Kit.md`**: Consolidar variables de diseño, paletas, tipografías y componentes base de interfaz.
-- **`6.Modelo de Dominio y ERD Conceptual.md`**: Diseñar el modelo relacional conceptual primario de la base de datos (PostgreSQL).
+- **[1.Estrategia de Contenido y AI.md](04-system-modeling/1.Content_Strategy_Information_Architecture/1.Content_Strategy_Information_Architecture.md)**: Definir la taxonomía y la arquitectura de la información (AI).
+- **[4.Sistema de Diseno y UI Kit.md](04-system-modeling/4.Design%20System%20UI%20Kit/Design%20System%20UI%20Kit.md)**: Consolidar variables de diseño, paletas, tipografías y componentes base de interfaz.
+- **[6.Modelo de Dominio y ERD Conceptual.md](04-system-modeling/6.Domain%20Model%20and%20ERD/domain_model_and_erd.md)**: Diseñar el modelo relacional conceptual primario de la base de datos (PostgreSQL).
 - **`11.Matriz de Autorizacion y Seguridad.md`**: Estructurar la Matriz de Control de Acceso Basado en Roles (RBAC).
 - **`12.Sintesis de Senales Arquitectonicas.md`**: Extraer inductores arquitectónicos críticos que impactarán decisiones sistémicas futuras.
 - **`13.Actualizacion RTM y Resumen Fase 4.md`**: Cierre de la fase y cruce de validación contra los requerimientos originales.

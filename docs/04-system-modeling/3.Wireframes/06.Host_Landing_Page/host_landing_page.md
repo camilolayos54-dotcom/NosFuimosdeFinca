@@ -6,8 +6,8 @@
 ---
 
 # RESULTADOS
-![Host Landing - Wireframe Desktop.png](<Host Landing - Wireframe Desktop.png>)
-![Host Landing - Wireframe Mobile.png](<Host Landing - Wireframe Mobile.png>)
+![Host Landing - Wireframe Desktop.png](Host%20Landing%20-%20Wireframe%20Desktop.png)
+![Host Landing - Wireframe Mobile.png](Host%20Landing%20-%20Wireframe%20Mobile.png)
 
 
 ## 1. Análisis Cognitivo y Patrón UX Recomendado

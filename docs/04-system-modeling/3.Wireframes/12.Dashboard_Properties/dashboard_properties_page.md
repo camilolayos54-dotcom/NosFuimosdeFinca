@@ -7,10 +7,10 @@
 ---
 
 # RESULTADOS
-![Gestión de Fincas - Hub (Wireframe Desktop).png](<Gestión de Fincas - Hub (Wireframe Desktop).png>).png)
-![Html → Body-1.png](<Html → Body-1.png>)
-![Html → Body-2.png](<Html → Body-2.png>)
-![Html → Body.png](<Html → Body.png>)
+![Gestión de Fincas - Hub (Wireframe Desktop).png](Gesti%C3%B3n%20de%20Fincas%20-%20Hub%20%28Wireframe%20Desktop%29.png)
+![Html → Body-1.png](Html%20%E2%86%92%20Body-1.png)
+![Html → Body-2.png](Html%20%E2%86%92%20Body-2.png)
+![Html → Body.png](Html%20%E2%86%92%20Body.png)
 
 
 ## 1. Análisis Cognitivo y Patrón UX Recomendado

@@ -6,8 +6,8 @@
 ---
 
 ## Resultados
-![Confirmación de Pago - Wireframe Estricto Desktop.png](<Confirmación de Pago - Wireframe Estricto Desktop.png>)
-![Confirmación de Pago - Wireframe Estricto Mobile.png](<Confirmación de Pago - Wireframe Estricto Mobile.png>)
+![Confirmación de Pago - Wireframe Estricto Desktop.png](Confirmaci%C3%B3n%20de%20Pago%20-%20Wireframe%20Estricto%20Desktop.png)
+![Confirmación de Pago - Wireframe Estricto Mobile.png](Confirmaci%C3%B3n%20de%20Pago%20-%20Wireframe%20Estricto%20Mobile.png)
 
 - **Diagnóstico:** El Turista acaba de entregarle su dinero a una plataforma en internet. Su carga cognitiva bajó a cero, pero su nivel de ansiedad por confirmación está al máximo. Necesita saber que todo salió bien y qué debe hacer ahora.
 - **Patrón Principal:** `Success Celebration + Clear Next Steps`.

@@ -6,12 +6,12 @@
 ---
 
 # RESULTADOS
-![Onboarding - Banco (Wireframe Desktop).png](<Onboarding - Banco (Wireframe Desktop).png>).png)
-![Onboarding - Banco (Wireframe Mobile).png](<Onboarding - Banco (Wireframe Mobile).png>).png)
-![Onboarding - Documentos (Wireframe Desktop).png](<Onboarding - Documentos (Wireframe Desktop).png>).png)
-![Onboarding - Documentos (Wireframe Mobile).png](<Onboarding - Documentos (Wireframe Mobile).png>).png)
-![Onboarding - Pendiente (Wireframe Desktop).png](<Onboarding - Pendiente (Wireframe Desktop).png>).png)
-![Onboarding - Pendiente (Wireframe Mobile).png](<Onboarding - Pendiente (Wireframe Mobile).png>).png)
+![Onboarding - Banco (Wireframe Desktop).png](Onboarding%20-%20Banco%20%28Wireframe%20Desktop%29.png)
+![Onboarding - Banco (Wireframe Mobile).png](Onboarding%20-%20Banco%20%28Wireframe%20Mobile%29.png)
+![Onboarding - Documentos (Wireframe Desktop).png](Onboarding%20-%20Documentos%20%28Wireframe%20Desktop%29.png)
+![Onboarding - Documentos (Wireframe Mobile).png](Onboarding%20-%20Documentos%20%28Wireframe%20Mobile%29.png)
+![Onboarding - Pendiente (Wireframe Desktop).png](Onboarding%20-%20Pendiente%20%28Wireframe%20Desktop%29.png)
+![Onboarding - Pendiente (Wireframe Mobile).png](Onboarding%20-%20Pendiente%20%28Wireframe%20Mobile%29.png)
 
 
 ## 1. Análisis Cognitivo y Patrón UX Recomendado

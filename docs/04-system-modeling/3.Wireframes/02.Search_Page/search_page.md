@@ -6,9 +6,8 @@
 ---
 
 # RESULTADOS
-![bottom_navigation_bar.png](bottom_navigation_bar.png)
 ![search_page_desktop.png](search_page_desktop.png)
-![[search_page_mobile.png]]
+![search_page_mobile.png](search_page_mobile.png)
 
 
 ## 1. Análisis Cognitivo y Patrón UX Recomendado

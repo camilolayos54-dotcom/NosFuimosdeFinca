@@ -6,7 +6,7 @@
 ---
 
 # RESULTADOS
-![Acceso B2B - Wireframe Mobile.png](<Acceso B2B - Wireframe Mobile.png>)
+![Acceso B2B - Wireframe Mobile.png](Acceso%20B2B%20-%20Wireframe%20Mobile.png)
 ![Main.png](Main.png)
 
 

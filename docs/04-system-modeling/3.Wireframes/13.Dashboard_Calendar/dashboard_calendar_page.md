@@ -7,8 +7,8 @@
 ---
 
 # RESULTADOS
-![Calendario Maestro B2B - Wireframe Estricto Desktop.png](<Calendario Maestro B2B - Wireframe Estricto Desktop.png>)
-![Calendario Maestro B2B - Wireframe Mobile.png](<Calendario Maestro B2B - Wireframe Mobile.png>)
+![Calendario Maestro B2B - Wireframe Estricto Desktop.png](Calendario%20Maestro%20B2B%20-%20Wireframe%20Estricto%20Desktop.png)
+![Calendario Maestro B2B - Wireframe Mobile.png](Calendario%20Maestro%20B2B%20-%20Wireframe%20Mobile.png)
 
 
 ## 1. Análisis Cognitivo y Patrón UX Recomendado

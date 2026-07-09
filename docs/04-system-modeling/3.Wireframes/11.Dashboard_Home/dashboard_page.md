@@ -6,8 +6,8 @@
 ---
 
 ## Resultados
-![Dashboard Finanzas - Wireframe Desktop.png](<Dashboard Finanzas - Wireframe Desktop.png>)
-![Dashboard Finanzas - Wireframe Mobile.png](<Dashboard Finanzas - Wireframe Mobile.png>)
+![Dashboard Finanzas - Wireframe Desktop.png](Dashboard%20Finanzas%20-%20Wireframe%20Desktop.png)
+![Dashboard Finanzas - Wireframe Mobile.png](Dashboard%20Finanzas%20-%20Wireframe%20Mobile.png)
 
 - **Diagnóstico:** El finquero entra aquí para ver si su negocio es rentable. Requiere una interfaz ultra-limpia, con tipografía clara y datos duros.
 - **Patrón Principal:** `Sidebar Dashboard + KPI Cards`.

@@ -7,11 +7,11 @@
 ---
 
 # RESULTADOS
-![Buzón de Reservas - Split View Wireframe Desktop.png](<Buzón de Reservas - Split View Wireframe Desktop.png>)
-![Buzón de Reservas - Wireframe Mobile (Optimized).png](<Buzón de Reservas - Wireframe Mobile (Optimized).png>)
-![[Modal de Rechazo - Wireframe Mobile.png]]
-![[MODAL OVERLAY.png]]
-![[BACKGROUND_ Reservation Inbox Split View (Dimmed).png]]
+![Buzón de Reservas - Split View Wireframe Desktop.png](Buz%C3%B3n%20de%20Reservas%20-%20Split%20View%20Wireframe%20Desktop.png)
+![Buzón de Reservas - Wireframe Mobile (Optimized).png](Buz%C3%B3n%20de%20Reservas%20-%20Wireframe%20Mobile%20%28Optimized%29.png)
+![Modal de Rechazo - Wireframe Mobile.png](Modal%20de%20Rechazo%20-%20Wireframe%20Mobile.png)
+![MODAL OVERLAY.png](MODAL%20OVERLAY.png)
+![BACKGROUND_ Reservation Inbox Split View (Dimmed).png](BACKGROUND_%20Reservation%20Inbox%20Split%20View%20%28Dimmed%29.png)
 
 
 

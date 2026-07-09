@@ -6,8 +6,8 @@
 ---
 
 # RESULTADOS
-![Checkout - Wireframe Desktop.png](<Checkout - Wireframe Desktop.png>)
-![Checkout - Wireframe Mobile.png](<Checkout - Wireframe Mobile.png>)
+![Checkout - Wireframe Desktop.png](Checkout%20-%20Wireframe%20Desktop.png)
+![Checkout - Wireframe Mobile.png](Checkout%20-%20Wireframe%20Mobile.png)
 
 
 ## 1. Análisis Cognitivo y Patrón UX Recomendado
