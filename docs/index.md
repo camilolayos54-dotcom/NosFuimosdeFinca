@@ -78,18 +78,16 @@ A continuación se detalla el objetivo metodológico de cada artefacto documenta
 - **`12. Risk Register Update.md`**: Vulnerabilidades descubiertas en infraestructura.
 
 ### 📂 03. Ingeniería de Requisitos
-**Objetivo de la Fase:** Mapear exhaustivamente las funciones y reglas de negocio sin ambigüedad lógica, centralizando todo en 9 módulos principales de negocio.
+**Objetivo de la Fase:** Mapear exhaustivamente las funciones y reglas de negocio sin ambigüedad lógica, centralizando todo en 8 módulos principales de negocio.
 
-- **`1. System Context Diagram.md`**: Frontera entre el sistema propuesto y el entorno externo.
-- **`2. Actor and Role Definition.md`**: Roles de usuario y vectores de acción primarios.
-- **`3. Domain Glossary.md`**: "Lenguaje Ubicuo" para unificar negocio e ingeniería.
-- **`4. Elicitation Records.md`**: Requisitos formales directos de fuentes de negocio.
-- **`5. Functional Module Decomposition.md`**: Descomposición de complejidad en 9 contextos modulares.
-- **Módulos Específicos (`5.1` al `5.9`)**: Requisitos, historias y casos de uso organizados por módulo (`MOD-AUTH`, `MOD-SRCH`, `MOD-RSV`, `MOD-PAY`, `MOD-POWN`, `MOD-PADM`, `MOD-FCNT`, `MOD-REV`, `MOD-NOT`).
-- **`6. Non-Functional Requirements.md`**: Requerimientos sistémicos globales.
-- **`8. Inter-Module Conflict Check.md`**: Prevención de choques lógicos tempranos.
-- **`10. Requirements Traceability Matrix.md`**: Vinculación matemática de negocio e ingeniería.
-- **`11. SRS Document.md`**: Especificación de Requisitos de Software final.
+- **`01. Diagrama de Contexto del Sistema.md`**: Frontera entre el sistema propuesto y el entorno externo.
+- **`02. Definicion de Actores y Roles.md`**: Estipular roles de usuario y sus vectores de acción primarios.
+- **`03. Glosario de Dominio.md`**: Estandarizar el "Lenguaje Ubicuo" para unificar la semántica de negocio e ingeniería.
+- **`04. Elicitacion de Requerimientos.md`**: Capturar requisitos formales directamente de las fuentes de negocio.
+- **`05. Descomposicion Modular Funcional.md`**: Descomponer la complejidad del sistema en contextos modulares.
+- **`06. Requerimientos No Funcionales.md`**: Requerimientos sistémicos globales como desempeño, escalabilidad y resiliencia.
+- **`07. Module Specifications/modules`**: Contiene las especificaciones detalladas, reglas e historias de usuario para cada uno de los 8 módulos consolidados (`MOD-AUTH`, `MOD-CAL`, `MOD-DASH`, `MOD-NOT`, `MOD-PAY`, `MOD-PROP`, `MOD-RSV`, `MOD-SRCH`).
+- **`08. System Requirements Specification.md`**: Documento de especificación de requisitos del sistema final (SRS) unificado.
 
 ### 📂 04. Modelado del Sistema
 **Objetivo de la Fase:** Moldear conceptual y visualmente el comportamiento del software, separando claramente la interfaz de usuario y la arquitectura de datos relacional.
