@@ -26,134 +26,82 @@ A continuación se detalla el objetivo metodológico de cada artefacto documenta
 ### 📂 00. Reconocimiento del Problema (Problem Recognition)
 **Objetivo de la Fase:** Validar empíricamente la existencia de una problemática de negocio que justifique el desarrollo de software.
 
-- **`1. Declaracion del Problema.md`**: Declarar unívocamente la problemática central que afecta al mercado objetivo.
-- **`2. Registro de Evidencia.md`**: Consolidar métricas empíricas que demuestren el impacto y recurrencia del problema.
-- **`3. Analisis de Soluciones Existentes.md`**: Evaluar las alternativas actuales del mercado para identificar deficiencias sistémicas.
-- **`4. Registro de Clasificacion del Problema.md`**: Categorizar el riesgo y la complejidad técnica inherente al problema.
-- **`5. Matriz de Impacto.md`**: Cuantificar las ramificaciones operativas y financieras derivadas de no solucionar la problemática.
-- **`6. Objetivos del Proyecto.md`**: Definir metas estratégicas medibles que dictarán el éxito de la solución a implementar.
-- **`7. Mapa de Partes Interesadas.md`**: Identificar y clasificar a todos los actores directos e indirectos afectados por el sistema.
-- **`8. Registro de Riesgos.md`**: Documentar amenazas iniciales y factores críticos de fracaso para la fase de ideación.
-- **`9. Senal de Proceder_No-Proceder.md`**: Formalizar la decisión gerencial de proceder o detener la investigación del proyecto.
-- **`10. Entrada del Registro de Patrones de Problemas.md`**: Registrar patrones recurrentes descubiertos durante la fase de reconocimiento para futuras referencias.
-- **`00-brief/01.Project_Brief.md`**: El Brief histórico fundamental que dio origen al proyecto.
+- **`00_phase-0-brief.md`**: El Brief histórico fundamental que dio origen al proyecto.
+- **`1. Problem Statement.md`**: Declarar unívocamente la problemática central que afecta al mercado objetivo.
+- **`2. Evidence Record.md`**: Consolidar métricas empíricas que demuestren el impacto y recurrencia del problema.
+- **`3. Existing Solutions Analysis.md`**: Evaluar las alternativas actuales del mercado para identificar deficiencias.
+- **`4. Problem Classification Record.md`**: Categorizar el riesgo y la complejidad técnica inherente al problema.
+- **`5. Impact Matrix.md`**: Cuantificar las ramificaciones operativas y financieras.
+- **`6. Project Objectives.md`**: Definir metas estratégicas medibles que dictarán el éxito de la solución.
+- **`7. Stakeholder Map.md`**: Identificar y clasificar a los actores afectados por el sistema.
+- **`8. Risk Register.md`**: Documentar amenazas iniciales y factores críticos de fracaso.
+- **`9. Go_No-Go Signal.md`**: Formalizar la decisión gerencial de proceder o detener el proyecto.
+- **`10. Problem Pattern Log Entry.md`**: Registrar patrones recurrentes para futuras referencias.
 
 ### 📂 01. Viabilidad Temprana (Early Viability)
-**Objetivo de la Fase:** Cuantificar la rentabilidad y evaluar el riesgo técnico antes de comprometer recursos de desarrollo.
+**Objetivo de la Fase:** Cuantificar la rentabilidad y evaluar el riesgo técnico antes de comprometer recursos.
 
-- **`1. Perfil de Usuario.md`**: Perfilar demográficamente a los usuarios finales para guiar las decisiones de interfaz.
-- **`2. Documento de Validación de Mercado.md`**: Evidenciar la demanda latente del mercado frente a la solución proyectada.
-- **`3. Documento de Análisis Competitivo.md`**: Identificar la posición estratégica frente a competidores directos.
-- **`4. Mapa de Partes Interesadas.md`**: Actualizar la matriz de intereses e influencia de los actores clave.
-- **`5. Registro de Factibilidad Técnica.md`**: Diagnosticar tempranamente si la tecnología actual permite solucionar el problema.
-- **`6. Registro de Accesibilidad de Datos.md`**: Validar la existencia, calidad y disponibilidad de los datos requeridos por el sistema.
-- **`7. Registro de Autorización Legal y Regulatoria.md`**: Mitigar riesgos de cumplimiento, privacidad de datos y restricciones legales.
-- **`8. Evaluación de Capacidad del Equipo.md`**: Contrastar las competencias técnicas requeridas contra el talento humano disponible.
-- **`9. Documento de Viabilidad.md`**: Emitir un dictamen integral consolidando las factibilidades operativa, técnica y financiera.
-- **`10. Registro de Riesgos.md`**: Actualizar el catálogo de amenazas a la luz del análisis de mercado y limitaciones técnicas.
-- **`11. Lista de Suposiciones Críticas.md`**: Enumerar hipótesis fundamentales cuya invalidez provocaría el colapso del proyecto.
-- **`12. Documento de Definición de MVP.md`**: Trazar límites estrictos para el Producto Mínimo Viable, garantizando un alcance conservador.
-- **`13. Lean Canvas.md`**: Plasmar en una página los motores financieros y de tracción del ecosistema.
-- **`14. Documento OKR.md`**: Establecer Objetivos y Resultados Clave para medir el progreso metodológico.
-- **`15. Documento de Plan Inicial.md`**: Perfilar un cronograma macro de alto nivel para la provisión de recursos.
-- **`16. Documento de Proceso de Trabajo.md`**: Estipular la cadencia de trabajo, canales de comunicación y metodología.
-- **`17. Registro de Decisión Proceder_No-Proceder_Pivotar.md`**: Documentar la autorización ejecutiva formal para transicionar al Kickoff.
-- **`18. Resumen.md`**: Consolidar ejecutivamente los hallazgos de viabilidad para consulta rápida.
+- **`18.Brief.md`**: Contexto ejecutivo de la viabilidad temprana.
+- **`1. User Profile.md`**: Perfilar demográficamente a los usuarios finales.
+- **`2. Market Validation Document.md`**: Evidenciar la demanda latente del mercado.
+- **`3. Competitive Analysis Document.md`**: Identificar la posición frente a competidores directos.
+- **`4. Stakeholder Map.md`**: Actualizar la matriz de intereses de los actores clave.
+- **`5. Technical Feasibility Record.md`**: Diagnosticar si la tecnología permite solucionar el problema.
+- **`6. Data Accessibility Record.md`**: Validar la existencia y calidad de los datos requeridos.
+- **`7. Legal and Regulatory Clearance Record.md`**: Mitigar riesgos de cumplimiento y privacidad.
+- **`8. Team Capability Assessment.md`**: Contrastar competencias técnicas contra talento disponible.
+- **`9. Viability Document.md`**: Dictamen integral de factibilidad operativa, técnica y financiera.
+- **`10. Risk Register.md`**: Catálogo de amenazas actualizado.
+- **`11. Critical Assumptions List.md`**: Hipótesis cuya invalidez provocaría el colapso del proyecto.
+- **`12. MVP Definition Document.md`**: Límites estrictos para el Producto Mínimo Viable.
+- **`13. Lean Canvas.md`**: Motores financieros y de tracción del ecosistema.
+- **`14. OKR Document.md`**: Objetivos y Resultados Clave para medir el progreso.
+- **`15. Initial Plan Document.md`**: Cronograma macro de alto nivel.
+- **`16. Work Process Document.md`**: Cadencia de trabajo, canales y metodología.
+- **`17. Go_No-Go_Pivot Decision Record.md`**: Decisión ejecutiva para transicionar al Kickoff.
 
 ### 📂 02. Inicialización del Proyecto (Project Kickoff)
-**Objetivo de la Fase:** Formalizar el ecosistema de desarrollo, convenciones de ingeniería y decisiones de arquitectura base.
+**Objetivo de la Fase:** Formalizar el ecosistema de desarrollo, convenciones de ingeniería y decisiones base.
 
-- **`1. Identidad del Proyecto.md`**: Estandarizar la taxonomía, nombre en clave y visión central del repositorio.
-- **`2. Restricciones NFR.md`**: Fijar las restricciones obligatorias (Latencia, Concurrencia, Seguridad) que dictarán las decisiones.
-- **`3. Decision de Stack.md`**: Justificar el lenguaje de programación, frameworks y motores de base de datos elegidos.
-- **`4. Estructura del Repositorio.md`**: Normar la arquitectura de carpetas y repositorios para evitar entropía estructural.
-- **`5. Estrategia de Ramificacion.md`**: Dictaminar el flujo de versionamiento para prevenir conflictos de integración.
-- **`6. Definiciones de Entorno.md`**: Definir los ciclos de promoción de código (Local, Staging, Producción).
-- **`7. Estandares de Codificacion.md`**: Establecer reglas de nomenclatura y guías de estilo idiomáticas obligatorias.
-- **`8. Estrategia de Pruebas.md`**: Obligar umbrales de cobertura y tipos de pruebas requeridas.
-- **`9. Definicion de Hecho y Preparado.md`**: Cuantificar matemáticamente los criterios para aceptar un ticket funcional.
-- **`10. Herramientas.md`**: Centralizar las decisiones sobre herramientas de CI/CD, monitoreo y gestión de incidencias.
-- **`11. Protocolos de Comunicacion y Escalacion.md`**: Establecer las vías formales de reporte ante fallos críticos.
-- **`12. Actualizacion de Registro de Riesgos.md`**: Registrar vulnerabilidades de infraestructura descubiertas.
-- **`13. Resumen de Fase 2.md`**: Compilar las directrices técnicas del Kickoff para inducción (Onboarding) de ingenieros.
+- **`13. Phase 2 Brief.md`**: Compilación de directrices del Kickoff.
+- **`1. Project Identity.md`**: Estandarizar taxonomía y visión central del repositorio.
+- **`2. NFR Constraints.md`**: Restricciones obligatorias (Latencia, Concurrencia, Seguridad).
+- **`3. Stack Decision.md`**: Justificar lenguaje, frameworks y base de datos elegidos.
+- **`4. Repository Structure.md`**: Normar la arquitectura de carpetas.
+- **`5. Branching Strategy.md`**: Dictaminar el flujo de versionamiento (Git).
+- **`6. Environment Definitions.md`**: Definir ciclos de promoción de código.
+- **`7. Coding Standards.md`**: Reglas de nomenclatura y guías idiomáticas.
+- **`8. Testing Strategy.md`**: Umbrales de cobertura y tipos de pruebas requeridas.
+- **`9. Definition of Done and Definition of Ready.md`**: Criterios para aceptar un ticket funcional.
+- **`10. Tooling.md`**: Decisiones sobre CI/CD, monitoreo y gestión.
+- **`11. Communication and Escalation Protocols.md`**: Vías formales de reporte ante fallos.
+- **`12. Risk Register Update.md`**: Vulnerabilidades descubiertas en infraestructura.
 
 ### 📂 03. Ingeniería de Requisitos
-**Objetivo de la Fase:** Mapear exhaustivamente las funciones y reglas de negocio sin ambigüedad lógica.
+**Objetivo de la Fase:** Mapear exhaustivamente las funciones y reglas de negocio sin ambigüedad lógica, centralizando todo en 9 módulos principales de negocio.
 
-- **`1. Diagrama de Contexto del Sistema.md`**: Mapear la frontera entre el sistema propuesto y el entorno externo.
-- **`2. Definicion de Actores y Roles.md`**: Estipular roles de usuario y sus vectores de acción primarios.
-- **`3. Glosario de Dominio.md`**: Estandarizar el "Lenguaje Ubicuo" para unificar la semántica de negocio e ingeniería.
-- **`4. Registros de Elicitacion.md`**: Capturar requisitos formales directamente de las fuentes de negocio.
-- **`5. Descomposicion de Modulos Funcionales.md`**: Descomponer la complejidad en contextos modulares.
-- **`5.1` al `5.7` (`MOD-AUTH` a `MOD-DASH`)**: Listado de requisitos funcionales, historias de usuario y casos de uso específicos para cada uno de los 7 módulos del sistema.
-- **`6. Requisitos No Funcionales.md`**: Requerimientos sistémicos globales como desempeño y resiliencia.
-- **`8. Verificacion de Conflictos Inter-Modulos.md`**: Prevenir choques lógicos tempranos entre dominios acotados.
-- **`10. Matriz de Trazabilidad de Requisitos.md`**: Vincular matemáticamente cada regla de negocio con un caso de uso (Zero Gaps).
-- **`11. Documento SRS.md`**: Documento de especificación de requisitos del sistema final y congelado.
+- **`1. System Context Diagram.md`**: Frontera entre el sistema propuesto y el entorno externo.
+- **`2. Actor and Role Definition.md`**: Roles de usuario y vectores de acción primarios.
+- **`3. Domain Glossary.md`**: "Lenguaje Ubicuo" para unificar negocio e ingeniería.
+- **`4. Elicitation Records.md`**: Requisitos formales directos de fuentes de negocio.
+- **`5. Functional Module Decomposition.md`**: Descomposición de complejidad en 9 contextos modulares.
+- **Módulos Específicos (`5.1` al `5.9`)**: Requisitos, historias y casos de uso organizados por módulo (`MOD-AUTH`, `MOD-SRCH`, `MOD-RSV`, `MOD-PAY`, `MOD-POWN`, `MOD-PADM`, `MOD-FCNT`, `MOD-REV`, `MOD-NOT`).
+- **`6. Non-Functional Requirements.md`**: Requerimientos sistémicos globales.
+- **`8. Inter-Module Conflict Check.md`**: Prevención de choques lógicos tempranos.
+- **`10. Requirements Traceability Matrix.md`**: Vinculación matemática de negocio e ingeniería.
+- **`11. SRS Document.md`**: Especificación de Requisitos de Software final.
 
 ### 📂 04. Modelado del Sistema
-**Objetivo de la Fase:** Moldear de forma conceptual y visual el comportamiento del software y su arquitectura de información.
+**Objetivo de la Fase:** Moldear conceptual y visualmente el comportamiento del software, separando claramente la interfaz de usuario y la arquitectura de datos relacional.
 
-- **[1.Estrategia de Contenido y AI.md](04-system-modeling/1.Content_Strategy_Information_Architecture/1.Content_Strategy_Information_Architecture.md)**: Definir la taxonomía y la arquitectura de la información (AI).
-- **[4.Sistema de Diseno y UI Kit.md](04-system-modeling/4.Design%20System%20UI%20Kit/Design%20System%20UI%20Kit.md)**: Consolidar variables de diseño, paletas, tipografías y componentes base de interfaz.
-- **[6.Modelo de Dominio y ERD Conceptual.md](04-system-modeling/6.Domain%20Model%20and%20ERD/domain_model_and_erd.md)**: Diseñar el modelo relacional conceptual primario de la base de datos (PostgreSQL).
-- **`11.Matriz de Autorizacion y Seguridad.md`**: Estructurar la Matriz de Control de Acceso Basado en Roles (RBAC).
-- **`12.Sintesis de Senales Arquitectonicas.md`**: Extraer inductores arquitectónicos críticos que impactarán decisiones sistémicas futuras.
-- **`13.Actualizacion RTM y Resumen Fase 4.md`**: Cierre de la fase y cruce de validación contra los requerimientos originales.
+- **[1. Estrategia de Contenido y AI](04-system-modeling/1.Content_Strategy_Information_Architecture/1.Content_Strategy_Information_Architecture.md)**: Estructuración taxonómica del portal.
+- **[2. Flujos de Usuario y Tareas (User Flows)](#)**: Mapeo visual interactivo y lógico separado en los módulos de negocio.
+- **[3. Wireframes](#)**: 14 vistas estructurales (baja fidelidad) de las interfaces críticas para Desktop y Mobile.
+- **[4. Diseño de Sistema y UI Kit](04-system-modeling/4.Design%20System%20UI%20Kit/Design%20System%20UI%20Kit.md)**: Estandarización de tipografías, paletas de colores y componentes.
+- **[5. High Fidelity Mockups](#)**: Las 14 vistas finales de alta fidelidad, aplicando el UI Kit a los Wireframes.
+- **[6. Modelo de Dominio y ERD Conceptual](04-system-modeling/6.Domain%20Model%20and%20ERD/domain_model_and_erd.md)**: El modelo relacional unificado blindado con seguridad y performance.
 
-- **Carpeta `modules/`**:
-  *Contiene las descripciones gráficas (casos de uso, flujos, wireframes y modelado conceptual API) aislados para cada módulo del negocio.*
-  - **`2.Flujos de Usuario y Tareas.md`**: Mapas visuales de cómo navega el usuario por este módulo en particular.
-  - **`3.Wireframes.md` y `5.Mockups_Alta_Fidelidad.md`**: Prototipos visuales específicos (Ej. La pantalla de Checkout en Reservas).
-  - **`7.Diagramas de Secuencia del Sistema.md`**: Interacciones temporales entre el actor y las APIs internas.
-  - **`8.Diagramas de Maquina de Estado.md`**: Cambios de estado en entidades complejas (Ej. Soft-Lock a Hard-Lock).
-  - **`9.Diseno Conceptual de API.md` y `10.Matriz de Notificaciones y Eventos.md`**: Bocetos de endpoints y eventos asíncronos.
-
-### 📂 05. Diseño Arquitectónico (Architectural Design)
-**Objetivo de la Fase:** Construir la topología física y el andamiaje estructural macro del software utilizando el framework C4.
-
-- **`1.Mapa de Atributos de Calidad.md`**: Mapear tácticas arquitectónicas directas para mitigar riesgos sistémicos.
-- **`2.Formalizacion de Contexto Delimitado.md`**: Trazar límites lógicos (Domain-Driven Design) definitivos entre los módulos.
-- **`3.Decision de Topologia de Despliegue.md`**: Diagramar la topología física de infraestructura (AWS, Vercel, RDS).
-- **`4.Decision de Descomposicion del Sistema.md`**: Justificar el particionamiento (Spring Boot Monolito Modular).
-- **`5.Seleccion de Estilo Arquitectonico.md`**: Ratificar formalmente la interacción API REST y Eventos Locales.
-- **`6.Decision de Patron de Comunicacion.md`**: Dictaminar interacciones síncronas vs asíncronas para resolver cuellos de botella.
-- **`7.Preocupaciones Transversales.md`**: Diseñar la infraestructura compartida (Logs, JWT, Manejo Global de Excepciones).
-- **`8.Estrategia CI-CD y Entornos.md`**: Formalizar las tuberías de GitHub Actions y pases a Producción.
-- **`9.Diagrama de Componentes.md`**: Proveer el Nivel 3 del modelo C4, exhibiendo interfaces internas.
-- **`10.Consolidacion ADR.md`**: Centralizar los Registros de Decisiones Arquitectónicas (ADRs).
-- **`11.Actualizacion RTM y Resumen Fase 5.md`**: Comprobar el mapeo bidireccional final de infraestructura.
-
-### 📂 06. Diseño Técnico (Technical Design)
-**Objetivo de la Fase:** Emitir planos de ingeniería deterministas, a nivel de código, para su ejecución directa.
-
-- **`1.Arquitectura del Codigo.md`**: Definir jerarquías de paquetes estructurales en el repositorio Java y Next.js.
-- **`2.Modelado Fisico de Datos.md`**: Dictaminar los scripts SQL DDL, extensiones y estrategias de indexación PostgreSQL.
-- **`3.Configuracion y Secretos.md`**: Estructurar los esquemas de inyección segura de variables de entorno (Ej. llaves de Wompi, AWS, JWT).
-- **`4.Implementacion de Seguridad.md`**: Proveer especificaciones algorítmicas para el `JwtAuthenticationFilter` y seguridad RBAC en endpoints.
-- **`11.Actualizacion RTM y Resumen Fase 6.md`**: Auditar la consistencia de los planos técnicos contra requerimientos.
-
-- **Carpeta `modules/`**:
-  *Contiene los planos a bajo nivel (Clases, Repositorios, Endpoints) dictaminados para cada módulo independiente, blindando el desarrollo concurrente por múltiples desarrolladores sin provocar conflictos Git.*
-  - **`5.Diagramas de Clases.md`**: UML que define las entidades, DTOs y Servicios de Spring Boot.
-  - **`6.Acceso a Datos.md`**: Interfaces `JpaRepository` y consultas SQL personalizadas críticas (Ej. el Pessimistic Lock).
-  - **`7.Contratos API.md`**: Esquemas estandarizados OpenAPI 3.0 listos para importarse en Swagger o Postman.
-  - **`8.Integraciones Terceros.md`**: Firmas de Webhooks entrantes (Wompi) o clientes externos (AWS S3, Sendgrid).
-  - **`9.Arquitectura Frontend.md`**: Árboles lógicos de componentes React y manejo de estado (Zustand, React Query).
-  - **`10.Workers Asincronos.md`**: Especificaciones para cronjobs de limpieza y escuchadores de eventos Spring (Listeners).
-
-### 📂 07. Implementación (Implementation)
-**Objetivo de la Fase:** Transformar los modelos de diseño técnico de la Fase 6 en activos de código fuente. Guías paso a paso de ejecución (SOPs).
-
-- **`1.Desglose de Tareas AI.md`**: Establecer una Estructura de Desglose del Trabajo (WBS) planificada en 7 Sprints ejecutables.
-- **`2.Guia de Ejecucion Estructura de Proyecto.md`**: Inicialización física de Node.js, Spring Boot y Docker.
-- **`3.Guia de Ejecucion Walking Skeleton.md`**: Despliegue fundacional inicial "End-to-End" con el healthcheck.
-- **`4.Implementacion de Migraciones de Base de Datos.md`**: Ejecutar Flyway con los scripts SQL DDL extraídos de la fase 6.
-- **`5.Implementacion API Backend.md`**: Instrucciones sistemáticas para programar los módulos backend en Java.
-- **`6.Implementacion UI Frontend.md`**: Instrucciones para armar los layouts y componentes en Next.js.
-- **`7.Guia de Implementacion de Seguridad.md`**: Construcción del interceptor JWT y protección perimetral del servidor.
-- **`8.Guia de Integraciones Externas.md`**: Inyección y verificación HMAC criptográfica de Webhooks (Wompi) y servicios AWS/Sendgrid.
-- **`9.Revision y Resumen Fase 7.md`**: Checklist técnica para certificar un *Build* libre de errores y warnings antes del QA.
+> **Nota para Fases Posteriores:** Dado el refinamiento metodológico del proyecto, los entregables de diseño técnico avanzado (API Contracts, Arquitectura de Componentes y Guías de Implementación) se definirán dinámicamente y se enlazarán aquí a medida que se completen de acuerdo a los requerimientos de la Fase 5 y posteriores.
 
 ---
 

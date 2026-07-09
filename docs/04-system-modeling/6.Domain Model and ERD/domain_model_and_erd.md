@@ -8,7 +8,39 @@
 
 ---
 
-### 1. Diagrama Entidad-Relación Conceptual (ERD)
+### 1. Modelo Conceptual (Diagrama ER de Alto Nivel)
+
+> [!TIP]
+> **Guía de Lectura (Notación Crow's Foot de Mermaid)**
+> Los diagramas inferiores utilizan la notación "Pata de Gallo" (Crow's Foot) que es el estándar de la industria para modelado relacional. Así se leen las conexiones:
+> - `||--o{` : **Uno a Muchos** (Un elemento de la izquierda está relacionado con cero o muchos elementos de la derecha). *Ejemplo: Un Usuario (1) posee varias Propiedades (N).*
+> - `|o--o{` : **Cero o Uno a Muchos** (Opcional en la izquierda, muchos a la derecha). *Ejemplo: Un Usuario (puede o no estar) hace varias Reservas (N).*
+> - `||--||` : **Uno a Uno** (Un elemento de la izquierda se relaciona con exactamente un elemento de la derecha).
+
+El modelo conceptual representa las entidades centrales de negocio y cómo se interrelacionan, abstrayéndose de detalles técnicos como tipos de datos o llaves primarias.
+
+```mermaid
+erDiagram
+    USERS ||--o{ PROPERTIES : "hosts (anfitriones)"
+    USERS ||--o{ KYC_DOCUMENTS : "submits (envía)"
+    USERS ||--o{ REFRESH_TOKENS : "owns_session (posee sesión)"
+    USERS ||--o{ VERIFICATION_TOKENS : "verifies_email (verifica correo)"
+    USERS |o--o{ BOOKINGS : "makes (si inició sesión)"
+    USERS |o--o{ APP_NOTIFICATIONS : "receives (recibe)"
+    
+    PROPERTIES ||--o{ PROPERTY_IMAGES : "has_photos (tiene fotos)"
+    PROPERTIES ||--o{ BOOKINGS : "receives (recibe reservas)"
+    PROPERTIES ||--o{ CALENDAR_BLOCKS : "locks_dates (bloquea fechas)"
+    
+    BOOKINGS ||--o{ PAYMENTS : "generates_transaction (genera transacción)"
+    BOOKINGS ||--o{ REFUNDS : "generates_reversal (genera reversión)"
+```
+
+---
+
+### 1.1 Modelo Lógico (ERD con Atributos y Claves)
+
+El modelo lógico aterriza los conceptos a estructuras relacionales, definiendo tipos de datos e identificadores (`PK`, `FK`).
 
 ```mermaid
 erDiagram
