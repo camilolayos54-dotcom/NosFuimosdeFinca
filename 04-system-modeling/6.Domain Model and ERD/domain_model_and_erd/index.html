@@ -5415,10 +5415,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-diagrama-entidad-relacion-conceptual-erd" class="md-nav__link">
+  <a href="#1-modelo-conceptual-diagrama-er-de-alto-nivel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Diagrama Entidad-Relación Conceptual (ERD)
+        1. Modelo Conceptual (Diagrama ER de Alto Nivel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-modelo-logico-erd-con-atributos-y-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Modelo Lógico (ERD con Atributos y Claves)
       
     </span>
   </a>
@@ -5625,10 +5636,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-diagrama-entidad-relacion-conceptual-erd" class="md-nav__link">
+  <a href="#1-modelo-conceptual-diagrama-er-de-alto-nivel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Diagrama Entidad-Relación Conceptual (ERD)
+        1. Modelo Conceptual (Diagrama ER de Alto Nivel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-modelo-logico-erd-con-atributos-y-claves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Modelo Lógico (ERD con Atributos y Claves)
       
     </span>
   </a>
@@ -5808,7 +5830,33 @@
 <strong>Fecha:</strong> 2026-07-09
 <strong>Estado:</strong> Aprobado</p>
 <hr />
-<h3 id="1-diagrama-entidad-relacion-conceptual-erd">1. Diagrama Entidad-Relación Conceptual (ERD)</h3>
+<h3 id="1-modelo-conceptual-diagrama-er-de-alto-nivel">1. Modelo Conceptual (Diagrama ER de Alto Nivel)</h3>
+<blockquote>
+<p>[!TIP]
+<strong>Guía de Lectura (Notación Crow's Foot de Mermaid)</strong>
+Los diagramas inferiores utilizan la notación "Pata de Gallo" (Crow's Foot) que es el estándar de la industria para modelado relacional. Así se leen las conexiones:
+- <code>||--o{</code> : <strong>Uno a Muchos</strong> (Un elemento de la izquierda está relacionado con cero o muchos elementos de la derecha). <em>Ejemplo: Un Usuario (1) posee varias Propiedades (N).</em>
+- <code>|o--o{</code> : <strong>Cero o Uno a Muchos</strong> (Opcional en la izquierda, muchos a la derecha). <em>Ejemplo: Un Usuario (puede o no estar) hace varias Reservas (N).</em>
+- <code>||--||</code> : <strong>Uno a Uno</strong> (Un elemento de la izquierda se relaciona con exactamente un elemento de la derecha).</p>
+</blockquote>
+<p>El modelo conceptual representa las entidades centrales de negocio y cómo se interrelacionan, abstrayéndose de detalles técnicos como tipos de datos o llaves primarias.</p>
+<pre class="mermaid"><code>erDiagram
+    USERS ||--o{ PROPERTIES : "hosts (anfitriones)"
+    USERS ||--o{ KYC_DOCUMENTS : "submits (envía)"
+    USERS ||--o{ REFRESH_TOKENS : "owns_session (posee sesión)"
+    USERS ||--o{ VERIFICATION_TOKENS : "verifies_email (verifica correo)"
+    USERS |o--o{ BOOKINGS : "makes (si inició sesión)"
+    USERS |o--o{ APP_NOTIFICATIONS : "receives (recibe)"
+
+    PROPERTIES ||--o{ PROPERTY_IMAGES : "has_photos (tiene fotos)"
+    PROPERTIES ||--o{ BOOKINGS : "receives (recibe reservas)"
+    PROPERTIES ||--o{ CALENDAR_BLOCKS : "locks_dates (bloquea fechas)"
+
+    BOOKINGS ||--o{ PAYMENTS : "generates_transaction (genera transacción)"
+    BOOKINGS ||--o{ REFUNDS : "generates_reversal (genera reversión)"</code></pre>
+<hr />
+<h3 id="11-modelo-logico-erd-con-atributos-y-claves">1.1 Modelo Lógico (ERD con Atributos y Claves)</h3>
+<p>El modelo lógico aterriza los conceptos a estructuras relacionales, definiendo tipos de datos e identificadores (<code>PK</code>, <code>FK</code>).</p>
 <pre class="mermaid"><code>erDiagram
     USERS ||--o{ PROPERTIES : "hosts (anfitriones)"
     USERS ||--o{ KYC_DOCUMENTS : "submits (envía)"
