@@ -1,7 +1,7 @@
 # Entregable 6 (D6): Domain Model y ERD Conceptual
 
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 4  Modelado del Sistema
+**Fase:** 4 Modelado del Sistema
 **Alcance:** Global (Revision Extendida B2B/B2C y Financiera)
 **Estado:** Aprobado
 

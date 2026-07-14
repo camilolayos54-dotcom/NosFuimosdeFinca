@@ -12,7 +12,7 @@
 ## 2. Libreria y Mecanismo de Cambio de Idioma
 
 ### 2.1 Libreria Seleccionada
-Para alinearnos con nuestra decision de usar Spring Boot REST API (Vite + JavaScript (frontend) Spring MVC @RestController), utilizaremos la libreria **`next-intl`**.
+Para alinearnos con nuestra decision de usar Spring Boot REST API (HTML/JS (MPA) Spring MVC @RestController), utilizaremos la libreria **`next-intl`**.
 - **Justificacion:** A diferencia de `react-i18next`, `next-intl` soporta traducciones del lado del servidor nativamente sin necesidad de forzar los componentes a ser `use client`, protegiendo nuestro rendimiento y tamano del bundle.
 
 ### 2.2 Estrategia de Resolucion de Idioma (Prioridad)

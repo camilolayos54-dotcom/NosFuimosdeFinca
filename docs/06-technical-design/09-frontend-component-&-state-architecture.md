@@ -1,4 +1,4 @@
- # Deliverable 9 (D9): Frontend Component & State Architecture
+ # Deliverable 9 (D9): Frontend MPA & State Management
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
@@ -96,7 +96,7 @@ Toda la data persistente que viene del backend vive aqui.
 - **NO SE USA** en este modulo. 
 - *Decision Arquitectonica:* Evitamos usar un `BookingSlice` para mover la finca o fechas escogidas hacia el Checkout. En su lugar usaremos **Deep Linking / URL Params** (ej. `/checkout?propertyId=123&checkIn=2026-12-01`). Esto permite que el Turista comparta el enlace con su pareja o recargue la pagina sin perder los datos de reserva.
 
-### 3.3 Local State (Vite + JavaScript (frontend) `useState`)
+### 3.3 Local State (HTML/JS (MPA) `useState`)
 - Abierto/Cerrado del `DatePicker` (en `BookingForm`).
 - Variables temporales del numero de huespedes.
 - Abierto/Cerrado del modal de confirmacion de cancelacion (en `BookingCard`).
@@ -104,5 +104,5 @@ Toda la data persistente que viene del backend vive aqui.
 ---
 
 ## 4. Downstream Consumers
-- **Phase 7 D6 (Frontend UI & State Implementation):** El desarrollador de Vite + JavaScript (frontend)/Spring Boot (Java) tomara este documento como su plano de construccion (Blueprint). Creara exactamente estos componentes, copiara y pegara las props tipadas, e instanciara los hooks de Gestionado desde el Backend Java (Spring Boot) con las `queryKeys` aqui escritas.
+- **Phase 7 D6 (Frontend UI & State Implementation):** El desarrollador de HTML/JS (MPA)/Spring Boot (Java) tomara este documento como su plano de construccion (Blueprint). Creara exactamente estos componentes, copiara y pegara las props tipadas, e instanciara los hooks de Gestionado desde el Backend Java (Spring Boot) con las `queryKeys` aqui escritas.
 

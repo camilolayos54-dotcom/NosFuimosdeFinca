@@ -1,28 +1,28 @@
 # Wireframe Specifications: `/error` (Global Error Handler)
 
-**Ruta UI:** Dinámica (Intercepta errores 404, 500, 403 o fallas de red).
-**Módulos Funcionales Inyectados:** Transversal a todos los módulos.
+**Ruta UI:** Dinamica (Intercepta errores 404, 500, 403 o fallas de red).
+**Modulos Funcionales Inyectados:** Transversal a todos los modulos.
 
 ---
 
-## 1. Análisis Cognitivo y Patrón UX Recomendado
+## 1. Analisis Cognitivo y Patron UX Recomendado
 
-- **Diagnóstico:** El usuario se ha topado con un muro técnico (Ej. Se cayó la conexión, el servidor falló o la página no existe). El nivel de frustración es máximo. El diseño debe ser empático, reducir la culpa del usuario y proveer salidas claras.
-- **Patrón Principal:** `Centered Focus (Foco Centrado)`. Una ilustración amigable o ícono de gran tamaño en el centro, seguido de un mensaje claro y un botón de rescate (Call to Action) para devolver al usuario a una zona segura.
+- **Diagnostico:** El usuario se ha topado con un muro tecnico (Ej. Se cayo la conexion, el servidor fallo o la pagina no existe). El nivel de frustracion es maximo. El diseno debe ser empatico, reducir la culpa del usuario y proveer salidas claras.
+- **Patron Principal:** `Centered Focus (Foco Centrado)`. Una ilustracion amigable o icono de gran tamano en el centro, seguido de un mensaje claro y un boton de rescate (Call to Action) para devolver al usuario a una zona segura.
 
 ---
 
 ## 2. Inventario de UI (Atomic Design)
 
-Diseñador, asegúrate de tener estos *Master Components* en Figma para ensamblar la página de Manejo de Errores:
+Disenador, asegurate de tener estos *Master Components* en Figma para ensamblar la pagina de Manejo de Errores:
 
-### A. Átomos
-- `HeroIcon / ErrorIllustration`: Asset gráfico amigable (Ej. Un tractor varado o un mapa roto).
-- `PrimaryButton`: Botón principal de rescate ("Volver al Inicio").
-- `SecondaryButton`: Botón secundario ("Contactar Soporte").
+### A. Atomos
+- `HeroIcon / ErrorIllustration`: Asset grafico amigable (Ej. Un tractor varado o un mapa roto).
+- `PrimaryButton`: Boton principal de rescate ("Volver al Inicio").
+- `SecondaryButton`: Boton secundario ("Contactar Soporte").
 
-### B. Moléculas
-- `ErrorMessageGroup`: Une (Título H1 del Error + Párrafo explicativo Body-lg).
+### B. Moleculas
+- `ErrorMessageGroup`: Une (Titulo H1 del Error + Parrafo explicativo Body-lg).
 - `ActionRow`: Une (`PrimaryButton` + `SecondaryButton`) con espaciado uniforme.
 
 ### C. Organismos
@@ -30,26 +30,26 @@ Diseñador, asegúrate de tener estos *Master Components* en Figma para ensambla
 
 ---
 
-## 3. Heurísticas Espaciales y Accesibilidad (Layout Rules)
+## 3. Heuristicas Espaciales y Accesibilidad (Layout Rules)
 
-1. **Prevención del Callejón sin Salida (No Dead-Ends):**
-   - Todo layout de error DEBE incluir al menos un botón de navegación visible que permita al usuario salir de esa pantalla.
+1. **Prevencion del Callejon sin Salida (No Dead-Ends):**
+   - Todo layout de error DEBE incluir al menos un boton de navegacion visible que permita al usuario salir de esa pantalla.
 2. **Claridad del Mensaje (Cero Jerga):**
-   - El texto no debe decir "Error 500: Internal Server Exception". Debe decir "Ups, algo salió mal en nuestra granja" o un equivalente amigable.
+   - El texto no debe decir "Error 500: Internal Server Exception". Debe decir "Ups, algo salio mal en nuestra granja" o un equivalente amigable.
 3. **Accesibilidad (a11y):**
-   - Los botones de rescate deben tener un tap target gigante (mínimo 48px) para que en medio del estrés, el usuario móvil pueda tocarlos fácilmente.
+   - Los botones de rescate deben tener un tap target gigante (minimo 48px) para que en medio del estres, el usuario movil pueda tocarlos facilmente.
 
 ---
 
 ## 4. The Designer Checklist (Tareas para Figma)
 
-Diseñador, marca con `[x]` cuando hayas dibujado estas mesas de trabajo (`Artboards`) para el Manejo de Errores:
+Disenador, marca con `[x]` cuando hayas dibujado estas mesas de trabajo (`Artboards`) para el Manejo de Errores:
 
-### ✅ Pantallas Base
+### Pantallas Base
 - `[ ]` **Desktop (1440px):** Layout centrado, ocupando toda la pantalla (Full Height) sin Sidebar.
 - `[ ]` **Mobile (390px):** Layout apilado verticalmente, botones ocupando 100% del ancho.
 
-### ✅ Variantes Críticas de Mensajería
+### Variantes Criticas de Mensajeria
 - `[ ]` **Variante 404 (Not Found):** Pantalla donde el mensaje diga "Esta finca no existe" (Falla de URL).
-- `[ ]` **Variante 500 (Server Error):** Pantalla donde el mensaje diga "Estamos experimentando problemas técnicos".
-- `[ ]` **Variante Offline (Network Error):** Pantalla indicando "Parece que te quedaste sin conexión a Internet".
+- `[ ]` **Variante 500 (Server Error):** Pantalla donde el mensaje diga "Estamos experimentando problemas tecnicos".
+- `[ ]` **Variante Offline (Network Error):** Pantalla indicando "Parece que te quedaste sin conexion a Internet".

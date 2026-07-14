@@ -61,7 +61,7 @@ Para facilitar la navegacion mediante lectores de pantalla (Screen Readers), est
 
 ### 4.2 Notificaciones Dinamicas (aria-live)
 
-Dado que es una SPA (Single Page Application), el navegador no recarga tras crear la reserva, por tanto el lector de pantalla debe ser avisado.
+Al completar la reserva, si la navegacion no fuerza una redireccion automatica HTTP inmediata a success.html, el lector de pantalla debe ser avisado del cambio via aria-live antes del reload.
 
 - **Toast de Reserva Exitosa:** Usar **`aria-live="polite"`**. El Screen Reader lo leera cuando termine su frase actual.
   ```html

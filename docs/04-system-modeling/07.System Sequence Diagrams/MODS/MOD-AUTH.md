@@ -1,8 +1,8 @@
-# Módulo: MOD-AUTH
+# Modulo: MOD-AUTH
 
-### A-01: Proceso de Autenticación (Login)
+### A-01: Proceso de Autenticacion (Login)
 
-Este diagrama modela el flujo síncrono de inicio de sesión de un usuario, la validación de credenciales en la base de datos y la subsecuente generación de un JSON Web Token (JWT) firmado por el servidor para manejar la sesión en el cliente.
+Este diagrama modela el flujo sincrono de inicio de sesion de un usuario, la validacion de credenciales en la base de datos y la subsecuente generacion de un JSON Web Token (JWT) firmado por el servidor para manejar la sesion en el cliente.
 
 ```mermaid
 sequenceDiagram
@@ -20,12 +20,12 @@ sequenceDiagram
     
     alt Usuario No Encontrado
         API-->>C: HTTP 401 Unauthorized
-        C-->>U: Mostrar Error Genérico
+        C-->>U: Mostrar Error Generico
     else Usuario Existe
         API->>API: Verificar Password Hash
         alt Hash No Coincide
             API-->>C: HTTP 401 Unauthorized
-            C-->>U: Mostrar Error Genérico
+            C-->>U: Mostrar Error Generico
         else Hash Coincide
             API->>API: Generar JWT (Access Token)
             API-->>C: HTTP 200 OK (Set-Cookie: jwt)
@@ -35,6 +35,6 @@ sequenceDiagram
 ```
 
 ---
-### Implicaciones de Fase Específicas
+### Implicaciones de Fase Especificas
 - El equipo Frontend debe configurar sus peticiones subsecuentes para incluir credentials y leer el estado desde el middleware.
-- El Backend debe estandarizar el error 401 devolviendo un mensaje genérico para no revelar si falló el email o la contraseña por motivos de seguridad (Prevención de Enumeración).
+- El Backend debe estandarizar el error 401 devolviendo un mensaje generico para no revelar si fallo el email o la contrasena por motivos de seguridad (Prevencion de Enumeracion).

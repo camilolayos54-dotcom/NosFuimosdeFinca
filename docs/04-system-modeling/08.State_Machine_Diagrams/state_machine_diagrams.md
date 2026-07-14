@@ -1,7 +1,7 @@
-﻿# Entregable 8 (D8): State Machine Diagrams
+ # Entregable 8 (D8): State Machine Diagrams
 
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 4 â€” Modelado del Sistema
+**Fase:** 4 Modelado del Sistema
 **Alcance:** Global (Reservas, Propiedades, Pagos, Desembolsos)
 **Estado:** Aprobado
 
@@ -9,7 +9,7 @@
 
 ## 1. Bookings (Reservas) State Machine
 
-*Backlink a Fase 3:* Implementa las reglas de negocio estrictas de `[[PHASE_3_REQUIREMENTS_ENGINEERING/8.Business_Rules_and_Constraints.md]]` (especÃ­ficamente la ventana de 15 min de pago y la ventana de 90 min de aprobaciÃ³n B2B vÃ­a WhatsApp).
+*Backlink a Fase 3:* Implementa las reglas de negocio estrictas de `[[PHASE_3_REQUIREMENTS_ENGINEERING/8.Business_Rules_and_Constraints.md]]` (especificamente la ventana de 15 min de pago y la ventana de 90 min de aprobacion B2B via WhatsApp).
 *Construido a partir del ERD (D6).*
 
 ```mermaid
@@ -35,13 +35,13 @@ stateDiagram-v2
 
 ## 2. Payouts (Desembolsos) State Machine
 
-MÃ¡quina de estado financiera que gestiona el envÃ­o de fondos (menos la comisiÃ³n de plataforma) a la cuenta bancaria del Finquero.
+Maquina de estado financiera que gestiona el envio de fondos (menos la comision de plataforma) a la cuenta bancaria del Finquero.
 
 ```mermaid
 stateDiagram-v2
     [*] --> PENDING : Booking.COMPLETED [bank_account != null]
 
-    PENDING --> PROCESSING : Cron(FacturaciÃ³n Diaria)
+    PENDING --> PROCESSING : Cron(Facturacion Diaria)
     
     PROCESSING --> PAID : BankAPI(Success) / SendHostAlert(Push)
     PROCESSING --> FAILED : BankAPI(Error) / SendHostAlert(WA)
@@ -55,7 +55,7 @@ stateDiagram-v2
 
 ## 3. Payments (Pagos Entrantes) State Machine
 
-GestiÃ³n del dinero que entra desde el turista vÃ­a tarjeta de crÃ©dito / PSE.
+Gestion del dinero que entra desde el turista via tarjeta de credito / PSE.
 
 ```mermaid
 stateDiagram-v2
@@ -74,7 +74,7 @@ stateDiagram-v2
 
 ## 4. Properties (Inmuebles) State Machine
 
-Ciclo de curadurÃ­a (KYC) antes de que una Finca pueda aparecer en el buscador pÃºblico.
+Ciclo de curaduria (KYC) antes de que una Finca pueda aparecer en el buscador publico.
 
 ```mermaid
 stateDiagram-v2
@@ -93,7 +93,7 @@ stateDiagram-v2
 
 ---
 
-## ImplicaciÃ³n de Fase
-- **D9 (API Conceptual Design):** Los endpoints mutacionales (ej. `PATCH /bookings/approve`) deben validar los *Guards* aquÃ­ documentados antes de ejecutar el cambio.
-- **D10 (Notification Matrix):** Las *Actions* de estas mÃ¡quinas de estado (ej. `SendWARequest()`, `NotifyAdmin()`) se consolidarÃ¡n en la matriz final de notificaciones.
+## Implicacion de Fase
+- **D9 (API Conceptual Design):** Los endpoints mutacionales (ej. `PATCH /bookings/approve`) deben validar los *Guards* aqui documentados antes de ejecutar el cambio.
+- **D10 (Notification Matrix):** Las *Actions* de estas maquinas de estado (ej. `SendWARequest()`, `NotifyAdmin()`) se consolidaran en la matriz final de notificaciones.
 

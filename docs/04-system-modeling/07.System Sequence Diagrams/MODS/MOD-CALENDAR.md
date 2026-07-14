@@ -1,13 +1,13 @@
-# Módulo: MOD-CALENDAR
+# Modulo: MOD-CALENDAR
 
-### C-01: Sincronización y Bloqueo de Fechas
+### C-01: Sincronizacion y Bloqueo de Fechas
 
-Este diagrama modela la lógica en la cual un Anfitrión bloquea manualmente fechas en el calendario (o mediante iCal sync) para evitar que los Turistas reserven su propiedad en esos días. Representa una escritura crítica de base de datos para prevenir colisiones.
+Este diagrama modela la logica en la cual un Anfitrion bloquea manualmente fechas en el calendario (o mediante iCal sync) para evitar que los Turistas reserven su propiedad en esos dias. Representa una escritura critica de base de datos para prevenir colisiones.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor H as Anfitrión
+    actor H as Anfitrion
     participant C as Frontend (Calendar UI)
     participant API as Calendar API
     participant DB as PostgreSQL
@@ -30,6 +30,6 @@ sequenceDiagram
 ```
 
 ---
-### Implicaciones de Fase Específicas
-- Las sentencias `SELECT` de superposición de fechas introducen un riesgo de condición de carrera si el nivel de aislamiento de la base de datos no es correcto o si no se manejan bloqueos transaccionales (row-level locking).
-- El Frontend espera que un 409 desencadene una recarga del estado del calendario para mostrar la reserva conflictiva al anfitrión.
+### Implicaciones de Fase Especificas
+- Las sentencias `SELECT` de superposicion de fechas introducen un riesgo de condicion de carrera si el nivel de aislamiento de la base de datos no es correcto o si no se manejan bloqueos transaccionales (row-level locking).
+- El Frontend espera que un 409 desencadene una recarga del estado del calendario para mostrar la reserva conflictiva al anfitrion.

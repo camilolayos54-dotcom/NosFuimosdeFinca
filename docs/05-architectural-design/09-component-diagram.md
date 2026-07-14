@@ -48,7 +48,7 @@ Person(turista, "Turista", "Busca fincas y reserva.")
 Person(host, "Finquero (Host)", "Administra y aprueba.")
 
 System_Boundary(c1, "Marketplace (Nos Fuimos de Finca)") {
-    Container(webapp, "Web & API Application", "Spring Boot (Java) (Railway/Render (Dockerizado))", "Monolito Modular. Sirve la UI (Vite + JavaScript (frontend)) y ejecuta la logica de negocio (Spring MVC @Service + @RestController/APIs) para Booking, Billing, Catalog e Identity.")
+    Container(webapp, "Web & API Application", "Spring Boot (Java) (Railway/Render (Dockerizado))", "Monolito Modular. Sirve la UI (HTML/JS (MPA)) y ejecuta la logica de negocio (Spring MVC @Service + @RestController/APIs) para Booking, Billing, Catalog e Identity.")
     ContainerDb(database, "Primary Database & Realtime", "PostgreSQL (PostgreSQL + HikariCP (Connection Pooling))", "Almacena el modelo relacional (15 entidades). Provee pooling y suscripciones a cambios (WebSockets).")
 }
 

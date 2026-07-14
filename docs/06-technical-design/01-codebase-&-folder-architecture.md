@@ -18,12 +18,12 @@ Se observa el cumplimiento estricto del Modelo Hibrido: los dominios criticos (`
 ```text
 nos-fuimos-de-finca/
           src/
-                app/ # Frontend: Vite + JavaScript (SPA)
+                app/ # Frontend: HTML Multi-Page Application (MPA)
                       (public)/ # Paginas publicas: Landing, Catalogo
                       (host)/ # Paginas privadas: Dashboard del Finquero
                       api/ # Endpoints REST expuestos explicitamente (Webhooks)
          
-                components/ # Frontend: Componentes reutilizables Vite + JavaScript
+                components/ # Frontend: Componentes reutilizables HTML/JS (MPA)
                       ui/ # Sistema de diseno generico (Botones, Inputs)
                       shared/ # Componentes reutilizables entre modulos
          

@@ -55,7 +55,7 @@ WHATSAPP_PHONE_NUMBER_ID=123456789
 
 ```bash
 # ==========================================
-# FRONTEND PUBLIC VARIABLES (Vite + JavaScript (frontend) & UX)
+# FRONTEND PUBLIC VARIABLES (HTML/JS (MPA) & UX)
 # ==========================================
 
 # 1. SUPABASE (PostgreSQL + Spring Boot Client)

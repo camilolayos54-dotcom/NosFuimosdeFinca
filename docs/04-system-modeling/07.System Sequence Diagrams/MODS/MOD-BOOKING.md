@@ -1,8 +1,8 @@
-# Módulo: MOD-BOOKING
+# Modulo: MOD-BOOKING
 
 ### S-01: Proceso de Reserva y Pago (Booking Checkout)
 
-Este diagrama documenta la orquestación síncrona y asíncrona que ocurre cuando un Turista intenta reservar una finca, incluyendo la validación concurrente (fechas ocupadas) y el cobro de la tarjeta de crédito.
+Este diagrama documenta la orquestacion sincrona y asincrona que ocurre cuando un Turista intenta reservar una finca, incluyendo la validacion concurrente (fechas ocupadas) y el cobro de la tarjeta de credito.
 
 ```mermaid
 sequenceDiagram
@@ -17,7 +17,7 @@ sequenceDiagram
     T->>C: Clic "Reservar" (D5 Mockup)
     C->>API: POST /api/bookings (Fechas + Token Stripe)
     
-    API->>DB: SELECT bookings (¿Fechas Disponibles?)
+    API->>DB: SELECT bookings ( Fechas Disponibles?)
     DB-->>API: Resultado
     
     alt Fechas Ocupadas (Concurrencia)
@@ -35,9 +35,9 @@ sequenceDiagram
             API->>DB: INSERT INTO bookings (Status: CONFIRMED)
             DB-->>API: Reservation ID
             
-            %% Proceso Asíncrono Delegado
+            %% Proceso Asincrono Delegado
             API-)W: Event: "Booking Confirmed" (Enviar Emails)
-            W-)T: (Asíncrono) Enviar Email Confirmación
+            W-)T: (Asincrono) Enviar Email Confirmacion
             
             %% Respuesta Inmediata al Usuario
             API-->>C: HTTP 201 Created
@@ -49,6 +49,6 @@ sequenceDiagram
 ---
 
 ### Phase Gate Implication
-- El equipo Frontend ya sabe exactamente qué Códigos HTTP esperar (201, 400, 409) para gatillar las pantallas diseñadas en el D5.
+- El equipo Frontend ya sabe exactamente que Codigos HTTP esperar (201, 400, 409) para gatillar las pantallas disenadas en el D5.
 - El equipo Backend ya sabe que enviar el correo es una tarea NO BLOQUEANTE (Background Worker).
 - **Proceed to D8:** State Machine & Activity Diagrams.

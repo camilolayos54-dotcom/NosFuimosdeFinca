@@ -1,31 +1,31 @@
-# Módulo: MOD-HOSTING
+# Modulo: MOD-HOSTING
 
-### H-01: Proceso de Publicación de Propiedad
+### H-01: Proceso de Publicacion de Propiedad
 
-Este diagrama modela la lógica transaccional cuando un anfitrión crea una nueva finca (propiedad) y sube imágenes de la misma. Destaca la delegación del almacenamiento de archivos estáticos (imágenes) a un servicio de terceros (ej. AWS S3 o Cloudinary) de forma asíncrona o mediante firmas pre-aprobadas, y la posterior persistencia de las URLs en la base de datos principal.
+Este diagrama modela la logica transaccional cuando un anfitrion crea una nueva finca (propiedad) y sube imagenes de la misma. Destaca la delegacion del almacenamiento de archivos estaticos (imagenes) a un servicio de terceros (ej. AWS S3 o Cloudinary) de forma asincrona o mediante firmas pre-aprobadas, y la posterior persistencia de las URLs en la base de datos principal.
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor H as Anfitrión
+    actor H as Anfitrion
     participant C as Frontend
     participant API as Hosting API
     participant S3 as Storage Bucket (S3)
     participant DB as PostgreSQL
 
-    H->>C: Llena Formulario y Sube Imágenes (Clic Publicar)
+    H->>C: Llena Formulario y Sube Imagenes (Clic Publicar)
     C->>API: POST /api/properties (Datos + Multipart/form-data)
     
-    alt Datos Inválidos
+    alt Datos Invalidos
         API-->>C: HTTP 400 Bad Request (Validation Error)
         C-->>H: Mostrar Errores de Formulario
-    else Validación Exitosa
+    else Validacion Exitosa
         API->>S3: Upload Images (Procesamiento Batch)
         alt Error Subiendo Archivos
             S3-->>API: 502 Bad Gateway
             API-->>C: HTTP 500 Internal Server Error (Storage)
-            C-->>H: Mostrar Toast de Error "No se pudieron procesar las imágenes"
-        else Imágenes Subidas
+            C-->>H: Mostrar Toast de Error "No se pudieron procesar las imagenes"
+        else Imagenes Subidas
             S3-->>API: URLs (HD, Gallery, Thumb)
             API->>DB: INSERT INTO properties (Datos)
             DB-->>API: property_id
@@ -34,12 +34,12 @@ sequenceDiagram
             DB-->>API: OK
             
             API-->>C: HTTP 201 Created (Property ID)
-            C-->>H: Mostrar Mensaje de Éxito y Redirigir a "Mis Propiedades"
+            C-->>H: Mostrar Mensaje de Exito y Redirigir a "Mis Propiedades"
         end
     end
 ```
 
 ---
-### Implicaciones de Fase Específicas
-- El backend requiere integración con un SDK de almacenamiento en la nube, aumentando el tiempo de respuesta. El Frontend debe mantener el "Spinner" o barra de progreso activo durante este periodo.
-- El esquema de base de datos (`property_images`) requiere que las imágenes estén asociadas obligatoriamente a un `property_id` válido.
+### Implicaciones de Fase Especificas
+- El backend requiere integracion con un SDK de almacenamiento en la nube, aumentando el tiempo de respuesta. El Frontend debe mantener el "Spinner" o barra de progreso activo durante este periodo.
+- El esquema de base de datos (`property_images`) requiere que las imagenes esten asociadas obligatoriamente a un `property_id` valido.
