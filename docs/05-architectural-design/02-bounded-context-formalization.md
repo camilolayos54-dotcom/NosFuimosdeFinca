@@ -1,8 +1,8 @@
-﻿# Entregable 2 (D2): Bounded Context Formalization
+ # Entregable 2 (D2): Bounded Context Formalization
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Diseno Arquitectonico
+**Fase:** 5 Diseno Arquitectonico
 **Estado:** Aprobado
 
 *Backlink a Fase 4:* Este documento agrupa las 15 entidades resultantes de la expansion del modelo de base de datos (`[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]`) bajo los principios formales de Domain-Driven Design (DDD).

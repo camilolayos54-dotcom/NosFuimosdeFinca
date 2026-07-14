@@ -1,8 +1,8 @@
-﻿# Entregable 9 (D9): Component Diagram (C4 Model)
+ # Entregable 9 (D9): Component Diagram (C4 Model)
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 5:* Este diagrama consolida y rinde cuentas exactas de las decisiones previas de infraestructura (`[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]`), particion de codigo (`[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]`), y protocolos de red (`[[PHASE_5_ARCHITECTURAL_DESIGN/6.Communication_Pattern_Decision/example_output_d6_communication_pattern.md]]`).
@@ -78,6 +78,6 @@ Rel(database, whatsapp, "Notifica a finquero (Database Trigger)", "Webhooks (HTT
 ## 5. Downstream Consumers
 Este entregable es la fotografia oficial arquitectonica y es input obligatorio para:
 - **D11 (Phase 5 RTM Update & Brief):** Al mapear requerimientos contra el codigo real, utilizaremos estos "Containers" como destino.
-- **Phase 6 â€” D1 (Codebase & Folder Architecture):** La Fase 6 debe tomar el contenedor `webapp` y estructurarlo fisicamente en un arbol de directorios de Spring Boot (Java), respetando sus modulos internos.
-- **Phase 7 â€” D3 (Walking Skeleton Implementation):** El primer hito de codigo real debera trazar con exito la ruta: `[UI Turista] -> [Spring Boot (Java) webapp] -> [PostgreSQL database]`, comprobando que la comunicacion entre contenedores funciona en la nube antes de programar las reglas de negocio.
+- **Phase 6 D1 (Codebase & Folder Architecture):** La Fase 6 debe tomar el contenedor `webapp` y estructurarlo fisicamente en un arbol de directorios de Spring Boot (Java), respetando sus modulos internos.
+- **Phase 7 D3 (Walking Skeleton Implementation):** El primer hito de codigo real debera trazar con exito la ruta: `[UI Turista] -> [Spring Boot (Java) webapp] -> [PostgreSQL database]`, comprobando que la comunicacion entre contenedores funciona en la nube antes de programar las reglas de negocio.
 

@@ -1,8 +1,8 @@
-﻿# Deliverable 1 (D1): Quality Attributes Map
+ # Deliverable 1 (D1): Quality Attributes Map
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 ---
@@ -48,10 +48,10 @@
 #### Escenario 4: Performance / Scalability (Soft-Lock Concurrente)
 - **Source:** Turista autenticado.
 - **Stimulus:** Intenta crear una reserva `POST /api/v1/bookings` (creacion de Soft-Lock).
-- **Environment:** Bajo carga transaccional alta (â‰¤ 50 req/s concurrentes).
+- **Environment:** Bajo carga transaccional alta ( 50 req/s concurrentes).
 - **Artifact:** Spring Boot (Java) Spring MVC @Service + @RestController y PostgreSQL PostgreSQL.
 - **Response:** El sistema crea el Soft-Lock, validando primero que las fechas no se solapen con otras transacciones concurrentes (Race Condition prevention).
-- **Measure:** La API responde en el percentil 95 (p95) en â‰¤ 800ms bajo carga. *(Fuente: `[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements/example_output_nfr.md|NFR-002]]`)*
+- **Measure:** La API responde en el percentil 95 (p95) en 800ms bajo carga. *(Fuente: `[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements/example_output_nfr.md|NFR-002]]`)*
 
 #### Escenario 5: Availability (Notificaciones Real-Time Push)
 - **Source:** Sistema backend (Webhook procesado exitosamente).

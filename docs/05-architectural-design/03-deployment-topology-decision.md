@@ -1,8 +1,8 @@
-﻿# Entregable 3 (D3): Deployment Topology Decision
+ # Entregable 3 (D3): Deployment Topology Decision
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 4 y D1:* Esta topologia responde directamente a las necesidades de escalabilidad extrema (FCP < 1.5s) establecidas en el Quality Attributes Map (`[[PHASE_5_ARCHITECTURAL_DESIGN/1.Quality_Attributes_Map/example_output_d1_quality_attributes.md]]`) y al modelo relacional de datos masivos documentado en el Domain Model (`[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]`).

@@ -1,8 +1,8 @@
-﻿# Deliverable 4 (D4): Security Implementation & Middleware
+ # Deliverable 4 (D4): Security Implementation & Middleware
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Estado:** Approved
 
 *Backlink a Fase 4:* Este entregable implementa fisicamente los permisos y barreras teoricas definidas en la matriz de autorizacion `[[PHASE_4_SYSTEM_MODELING/11.Authorization_and_Security/example_output_d11_authorization_matrix.md]]`.
@@ -34,8 +34,8 @@ Validacion *Activa*. No nos confiaremos de la lectura en memoria del JWT. Usarem
 ```text
 1. INICIO: Request interceptado en el Edge de Railway/Render/Spring Boot (Java).
 2. Extraer cookie `sb-[project]-auth-token`.
-3. Validar sesion: await postgresql.auth.getUser()
-4. IF sesion es INVÃLIDA (No hay token, expirado o revocado activamente):
+3. Validar sesion: // JPA query.auth.getUser()
+4. IF sesion es INVALIDA (No hay token, expirado o revocado activamente):
      5. IF ruta es `/api/*` (Llamada REST interna):
           6. RETURN HTTP 401 Unauthorized.
      7. IF ruta es protegida web (`/host/*`, `/guest/*`, `/admin/*`):
@@ -69,6 +69,6 @@ Evalua los permisos segun la Matriz de la Fase 4 D11.
 
 ## 4. Downstream Consumers
 Este entregable blinda al sistema contra intrusiones antes del inicio de codigo:
-- **Phase 6 â€” D7 (API Contracts):** OpenApi.yml utilizara el requerimiento de Cookie de Sesion como el esquema de seguridad global estandar.
-- **Phase 7 â€” D7 (Security & Middleware Implementation):** Sera el manual directo de codificacion del desarrollador encargado de escribir el archivo maestro `SecurityConfig.java` del repositorio Spring Boot (Java).
+- **Phase 6 D7 (API Contracts):** OpenApi.yml utilizara el requerimiento de Cookie de Sesion como el esquema de seguridad global estandar.
+- **Phase 7 D7 (Security & Middleware Implementation):** Sera el manual directo de codificacion del desarrollador encargado de escribir el archivo maestro `SecurityConfig.java` del repositorio Spring Boot (Java).
 

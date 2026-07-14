@@ -1,8 +1,8 @@
-﻿# Entregable 6 (D6): Communication Pattern Decision
+ # Entregable 6 (D6): Communication Pattern Decision
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 4 y 5:* Esta decision satisface los requerimientos de sincronizacion asincrona planteados en el API Conceptual Design (`[[PHASE_4_SYSTEM_MODELING/9.API_Conceptual_Design/example_output_d9_api.md]]`) y se adapta a la topologia monolitica decidida en el System Decomposition (`[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]`).
@@ -22,12 +22,12 @@ La arquitectura del proyecto esta basada en un Modular Monolith Dockerizado en R
 3. **REST + WebSockets (WebSockets via Spring WebSocket):** Usar REST para escrituras/lecturas tradicionales y abrir un WebSocket pasivo gestionado por PostgreSQL para recibir transmisiones (broadcasts) directas desde la base de datos. **Aprobado.** 
 
 ## Decision
-- **Client-Server (Frontend â†” Backend):** 
+- **Client-Server (Frontend Backend):** 
   Se utilizara **REST (JSON sobre HTTPS)** como protocolo base para todas las operaciones sincronas de lectura y mutacion (implementado a traves de Spring Boot (Java) Spring MVC @Service + @RestController y Route Handlers). 
   Para eventos en tiempo real, el Frontend se suscribira a un canal de **WebSockets** utilizando `WebSockets via Spring WebSocket` (escuchando mutaciones SQL directamente desde el motor PostgreSQL).
-- **Server-Server (Modulo Interno â†” Modulo Interno):** 
+- **Server-Server (Modulo Interno Modulo Interno):** 
   **N/A.** Dado que el sistema es un Monolito Modular (D4), los modulos no se comunicaran por red. Utilizaran comunicacion **In-Process** (importacion e invocacion de funciones de Java en la misma memoria).
-- **Server-External (Backend â†” Terceros):** 
+- **Server-External (Backend Terceros):** 
   Se utilizara **REST Asincrono (Webhooks HTTP POST)** para integrarse con Wompi y WhatsApp.
 
 ## Consequences

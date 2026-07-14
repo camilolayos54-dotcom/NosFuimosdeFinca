@@ -1,8 +1,8 @@
-﻿# Entregable 7 (D7): Cross-Cutting Concerns
+ # Entregable 7 (D7): Cross-Cutting Concerns
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 4:* Las politicas de IAM de este documento formalizan tecnicamente los requerimientos de la matriz de Autorizacion (`[[PHASE_4_SYSTEM_MODELING/11.Authorization_and_Security/example_output_d11_security.md]]`).
@@ -54,7 +54,7 @@ Para poder rastrear problemas transversales en el sistema, aplicaremos los sigui
 
 ## 4. Downstream Consumers
 Este entregable es input obligatorio para:
-- **Phase 6 â€” D4 (Security Implementation & Middleware):** Obliga a los desarrolladores a programar el Middleware de Spring Boot (Java) (`SecurityConfig.java`) para inyectar los headers de CORS restrictivos, validar las HttpOnly Cookies y configurar el Rate-Limiting.
-- **Phase 6 â€” D10 (Async Workers & Job Scheduling):** Establece como las funciones de invalidacion (Spring Cache (@Cacheable) On-Demand) se deben orquestar tras las escrituras en base de datos.
+- **Phase 6 D4 (Security Implementation & Middleware):** Obliga a los desarrolladores a programar el Middleware de Spring Boot (Java) (`SecurityConfig.java`) para inyectar los headers de CORS restrictivos, validar las HttpOnly Cookies y configurar el Rate-Limiting.
+- **Phase 6 D10 (Async Workers & Job Scheduling):** Establece como las funciones de invalidacion (Spring Cache (@Cacheable) On-Demand) se deben orquestar tras las escrituras en base de datos.
 - **D8 (CI/CD & Environments Strategy):** Sentry debe ser configurado como paso obligatorio en el pipeline de CI/CD para cargar los Source Maps del codigo minificado en Produccion.
 

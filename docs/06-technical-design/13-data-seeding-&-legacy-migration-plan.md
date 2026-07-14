@@ -1,7 +1,7 @@
-﻿# Deliverable 13 (D13): Data Seeding & Legacy Migration Plan
+ # Deliverable 13 (D13): Data Seeding & Legacy Migration Plan
 
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Diseno Tecnico
+**Fase:** 6 Diseno Tecnico
 **Estado:** Aprobado
 
 ---
@@ -12,7 +12,7 @@ Estas entidades seran inyectadas via script (`seed.ts` o `seed.sql`) durante el 
 
 - **Roles:** `ADMIN`, `HOST`, `GUEST`
 - **Estados de Reserva (Booking Statuses):** `PENDING`, `APPROVED`, `CANCELLED`, `COMPLETED`
-- **Categorias de Propiedad Principales:** `FINCA_RECREATIVA`, `CABAÃ‘A`, `GLAMPING`, `CHALET`
+- **Categorias de Propiedad Principales:** `FINCA_RECREATIVA`, `CABA A`, `GLAMPING`, `CHALET`
 - **Comodidades Base (Amenities):** `PISCINA`, `WIFI`, `BBQ`, `PET_FRIENDLY`, `AIRE_ACONDICIONADO`, `JACUZZI`
 
 ---

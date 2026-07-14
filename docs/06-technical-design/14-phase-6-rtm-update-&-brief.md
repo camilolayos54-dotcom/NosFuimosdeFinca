@@ -1,7 +1,7 @@
-﻿# Deliverable 14 (D14): Phase 6 RTM Update & Brief
+ # Deliverable 14 (D14): Phase 6 RTM Update & Brief
 
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Diseno Tecnico
+**Fase:** 6 Diseno Tecnico
 **Estado:** Aprobado
 
 ---

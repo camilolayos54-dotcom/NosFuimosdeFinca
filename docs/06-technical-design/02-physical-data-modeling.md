@@ -1,8 +1,8 @@
-﻿# Deliverable 2 (D2): Physical Data Modeling
+ # Deliverable 2 (D2): Physical Data Modeling
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Estado:** Approved
 
 *Backlink a Fase 4 y 5:* Este entregable aterriza las entidades teoricas del Dominio (`[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]`) a codigo SQL ejecutable para PostgreSQL, que es el dialecto del motor PostgreSQL + Spring Boot elegido en la Fase 5 (PostgreSQL).
@@ -261,6 +261,6 @@ CREATE INDEX idx_notifications_user_unread ON notifications(user_id) WHERE read_
 
 ## 4. Downstream Consumers
 Este entregable es la hoja de ruta para la creacion fisica del proyecto:
-- **Fase 6 â€” D6 (Data Access & Repositories):** Usara los nombres de columna exactos y las sentencias SQL escritas aqui para los mappers y DTOs de codigo.
-- **Fase 7 â€” D4 (Database Migrations Implementation):** Tomara estos bloques de codigo, casi textualmente, y los insertara en el CLI de PostgreSQL como la primera gran migracion de la base de datos (`postgresql migration new initial_schema`).
+- **Fase 6 D6 (Data Access & Repositories):** Usara los nombres de columna exactos y las sentencias SQL escritas aqui para los mappers y DTOs de codigo.
+- **Fase 7 D4 (Database Migrations Implementation):** Tomara estos bloques de codigo, casi textualmente, y los insertara en el CLI de PostgreSQL como la primera gran migracion de la base de datos (`postgresql migration new initial_schema`).
 

@@ -1,8 +1,8 @@
-﻿# Deliverable 11 (D11): Semantic HTML & ARIA Contracts
+ # Deliverable 11 (D11): Semantic HTML & ARIA Contracts
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Modulo:** MOD-Booking
 **Estado:** Approved
 

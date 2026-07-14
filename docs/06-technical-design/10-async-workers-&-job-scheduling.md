@@ -1,8 +1,8 @@
-﻿# Deliverable 10 (D10): Async Workers & Job Scheduling
+ # Deliverable 10 (D10): Async Workers & Job Scheduling
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Modulo:** MOD-Booking
 **Estado:** Approved
 
@@ -55,6 +55,6 @@ Ciertas acciones de mantenimiento del inventario de reservas no son provocadas p
 ---
 
 ## 4. Downstream Consumers
-- **Phase 7 â€” D5 (Backend API Implementation):** El desarrollador backend debe crear los ficheros `workers/` correspondientes y configurar las conexiones a Upstash Redis o el gestor dockerizado.
-- **Phase 10 â€” D1 (Monitoring & Alerting):** DevOps mapeara las Dead-Letter Queues nombradas aqui (`booking-events-dlq`) a un dashboard de Datadog / Sentry.
+- **Phase 7 D5 (Backend API Implementation):** El desarrollador backend debe crear los ficheros `workers/` correspondientes y configurar las conexiones a Upstash Redis o el gestor dockerizado.
+- **Phase 10 D1 (Monitoring & Alerting):** DevOps mapeara las Dead-Letter Queues nombradas aqui (`booking-events-dlq`) a un dashboard de Datadog / Sentry.
 

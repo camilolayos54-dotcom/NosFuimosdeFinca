@@ -1,8 +1,8 @@
-﻿# Deliverable 9 (D9): Frontend Component & State Architecture
+ # Deliverable 9 (D9): Frontend Component & State Architecture
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Modulo:** MOD-Booking
 **Estado:** Approved
 
@@ -10,36 +10,36 @@
 
 ---
 
-## 2. Ãrbol de Componentes y Props (Atomic Design)
+## 2. Arbol de Componentes y Props (Atomic Design)
 
 ### 2.1 Jerarquia Visual
 El Modulo de Booking Engine posee dos paginas maestras en Spring Boot. Los componentes han sido desagregados priorizando la reusabilidad.
 
 ```text
 **1. BookingCheckoutPage (Pagina)**
-â”œâ”€â”€ BookingForm (Organismo)
-â”‚   â”œâ”€â”€ DateRangePicker (Molecula)
-â”‚   â”‚   â”œâ”€â”€ CalendarIcon (Ãtomo)
-â”‚   â”‚   â””â”€â”€ HiddenInput (Ãtomo)
-â”‚   â”œâ”€â”€ GuestCounter (Molecula)
-â”‚   â”‚   â”œâ”€â”€ IconButton (Ãtomo â€” Importado del UI Kit)
-â”‚   â”‚   â””â”€â”€ CounterLabel (Ãtomo)
-â”‚   â””â”€â”€ CouponField (Molecula)
-â”œâ”€â”€ BookingSummary (Organismo)
-â”‚   â”œâ”€â”€ PropertyMiniCard (Molecula)
-â”‚   â”œâ”€â”€ PriceLine (Molecula - Base, Limpieza, Fees, Total)
-â”‚   â””â”€â”€ Divider (Ãtomo â€” Importado del UI Kit)
-â””â”€â”€ CheckoutButton (Ãtomo â€” Importado del UI Kit)
+          BookingForm (Organismo)
+                DateRangePicker (Molecula)
+                      CalendarIcon (Atomo)
+                      HiddenInput (Atomo)
+                GuestCounter (Molecula)
+                      IconButton (Atomo Importado del UI Kit)
+                      CounterLabel (Atomo)
+                CouponField (Molecula)
+          BookingSummary (Organismo)
+                PropertyMiniCard (Molecula)
+                PriceLine (Molecula - Base, Limpieza, Fees, Total)
+                Divider (Atomo Importado del UI Kit)
+          CheckoutButton (Atomo Importado del UI Kit)
 
 **2. MyBookingsPage (Pagina)**
-â”œâ”€â”€ BookingFilters (Molecula)
-â”‚   â””â”€â”€ SelectTab (Ãtomo)
-â”œâ”€â”€ BookingList (Organismo)
-â”‚   â”œâ”€â”€ EmptyState (Molecula - Wireframe State: Sin viajes)
-â”‚   â””â”€â”€ BookingCard (Molecula)
-â”‚       â”œâ”€â”€ PropertyImage (Ãtomo)
-â”‚       â”œâ”€â”€ StatusBadge (Ãtomo)
-â”‚       â””â”€â”€ ActionMenu (Molecula - Opcion Cancelar/Pagar)
+          BookingFilters (Molecula)
+                SelectTab (Atomo)
+          BookingList (Organismo)
+                EmptyState (Molecula - Wireframe State: Sin viajes)
+                BookingCard (Molecula)
+                    PropertyImage (Atomo)
+                    StatusBadge (Atomo)
+                    ActionMenu (Molecula - Opcion Cancelar/Pagar)
 ```
 
 ### 2.2 Contrato de Props (Java Interfaces)
@@ -50,7 +50,7 @@ import { BookingResponse, CreateBookingRequest } from '@/shared/api/contracts/bo
 
 // --- BOOKING CHECKOUT --- //
 
-export interface BookingFormProps {
+interface BookingFormProps {
   propertyId: string;
   isSubmitting: boolean;
   unavailableDates: Date[]; // Fechas ya ocupadas a bloquear en el DatePicker
@@ -58,7 +58,7 @@ export interface BookingFormProps {
   onSubmit: (data: Omit<CreateBookingRequest, 'propertyId'>) => void;
 }
 
-export interface BookingSummaryProps {
+interface BookingSummaryProps {
   // Dumb Component. No recibe la entidad entera, solo los datos planos para pintar.
   basePrice: number;
   cleaningFee: number;
@@ -70,9 +70,9 @@ export interface BookingSummaryProps {
 
 // --- MY BOOKINGS --- //
 
-export interface BookingCardProps {
+interface BookingCardProps {
   booking: BookingResponse; // Entidad traida directamente de Gestionado desde el Backend Java (Spring Boot)
-  onCancelClick?: (bookingId: string) => void; // Solo se activa si status === PENDING
+  onCancelClick?: (bookingId) => void; // Solo se activa si status === PENDING
 }
 ```
 
@@ -104,5 +104,5 @@ Toda la data persistente que viene del backend vive aqui.
 ---
 
 ## 4. Downstream Consumers
-- **Phase 7 â€” D6 (Frontend UI & State Implementation):** El desarrollador de Vite + JavaScript (frontend)/Spring Boot (Java) tomara este documento como su plano de construccion (Blueprint). Creara exactamente estos componentes, copiara y pegara las props tipadas, e instanciara los hooks de Gestionado desde el Backend Java (Spring Boot) con las `queryKeys` aqui escritas.
+- **Phase 7 D6 (Frontend UI & State Implementation):** El desarrollador de Vite + JavaScript (frontend)/Spring Boot (Java) tomara este documento como su plano de construccion (Blueprint). Creara exactamente estos componentes, copiara y pegara las props tipadas, e instanciara los hooks de Gestionado desde el Backend Java (Spring Boot) con las `queryKeys` aqui escritas.
 

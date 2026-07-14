@@ -1,8 +1,8 @@
-﻿# Entregable 4 (D4): System Decomposition Decision
+ # Entregable 4 (D4): System Decomposition Decision
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 5 (D2 y D3):* Esta decision consolida los limites logicos identificados en el Bounded Context Formalization (`[[PHASE_5_ARCHITECTURAL_DESIGN/2.Bounded_Context_Formalization/example_output_d2_bounded_contexts.md]]`) y los empaqueta para ser compatibles con la infraestructura Dockerizado en Railway/Render elegida en el Deployment Topology (`[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]`).

@@ -1,8 +1,8 @@
-﻿# Entregable 5 (D5): Architectural Style Selection
+ # Entregable 5 (D5): Architectural Style Selection
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 5 (D4):* Este ADR rige las convenciones internas de codigo para las 5 unidades modulares establecidas en la decision de descomposicion (`[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]`).
@@ -47,7 +47,7 @@ Cada modulo logico implementara su estilo arquitectonico interno de acuerdo a su
 
 ## 3. Downstream Consumers
 Este entregable es input obligatorio para:
-- **Phase 6 â€” D1 (Codebase & Folder Architecture):** La Fase 6 debera mapear estas "capas conceptuales" abstractas a un arbol de directorios fisico (carpetas reales) compatible con Spring Boot REST API (Ej. decidir si el `Domain` de Booking vive en `/com.nosfuimosdefinica.booking/domain`).
-- **Phase 6 â€” D5 (Class & Entity Diagrams):** Dicta que las clases del Booking Engine deben separar sus entidades de dominio de sus modelos de base de datos, mientras que el Catalogo puede usar el mismo modelo para todo.
+- **Phase 6 D1 (Codebase & Folder Architecture):** La Fase 6 debera mapear estas "capas conceptuales" abstractas a un arbol de directorios fisico (carpetas reales) compatible con Spring Boot REST API (Ej. decidir si el `Domain` de Booking vive en `/com.nosfuimosdefinica.booking/domain`).
+- **Phase 6 D5 (Class & Entity Diagrams):** Dicta que las clases del Booking Engine deben separar sus entidades de dominio de sus modelos de base de datos, mientras que el Catalogo puede usar el mismo modelo para todo.
 - **D10 (ADR Consolidation):** Se agregara al indice global de decisiones de la Fase 5.
 

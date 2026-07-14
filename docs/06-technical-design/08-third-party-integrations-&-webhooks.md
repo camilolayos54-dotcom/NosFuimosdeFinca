@@ -1,8 +1,8 @@
-﻿# Deliverable 8 (D8): Third-Party Integrations & Webhooks
+ # Deliverable 8 (D8): Third-Party Integrations & Webhooks
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Modulo:** MOD-Billing
 **Estado:** Approved
 
@@ -84,6 +84,6 @@ Wompi advierte que la red puede demorarse y enviar el mismo evento dos veces.
 ---
 
 ## 4. Downstream Consumers
-- **Phase 6 â€” D10 (Async Workers & Job Scheduling):** Usara la definicion del Reembolso (Refund) para programar las colas asincronas de trabajo.
-- **Phase 7 â€” D8 (External Integrations Implementation):** El programador escribira el controlador `wompi.controller.ts` asegurandose de transcribir la logica criptografica de SHA-256 para los Webhooks.
+- **Phase 6 D10 (Async Workers & Job Scheduling):** Usara la definicion del Reembolso (Refund) para programar las colas asincronas de trabajo.
+- **Phase 7 D8 (External Integrations Implementation):** El programador escribira el controlador `wompi.controller.ts` asegurandose de transcribir la logica criptografica de SHA-256 para los Webhooks.
 

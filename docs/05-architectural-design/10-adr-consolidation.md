@@ -1,8 +1,8 @@
-﻿# Entregable 10 (D10): ADR Consolidation
+ # Entregable 10 (D10): ADR Consolidation
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 11:* Este documento sera absorbido por la Fase 11 como el nucleo inicial de la bitacora historica arquitectonica del proyecto.
@@ -37,5 +37,5 @@ Para mitigar la debilidad del monolito, hemos implementado una politica de prote
 ## 4. Downstream Consumers
 Este entregable es input obligatorio para:
 - **D11 (Phase 5 RTM Update & Brief):** Servira como punto de comprobacion de que todas las directrices arquitectonicas fueron cerradas y unificadas antes del paso a la Fase 6.
-- **Phase 11 â€” D2 (ADR Log):** Este registro es la semilla principal del archivo historico definitivo del proyecto.
+- **Phase 11 D2 (ADR Log):** Este registro es la semilla principal del archivo historico definitivo del proyecto.
 

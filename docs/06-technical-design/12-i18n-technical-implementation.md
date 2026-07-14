@@ -1,8 +1,8 @@
-﻿# Deliverable 12 (D12): i18n Technical Implementation
+ # Deliverable 12 (D12): i18n Technical Implementation
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Estado:** Approved (Global Deliverable)
 
 *Backlink a Fase 4:* Este documento aterriza los requisitos de idioma y regionalizacion plasmados en la `Localization Strategy` (Fase 4, D14) a codigo ejecutable, determinando librerias, estructuras y protocolos de fallo.
@@ -32,17 +32,17 @@ Tener un archivo gigante `translations.json` de 5,000 lineas crea cuellos de bot
 ### 3.1 Estructura en el Repositorio
 ```text
 src/
-â””â”€â”€ locales/
-    â”œâ”€â”€ es/
-    â”‚   â”œâ”€â”€ common.json      # Botones (Aceptar, Cerrar), Navbar generico.
-    â”‚   â”œâ”€â”€ auth.json        # Modulo Auth (Login, Registro).
-    â”‚   â”œâ”€â”€ catalog.json     # Modulo Catalogo (Busqueda, Filtros).
-    â”‚   â””â”€â”€ booking.json     # Modulo Booking Engine.
-    â””â”€â”€ en/
-        â”œâ”€â”€ common.json
-        â”œâ”€â”€ auth.json
-        â”œâ”€â”€ catalog.json
-        â””â”€â”€ booking.json
+          locales/
+              es/
+                    common.json # Botones (Aceptar, Cerrar), Navbar generico.
+                    auth.json # Modulo Auth (Login, Registro).
+                    catalog.json # Modulo Catalogo (Busqueda, Filtros).
+                    booking.json # Modulo Booking Engine.
+              en/
+                  common.json
+                  auth.json
+                  catalog.json
+                  booking.json
 ```
 
 ### 3.2 Convencion de Keys
@@ -103,15 +103,15 @@ El Frontend alojara un archivo `errors.json` en ambas carpetas (`es`, `en`). En 
 **Ejemplo de implementacion (Frontend):**
 ```tsx
 const { error } = await createBooking(data);
-// âŒ PROHIBIDO: 
+// PROHIBIDO: 
 // toast(error.message); 
-// âœ… CORRECTO: 
+// CORRECTO: 
 toast( t(`errors.${error.code}`) );
 ```
 
 ---
 
 ## 5. Downstream Consumers
-- **Phase 7 â€” D6 (Frontend UI Implementation):** El desarrollador de UI configurara `next-intl` en el `SecurityConfig.java` de Spring Boot (Java) obedeciendo estrictamente el orden de prioridad listado en la seccion 2.2.
-- **Phase 7 â€” D5 (Backend API Implementation):** El desarrollador backend debe configurar su manejador global de excepciones para asegurar que ningun error nativo (ej. `PostgresError`) se filtre como un string crudo, envolviendolos todos en codigos `UPPER_SNAKE_CASE`.
+- **Phase 7 D6 (Frontend UI Implementation):** El desarrollador de UI configurara `next-intl` en el `SecurityConfig.java` de Spring Boot (Java) obedeciendo estrictamente el orden de prioridad listado en la seccion 2.2.
+- **Phase 7 D5 (Backend API Implementation):** El desarrollador backend debe configurar su manejador global de excepciones para asegurar que ningun error nativo (ej. `PostgresError`) se filtre como un string crudo, envolviendolos todos en codigos `UPPER_SNAKE_CASE`.
 

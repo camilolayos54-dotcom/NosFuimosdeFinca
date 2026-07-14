@@ -1,8 +1,8 @@
-﻿# Deliverable 5 (D5): Class & Entity Diagrams
+ # Deliverable 5 (D5): Class & Entity Diagrams
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Modulo:** MOD-Booking
 **Estado:** Approved
 
@@ -43,8 +43,8 @@ classDiagram
         
         +calculateTotal() number
         +approve() void
-        +cancel(reason: string) void
-        +applyCoupon(discountPercent: number, maxAmount: number) void
+        +cancel(reason) void
+        +applyCoupon(discountPercent: number, maxAmount) void
         +getStatus() BookingStatus
         +getTotalPrice() number
     }
@@ -56,7 +56,7 @@ classDiagram
         -rating: number
         +comment: string
         
-        +updateRating(newRating: number) void
+        +updateRating(newRating) void
         +getRating() number
     }
 
@@ -84,6 +84,6 @@ Para evitar el antipatron del *Modelo de Dominio Anemico* (donde la logica criti
 
 ## 4. Downstream Consumers
 Este diseno es la semilla para el codigo real del Backend:
-- **Phase 6 â€” D6 (Data Access & Repositories):** Los repositorios de PostgreSQL deberan devolver instancias reales (new Booking) en lugar de JSONs genericos, respetando este contrato.
-- **Phase 7 â€” D5 (Backend API Implementation):** Los desarrolladores transcribiran este diagrama literal en archivos `.ts` (ej. `com.nosfuimosdefinica.booking/domain/Booking.ts`).
+- **Phase 6 D6 (Data Access & Repositories):** Los repositorios de PostgreSQL deberan devolver instancias reales (new Booking) en lugar de JSONs genericos, respetando este contrato.
+- **Phase 7 D5 (Backend API Implementation):** Los desarrolladores transcribiran este diagrama literal en archivos `.ts` (ej. `com.nosfuimosdefinica.booking/domain/Booking.ts`).
 

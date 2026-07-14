@@ -1,8 +1,8 @@
-﻿# Deliverable 7 (D7): API Contracts (OpenAPI)
+ # Deliverable 7 (D7): API Contracts (OpenAPI)
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 6 â€” Technical Design
+**Fase:** 6 Technical Design
 **Modulo:** MOD-Booking
 **Estado:** Approved
 
@@ -18,7 +18,7 @@
 ```yaml
 openapi: 3.0.3
 info:
-  title: API â€” Modulo Booking Engine
+  title: API Modulo Booking Engine
   version: 1.0.0
   description: Contrato oficial para orquestar reservas, resenas y favoritos.
   
@@ -253,6 +253,6 @@ components:
 ---
 
 ## 3. Downstream Consumers
-- **Phase 7 â€” D5 (Backend API Implementation):** El desarrollador backend debe lograr que Spring Boot (Java) responda matematicamente identico a este YAML (mismos codigos HTTP, mismas keys en el JSON).
-- **Phase 7 â€” D6 (Frontend UI):** El desarrollador frontend usara este YAML (o generadores como `orval` / `openapi-java`) para crear las queries de **Gestionado desde el Backend Java (Spring Boot)** (`useMutation`, `useQuery`), logrando que el frontend este fuertemente tipado incluso antes de que el backend exista.
+- **Phase 7 D5 (Backend API Implementation):** El desarrollador backend debe lograr que Spring Boot (Java) responda matematicamente identico a este YAML (mismos codigos HTTP, mismas keys en el JSON).
+- **Phase 7 D6 (Frontend UI):** El desarrollador frontend usara este YAML (o generadores como `orval` / `openapi-java`) para crear las queries de **Gestionado desde el Backend Java (Spring Boot)** (`useMutation`, `useQuery`), logrando que el frontend este fuertemente tipado incluso antes de que el backend exista.
 

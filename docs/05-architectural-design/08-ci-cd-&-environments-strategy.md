@@ -1,8 +1,8 @@
-﻿# Entregable 8 (D8): CI/CD & Environments Strategy
+ # Entregable 8 (D8): CI/CD & Environments Strategy
 
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 5 â€” Architectural Design
+**Fase:** 5 Architectural Design
 **Estado:** Aprobado
 
 *Backlink a Fase 5:* Este entregable materializa el ciclo de vida del codigo para la infraestructura Dockerizado en Railway/Render elegida en el Deployment Topology (`[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]`) y la base de codigo unica definida en el System Decomposition (`[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]`).
@@ -45,7 +45,7 @@ Dado que la topologia es Dockerizado en Railway/Render (D3), descartamos la orqu
 
 ## 3. Downstream Consumers
 Este entregable es input obligatorio para:
-- **Phase 6 â€” D3 (Configuration & Environment Secrets):** Los 3 ambientes definidos aqui obligan a crear 3 sets de variables de entorno distintas (`application.yml`, `.env.preview`, `.env.production`).
-- **Phase 7 â€” D2 (Project Scaffolding & Setup):** Inicializa el repositorio GitHub con los workflows `.github/workflows/ci.yml` basandose exactamente en los pasos definidos aqui.
+- **Phase 6 - D3 (Configuration & Environment Secrets):** Los 3 ambientes definidos aqui obligan a crear 3 sets de variables de entorno distintas (`application.yml`, `.env.preview`, `.env.production`).
+- **Phase 7 - D2 (Project Scaffolding & Setup):** Inicializa el repositorio GitHub con los workflows `.github/workflows/ci.yml` basandose exactamente en los pasos definidos aqui.
 - **D10 (ADR Consolidation):** Las elecciones de herramientas (Trunk-Based, GitHub Actions) quedaran indexadas en el resumen final.
 
