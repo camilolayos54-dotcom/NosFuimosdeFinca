@@ -3,24 +3,24 @@
 ## 1. Metadata Header
 **Proyecto:** Nos Fuimos de Finca
 **Fase:** 6 â€” Technical Design
-**MÃ³dulo:** MOD-Booking
+**Modulo:** MOD-Booking
 **Estado:** Approved
 
 *Backlink a Fase 4 y 6:* Este documento fusiona las operaciones conceptuales del `[[PHASE_4_SYSTEM_MODELING/9.API_Conceptual_Design.md]]` con los DTOs estrictos definidos en el `[[PHASE_6_TECHNICAL_DESIGN/modules/MOD-Booking/6.Data_Access.md]]` y el mecanismo de seguridad de `[[PHASE_6_TECHNICAL_DESIGN/4.Security_Implementation.md]]`. 
 
 ---
 
-## 2. EspecificaciÃ³n OpenAPI YAML
+## 2. Especificacion OpenAPI YAML
 
 > [!TIP]
-> **Para el equipo Frontend:** Todos los endpoints requieren que la cookie `sb-[project]-auth-token` viaje en la peticiÃ³n. Next.js y el navegador manejan esto automÃ¡ticamente (credentials: 'include'), no hace falta adjuntar un header `Authorization` manualmente.
+> **Para el equipo Frontend:** Todos los endpoints requieren que la cookie `sb-[project]-auth-token` viaje en la peticion. Spring Boot (Java) y el navegador manejan esto automaticamente (credentials: 'include'), no hace falta adjuntar un header `Authorization` manualmente.
 
 ```yaml
 openapi: 3.0.3
 info:
-  title: API â€” MÃ³dulo Booking Engine
+  title: API â€” Modulo Booking Engine
   version: 1.0.0
-  description: Contrato oficial para orquestar reservas, reseÃ±as y favoritos.
+  description: Contrato oficial para orquestar reservas, resenas y favoritos.
   
 paths:
   /api/bookings:
@@ -45,7 +45,7 @@ paths:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
         '401':
-          description: SesiÃ³n invÃ¡lida o faltante.
+          description: Sesion invalida o faltante.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
@@ -63,14 +63,14 @@ paths:
           schema: { type: integer, default: 20 }
       responses:
         '200':
-          description: Array de reservas (HistÃ³rico o Futuras).
+          description: Array de reservas (Historico o Futuras).
           content:
             application/json:
               schema:
                 type: array
                 items: { $ref: '#/components/schemas/BookingResponse' }
         '401':
-          description: SesiÃ³n invÃ¡lida.
+          description: Sesion invalida.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
@@ -97,12 +97,12 @@ paths:
             application/json:
               schema: { $ref: '#/components/schemas/BookingResponse' }
         '401':
-          description: SesiÃ³n invÃ¡lida.
+          description: Sesion invalida.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
         '403':
-          description: Prohibido. El usuario no es dueÃ±o de la propiedad ni administrador.
+          description: Prohibido. El usuario no es dueno de la propiedad ni administrador.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
@@ -110,7 +110,7 @@ paths:
   /api/reviews:
     post:
       tags: [Reviews]
-      summary: Crear una reseÃ±a para una propiedad
+      summary: Crear una resena para una propiedad
       operationId: createReview
       security: [{ cookieAuth: [] }]
       requestBody:
@@ -119,17 +119,17 @@ paths:
             schema: { $ref: '#/components/schemas/CreateReviewRequest' }
       responses:
         '201':
-          description: ReseÃ±a guardada.
+          description: Resena guardada.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ReviewResponse' }
         '400':
-          description: Error de validaciÃ³n (ej. Rating fuera de rango 1-5).
+          description: Error de validacion (ej. Rating fuera de rango 1-5).
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
         '401':
-          description: SesiÃ³n invÃ¡lida.
+          description: Sesion invalida.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
@@ -153,7 +153,7 @@ paths:
         '201':
           description: Agregado.
         '401':
-          description: SesiÃ³n invÃ¡lida.
+          description: Sesion invalida.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
@@ -173,7 +173,7 @@ paths:
         '204':
           description: Eliminado exitosamente (Sin contenido).
         '401':
-          description: SesiÃ³n invÃ¡lida.
+          description: Sesion invalida.
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
@@ -184,7 +184,7 @@ components:
       type: apiKey
       in: cookie
       name: sb-project-auth-token
-      description: Next.js SSR HttpOnly Cookie inyectada automÃ¡ticamente.
+      description: Spring Boot (Java) SSR HttpOnly Cookie inyectada automaticamente.
 
   schemas:
     # --- REQUESTS ---
@@ -253,6 +253,6 @@ components:
 ---
 
 ## 3. Downstream Consumers
-- **Phase 7 â€” D5 (Backend API Implementation):** El desarrollador backend debe lograr que Next.js responda matemÃ¡ticamente idÃ©ntico a este YAML (mismos cÃ³digos HTTP, mismas keys en el JSON).
-- **Phase 7 â€” D6 (Frontend UI):** El desarrollador frontend usarÃ¡ este YAML (o generadores como `orval` / `openapi-typescript`) para crear las queries de **React Query** (`useMutation`, `useQuery`), logrando que el frontend estÃ© fuertemente tipado incluso antes de que el backend exista.
+- **Phase 7 â€” D5 (Backend API Implementation):** El desarrollador backend debe lograr que Spring Boot (Java) responda matematicamente identico a este YAML (mismos codigos HTTP, mismas keys en el JSON).
+- **Phase 7 â€” D6 (Frontend UI):** El desarrollador frontend usara este YAML (o generadores como `orval` / `openapi-java`) para crear las queries de **Gestionado desde el Backend Java (Spring Boot)** (`useMutation`, `useQuery`), logrando que el frontend este fuertemente tipado incluso antes de que el backend exista.
 

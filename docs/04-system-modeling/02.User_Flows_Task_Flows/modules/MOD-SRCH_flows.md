@@ -40,7 +40,7 @@ flowchart TD
     EmptyStateUI[UI Sin Resultados<br>'Intenta borrar filtros']
     
     %% Nodos Asíncronos
-    SearchEngine((Motor SQL / Vectorial<br>Supabase RPC))
+    SearchEngine((Motor SQL / Vectorial<br>Spring MVC @RestController))
     
     %% Decisiones
     FilterCheck{¿El Turista<br>aplica filtros?}

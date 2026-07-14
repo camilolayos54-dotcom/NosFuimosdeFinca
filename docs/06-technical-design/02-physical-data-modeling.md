@@ -5,14 +5,14 @@
 **Fase:** 6 â€” Technical Design
 **Estado:** Approved
 
-*Backlink a Fase 4 y 5:* Este entregable aterriza las entidades teÃ³ricas del Dominio (`[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]`) a cÃ³digo SQL ejecutable para PostgreSQL, que es el dialecto del motor BaaS elegido en la Fase 5 (Supabase).
+*Backlink a Fase 4 y 5:* Este entregable aterriza las entidades teoricas del Dominio (`[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]`) a codigo SQL ejecutable para PostgreSQL, que es el dialecto del motor PostgreSQL + Spring Boot elegido en la Fase 5 (PostgreSQL).
 
 ---
 
-## 2. Scripts de CreaciÃ³n de Base de Datos (DDL)
+## 2. Scripts de Creacion de Base de Datos (DDL)
 
 ```sql
--- Habilitar extensiÃ³n UUID nativa de PostgreSQL
+-- Habilitar extension UUID nativa de PostgreSQL
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- 1. USERS
@@ -231,25 +231,25 @@ CREATE TABLE refresh_tokens (
 
 ---
 
-## 3. Scripts de IndexaciÃ³n y OptimizaciÃ³n
+## 3. Scripts de Indexacion y Optimizacion
 
-Estos Ã­ndices estÃ¡n diseÃ±ados especÃ­ficamente para resolver los requerimientos no funcionales (NFRs) de carga rÃ¡pida del sistema (CatÃ¡logo y Dashboard de reservas).
+Estos indices estan disenados especificamente para resolver los requerimientos no funcionales (NFRs) de carga rapida del sistema (Catalogo y Dashboard de reservas).
 
 ```sql
 -- 1. Acelerar el dashboard del Finquero (Buscar todas MIS fincas)
 CREATE INDEX idx_properties_host_id ON properties(host_id);
 
--- 2. Acelerar el catÃ¡logo de Turistas (Listar solo las fincas activas en el buscador)
+-- 2. Acelerar el catalogo de Turistas (Listar solo las fincas activas en el buscador)
 CREATE INDEX idx_properties_is_active ON properties(is_active);
 
--- 3. Acelerar cruces matemÃ¡ticos de fechas para los cÃ¡lculos de disponibilidad y precios estacionales
+-- 3. Acelerar cruces matematicos de fechas para los calculos de disponibilidad y precios estacionales
 CREATE INDEX idx_property_availability_dates ON property_availability(start_date, end_date);
 CREATE INDEX idx_seasonal_prices_dates ON seasonal_prices(start_date, end_date);
 
 -- 4. Acelerar el montaje visual de fotos por finca en el UI
 CREATE INDEX idx_property_images_property_id ON property_images(property_id);
 
--- 5. Acelerar el listado histÃ³rico de reservas para el Turista (MIS VIAJES) y el Finquero (MIS HUESPEDES)
+-- 5. Acelerar el listado historico de reservas para el Turista (MIS VIAJES) y el Finquero (MIS HUESPEDES)
 CREATE INDEX idx_bookings_guest_id ON bookings(guest_id);
 CREATE INDEX idx_bookings_property_id ON bookings(property_id);
 
@@ -260,7 +260,7 @@ CREATE INDEX idx_notifications_user_unread ON notifications(user_id) WHERE read_
 ---
 
 ## 4. Downstream Consumers
-Este entregable es la hoja de ruta para la creaciÃ³n fÃ­sica del proyecto:
-- **Fase 6 â€” D6 (Data Access & Repositories):** UsarÃ¡ los nombres de columna exactos y las sentencias SQL escritas aquÃ­ para los mappers y DTOs de cÃ³digo.
-- **Fase 7 â€” D4 (Database Migrations Implementation):** TomarÃ¡ estos bloques de cÃ³digo, casi textualmente, y los insertarÃ¡ en el CLI de Supabase como la primera gran migraciÃ³n de la base de datos (`supabase migration new initial_schema`).
+Este entregable es la hoja de ruta para la creacion fisica del proyecto:
+- **Fase 6 â€” D6 (Data Access & Repositories):** Usara los nombres de columna exactos y las sentencias SQL escritas aqui para los mappers y DTOs de codigo.
+- **Fase 7 â€” D4 (Database Migrations Implementation):** Tomara estos bloques de codigo, casi textualmente, y los insertara en el CLI de PostgreSQL como la primera gran migracion de la base de datos (`postgresql migration new initial_schema`).
 

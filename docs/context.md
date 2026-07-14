@@ -1,4 +1,4 @@
-# Resumen Contextual Ejecutivo: Nos Fuimos de Finca
+﻿# Resumen Contextual Ejecutivo: Nos Fuimos de Finca
 
 ## 1. Visión General del Sistema
 
@@ -50,7 +50,7 @@ La arquitectura lógica de la plataforma se compone estrictamente de siete (7) m
 ## 4. Marco Metodológico y Técnico
 
 El ciclo de vida se rige bajo la metodología estructurada **FULLSTACK_DEVELOPMENT**.
-- **Stack Tecnológico:** Next.js 14 (App Router), Supabase (PostgreSQL + Auth), Tailwind CSS.
+- **Stack Tecnológico:** Spring Boot (Java) 14 (App Router), PostgreSQL (PostgreSQL + Auth), Vanilla CSS.
 - **Arquitectura:** Monolito Modular, garantizando que cada módulo (`MOD-`) tenga fronteras de datos y código limpias, facilitando una futura migración a microservicios si se requiere.
 
 ---

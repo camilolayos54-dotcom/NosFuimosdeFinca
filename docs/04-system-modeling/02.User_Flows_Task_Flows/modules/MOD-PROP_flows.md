@@ -43,7 +43,7 @@ flowchart TD
     PublishModalUI[Modal '¿Listo para publicar?']
     
     %% Nodos Asíncronos
-    DB((Supabase DB))
+    DB((PostgreSQL DB))
     Storage((AWS S3<br>Compresión WebP))
     SlugService((Generador de Slug<br>Backend))
     

@@ -50,7 +50,7 @@
 | CÃ³digo HTTP        | CÃ³digo Constante    | Causa                                       |
 | ------------------ | ------------------- | ------------------------------------------- |
 | `409 Conflict`     | `DATES_UNAVAILABLE` | Fechas ocupadas por otra reserva simultÃ¡nea |
-| `401 Unauthorized` | `UNAUTHORIZED`      | Supabase JWT invÃ¡lido o ausente             |
+| `401 Unauthorized` | `UNAUTHORIZED`      | JWT (gestionado por Spring Security) invÃ¡lido o ausente             |
 | `403 Forbidden`    | `FORBIDDEN`         | Rol no autorizado para reservar             |
 
 ---

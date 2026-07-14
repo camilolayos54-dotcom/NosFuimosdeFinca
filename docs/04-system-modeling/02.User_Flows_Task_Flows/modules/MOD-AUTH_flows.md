@@ -38,7 +38,7 @@ El camino del usuario que intenta entrar al Portal B2B, con el "Unhappy Path" de
 
 ```mermaid
 flowchart TD
-    %% Nodos Cuadrados: Pantallas Físicas (Next.js)
+    %% Nodos Cuadrados: Pantallas Físicas (Spring Boot (Java))
     LandingUI[Pantalla Landing B2B<br>Ruta: /host]
     LoginUI[Pantalla Login<br>Ruta: /login]
     ToastErrorUI[Componente Toast<br>Credenciales Inválidas]
@@ -46,7 +46,7 @@ flowchart TD
     OnboardingUI[Pantalla de Bienvenida KYC<br>Ruta: /onboarding]
     
     %% Nodos Redondeados: Backend Asíncrono
-    SupabaseDB((Supabase Auth<br>Verificación JWT))
+    SpringSecurityDB((Spring Security<br>Verificación JWT))
     
     %% Rombos: Evaluaciones Lógicas
     CredentialCheck{¿Email y Clave<br>correctos?}
@@ -54,10 +54,10 @@ flowchart TD
 
     %% Camino Feliz e Interacción
     LandingUI --> |Clic 'Ingresar'| LoginUI
-    LoginUI --> |Submit Form| SupabaseDB
+    LoginUI --> |Submit Form| SpringSecurityDB
     
     %% Respuesta de Base de Datos
-    SupabaseDB -.-> CredentialCheck
+    SpringSecurityDB -.-> CredentialCheck
     
     %% Unhappy Path (Credenciales)
     CredentialCheck -- No (401 Auth Error) --> ToastErrorUI

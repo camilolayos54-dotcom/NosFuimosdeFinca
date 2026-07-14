@@ -41,7 +41,7 @@ flowchart TD
     WompiRedirectUI[Pantalla de Transición<br>Ruta: /checkout/processing]
     
     %% Nodos Asíncronos
-    PricingDB((Supabase DB<br>Cálculo de Service Fee))
+    PricingDB((PostgreSQL DB<br>Cálculo de Service Fee))
     WompiAPI((MOD-PAY<br>Motor Wompi))
     TimeoutCron((CronJob 90 min<br>Soft-Lock Timeout))
     
@@ -83,7 +83,7 @@ flowchart TD
     SuccessToastUI[Toast Success<br>Acción Completada]
     
     %% Nodos Asíncronos
-    DB((Supabase DB<br>Mutación de Estado))
+    DB((PostgreSQL DB<br>Mutación de Estado))
     EmailWorker((Notificador MOD-NOT<br>Avisa al Turista))
     
     %% Decisiones

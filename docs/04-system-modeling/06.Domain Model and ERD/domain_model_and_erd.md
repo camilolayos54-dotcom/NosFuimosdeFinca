@@ -1,19 +1,20 @@
-﻿# Entregable 6 (D6): Domain Model y ERD Conceptual
+# Entregable 6 (D6): Domain Model y ERD Conceptual
 
 **Proyecto:** Nos Fuimos de Finca
-**Fase:** 4 â€” Modelado del Sistema
-**Alcance:** Global (RevisiÃ³n Extendida B2B/B2C y Financiera)
+**Fase:** 4  Modelado del Sistema
+**Alcance:** Global (Revision Extendida B2B/B2C y Financiera)
 **Estado:** Aprobado
 
 ---
 
-## 1. Diagrama Entidad-RelaciÃ³n Conceptual (ERD)
+## 1. Diagrama Entidad-Relacion Conceptual (ERD)
 
-*Backlink a Fase 3:* Las entidades se derivan del `[[PHASE_3_REQUIREMENTS_ENGINEERING/7.Module_Specification.md]]` y los flujos de dominio. Esta segunda revisiÃ³n profunda garantiza el soporte contable completo (Payouts, Cupones, Fees), la gestiÃ³n detallada del catÃ¡logo (Precios estacionales, Habitaciones) y la usabilidad (Favoritos).
+*Backlink a Fase 3:* Las entidades se derivan del `[[PHASE_3_REQUIREMENTS_ENGINEERING/7.Module_Specification.md]]` y los flujos de dominio. Esta segunda revision profunda garantiza el soporte contable completo (Payouts, Cupones, Fees), la gestion detallada del catalogo (Precios estacionales, Habitaciones) y la usabilidad (Favoritos).
 
-Construido en `[[example_step_2_cardinality_relations.md]]`. 15 entidades base normalizadas en 3NF. NingÃºn tipo fÃ­sico de motor asignado.
+Construido en `[[example_step_2_cardinality_relations.md]]`. 15 entidades base normalizadas en 3NF. Ningun tipo fisico de motor asignado.
 
-````mermaid
+```mermaid
+erDiagram
     USERS {
         uuid id PK "[REQUERIDO, UNICO]"
         string email "[REQUERIDO, UK]"
@@ -239,26 +240,26 @@ Construido en `[[example_step_2_cardinality_relations.md]]`. 15 entidades base n
 
 ## 2. Diccionario de Sensibilidad Conceptual
 
-Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO]`, `[ÃšNICO]`, `[REQUERIDO]`, `[GEO]` son instrucciones semÃ¡nticas para P6-D2 (Physical Data Modeling). NingÃºn tipo SQL exacto fue asignado en esta fase.
+Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO]`, `[NICO]`, `[REQUERIDO]`, `[GEO]` son instrucciones semanticas para P6-D2 (Physical Data Modeling). Ningun tipo SQL exacto fue asignado en esta fase.
 
 ### 2.1 Tablas Base de Identidad y Perfil
 
 #### Tabla: `users`
 | Columna | Etiqueta Conceptual |
 |---|---|
-| `id` | `[PK]`, `[REQUERIDO]`, `[ÃšNICO]` |
-| `email` | `[REQUERIDO]`, `[ÃšNICO]` |
+| `id` | `[PK]`, `[REQUERIDO]`, `[NICO]` |
+| `email` | `[REQUERIDO]`, `[NICO]` |
 | `password_hash` | `[REQUERIDO]` |
 | `role` | `[REQUERIDO]` (TOURIST, AGENCY_USER, OWNER_API) |
 | `full_name` | `[REQUERIDO]` |
-| `phone_number` | `[REQUERIDO]` (CrÃ­tico para WhatsApp B2B) |
-| `document_number` | `[ÃšNICO]` (Opcional hasta el KYC) |
+| `phone_number` | `[REQUERIDO]` (Critico para WhatsApp B2B) |
+| `document_number` | `[NICO]` (Opcional hasta el KYC) |
 | `avatar_url` | (Opcional, perfil UX) |
 | `bank_name` | (Requerido para payouts si es OWNER_API) |
 | `bank_account_number` | (Requerido para payouts) |
 | `bank_account_type` | (Ahorros/Corriente) |
 | `kyc_status` | `[REQUERIDO]` |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `wishlists`
 | Columna | Etiqueta Conceptual |
@@ -266,19 +267,19 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `id` | `[PK]`, `[REQUERIDO]` |
 | `user_id` | `[FK]`, `[REQUERIDO]` |
 | `property_id` | `[FK]`, `[REQUERIDO]` |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
-### 2.2 Tablas Base de CatÃ¡logo (Inmuebles)
+### 2.2 Tablas Base de Catalogo (Inmuebles)
 
 #### Tabla: `properties`
 | Columna | Etiqueta Conceptual |
 |---|---|
-| `id` | `[PK]`, `[REQUERIDO]`, `[ÃšNICO]` |
+| `id` | `[PK]`, `[REQUERIDO]`, `[NICO]` |
 | `host_id` | `[FK]`, `[REQUERIDO]` |
 | `name` | `[REQUERIDO]` |
 | `description` | `[REQUERIDO]` |
 | `price_per_night` | `[REQUERIDO]`, `[MONETARIO]` (Tarifa Base) |
-| `cleaning_fee` | `[REQUERIDO]`, `[MONETARIO]` (Fijo por estadÃ­a) |
+| `cleaning_fee` | `[REQUERIDO]`, `[MONETARIO]` (Fijo por estadia) |
 | `max_guests` | `[REQUERIDO]` |
 | `bedrooms_count` | `[REQUERIDO]` |
 | `bathrooms_count` | `[REQUERIDO]` |
@@ -288,7 +289,7 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `location_address` | `[REQUERIDO]` |
 | `status` | `[REQUERIDO]` (Pendiente, Aprobado, Suspendido) |
 | `is_active` | `[REQUERIDO]` (Soft-delete flag) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `seasonal_prices`
 | Columna | Etiqueta Conceptual |
@@ -298,7 +299,7 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `start_date` | `[REQUERIDO]` |
 | `end_date` | `[REQUERIDO]` |
 | `price_per_night` | `[REQUERIDO]`, `[MONETARIO]` (Sobreescribe base) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `property_images`
 | Columna | Etiqueta Conceptual |
@@ -307,7 +308,7 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `property_id` | `[FK]`, `[REQUERIDO]` |
 | `url_hd` | `[REQUERIDO]` |
 | `sort_order` | `[REQUERIDO]` |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `property_amenities`
 | Columna | Etiqueta Conceptual |
@@ -315,19 +316,19 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `id` | `[PK]`, `[REQUERIDO]` |
 | `property_id` | `[FK]`, `[REQUERIDO]` |
 | `amenity_key` | `[REQUERIDO]` (pool, wifi, bbq, pet-friendly) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `property_rules`
 | Columna | Etiqueta Conceptual |
 |---|---|
 | `id` | `[PK]`, `[REQUERIDO]` |
-| `property_id` | `[FK]`, `[REQUERIDO]`, `[ÃšNICO]` |
+| `property_id` | `[FK]`, `[REQUERIDO]`, `[NICO]` |
 | `check_in_time` | `[REQUERIDO]` |
 | `check_out_time` | `[REQUERIDO]` |
 | `allows_pets` | `[REQUERIDO]` |
 | `allows_parties` | `[REQUERIDO]` |
 | `additional_rules` | (Opcional) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `property_availability`
 | Columna | Etiqueta Conceptual |
@@ -337,7 +338,7 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `start_date` | `[REQUERIDO]` |
 | `end_date` | `[REQUERIDO]` |
 | `reason` | `[REQUERIDO]` (Maintenance, Personal Use) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 ### 2.3 Tablas Transaccionales y Financieras
 
@@ -345,18 +346,18 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | Columna | Etiqueta Conceptual |
 |---|---|
 | `id` | `[PK]`, `[REQUERIDO]` |
-| `code` | `[REQUERIDO]`, `[ÃšNICO]` (Ej. FINCA26) |
+| `code` | `[REQUERIDO]`, `[NICO]` (Ej. FINCA26) |
 | `discount_percentage` | (Mutuamente excluyente con amount) |
-| `max_discount_amount`| `[MONETARIO]` (LÃ­mite del descuento) |
+| `max_discount_amount`| `[MONETARIO]` (Limite del descuento) |
 | `valid_from` | `[REQUERIDO]` |
 | `valid_until` | `[REQUERIDO]` |
-| `usage_limit` | (Opcional, lÃ­mite de redenciones) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `usage_limit` | (Opcional, limite de redenciones) |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `bookings`
 | Columna | Etiqueta Conceptual |
 |---|---|
-| `id` | `[PK]`, `[REQUERIDO]`, `[ÃšNICO]` |
+| `id` | `[PK]`, `[REQUERIDO]`, `[NICO]` |
 | `property_id` | `[FK]`, `[REQUERIDO]` |
 | `guest_id` | `[FK]`, `[REQUERIDO]` |
 | `coupon_id` | `[FK]` (Opcional) |
@@ -371,34 +372,34 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `total_price` | `[REQUERIDO]`, `[MONETARIO]` |
 | `status` | `[REQUERIDO]` (PENDING, APPROVED, CANCELLED...) |
 | `cancellation_reason` | (Opcional) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `payments` (Ingresos a Wompi)
 | Columna | Etiqueta Conceptual |
 |---|---|
-| `id` | `[PK]`, `[REQUERIDO]`, `[ÃšNICO]` |
+| `id` | `[PK]`, `[REQUERIDO]`, `[NICO]` |
 | `booking_id` | `[FK]`, `[REQUERIDO]` |
 | `amount` | `[REQUERIDO]`, `[MONETARIO]` |
 | `currency` | `[REQUERIDO]` |
-| `gateway_reference` | `[ÃšNICO]` |
+| `gateway_reference` | `[NICO]` |
 | `payment_method` | (Opcional, Nequi/Card/PSE) |
 | `transaction_date` | `[REQUERIDO]` |
 | `receipt_url` | (Opcional) |
 | `status` | `[REQUERIDO]` |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `payouts` (Egresos al Finquero)
 | Columna | Etiqueta Conceptual |
 |---|---|
-| `id` | `[PK]`, `[REQUERIDO]`, `[ÃšNICO]` |
-| `booking_id` | `[FK]`, `[REQUERIDO]`, `[ÃšNICO]` |
+| `id` | `[PK]`, `[REQUERIDO]`, `[NICO]` |
+| `booking_id` | `[FK]`, `[REQUERIDO]`, `[NICO]` |
 | `host_id` | `[FK]`, `[REQUERIDO]` |
 | `amount` | `[REQUERIDO]`, `[MONETARIO]` (Total - Platform Fee) |
 | `currency` | `[REQUERIDO]` |
 | `bank_reference` | (ID de transferencia del banco) |
 | `transaction_date` | (Fecha efectiva del pago) |
 | `status` | `[REQUERIDO]` (PENDING, PROCESSING, PAID, FAILED) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 ### 2.4 Tablas de Plataforma
 
@@ -410,7 +411,7 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `guest_id` | `[FK]`, `[REQUERIDO]` |
 | `rating` | `[REQUERIDO]` (Escala 1-5) |
 | `comment` | (Opcional) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `notifications`
 | Columna | Etiqueta Conceptual |
@@ -421,23 +422,23 @@ Construido en `[[example_step_3_data_dictionary.md]]`. Las etiquetas `[MONETARIO
 | `title` | `[REQUERIDO]` |
 | `body` | `[REQUERIDO]` |
 | `read_at` | (Opcional) |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 #### Tabla: `refresh_tokens`
 | Columna | Etiqueta Conceptual |
 |---|---|
 | `id` | `[PK]`, `[REQUERIDO]` |
 | `user_id` | `[FK]`, `[REQUERIDO]` |
-| `token_hash` | `[REQUERIDO]`, `[ÃšNICO]` |
+| `token_hash` | `[REQUERIDO]`, `[NICO]` |
 | `expires_at` | `[REQUERIDO]` |
-| `created_at`, `updated_at`, `deleted_at` | `[AUDITORÃA]` |
+| `created_at`, `updated_at`, `deleted_at` | `[AUDITORIA]` |
 
 ---
 
-**Nota de ensamblaje:** Este documento consolida aspectos CONCEPTUALES rigurosos que abarcan la totalidad del dominio B2B/B2C, sentando las bases para reglas de negocio (ej. lÃ­mites geogrÃ¡ficos, manejo transaccional). Las decisiones de tipos de datos de motor y constraints se delegan a P6-D2 (Physical Data Modeling).
+**Nota de ensamblaje:** Este documento consolida aspectos CONCEPTUALES rigurosos que abarcan la totalidad del dominio B2B/B2C, sentando las bases para reglas de negocio (ej. limites geograficos, manejo transaccional). Las decisiones de tipos de datos de motor y constraints se delegan a P6-D2 (Physical Data Modeling).
 
-### ImplicaciÃ³n de Fase
-- El diagrama ERD representa 15 entidades con flujos lÃ³gicos cubiertos. Las relaciones financieras de desembolso (`payouts`) y descuentos (`coupons`) garantizan viabilidad comercial.
-- El Diccionario de Datos es integral, asegurando trazabilidad de todo cÃ©ntimo procesado y los datos bancarios del Finquero.
+### Implicacion de Fase
+- El diagrama ERD representa 15 entidades con flujos logicos cubiertos. Las relaciones financieras de desembolso (`payouts`) y descuentos (`coupons`) garantizan viabilidad comercial.
+- El Diccionario de Datos es integral, asegurando trazabilidad de todo centimo procesado y los datos bancarios del Finquero.
 - **Proceder a D7:** Diagramas de Secuencia del Sistema.
 

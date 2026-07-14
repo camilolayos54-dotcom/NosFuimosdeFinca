@@ -43,7 +43,7 @@ flowchart TD
     ErrorToastUI[Toast Error<br>Fallo de Conexión]
     
     %% Nodos Asíncronos
-    DB((Supabase DB<br>Agregación de Datos))
+    DB((PostgreSQL DB<br>Agregación de Datos))
     
     %% Flujo Lineal B2B
     SidebarUI --> |Clic 'Finanzas'| SkeletonUI

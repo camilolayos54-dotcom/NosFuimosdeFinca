@@ -43,7 +43,7 @@ flowchart TD
     DetailUI[Pantalla de Detalles<br>Ruta Destino Específica]
     
     %% Nodos Asíncronos
-    DB((Supabase DB<br>Consultar Historial))
+    DB((PostgreSQL DB<br>Consultar Historial))
     
     %% Decisiones
     CountCheck{¿Hay<br>Notificaciones?}
@@ -60,13 +60,13 @@ flowchart TD
 ```
 
 ### 3.2. User Flow: Interrupción Asíncrona (WebSocket Toast)
-Este flujo modela un evento del sistema que es empujado al Frontend sin que el usuario haga absolutamente nada (Real-time). Exige que el Frontend esté suscrito a un canal de Supabase/WebSocket.
+Este flujo modela un evento del sistema que es empujado al Frontend sin que el usuario haga absolutamente nada (Real-time). Exige que el Frontend esté suscrito a un canal de Spring WebSocket.
 
 ```mermaid
 flowchart TD
     %% Nodos Lógicos/Asíncronos
     ExternalTrigger((Evento Externo<br>Ej. Wompi Confirma Pago))
-    SupabaseRealtime((Supabase WebSocket<br>Canal: 'host_alerts'))
+    SpringWebSocket((Spring WebSocket<br>Canal: 'host_alerts'))
     
     %% Nodos UI
     CurrentUI[Cualquier Pantalla B2B<br>Ej. /dashboard/calendario]
@@ -75,8 +75,8 @@ flowchart TD
     DestinationUI[Pantalla de Reserva<br>Ruta: /dashboard/reservas/id]
     
     %% Flujo Asíncrono Hacia el Cliente
-    ExternalTrigger -.-> |Dispara Evento DB| SupabaseRealtime
-    SupabaseRealtime -.-> |Push Data al Cliente| ToastUI
+    ExternalTrigger -.-> |Dispara Evento DB| SpringWebSocket
+    SpringWebSocket -.-> |Push Data al Cliente| ToastUI
     
     %% Interacción del Usuario
     CurrentUI --> ToastUI

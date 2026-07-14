@@ -5,37 +5,37 @@
 **Fase:** 6 â€” Technical Design
 **Estado:** Approved
 
-*Backlink a Fase 4:* Este entregable implementa fÃ­sicamente los permisos y barreras teÃ³ricas definidas en la matriz de autorizaciÃ³n `[[PHASE_4_SYSTEM_MODELING/11.Authorization_and_Security/example_output_d11_authorization_matrix.md]]`.
+*Backlink a Fase 4:* Este entregable implementa fisicamente los permisos y barreras teoricas definidas en la matriz de autorizacion `[[PHASE_4_SYSTEM_MODELING/11.Authorization_and_Security/example_output_d11_authorization_matrix.md]]`.
 
 ---
 
-## 2. EspecificaciÃ³n de CriptografÃ­a y Token
+## 2. Especificacion de Criptografia y Token
 
 ### 2.1 Cifrado y Hashing
-- **Hashing de ContraseÃ±as:** Se utilizarÃ¡ **bcrypt** con factor de coste `saltRounds=10`. Esto es manejado de forma nativa por el motor de identidad del BaaS (Supabase GoTrue), ofreciendo resistencia comprobada contra ataques de fuerza bruta offline.
-- **Cifrado de PII en Reposo (Encryption at Rest):** No se desarrollarÃ¡ cifrado simÃ©trico adicional a nivel de cÃ³digo de aplicaciÃ³n (ej. cifrar manualmente con llaves AWS KMS antes del `INSERT`). Nos apoyaremos en el cifrado AES-256 a nivel de volumen de disco fÃ­sico que provee la infraestructura (AWS/Supabase) y protegeremos el acceso lÃ³gico a la PII (`bank_account_number`, `document_number`) utilizando PostgreSQL Row Level Security (RLS) en el diseÃ±o de base de datos (Fase 6 D2).
+- **Hashing de Contrasenas:** Se utilizara **bcrypt** con factor de coste `saltRounds=10`. Esto es manejado de forma nativa por el motor de identidad del PostgreSQL + Spring Boot (PostgreSQL GoTrue), ofreciendo resistencia comprobada contra ataques de fuerza bruta offline.
+- **Cifrado de PII en Reposo (Encryption at Rest):** No se desarrollara cifrado simetrico adicional a nivel de codigo de aplicacion (ej. cifrar manualmente con llaves AWS KMS antes del `INSERT`). Nos apoyaremos en el cifrado AES-256 a nivel de volumen de disco fisico que provee la infraestructura (AWS/PostgreSQL) y protegeremos el acceso logico a la PII (`bank_account_number`, `document_number`) utilizando PostgreSQL Row Level Security (Spring Security + Row-Level Filtering) en el diseno de base de datos (Fase 6 D2).
 
 ### 2.2 Ciclo de Vida del Token (Session Lifecycle)
-- **Proveedor:** JWT generado asimÃ©tricamente por Supabase Auth, firmado mediante `HS256`.
-- **Estrategia de Almacenamiento Frontend:** Dado el framework Next.js con soporte Server-Side Rendering (SSR), el token se transmitirÃ¡ exclusivamente mediante **Cookies** con los flags `HttpOnly=true`, `Secure=true` y `SameSite=Lax`. **EstÃ¡ terminantemente prohibido almacenar tokens en `localStorage`**, eliminando asÃ­ la superficie de ataque para inyecciones de scripts (XSS).
-- **Tiempos de ExpiraciÃ³n:**
+- **Proveedor:** JWT generado asimetricamente por Spring Security + JWT, firmado mediante `HS256`.
+- **Estrategia de Almacenamiento Frontend:** Dado el framework Spring Boot (Java) con soporte Server-Side Rendering (SSR), el token se transmitira exclusivamente mediante **Cookies** con los flags `HttpOnly=true`, `Secure=true` y `SameSite=Lax`. **Esta terminantemente prohibido almacenar tokens en `localStorage`**, eliminando asi la superficie de ataque para inyecciones de scripts (XSS).
+- **Tiempos de Expiracion:**
   - `AccessToken` (Vida corta): 1 hora.
-  - `RefreshToken` (SesiÃ³n prolongada): 7 dÃ­as.
+  - `RefreshToken` (Sesion prolongada): 7 dias.
 
 ---
 
-## 3. PseudocÃ³digo / LÃ³gica de Middleware (Next.js Edge)
+## 3. Pseudocodigo / Logica de Middleware (Spring Boot (Java) Edge)
 
-El archivo central de seguridad (Next.js `middleware.ts`) se ejecutarÃ¡ en la capa *Edge* antes de que cualquier request toque la base de datos o el frontend renderizado. Contiene dos barreras:
+El archivo central de seguridad (Spring Boot (Java) `SecurityConfig.java`) se ejecutara en la capa *Edge* antes de que cualquier request toque la base de datos o el frontend renderizado. Contiene dos barreras:
 
-### 3.1 Estrategia de RevocaciÃ³n y AuthGuard (Identidad)
-ValidaciÃ³n *Activa*. No nos confiaremos de la lectura en memoria del JWT. Usaremos la librerÃ­a `supabase/ssr` para verificar contra la BBDD si la sesiÃ³n sigue activa, permitiendo la revocaciÃ³n instantÃ¡nea (ej. si el usuario cambia la contraseÃ±a en otro equipo).
+### 3.1 Estrategia de Revocacion y AuthGuard (Identidad)
+Validacion *Activa*. No nos confiaremos de la lectura en memoria del JWT. Usaremos la libreria `postgresql/ssr` para verificar contra la BBDD si la sesion sigue activa, permitiendo la revocacion instantanea (ej. si el usuario cambia la contrasena en otro equipo).
 
 ```text
-1. INICIO: Request interceptado en el Edge de Vercel/Next.js.
+1. INICIO: Request interceptado en el Edge de Railway/Render/Spring Boot (Java).
 2. Extraer cookie `sb-[project]-auth-token`.
-3. Validar sesiÃ³n: await supabase.auth.getUser()
-4. IF sesiÃ³n es INVÃLIDA (No hay token, expirado o revocado activamente):
+3. Validar sesion: await postgresql.auth.getUser()
+4. IF sesion es INVÃLIDA (No hay token, expirado o revocado activamente):
      5. IF ruta es `/api/*` (Llamada REST interna):
           6. RETURN HTTP 401 Unauthorized.
      7. IF ruta es protegida web (`/host/*`, `/guest/*`, `/admin/*`):
@@ -45,8 +45,8 @@ ValidaciÃ³n *Activa*. No nos confiaremos de la lectura en memoria del JWT. Usa
      11. Pasar el control a RoleGuard.
 ```
 
-### 3.2 RoleGuard (AutorizaciÃ³n)
-EvalÃºa los permisos segÃºn la Matriz de la Fase 4 D11.
+### 3.2 RoleGuard (Autorizacion)
+Evalua los permisos segun la Matriz de la Fase 4 D11.
 
 ```text
 12. INICIO ROLEGUARD.
@@ -62,13 +62,13 @@ EvalÃºa los permisos segÃºn la Matriz de la Fase 4 D11.
       22. Validar firma SHA-256 contra el body con `WOMPI_WEBHOOK_SECRET` de D3.
       23. IF firma NO COINCIDE:
           24. RETURN HTTP 403 Forbidden.
-25. RETURN next() (Permitir el paso al Server Action o la pÃ¡gina).
+25. RETURN next() (Permitir el paso al Spring Boot Service Method o la pagina).
 ```
 
 ---
 
 ## 4. Downstream Consumers
-Este entregable blinda al sistema contra intrusiones antes del inicio de cÃ³digo:
-- **Phase 6 â€” D7 (API Contracts):** OpenApi.yml utilizarÃ¡ el requerimiento de Cookie de SesiÃ³n como el esquema de seguridad global estÃ¡ndar.
-- **Phase 7 â€” D7 (Security & Middleware Implementation):** SerÃ¡ el manual directo de codificaciÃ³n del desarrollador encargado de escribir el archivo maestro `middleware.ts` del repositorio Next.js.
+Este entregable blinda al sistema contra intrusiones antes del inicio de codigo:
+- **Phase 6 â€” D7 (API Contracts):** OpenApi.yml utilizara el requerimiento de Cookie de Sesion como el esquema de seguridad global estandar.
+- **Phase 7 â€” D7 (Security & Middleware Implementation):** Sera el manual directo de codificacion del desarrollador encargado de escribir el archivo maestro `SecurityConfig.java` del repositorio Spring Boot (Java).
 
