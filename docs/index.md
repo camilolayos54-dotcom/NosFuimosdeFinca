@@ -1,4 +1,4 @@
-﻿# Portal de Documentacion Arquitectonica e Ingenieria de Software
+# Portal de Documentacion Arquitectonica e Ingenieria de Software
 
 **Proyecto:** Nos Fuimos de Finca  
 **Proposito:** El presente portal constituye el repositorio centralizado de documentacion tecnica, estrategica y arquitectonica del sistema. Su objetivo primordial es garantizar la trazabilidad completa del Ciclo de Vida de Desarrollo de Software (SDLC) bajo la metodologia *Full Stack Development*. 
@@ -19,11 +19,11 @@ Esta separacion modular garantiza que el codigo, la base de datos y la documenta
 
 ---
 
-## Ãndice Analitico de Entregables e Instrumentos
+## Indice Analitico de Entregables e Instrumentos
 
 A continuacion se detalla el objetivo metodologico de cada artefacto documental estructurado a lo largo del SDLC. Todos los nombres listados aqui coinciden exactamente con los nombres de los archivos fuente en formato Markdown.
 
-### ðŸ“‚ 00. Reconocimiento del Problema (Problem Recognition)
+###  00. Reconocimiento del Problema (Problem Recognition)
 **Objetivo de la Fase:** Validar empiricamente la existencia de una problematica de negocio que justifique el desarrollo de software.
 
 - **`00_phase-0-brief.md`**: El Brief historico fundamental que dio origen al proyecto.
@@ -38,7 +38,7 @@ A continuacion se detalla el objetivo metodologico de cada artefacto documental 
 - **`9. Go_No-Go Signal.md`**: Formalizar la decision gerencial de proceder o detener el proyecto.
 - **`10. Problem Pattern Log Entry.md`**: Registrar patrones recurrentes para futuras referencias.
 
-### ðŸ“‚ 01. Viabilidad Temprana (Early Viability)
+###  01. Viabilidad Temprana (Early Viability)
 **Objetivo de la Fase:** Cuantificar la rentabilidad y evaluar el riesgo tecnico antes de comprometer recursos.
 
 - **`18.Brief.md`**: Contexto ejecutivo de la viabilidad temprana.
@@ -60,7 +60,7 @@ A continuacion se detalla el objetivo metodologico de cada artefacto documental 
 - **`16. Work Process Document.md`**: Cadencia de trabajo, canales y metodologia.
 - **`17. Go_No-Go_Pivot Decision Record.md`**: Decision ejecutiva para transicionar al Kickoff.
 
-### ðŸ“‚ 02. Inicializacion del Proyecto (Project Kickoff)
+###  02. Inicializacion del Proyecto (Project Kickoff)
 **Objetivo de la Fase:** Formalizar el ecosistema de desarrollo, convenciones de ingenieria y decisiones base.
 
 - **`13. Phase 2 Brief.md`**: Compilacion de directrices del Kickoff.
@@ -77,8 +77,8 @@ A continuacion se detalla el objetivo metodologico de cada artefacto documental 
 - **`11. Communication and Escalation Protocols.md`**: Vias formales de reporte ante fallos.
 - **`12. Risk Register Update.md`**: Vulnerabilidades descubiertas en infraestructura.
 
-### ðŸ“‚ 03. Ingenieria de Requisitos
-**Objetivo de la Fase:** Mapear exhaustivamente las funciones y reglas de negocio sin ambigÃ¼edad logica, centralizando todo en 8 modulos principales de negocio.
+###  03. Ingenieria de Requisitos
+**Objetivo de la Fase:** Mapear exhaustivamente las funciones y reglas de negocio sin ambigedad logica, centralizando todo en 8 modulos principales de negocio.
 
 - **`01. Diagrama de Contexto del Sistema.md`**: Frontera entre el sistema propuesto y el entorno externo.
 - **`02. Definicion de Actores y Roles.md`**: Estipular roles de usuario y sus vectores de accion primarios.
@@ -89,7 +89,7 @@ A continuacion se detalla el objetivo metodologico de cada artefacto documental 
 - **`07. Module Specifications/modules`**: Contiene las especificaciones detalladas, reglas e historias de usuario para cada uno de los 8 modulos consolidados (`MOD-AUTH`, `MOD-CAL`, `MOD-DASH`, `MOD-NOT`, `MOD-PAY`, `MOD-PROP`, `MOD-RSV`, `MOD-SRCH`).
 - **`08. System Requirements Specification.md`**: Documento de especificacion de requisitos del sistema final (SRS) unificado.
 
-### ðŸ“‚ 04. Modelado del Sistema
+###  04. Modelado del Sistema
 **Objetivo de la Fase:** Moldear conceptual y visualmente el comportamiento del software, separando claramente la interfaz de usuario y la arquitectura de datos relacional.
 
 - **[1. Estrategia de Contenido y AI](04-system-modeling/01.Content_Strategy_Information_Architecture/1.Content_Strategy_Information_Architecture.md)**: Estructuracion taxonomica del portal.
