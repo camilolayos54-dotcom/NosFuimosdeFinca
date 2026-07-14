@@ -5417,10 +5417,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-diagrama-entidad-relacia3n-conceptual-erd" class="md-nav__link">
+  <a href="#1-diagrama-entidad-relacion-conceptual-erd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Diagrama Entidad-RelaciÃ³n Conceptual (ERD)
+        1. Diagrama Entidad-Relacion Conceptual (ERD)
       
     </span>
   </a>
@@ -5482,12 +5482,12 @@
   <a href="#22-tablas-base-de-catalogo-inmuebles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Tablas Base de CatÃ¡logo (Inmuebles)
+        2.2 Tablas Base de Catalogo (Inmuebles)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 Tablas Base de CatÃ¡logo (Inmuebles)">
+    <nav class="md-nav" aria-label="2.2 Tablas Base de Catalogo (Inmuebles)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5673,10 +5673,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#implicacia3n-de-fase" class="md-nav__link">
+  <a href="#implicacion-de-fase" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ImplicaciÃ³n de Fase
+        Implicacion de Fase
       
     </span>
   </a>
@@ -7461,10 +7461,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-diagrama-entidad-relacia3n-conceptual-erd" class="md-nav__link">
+  <a href="#1-diagrama-entidad-relacion-conceptual-erd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Diagrama Entidad-RelaciÃ³n Conceptual (ERD)
+        1. Diagrama Entidad-Relacion Conceptual (ERD)
       
     </span>
   </a>
@@ -7526,12 +7526,12 @@
   <a href="#22-tablas-base-de-catalogo-inmuebles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Tablas Base de CatÃ¡logo (Inmuebles)
+        2.2 Tablas Base de Catalogo (Inmuebles)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.2 Tablas Base de CatÃ¡logo (Inmuebles)">
+    <nav class="md-nav" aria-label="2.2 Tablas Base de Catalogo (Inmuebles)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7717,10 +7717,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#implicacia3n-de-fase" class="md-nav__link">
+  <a href="#implicacion-de-fase" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ImplicaciÃ³n de Fase
+        Implicacion de Fase
       
     </span>
   </a>
@@ -7751,14 +7751,14 @@
 
 <h1 id="entregable-6-d6-domain-model-y-erd-conceptual">Entregable 6 (D6): Domain Model y ERD Conceptual</h1>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
-<strong>Fase:</strong> 4 â€” Modelado del Sistema
-<strong>Alcance:</strong> Global (RevisiÃ³n Extendida B2B/B2C y Financiera)
+<strong>Fase:</strong> 4  Modelado del Sistema
+<strong>Alcance:</strong> Global (Revision Extendida B2B/B2C y Financiera)
 <strong>Estado:</strong> Aprobado</p>
 <hr />
-<h2 id="1-diagrama-entidad-relacia3n-conceptual-erd">1. Diagrama Entidad-RelaciÃ³n Conceptual (ERD)</h2>
-<p><em>Backlink a Fase 3:</em> Las entidades se derivan del <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/7.Module_Specification.md]]</code> y los flujos de dominio. Esta segunda revisiÃ³n profunda garantiza el soporte contable completo (Payouts, Cupones, Fees), la gestiÃ³n detallada del catÃ¡logo (Precios estacionales, Habitaciones) y la usabilidad (Favoritos).</p>
-<p>Construido en <code>[[example_step_2_cardinality_relations.md]]</code>. 15 entidades base normalizadas en 3NF. NingÃºn tipo fÃ­sico de motor asignado.</p>
-<p>````mermaid
+<h2 id="1-diagrama-entidad-relacion-conceptual-erd">1. Diagrama Entidad-Relacion Conceptual (ERD)</h2>
+<p><em>Backlink a Fase 3:</em> Las entidades se derivan del <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/7.Module_Specification.md]]</code> y los flujos de dominio. Esta segunda revision profunda garantiza el soporte contable completo (Payouts, Cupones, Fees), la gestion detallada del catalogo (Precios estacionales, Habitaciones) y la usabilidad (Favoritos).</p>
+<p>Construido en <code>[[example_step_2_cardinality_relations.md]]</code>. 15 entidades base normalizadas en 3NF. Ningun tipo fisico de motor asignado.</p>
+<pre class="mermaid"><code>erDiagram
     USERS {
         uuid id PK "[REQUERIDO, UNICO]"
         string email "[REQUERIDO, UK]"
@@ -7775,213 +7775,212 @@
         timestamp created_at "[AUDITORIA]"
         timestamp updated_at "[AUDITORIA]"
         timestamp deleted_at "[AUDITORIA]"
-    }</p>
-<pre><code>PROPERTIES {
-    uuid id PK "[REQUERIDO, UNICO]"
-    uuid host_id FK "[REQUERIDO]"
-    string name "[REQUERIDO]"
-    text description "[REQUERIDO]"
-    bigint price_per_night "[REQUERIDO, MONETARIO]"
-    bigint cleaning_fee "[REQUERIDO, MONETARIO]"
-    int max_guests "[REQUERIDO]"
-    int bedrooms_count "[REQUERIDO]"
-    int bathrooms_count "[REQUERIDO]"
-    int beds_count "[REQUERIDO]"
-    float location_lat "[REQUERIDO, GEO]"
-    float location_lng "[REQUERIDO, GEO]"
-    string location_address "[REQUERIDO]"
-    string status "[REQUERIDO]"
-    boolean is_active "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    }
 
-PROPERTY_IMAGES {
-    uuid id PK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO]"
-    string url_hd "[REQUERIDO]"
-    int sort_order "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PROPERTIES {
+        uuid id PK "[REQUERIDO, UNICO]"
+        uuid host_id FK "[REQUERIDO]"
+        string name "[REQUERIDO]"
+        text description "[REQUERIDO]"
+        bigint price_per_night "[REQUERIDO, MONETARIO]"
+        bigint cleaning_fee "[REQUERIDO, MONETARIO]"
+        int max_guests "[REQUERIDO]"
+        int bedrooms_count "[REQUERIDO]"
+        int bathrooms_count "[REQUERIDO]"
+        int beds_count "[REQUERIDO]"
+        float location_lat "[REQUERIDO, GEO]"
+        float location_lng "[REQUERIDO, GEO]"
+        string location_address "[REQUERIDO]"
+        string status "[REQUERIDO]"
+        boolean is_active "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-PROPERTY_AMENITIES {
-    uuid id PK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO]"
-    string amenity_key "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PROPERTY_IMAGES {
+        uuid id PK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO]"
+        string url_hd "[REQUERIDO]"
+        int sort_order "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-PROPERTY_RULES {
-    uuid id PK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO, UNICO]"
-    string check_in_time "[REQUERIDO]"
-    string check_out_time "[REQUERIDO]"
-    boolean allows_pets "[REQUERIDO]"
-    boolean allows_parties "[REQUERIDO]"
-    text additional_rules
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PROPERTY_AMENITIES {
+        uuid id PK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO]"
+        string amenity_key "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-PROPERTY_AVAILABILITY {
-    uuid id PK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO]"
-    date start_date "[REQUERIDO]"
-    date end_date "[REQUERIDO]"
-    string reason "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PROPERTY_RULES {
+        uuid id PK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO, UNICO]"
+        string check_in_time "[REQUERIDO]"
+        string check_out_time "[REQUERIDO]"
+        boolean allows_pets "[REQUERIDO]"
+        boolean allows_parties "[REQUERIDO]"
+        text additional_rules
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-SEASONAL_PRICES {
-    uuid id PK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO]"
-    date start_date "[REQUERIDO]"
-    date end_date "[REQUERIDO]"
-    bigint price_per_night "[REQUERIDO, MONETARIO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PROPERTY_AVAILABILITY {
+        uuid id PK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO]"
+        date start_date "[REQUERIDO]"
+        date end_date "[REQUERIDO]"
+        string reason "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-WISHLISTS {
-    uuid id PK "[REQUERIDO]"
-    uuid user_id FK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    SEASONAL_PRICES {
+        uuid id PK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO]"
+        date start_date "[REQUERIDO]"
+        date end_date "[REQUERIDO]"
+        bigint price_per_night "[REQUERIDO, MONETARIO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-COUPONS {
-    uuid id PK "[REQUERIDO]"
-    string code "[REQUERIDO, UK]"
-    float discount_percentage
-    bigint max_discount_amount "[MONETARIO]"
-    date valid_from "[REQUERIDO]"
-    date valid_until "[REQUERIDO]"
-    int usage_limit
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    WISHLISTS {
+        uuid id PK "[REQUERIDO]"
+        uuid user_id FK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-BOOKINGS {
-    uuid id PK "[REQUERIDO, UNICO]"
-    uuid property_id FK "[REQUERIDO]"
-    uuid guest_id FK "[REQUERIDO]"
-    uuid coupon_id FK
-    date check_in "[REQUERIDO]"
-    date check_out "[REQUERIDO]"
-    int guest_count "[REQUERIDO]"
-    string agency_client_name
-    bigint base_price_amount "[REQUERIDO, MONETARIO]"
-    bigint cleaning_fee_amount "[REQUERIDO, MONETARIO]"
-    bigint platform_fee_amount "[REQUERIDO, MONETARIO]"
-    bigint taxes_amount "[REQUERIDO, MONETARIO]"
-    bigint total_price "[REQUERIDO, MONETARIO]"
-    string status "[REQUERIDO]"
-    string cancellation_reason
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    COUPONS {
+        uuid id PK "[REQUERIDO]"
+        string code "[REQUERIDO, UK]"
+        float discount_percentage
+        bigint max_discount_amount "[MONETARIO]"
+        date valid_from "[REQUERIDO]"
+        date valid_until "[REQUERIDO]"
+        int usage_limit
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-PAYMENTS {
-    uuid id PK "[REQUERIDO, UNICO]"
-    uuid booking_id FK "[REQUERIDO]"
-    bigint amount "[REQUERIDO, MONETARIO]"
-    string currency "[REQUERIDO]"
-    string gateway_reference "UK"
-    string payment_method
-    timestamp transaction_date "[REQUERIDO]"
-    string receipt_url
-    string status "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    BOOKINGS {
+        uuid id PK "[REQUERIDO, UNICO]"
+        uuid property_id FK "[REQUERIDO]"
+        uuid guest_id FK "[REQUERIDO]"
+        uuid coupon_id FK
+        date check_in "[REQUERIDO]"
+        date check_out "[REQUERIDO]"
+        int guest_count "[REQUERIDO]"
+        string agency_client_name
+        bigint base_price_amount "[REQUERIDO, MONETARIO]"
+        bigint cleaning_fee_amount "[REQUERIDO, MONETARIO]"
+        bigint platform_fee_amount "[REQUERIDO, MONETARIO]"
+        bigint taxes_amount "[REQUERIDO, MONETARIO]"
+        bigint total_price "[REQUERIDO, MONETARIO]"
+        string status "[REQUERIDO]"
+        string cancellation_reason
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-PAYOUTS {
-    uuid id PK "[REQUERIDO, UNICO]"
-    uuid booking_id FK "[REQUERIDO, UNICO]"
-    uuid host_id FK "[REQUERIDO]"
-    bigint amount "[REQUERIDO, MONETARIO]"
-    string currency "[REQUERIDO]"
-    string bank_reference
-    timestamp transaction_date
-    string status "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PAYMENTS {
+        uuid id PK "[REQUERIDO, UNICO]"
+        uuid booking_id FK "[REQUERIDO]"
+        bigint amount "[REQUERIDO, MONETARIO]"
+        string currency "[REQUERIDO]"
+        string gateway_reference "UK"
+        string payment_method
+        timestamp transaction_date "[REQUERIDO]"
+        string receipt_url
+        string status "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-REVIEWS {
-    uuid id PK "[REQUERIDO]"
-    uuid property_id FK "[REQUERIDO]"
-    uuid guest_id FK "[REQUERIDO]"
-    int rating "[REQUERIDO]"
-    text comment
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    PAYOUTS {
+        uuid id PK "[REQUERIDO, UNICO]"
+        uuid booking_id FK "[REQUERIDO, UNICO]"
+        uuid host_id FK "[REQUERIDO]"
+        bigint amount "[REQUERIDO, MONETARIO]"
+        string currency "[REQUERIDO]"
+        string bank_reference
+        timestamp transaction_date
+        string status "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-NOTIFICATIONS {
-    uuid id PK "[REQUERIDO]"
-    uuid user_id FK "[REQUERIDO]"
-    string type "[REQUERIDO]"
-    string title "[REQUERIDO]"
-    text body "[REQUERIDO]"
-    timestamp read_at
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    REVIEWS {
+        uuid id PK "[REQUERIDO]"
+        uuid property_id FK "[REQUERIDO]"
+        uuid guest_id FK "[REQUERIDO]"
+        int rating "[REQUERIDO]"
+        text comment
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-REFRESH_TOKENS {
-    uuid id PK "[REQUERIDO]"
-    uuid user_id FK "[REQUERIDO]"
-    string token_hash "[REQUERIDO, UK]"
-    timestamp expires_at "[REQUERIDO]"
-    timestamp created_at "[AUDITORIA]"
-    timestamp updated_at "[AUDITORIA]"
-    timestamp deleted_at "[AUDITORIA]"
-}
+    NOTIFICATIONS {
+        uuid id PK "[REQUERIDO]"
+        uuid user_id FK "[REQUERIDO]"
+        string type "[REQUERIDO]"
+        string title "[REQUERIDO]"
+        text body "[REQUERIDO]"
+        timestamp read_at
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-%% Relaciones
-USERS ||--o{ PROPERTIES : "hosts (1:N)"
-USERS ||--o{ BOOKINGS : "guest_of (1:N)"
-USERS ||--o{ REVIEWS : "writes (1:N)"
-USERS ||--o{ NOTIFICATIONS : "receives_alerts (1:N)"
-USERS ||--o{ REFRESH_TOKENS : "owns_session (1:N)"
-USERS ||--o{ WISHLISTS : "saves (1:N)"
-USERS ||--o{ PAYOUTS : "receives_money (1:N)"
+    REFRESH_TOKENS {
+        uuid id PK "[REQUERIDO]"
+        uuid user_id FK "[REQUERIDO]"
+        string token_hash "[REQUERIDO, UK]"
+        timestamp expires_at "[REQUERIDO]"
+        timestamp created_at "[AUDITORIA]"
+        timestamp updated_at "[AUDITORIA]"
+        timestamp deleted_at "[AUDITORIA]"
+    }
 
-PROPERTIES ||--o{ PROPERTY_IMAGES : "has_photos (1:N)"
-PROPERTIES ||--o{ PROPERTY_AMENITIES : "has_amenities (1:N)"
-PROPERTIES ||--|| PROPERTY_RULES : "enforces (1:1)"
-PROPERTIES ||--o{ PROPERTY_AVAILABILITY : "blocked_dates (1:N)"
-PROPERTIES ||--o{ SEASONAL_PRICES : "seasonal_rates (1:N)"
-PROPERTIES ||--o{ BOOKINGS : "receives (1:N)"
-PROPERTIES ||--o{ REVIEWS : "is_reviewed (1:N)"
-PROPERTIES ||--o{ WISHLISTS : "is_favorited (1:N)"
+    %% Relaciones
+    USERS ||--o{ PROPERTIES : "hosts (1:N)"
+    USERS ||--o{ BOOKINGS : "guest_of (1:N)"
+    USERS ||--o{ REVIEWS : "writes (1:N)"
+    USERS ||--o{ NOTIFICATIONS : "receives_alerts (1:N)"
+    USERS ||--o{ REFRESH_TOKENS : "owns_session (1:N)"
+    USERS ||--o{ WISHLISTS : "saves (1:N)"
+    USERS ||--o{ PAYOUTS : "receives_money (1:N)"
 
-COUPONS ||--o{ BOOKINGS : "applied_to (1:N)"
-BOOKINGS ||--o{ PAYMENTS : "generates_transaction (1:N)"
-BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
-</code></pre>
-<p>```</p>
+    PROPERTIES ||--o{ PROPERTY_IMAGES : "has_photos (1:N)"
+    PROPERTIES ||--o{ PROPERTY_AMENITIES : "has_amenities (1:N)"
+    PROPERTIES ||--|| PROPERTY_RULES : "enforces (1:1)"
+    PROPERTIES ||--o{ PROPERTY_AVAILABILITY : "blocked_dates (1:N)"
+    PROPERTIES ||--o{ SEASONAL_PRICES : "seasonal_rates (1:N)"
+    PROPERTIES ||--o{ BOOKINGS : "receives (1:N)"
+    PROPERTIES ||--o{ REVIEWS : "is_reviewed (1:N)"
+    PROPERTIES ||--o{ WISHLISTS : "is_favorited (1:N)"
+
+    COUPONS ||--o{ BOOKINGS : "applied_to (1:N)"
+    BOOKINGS ||--o{ PAYMENTS : "generates_transaction (1:N)"
+    BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"</code></pre>
 <hr />
 <h2 id="2-diccionario-de-sensibilidad-conceptual">2. Diccionario de Sensibilidad Conceptual</h2>
-<p>Construido en <code>[[example_step_3_data_dictionary.md]]</code>. Las etiquetas <code>[MONETARIO]</code>, <code>[ÃšNICO]</code>, <code>[REQUERIDO]</code>, <code>[GEO]</code> son instrucciones semÃ¡nticas para P6-D2 (Physical Data Modeling). NingÃºn tipo SQL exacto fue asignado en esta fase.</p>
+<p>Construido en <code>[[example_step_3_data_dictionary.md]]</code>. Las etiquetas <code>[MONETARIO]</code>, <code>[NICO]</code>, <code>[REQUERIDO]</code>, <code>[GEO]</code> son instrucciones semanticas para P6-D2 (Physical Data Modeling). Ningun tipo SQL exacto fue asignado en esta fase.</p>
 <h3 id="21-tablas-base-de-identidad-y-perfil">2.1 Tablas Base de Identidad y Perfil</h3>
 <h4 id="tabla-users">Tabla: <code>users</code></h4>
 <table>
@@ -7994,11 +7993,11 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 <tbody>
 <tr>
 <td><code>id</code></td>
-<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>email</code></td>
-<td><code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>password_hash</code></td>
@@ -8014,11 +8013,11 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>phone_number</code></td>
-<td><code>[REQUERIDO]</code> (CrÃ­tico para WhatsApp B2B)</td>
+<td><code>[REQUERIDO]</code> (Critico para WhatsApp B2B)</td>
 </tr>
 <tr>
 <td><code>document_number</code></td>
-<td><code>[ÃšNICO]</code> (Opcional hasta el KYC)</td>
+<td><code>[NICO]</code> (Opcional hasta el KYC)</td>
 </tr>
 <tr>
 <td><code>avatar_url</code></td>
@@ -8042,7 +8041,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8069,11 +8068,11 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="22-tablas-base-de-catalogo-inmuebles">2.2 Tablas Base de CatÃ¡logo (Inmuebles)</h3>
+<h3 id="22-tablas-base-de-catalogo-inmuebles">2.2 Tablas Base de Catalogo (Inmuebles)</h3>
 <h4 id="tabla-properties">Tabla: <code>properties</code></h4>
 <table>
 <thead>
@@ -8085,7 +8084,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 <tbody>
 <tr>
 <td><code>id</code></td>
-<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>host_id</code></td>
@@ -8105,7 +8104,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>cleaning_fee</code></td>
-<td><code>[REQUERIDO]</code>, <code>[MONETARIO]</code> (Fijo por estadÃ­a)</td>
+<td><code>[REQUERIDO]</code>, <code>[MONETARIO]</code> (Fijo por estadia)</td>
 </tr>
 <tr>
 <td><code>max_guests</code></td>
@@ -8145,7 +8144,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8180,7 +8179,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8211,7 +8210,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8238,7 +8237,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8257,7 +8256,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>property_id</code></td>
-<td><code>[FK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[FK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>check_in_time</code></td>
@@ -8281,7 +8280,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8316,7 +8315,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8336,7 +8335,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>code</code></td>
-<td><code>[REQUERIDO]</code>, <code>[ÃšNICO]</code> (Ej. FINCA26)</td>
+<td><code>[REQUERIDO]</code>, <code>[NICO]</code> (Ej. FINCA26)</td>
 </tr>
 <tr>
 <td><code>discount_percentage</code></td>
@@ -8344,7 +8343,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>max_discount_amount</code></td>
-<td><code>[MONETARIO]</code> (LÃ­mite del descuento)</td>
+<td><code>[MONETARIO]</code> (Limite del descuento)</td>
 </tr>
 <tr>
 <td><code>valid_from</code></td>
@@ -8356,11 +8355,11 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>usage_limit</code></td>
-<td>(Opcional, lÃ­mite de redenciones)</td>
+<td>(Opcional, limite de redenciones)</td>
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8375,7 +8374,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 <tbody>
 <tr>
 <td><code>id</code></td>
-<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>property_id</code></td>
@@ -8435,7 +8434,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8450,7 +8449,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 <tbody>
 <tr>
 <td><code>id</code></td>
-<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>booking_id</code></td>
@@ -8466,7 +8465,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>gateway_reference</code></td>
-<td><code>[ÃšNICO]</code></td>
+<td><code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>payment_method</code></td>
@@ -8486,7 +8485,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8501,11 +8500,11 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 <tbody>
 <tr>
 <td><code>id</code></td>
-<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[PK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>booking_id</code></td>
-<td><code>[FK]</code>, <code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[FK]</code>, <code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>host_id</code></td>
@@ -8533,7 +8532,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8569,7 +8568,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8608,7 +8607,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
@@ -8631,7 +8630,7 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>token_hash</code></td>
-<td><code>[REQUERIDO]</code>, <code>[ÃšNICO]</code></td>
+<td><code>[REQUERIDO]</code>, <code>[NICO]</code></td>
 </tr>
 <tr>
 <td><code>expires_at</code></td>
@@ -8639,16 +8638,16 @@ BOOKINGS ||--|| PAYOUTS : "triggers_payout (1:1)"
 </tr>
 <tr>
 <td><code>created_at</code>, <code>updated_at</code>, <code>deleted_at</code></td>
-<td><code>[AUDITORÃA]</code></td>
+<td><code>[AUDITORIA]</code></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p><strong>Nota de ensamblaje:</strong> Este documento consolida aspectos CONCEPTUALES rigurosos que abarcan la totalidad del dominio B2B/B2C, sentando las bases para reglas de negocio (ej. lÃ­mites geogrÃ¡ficos, manejo transaccional). Las decisiones de tipos de datos de motor y constraints se delegan a P6-D2 (Physical Data Modeling).</p>
-<h3 id="implicacia3n-de-fase">ImplicaciÃ³n de Fase</h3>
+<p><strong>Nota de ensamblaje:</strong> Este documento consolida aspectos CONCEPTUALES rigurosos que abarcan la totalidad del dominio B2B/B2C, sentando las bases para reglas de negocio (ej. limites geograficos, manejo transaccional). Las decisiones de tipos de datos de motor y constraints se delegan a P6-D2 (Physical Data Modeling).</p>
+<h3 id="implicacion-de-fase">Implicacion de Fase</h3>
 <ul>
-<li>El diagrama ERD representa 15 entidades con flujos lÃ³gicos cubiertos. Las relaciones financieras de desembolso (<code>payouts</code>) y descuentos (<code>coupons</code>) garantizan viabilidad comercial.</li>
-<li>El Diccionario de Datos es integral, asegurando trazabilidad de todo cÃ©ntimo procesado y los datos bancarios del Finquero.</li>
+<li>El diagrama ERD representa 15 entidades con flujos logicos cubiertos. Las relaciones financieras de desembolso (<code>payouts</code>) y descuentos (<code>coupons</code>) garantizan viabilidad comercial.</li>
+<li>El Diccionario de Datos es integral, asegurando trazabilidad de todo centimo procesado y los datos bancarios del Finquero.</li>
 <li><strong>Proceder a D7:</strong> Diagramas de Secuencia del Sistema.</li>
 </ul>
 

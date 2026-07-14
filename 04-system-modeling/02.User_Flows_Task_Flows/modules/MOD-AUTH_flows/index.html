@@ -7423,7 +7423,7 @@
 <h3 id="31-user-flow-autenticacion-unificada-b2b-login">3.1. User Flow: Autenticación Unificada B2B (<code>/login</code>)</h3>
 <p>El camino del usuario que intenta entrar al Portal B2B, con el "Unhappy Path" del error de credenciales y el Muro KYC.</p>
 <pre class="mermaid"><code>flowchart TD
-    %% Nodos Cuadrados: Pantallas Físicas (Next.js)
+    %% Nodos Cuadrados: Pantallas Físicas (Spring Boot (Java))
     LandingUI[Pantalla Landing B2B&lt;br&gt;Ruta: /host]
     LoginUI[Pantalla Login&lt;br&gt;Ruta: /login]
     ToastErrorUI[Componente Toast&lt;br&gt;Credenciales Inválidas]
@@ -7431,7 +7431,7 @@
     OnboardingUI[Pantalla de Bienvenida KYC&lt;br&gt;Ruta: /onboarding]
 
     %% Nodos Redondeados: Backend Asíncrono
-    SupabaseDB((Supabase Auth&lt;br&gt;Verificación JWT))
+    SpringSecurityDB((Spring Security&lt;br&gt;Verificación JWT))
 
     %% Rombos: Evaluaciones Lógicas
     CredentialCheck{¿Email y Clave&lt;br&gt;correctos?}
@@ -7439,10 +7439,10 @@
 
     %% Camino Feliz e Interacción
     LandingUI --&gt; |Clic 'Ingresar'| LoginUI
-    LoginUI --&gt; |Submit Form| SupabaseDB
+    LoginUI --&gt; |Submit Form| SpringSecurityDB
 
     %% Respuesta de Base de Datos
-    SupabaseDB -.-&gt; CredentialCheck
+    SpringSecurityDB -.-&gt; CredentialCheck
 
     %% Unhappy Path (Credenciales)
     CredentialCheck -- No (401 Auth Error) --&gt; ToastErrorUI

@@ -6453,10 +6453,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#escenario-1-performance-cacha-de-catalogo" class="md-nav__link">
+  <a href="#escenario-1-performance-cache-de-catalogo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Escenario 1: Performance (CachÃ© de CatÃ¡logo)
+        Escenario 1: Performance (Cache de Catalogo)
       
     </span>
   </a>
@@ -6475,10 +6475,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#escenario-3-security-data-isolation-rls" class="md-nav__link">
+  <a href="#escenario-3-security-data-isolation-spring-security-row-level-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Escenario 3: Security (Data Isolation RLS)
+        Escenario 3: Security (Data Isolation Spring Security + Row-Level Filtering)
       
     </span>
   </a>
@@ -7326,10 +7326,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#escenario-1-performance-cacha-de-catalogo" class="md-nav__link">
+  <a href="#escenario-1-performance-cache-de-catalogo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Escenario 1: Performance (CachÃ© de CatÃ¡logo)
+        Escenario 1: Performance (Cache de Catalogo)
       
     </span>
   </a>
@@ -7348,10 +7348,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#escenario-3-security-data-isolation-rls" class="md-nav__link">
+  <a href="#escenario-3-security-data-isolation-spring-security-row-level-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Escenario 3: Security (Data Isolation RLS)
+        Escenario 3: Security (Data Isolation Spring Security + Row-Level Filtering)
       
     </span>
   </a>
@@ -7432,14 +7432,14 @@
 </thead>
 <tbody>
 <tr>
-<td>Escenario 1: CachÃ© ISR CatÃ¡logo</td>
+<td>Escenario 1: Cache Spring Cache (@Cacheable) Catalogo</td>
 <td>Performance</td>
 <td>Alto</td>
 <td>Alto</td>
 <td>1</td>
 </tr>
 <tr>
-<td>Escenario 3: Data Isolation RLS</td>
+<td>Escenario 3: Data Isolation Spring Security + Row-Level Filtering</td>
 <td>Security</td>
 <td>Alto</td>
 <td>Alto</td>
@@ -7470,39 +7470,39 @@
 </table>
 <hr />
 <h2 id="3-concrete-scenarios">3. Concrete Scenarios</h2>
-<h4 id="escenario-1-performance-cacha-de-catalogo">Escenario 1: Performance (CachÃ© de CatÃ¡logo)</h4>
+<h4 id="escenario-1-performance-cache-de-catalogo">Escenario 1: Performance (Cache de Catalogo)</h4>
 <ul>
-<li><strong>Source:</strong> Turista anÃ³nimo (Browser/Mobile).</li>
-<li><strong>Stimulus:</strong> Accede a la URL principal <code>/</code> o al catÃ¡logo de fincas <code>/api/v1/properties</code>.</li>
-<li><strong>Environment:</strong> Bajo carga de trÃ¡fico normal de fin de semana (proporciÃ³n R/W 100:1).</li>
-<li><strong>Artifact:</strong> Next.js App Router y CDN (Vercel).</li>
-<li><strong>Response:</strong> El sistema renderiza el catÃ¡logo estÃ¡tico pre-construido y solicita la revalidaciÃ³n en background si el TTL de cachÃ© expirÃ³ (ISR).</li>
+<li><strong>Source:</strong> Turista anonimo (Browser/Mobile).</li>
+<li><strong>Stimulus:</strong> Accede a la URL principal <code>/</code> o al catalogo de fincas <code>/api/v1/properties</code>.</li>
+<li><strong>Environment:</strong> Bajo carga de trafico normal de fin de semana (proporcion R/W 100:1).</li>
+<li><strong>Artifact:</strong> Spring Boot REST API y CDN (Railway/Render).</li>
+<li><strong>Response:</strong> El sistema renderiza el catalogo estatico pre-construido y solicita la revalidacion en background si el TTL de cache expiro (Spring Cache (@Cacheable)).</li>
 <li><strong>Measure:</strong> El First Contentful Paint (FCP) ocurre en &lt; 1.5s y la latencia del TTFB (Time to First Byte) no supera los 200ms en el percentil 95. <em>(Fuente: <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements/example_output_nfr.md|NFR-001]]</code>, <code>[[PHASE_4_SYSTEM_MODELING/12.Architectural_Signals/example_output_d12_signals.md|DS-01]]</code>)</em></li>
 </ul>
 <h4 id="escenario-2-performance-carga-de-media-hd">Escenario 2: Performance (Carga de Media HD)</h4>
 <ul>
-<li><strong>Source:</strong> Turista anÃ³nimo (Browser).</li>
-<li><strong>Stimulus:</strong> Entra a la galerÃ­a de fotos de una finca especÃ­fica.</li>
-<li><strong>Environment:</strong> ConexiÃ³n de red estÃ¡ndar, solicitando hasta 20 imÃ¡genes HD de 10MB.</li>
-<li><strong>Artifact:</strong> Supabase Storage (Buckets) y su CDN integrada.</li>
-<li><strong>Response:</strong> Las imÃ¡genes son servidas directamente desde la CDN perimetral, sin atravesar el servidor de aplicaciones de Next.js, previniendo cuellos de botella de ancho de banda.</li>
-<li><strong>Measure:</strong> Las imÃ¡genes comienzan a cargar inmediatamente, manteniendo el FCP general de la pÃ¡gina &lt; 1.5s. <em>(Fuente: <code>[[PHASE_4_SYSTEM_MODELING/12.Architectural_Signals/example_output_d12_signals.md|DS-02]]</code>)</em></li>
+<li><strong>Source:</strong> Turista anonimo (Browser).</li>
+<li><strong>Stimulus:</strong> Entra a la galeria de fotos de una finca especifica.</li>
+<li><strong>Environment:</strong> Conexion de red estandar, solicitando hasta 20 imagenes HD de 10MB.</li>
+<li><strong>Artifact:</strong> Cloudinary / S3 para imagenes (Buckets) y su CDN integrada.</li>
+<li><strong>Response:</strong> Las imagenes son servidas directamente desde la CDN perimetral, sin atravesar el servidor de aplicaciones de Spring Boot (Java), previniendo cuellos de botella de ancho de banda.</li>
+<li><strong>Measure:</strong> Las imagenes comienzan a cargar inmediatamente, manteniendo el FCP general de la pagina &lt; 1.5s. <em>(Fuente: <code>[[PHASE_4_SYSTEM_MODELING/12.Architectural_Signals/example_output_d12_signals.md|DS-02]]</code>)</em></li>
 </ul>
-<h4 id="escenario-3-security-data-isolation-rls">Escenario 3: Security (Data Isolation RLS)</h4>
+<h4 id="escenario-3-security-data-isolation-spring-security-row-level-filtering">Escenario 3: Security (Data Isolation Spring Security + Row-Level Filtering)</h4>
 <ul>
 <li><strong>Source:</strong> Finquero autenticado (<code>OWNER_API</code>) malintencionado.</li>
-<li><strong>Stimulus:</strong> Intenta enviar una peticiÃ³n <code>PATCH /api/v1/properties/999</code> (id ajeno) mediante Postman.</li>
+<li><strong>Stimulus:</strong> Intenta enviar una peticion <code>PATCH /api/v1/properties/999</code> (id ajeno) mediante Postman.</li>
 <li><strong>Environment:</strong> Sistema operando normalmente.</li>
-<li><strong>Artifact:</strong> Base de datos relacional (Supabase PostgreSQL).</li>
-<li><strong>Response:</strong> La peticiÃ³n alcanza la base de datos, pero es denegada inmediatamente a nivel de fila antes de procesar cualquier mutaciÃ³n.</li>
-<li><strong>Measure:</strong> El sistema retorna HTTP 403 (Forbidden) sin revelar existencia o alteraciÃ³n de datos ajenos. <em>(Fuente: <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements/example_output_nfr.md|NFR-004]]</code>)</em></li>
+<li><strong>Artifact:</strong> Base de datos relacional (PostgreSQL PostgreSQL).</li>
+<li><strong>Response:</strong> La peticion alcanza la base de datos, pero es denegada inmediatamente a nivel de fila antes de procesar cualquier mutacion.</li>
+<li><strong>Measure:</strong> El sistema retorna HTTP 403 (Forbidden) sin revelar existencia o alteracion de datos ajenos. <em>(Fuente: <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements/example_output_nfr.md|NFR-004]]</code>)</em></li>
 </ul>
 <h4 id="escenario-4-performance-scalability-soft-lock-concurrente">Escenario 4: Performance / Scalability (Soft-Lock Concurrente)</h4>
 <ul>
 <li><strong>Source:</strong> Turista autenticado.</li>
-<li><strong>Stimulus:</strong> Intenta crear una reserva <code>POST /api/v1/bookings</code> (creaciÃ³n de Soft-Lock).</li>
+<li><strong>Stimulus:</strong> Intenta crear una reserva <code>POST /api/v1/bookings</code> (creacion de Soft-Lock).</li>
 <li><strong>Environment:</strong> Bajo carga transaccional alta (â‰¤ 50 req/s concurrentes).</li>
-<li><strong>Artifact:</strong> Next.js Server Actions y Supabase PostgreSQL.</li>
+<li><strong>Artifact:</strong> Spring Boot (Java) Spring MVC @Service + @RestController y PostgreSQL PostgreSQL.</li>
 <li><strong>Response:</strong> El sistema crea el Soft-Lock, validando primero que las fechas no se solapen con otras transacciones concurrentes (Race Condition prevention).</li>
 <li><strong>Measure:</strong> La API responde en el percentil 95 (p95) en â‰¤ 800ms bajo carga. <em>(Fuente: <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements/example_output_nfr.md|NFR-002]]</code>)</em></li>
 </ul>
@@ -7510,17 +7510,17 @@
 <ul>
 <li><strong>Source:</strong> Sistema backend (Webhook procesado exitosamente).</li>
 <li><strong>Stimulus:</strong> El sistema inserta un nuevo registro en la tabla <code>bookings</code> con estado <code>PENDING_APPROVAL</code>.</li>
-<li><strong>Environment:</strong> El Finquero tiene su dashboard de gestiÃ³n abierto en el navegador (conexiÃ³n rural intermitente).</li>
-<li><strong>Artifact:</strong> Supabase Realtime (PostgreSQL LISTEN/NOTIFY).</li>
-<li><strong>Response:</strong> Supabase Realtime empuja el cambio (push) directamente al cliente conectado a travÃ©s de WebSockets, sin requerir que el cliente ejecute polling repetitivo.</li>
-<li><strong>Measure:</strong> La notificaciÃ³n UI aparece en el dashboard del Finquero en &lt; 2 segundos desde la inserciÃ³n en la BD, sin refrescar la pÃ¡gina. <em>(Fuente: <code>[[PHASE_4_SYSTEM_MODELING/12.Architectural_Signals/example_output_d12_signals.md|NS-01]]</code>)</em></li>
+<li><strong>Environment:</strong> El Finquero tiene su dashboard de gestion abierto en el navegador (conexion rural intermitente).</li>
+<li><strong>Artifact:</strong> WebSockets via Spring WebSocket (PostgreSQL LISTEN/NOTIFY).</li>
+<li><strong>Response:</strong> WebSockets via Spring WebSocket empuja el cambio (push) directamente al cliente conectado a traves de WebSockets, sin requerir que el cliente ejecute polling repetitivo.</li>
+<li><strong>Measure:</strong> La notificacion UI aparece en el dashboard del Finquero en &lt; 2 segundos desde la insercion en la BD, sin refrescar la pagina. <em>(Fuente: <code>[[PHASE_4_SYSTEM_MODELING/12.Architectural_Signals/example_output_d12_signals.md|NS-01]]</code>)</em></li>
 </ul>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <p>Este entregable es input obligatorio para:
-- <strong>D3 (Deployment Topology Decision):</strong> Los escenarios dictan explÃ­citamente el uso de Vercel (CDN/ISR) y Supabase Cloud, justificando una topologÃ­a Serverless + BaaS.
-- <strong>D5 (Architectural Style Selection):</strong> La delegaciÃ³n de seguridad y validaciones a Supabase reduce la necesidad de estilos pesados de backend (Hexagonal), inclinando el peso a favor de un MVC simplificado o Transaction Script en Server Actions.
-- <strong>D6 (Communication Pattern Decision):</strong> El uso de Supabase Realtime marca la pauta para conexiones WebSockets de lectura pasiva.</p>
+- <strong>D3 (Deployment Topology Decision):</strong> Los escenarios dictan explicitamente el uso de Railway/Render (CDN/Spring Cache (@Cacheable)) y PostgreSQL gestionado en Railway, justificando una topologia Dockerizado en Railway/Render + PostgreSQL + Spring Boot.
+- <strong>D5 (Architectural Style Selection):</strong> La delegacion de seguridad y validaciones a PostgreSQL reduce la necesidad de estilos pesados de backend (Hexagonal), inclinando el peso a favor de un MVC simplificado o Transaction Script en Spring MVC @Service + @RestController.
+- <strong>D6 (Communication Pattern Decision):</strong> El uso de WebSockets via Spring WebSocket marca la pauta para conexiones WebSockets de lectura pasiva.</p>
 
 
 

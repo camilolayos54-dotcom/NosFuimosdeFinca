@@ -7296,76 +7296,76 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 2/5:</em> Este entregable deriva directamente del <code>[[PHASE_2_PROJECT_KICKOFF/3.Stack_Decision/example_output_d3_stack.md\|Stack TÃ©cnico]]</code>. Debido al patrÃ³n <em>Modular Monolith</em> en Next.js, en la prÃ¡ctica el proyecto tendrÃ¡ un Ãºnico archivo <code>.env.local</code> o gestor de secretos en Vercel, pero lo hemos dividido lÃ³gicamente para identificar el riesgo (Server = Privado vs Client = PÃºblico).</p>
+<p><em>Backlink a Fase 2/5:</em> Este entregable deriva directamente del <code>[[PHASE_2_PROJECT_KICKOFF/3.Stack_Decision/example_output_d3_stack.md\|Stack Tecnico]]</code>. Debido al patron <em>Modular Monolith</em> en Spring Boot, en la practica el proyecto tendra un unico archivo <code>application.yml</code> o gestor de secretos en Railway/Render, pero lo hemos dividido logicamente para identificar el riesgo (Server = Privado vs Client = Publico).</p>
 <hr />
 <h2 id="2-variables-de-entorno-a-backend-server-side-only">2. Variables de Entorno â€” Backend (Server-side Only)</h2>
 <blockquote>
 <p>[!WARNING]
-Las variables documentadas a continuaciÃ³n <strong>nunca</strong> deben incluirse en un commit, y <strong>no</strong> llevan el prefijo <code>NEXT_PUBLIC_</code>. El equipo DevOps debe provisionarlas directamente en el entorno de despliegue de Vercel.</p>
+Las variables documentadas a continuacion <strong>nunca</strong> deben incluirse en un commit, y <strong>no</strong> llevan el prefijo <code>NEXT_PUBLIC_</code>. El equipo DevOps debe provisionarlas directamente en el entorno de despliegue de Railway/Render.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># ==========================================</span>
-<span class="c1"># BACKEND SECRETS (LÃ³gica y OrquestaciÃ³n)</span>
+<span class="c1"># BACKEND SECRETS (Logica y Orquestacion)</span>
 <span class="c1"># ==========================================</span>
 
-<span class="c1"># 1. SUPABASE (BaaS Database &amp; Auth)</span>
+<span class="c1"># 1. SUPABASE (PostgreSQL + Spring Boot Database &amp; Auth)</span>
 <span class="c1"># ------------------------------------------</span>
 <span class="c1"># URL del proyecto</span>
-<span class="nv">SUPABASE_URL</span><span class="o">=</span>https://<span class="o">[</span>PROJECT_ID<span class="o">]</span>.supabase.co
-<span class="c1"># SENSIBLE â€” Llave de acceso total, salta polÃ­ticas RLS (Row Level Security).</span>
+<span class="nv">SUPABASE_URL</span><span class="o">=</span>https://<span class="o">[</span>PROJECT_ID<span class="o">]</span>.postgresql.co
+<span class="c1"># SENSIBLE â€” Llave de acceso total, salta politicas Spring Security + Row-Level Filtering (Row Level Security).</span>
 <span class="nv">SUPABASE_SERVICE_ROLE_KEY</span><span class="o">=</span>eyJhbGciOiJIUzI1NiIsInR...
 
 <span class="c1"># 2. VERCEL (PaaS Hosting)</span>
 <span class="c1"># ------------------------------------------</span>
-<span class="c1"># Vercel inyecta esto automÃ¡ticamente; usar en local para mocks de Webhooks.</span>
+<span class="c1"># Railway/Render inyecta esto automaticamente; usar en local para mocks de Webhooks.</span>
 <span class="nv">VERCEL_URL</span><span class="o">=</span>localhost:3000
 
 <span class="c1"># 3. WOMPI (Pagos) - #PENDIENTE-VALIDAR-CONTRA-D8</span>
 <span class="c1"># ------------------------------------------</span>
 <span class="c1"># SENSIBLE â€” Clave privada para crear transacciones o reembolsos.</span>
 <span class="nv">WOMPI_PRIVATE_KEY</span><span class="o">=</span>prv_test_...
-<span class="c1"># SENSIBLE â€” Secreto criptogrÃ¡fico para validar el Hash de los Webhooks (Previene inyecciÃ³n de pagos falsos).</span>
+<span class="c1"># SENSIBLE â€” Secreto criptografico para validar el Hash de los Webhooks (Previene inyeccion de pagos falsos).</span>
 <span class="nv">WOMPI_WEBHOOK_SECRET</span><span class="o">=</span>events_test_...
 
 <span class="c1"># 4. WHATSAPP API (Meta) - #PENDIENTE-VALIDAR-CONTRA-D8</span>
 <span class="c1"># ------------------------------------------</span>
 <span class="c1"># SENSIBLE â€” Token Bearer permanente de Meta for Developers.</span>
 <span class="nv">WHATSAPP_ACCESS_TOKEN</span><span class="o">=</span>EAAQ...
-<span class="c1"># Identificador oficial del nÃºmero de telÃ©fono desde donde se envÃ­a.</span>
+<span class="c1"># Identificador oficial del numero de telefono desde donde se envia.</span>
 <span class="nv">WHATSAPP_PHONE_NUMBER_ID</span><span class="o">=</span><span class="m">123456789</span>
 </code></pre></div>
 <hr />
 <h2 id="3-variables-de-entorno-a-frontend-client-side">3. Variables de Entorno â€” Frontend (Client-side)</h2>
 <blockquote>
 <p>[!TIP]
-Las siguientes variables llevan el prefijo <code>NEXT_PUBLIC_</code>, lo que le indica a Next.js que debe empaquetarlas y enviarlas al navegador del Turista/Finquero. <strong>Cualquier clave aquÃ­ es pÃºblica y puede ser leÃ­da inspeccionando la pÃ¡gina web.</strong></p>
+Las siguientes variables llevan el prefijo <code>NEXT_PUBLIC_</code>, lo que le indica a Spring Boot (Java) que debe empaquetarlas y enviarlas al navegador del Turista/Finquero. <strong>Cualquier clave aqui es publica y puede ser leida inspeccionando la pagina web.</strong></p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># ==========================================</span>
-<span class="c1"># FRONTEND PUBLIC VARIABLES (React &amp; UX)</span>
+<span class="c1"># FRONTEND PUBLIC VARIABLES (Vite + JavaScript (frontend) &amp; UX)</span>
 <span class="c1"># ==========================================</span>
 
-<span class="c1"># 1. SUPABASE (BaaS Client)</span>
+<span class="c1"># 1. SUPABASE (PostgreSQL + Spring Boot Client)</span>
 <span class="c1"># ------------------------------------------</span>
-<span class="c1"># URL pÃºblica de la API de Supabase.</span>
-<span class="nv">NEXT_PUBLIC_SUPABASE_URL</span><span class="o">=</span>https://<span class="o">[</span>PROJECT_ID<span class="o">]</span>.supabase.co
-<span class="c1"># Llave AnÃ³nima (PÃºblica). Completamente segura de exponer. </span>
-<span class="c1"># La seguridad real para evitar lecturas no autorizadas recae en el RLS de PostgreSQL (Phase 6, D2).</span>
+<span class="c1"># URL publica de la API de PostgreSQL.</span>
+<span class="nv">NEXT_PUBLIC_SUPABASE_URL</span><span class="o">=</span>https://<span class="o">[</span>PROJECT_ID<span class="o">]</span>.postgresql.co
+<span class="c1"># Llave Anonima (Publica). Completamente segura de exponer. </span>
+<span class="c1"># La seguridad real para evitar lecturas no autorizadas recae en el Spring Security + Row-Level Filtering de PostgreSQL (Phase 6, D2).</span>
 <span class="nv">NEXT_PUBLIC_SUPABASE_ANON_KEY</span><span class="o">=</span>eyJhbGciOiJIUzI1NiIsInR...
 
 <span class="c1"># 2. WOMPI (Widget de Pagos) - #PENDIENTE-VALIDAR-CONTRA-D8</span>
 <span class="c1"># ------------------------------------------</span>
-<span class="c1"># Llave PÃºblica. Solo se usa para inicializar la tarjeta de crÃ©dito del lado del cliente de forma segura.</span>
+<span class="c1"># Llave Publica. Solo se usa para inicializar la tarjeta de credito del lado del cliente de forma segura.</span>
 <span class="nv">NEXT_PUBLIC_WOMPI_PUBLISHABLE_KEY</span><span class="o">=</span>pub_test_...
 
 <span class="c1"># 3. CORE ROUTING</span>
 <span class="c1"># ------------------------------------------</span>
-<span class="c1"># URL Base de la aplicaciÃ³n (Ej. para armar redirecciones hacia pasarelas de pago externas)</span>
+<span class="c1"># URL Base de la aplicacion (Ej. para armar redirecciones hacia pasarelas de pago externas)</span>
 <span class="nv">NEXT_PUBLIC_BASE_URL</span><span class="o">=</span>http://localhost:3000
 </code></pre></div>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <p>Este entregable es vital para los flujos operativos y de seguridad:
-- <strong>Phase 7 â€” D2 (Project Scaffolding):</strong> El desarrollador tomarÃ¡ el contenido de estos dos bloques, quitarÃ¡ los comentarios <code>[PROJECT_ID]</code> / <code>eyJhb...</code> y crearÃ¡ un archivo <code>.env.example</code> literal en el repositorio de cÃ³digo, exigiendo a todos llenar sus valores locales.
-- <strong>Phase 9 â€” D3 (Infrastructure as Code / SecOps):</strong> Operaciones utilizarÃ¡ la lista del apartado 2 (Backend) para crear los Secretos cifrados en el entorno Cloud de producciÃ³n antes del lanzamiento (Go-Live).</p>
+- <strong>Phase 7 â€” D2 (Project Scaffolding):</strong> El desarrollador tomara el contenido de estos dos bloques, quitara los comentarios <code>[PROJECT_ID]</code> / <code>eyJhb...</code> y creara un archivo <code>.env.example</code> literal en el repositorio de codigo, exigiendo a todos llenar sus valores locales.
+- <strong>Phase 9 â€” D3 (Infrastructure as Code / SecOps):</strong> Operaciones utilizara la lista del apartado 2 (Backend) para crear los Secretos cifrados en el entorno Cloud de produccion antes del lanzamiento (Go-Live).</p>
 
 
 

@@ -6820,10 +6820,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-scripts-de-creacia3n-de-base-de-datos-ddl" class="md-nav__link">
+  <a href="#2-scripts-de-creacion-de-base-de-datos-ddl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Scripts de CreaciÃ³n de Base de Datos (DDL)
+        2. Scripts de Creacion de Base de Datos (DDL)
       
     </span>
   </a>
@@ -6831,10 +6831,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-scripts-de-indexacia3n-y-optimizacia3n" class="md-nav__link">
+  <a href="#3-scripts-de-indexacion-y-optimizacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Scripts de IndexaciÃ³n y OptimizaciÃ³n
+        3. Scripts de Indexacion y Optimizacion
       
     </span>
   </a>
@@ -7242,10 +7242,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-scripts-de-creacia3n-de-base-de-datos-ddl" class="md-nav__link">
+  <a href="#2-scripts-de-creacion-de-base-de-datos-ddl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Scripts de CreaciÃ³n de Base de Datos (DDL)
+        2. Scripts de Creacion de Base de Datos (DDL)
       
     </span>
   </a>
@@ -7253,10 +7253,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-scripts-de-indexacia3n-y-optimizacia3n" class="md-nav__link">
+  <a href="#3-scripts-de-indexacion-y-optimizacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Scripts de IndexaciÃ³n y OptimizaciÃ³n
+        3. Scripts de Indexacion y Optimizacion
       
     </span>
   </a>
@@ -7296,10 +7296,10 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 4 y 5:</em> Este entregable aterriza las entidades teÃ³ricas del Dominio (<code>[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]</code>) a cÃ³digo SQL ejecutable para PostgreSQL, que es el dialecto del motor BaaS elegido en la Fase 5 (Supabase).</p>
+<p><em>Backlink a Fase 4 y 5:</em> Este entregable aterriza las entidades teoricas del Dominio (<code>[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]</code>) a codigo SQL ejecutable para PostgreSQL, que es el dialecto del motor PostgreSQL + Spring Boot elegido en la Fase 5 (PostgreSQL).</p>
 <hr />
-<h2 id="2-scripts-de-creacia3n-de-base-de-datos-ddl">2. Scripts de CreaciÃ³n de Base de Datos (DDL)</h2>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Habilitar extensiÃ³n UUID nativa de PostgreSQL</span>
+<h2 id="2-scripts-de-creacion-de-base-de-datos-ddl">2. Scripts de Creacion de Base de Datos (DDL)</h2>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Habilitar extension UUID nativa de PostgreSQL</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="ss">&quot;uuid-ossp&quot;</span><span class="p">;</span>
 
 <span class="c1">-- 1. USERS</span>
@@ -7516,22 +7516,22 @@
 <span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="3-scripts-de-indexacia3n-y-optimizacia3n">3. Scripts de IndexaciÃ³n y OptimizaciÃ³n</h2>
-<p>Estos Ã­ndices estÃ¡n diseÃ±ados especÃ­ficamente para resolver los requerimientos no funcionales (NFRs) de carga rÃ¡pida del sistema (CatÃ¡logo y Dashboard de reservas).</p>
+<h2 id="3-scripts-de-indexacion-y-optimizacion">3. Scripts de Indexacion y Optimizacion</h2>
+<p>Estos indices estan disenados especificamente para resolver los requerimientos no funcionales (NFRs) de carga rapida del sistema (Catalogo y Dashboard de reservas).</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 1. Acelerar el dashboard del Finquero (Buscar todas MIS fincas)</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_properties_host_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">properties</span><span class="p">(</span><span class="n">host_id</span><span class="p">);</span>
 
-<span class="c1">-- 2. Acelerar el catÃ¡logo de Turistas (Listar solo las fincas activas en el buscador)</span>
+<span class="c1">-- 2. Acelerar el catalogo de Turistas (Listar solo las fincas activas en el buscador)</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_properties_is_active</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">properties</span><span class="p">(</span><span class="n">is_active</span><span class="p">);</span>
 
-<span class="c1">-- 3. Acelerar cruces matemÃ¡ticos de fechas para los cÃ¡lculos de disponibilidad y precios estacionales</span>
+<span class="c1">-- 3. Acelerar cruces matematicos de fechas para los calculos de disponibilidad y precios estacionales</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_property_availability_dates</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">property_availability</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">end_date</span><span class="p">);</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_seasonal_prices_dates</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">seasonal_prices</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span><span class="w"> </span><span class="n">end_date</span><span class="p">);</span>
 
 <span class="c1">-- 4. Acelerar el montaje visual de fotos por finca en el UI</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_property_images_property_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">property_images</span><span class="p">(</span><span class="n">property_id</span><span class="p">);</span>
 
-<span class="c1">-- 5. Acelerar el listado histÃ³rico de reservas para el Turista (MIS VIAJES) y el Finquero (MIS HUESPEDES)</span>
+<span class="c1">-- 5. Acelerar el listado historico de reservas para el Turista (MIS VIAJES) y el Finquero (MIS HUESPEDES)</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_bookings_guest_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bookings</span><span class="p">(</span><span class="n">guest_id</span><span class="p">);</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_bookings_property_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">bookings</span><span class="p">(</span><span class="n">property_id</span><span class="p">);</span>
 
@@ -7540,9 +7540,9 @@
 </code></pre></div>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
-<p>Este entregable es la hoja de ruta para la creaciÃ³n fÃ­sica del proyecto:
-- <strong>Fase 6 â€” D6 (Data Access &amp; Repositories):</strong> UsarÃ¡ los nombres de columna exactos y las sentencias SQL escritas aquÃ­ para los mappers y DTOs de cÃ³digo.
-- <strong>Fase 7 â€” D4 (Database Migrations Implementation):</strong> TomarÃ¡ estos bloques de cÃ³digo, casi textualmente, y los insertarÃ¡ en el CLI de Supabase como la primera gran migraciÃ³n de la base de datos (<code>supabase migration new initial_schema</code>).</p>
+<p>Este entregable es la hoja de ruta para la creacion fisica del proyecto:
+- <strong>Fase 6 â€” D6 (Data Access &amp; Repositories):</strong> Usara los nombres de columna exactos y las sentencias SQL escritas aqui para los mappers y DTOs de codigo.
+- <strong>Fase 7 â€” D4 (Database Migrations Implementation):</strong> Tomara estos bloques de codigo, casi textualmente, y los insertara en el CLI de PostgreSQL como la primera gran migracion de la base de datos (<code>postgresql migration new initial_schema</code>).</p>
 
 
 

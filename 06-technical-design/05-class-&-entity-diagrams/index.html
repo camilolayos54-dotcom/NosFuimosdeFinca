@@ -6904,10 +6904,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-diagrama-de-clases-uml-typescript-abstraction" class="md-nav__link">
+  <a href="#2-diagrama-de-clases-uml-java-abstraction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Diagrama de Clases UML (TypeScript Abstraction)
+        2. Diagrama de Clases UML (Java Abstraction)
       
     </span>
   </a>
@@ -6915,10 +6915,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-justificacia3n-anti-anamica" class="md-nav__link">
+  <a href="#3-justificacion-anti-anemica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. JustificaciÃ³n Anti-AnÃ©mica
+        3. Justificacion Anti-Anemica
       
     </span>
   </a>
@@ -7242,10 +7242,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-diagrama-de-clases-uml-typescript-abstraction" class="md-nav__link">
+  <a href="#2-diagrama-de-clases-uml-java-abstraction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Diagrama de Clases UML (TypeScript Abstraction)
+        2. Diagrama de Clases UML (Java Abstraction)
       
     </span>
   </a>
@@ -7253,10 +7253,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-justificacia3n-anti-anamica" class="md-nav__link">
+  <a href="#3-justificacion-anti-anemica" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. JustificaciÃ³n Anti-AnÃ©mica
+        3. Justificacion Anti-Anemica
       
     </span>
   </a>
@@ -7295,14 +7295,14 @@
 <h2 id="1-metadata-header">1. Metadata Header</h2>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
-<strong>MÃ³dulo:</strong> MOD-Booking
+<strong>Modulo:</strong> MOD-Booking
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 3 y 5:</em> Este entregable toma las entidades puras del ERD y les inyecta las Reglas de Negocio definidas en el <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/7.Module_Specification.md]]</code>, logrando un Dominio Rico (Rich Domain Model) que serÃ¡ codificado mediante clases de TypeScript bajo los principios de <em>Clean Architecture</em> decididos en la Fase 5.</p>
+<p><em>Backlink a Fase 3 y 5:</em> Este entregable toma las entidades puras del ERD y les inyecta las Reglas de Negocio definidas en el <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/7.Module_Specification.md]]</code>, logrando un Dominio Rico (Rich Domain Model) que sera codificado mediante clases de Java bajo los principios de <em>Clean Architecture</em> decididos en la Fase 5.</p>
 <hr />
-<h2 id="2-diagrama-de-clases-uml-typescript-abstraction">2. Diagrama de Clases UML (TypeScript Abstraction)</h2>
+<h2 id="2-diagrama-de-clases-uml-java-abstraction">2. Diagrama de Clases UML (Java Abstraction)</h2>
 <blockquote>
 <p>[!NOTE]
-Las propiedades marcadas con <code>-</code> son privadas y <strong>no pueden ser alteradas directamente</strong> desde controladores externos. Deben usarse los mÃ©todos pÃºblicos (<code>+</code>) provistos, garantizando que ninguna factura se emita con valores matemÃ¡ticos incorrectos y que no se viole la mÃ¡quina de estados.</p>
+Las propiedades marcadas con <code>-</code> son privadas y <strong>no pueden ser alteradas directamente</strong> desde controladores externos. Deben usarse los metodos publicos (<code>+</code>) provistos, garantizando que ninguna factura se emita con valores matematicos incorrectos y que no se viole la maquina de estados.</p>
 </blockquote>
 <pre class="mermaid"><code>classDiagram
     class BookingStatus {
@@ -7357,18 +7357,18 @@ Las propiedades marcadas con <code>-</code> son privadas y <strong>no pueden ser
 
     Booking ..&gt; BookingStatus : uses</code></pre>
 <hr />
-<h2 id="3-justificacia3n-anti-anamica">3. JustificaciÃ³n Anti-AnÃ©mica</h2>
-<p>Para evitar el antipatrÃ³n del <em>Modelo de Dominio AnÃ©mico</em> (donde la lÃ³gica crÃ­tica queda dispersa en mÃºltiples archivos tipo <em>Service</em>), la clase <strong>Booking</strong> concentra todas las validaciones financieras internamente:</p>
+<h2 id="3-justificacion-anti-anemica">3. Justificacion Anti-Anemica</h2>
+<p>Para evitar el antipatron del <em>Modelo de Dominio Anemico</em> (donde la logica critica queda dispersa en multiples archivos tipo <em>Service</em>), la clase <strong>Booking</strong> concentra todas las validaciones financieras internamente:</p>
 <ol>
-<li><strong><code>calculateTotal()</code>:</strong> Unifica matemÃ¡ticamente el valor en centavos (<code>basePriceAmount</code> + <code>cleaningFeeAmount</code> + <code>platformFeeAmount</code> + <code>taxesAmount</code>). NingÃºn programador podrÃ¡ calcular totales "a mano" en la UI o en un endpoint HTTP.</li>
-<li><strong><code>approve()</code> / <code>cancel()</code>:</strong> MÃ¡quina de estados blindada. El mÃ©todo <code>cancel()</code> verificarÃ¡ internamente que el status actual sea <code>PENDING</code> o <code>APPROVED</code> y lanzarÃ¡ un error si se intenta cancelar una reserva <code>COMPLETED</code>. </li>
-<li><strong><code>Wishlist</code> como Interfaz:</strong> La lista de deseos es deliberadamente anÃ©mica (declarada como <code>&lt;&lt;interface&gt;&gt;</code>) porque, funcionalmente, es solo un Data Transfer Object (DTO) que une al usuario con una finca. No tiene reglas de validaciÃ³n complejas, por lo tanto no requiere encapsulamiento.</li>
+<li><strong><code>calculateTotal()</code>:</strong> Unifica matematicamente el valor en centavos (<code>basePriceAmount</code> + <code>cleaningFeeAmount</code> + <code>platformFeeAmount</code> + <code>taxesAmount</code>). Ningun programador podra calcular totales "a mano" en la UI o en un endpoint HTTP.</li>
+<li><strong><code>approve()</code> / <code>cancel()</code>:</strong> Maquina de estados blindada. El metodo <code>cancel()</code> verificara internamente que el status actual sea <code>PENDING</code> o <code>APPROVED</code> y lanzara un error si se intenta cancelar una reserva <code>COMPLETED</code>. </li>
+<li><strong><code>Wishlist</code> como Interfaz:</strong> La lista de deseos es deliberadamente anemica (declarada como <code>&lt;&lt;interface&gt;&gt;</code>) porque, funcionalmente, es solo un Data Transfer Object (DTO) que une al usuario con una finca. No tiene reglas de validacion complejas, por lo tanto no requiere encapsulamiento.</li>
 </ol>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
-<p>Este diseÃ±o es la semilla para el cÃ³digo real del Backend:
-- <strong>Phase 6 â€” D6 (Data Access &amp; Repositories):</strong> Los repositorios de Supabase deberÃ¡n devolver instancias reales (new Booking) en lugar de JSONs genÃ©ricos, respetando este contrato.
-- <strong>Phase 7 â€” D5 (Backend API Implementation):</strong> Los desarrolladores transcribirÃ¡n este diagrama literal en archivos <code>.ts</code> (ej. <code>src/modules/booking/domain/Booking.ts</code>).</p>
+<p>Este diseno es la semilla para el codigo real del Backend:
+- <strong>Phase 6 â€” D6 (Data Access &amp; Repositories):</strong> Los repositorios de PostgreSQL deberan devolver instancias reales (new Booking) en lugar de JSONs genericos, respetando este contrato.
+- <strong>Phase 7 â€” D5 (Backend API Implementation):</strong> Los desarrolladores transcribiran este diagrama literal en archivos <code>.ts</code> (ej. <code>com.nosfuimosdefinica.booking/domain/Booking.ts</code>).</p>
 
 
 

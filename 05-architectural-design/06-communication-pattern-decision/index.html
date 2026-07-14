@@ -7252,39 +7252,39 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 4 y 5:</em> Esta decisiÃ³n satisface los requerimientos de sincronizaciÃ³n asÃ­ncrona planteados en el API Conceptual Design (<code>[[PHASE_4_SYSTEM_MODELING/9.API_Conceptual_Design/example_output_d9_api.md]]</code>) y se adapta a la topologÃ­a monolÃ­tica decidida en el System Decomposition (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>).</p>
+<p><em>Backlink a Fase 4 y 5:</em> Esta decision satisface los requerimientos de sincronizacion asincrona planteados en el API Conceptual Design (<code>[[PHASE_4_SYSTEM_MODELING/9.API_Conceptual_Design/example_output_d9_api.md]]</code>) y se adapta a la topologia monolitica decidida en el System Decomposition (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>).</p>
 <hr />
 <h2 id="2-architectural-decision-record-adr">2. Architectural Decision Record (ADR)</h2>
-<h1 id="adr-004-adopcia3n-de-rest-y-websockets-supabase-realtime-sobre-monolito">ADR-004: AdopciÃ³n de REST y WebSockets (Supabase Realtime) sobre Monolito</h1>
+<h1 id="adr-004-adopcion-de-rest-y-websockets-websockets-via-spring-websocket-sobre-monolito">ADR-004: Adopcion de REST y WebSockets (WebSockets via Spring WebSocket) sobre Monolito</h1>
 <h2 id="context">Context</h2>
-<p>La arquitectura del proyecto estÃ¡ basada en un Modular Monolith Serverless (D4). El diseÃ±o de la API (D9) expone operaciones transaccionales directas (ej. crear reserva, listar fincas) que no varÃ­an drÃ¡sticamente su estructura de datos entre las distintas pantallas del cliente. Adicionalmente, el atributo de calidad (D1 - Escenario 5) y las State Machines (D8) exigen notificar al usuario finquero sobre nuevas peticiones de reserva en tiempo real, sin requerir que refresque su panel de administraciÃ³n manualmente. </p>
+<p>La arquitectura del proyecto esta basada en un Modular Monolith Dockerizado en Railway/Render (D4). El diseno de la API (D9) expone operaciones transaccionales directas (ej. crear reserva, listar fincas) que no varian drasticamente su estructura de datos entre las distintas pantallas del cliente. Adicionalmente, el atributo de calidad (D1 - Escenario 5) y las State Machines (D8) exigen notificar al usuario finquero sobre nuevas peticiones de reserva en tiempo real, sin requerir que refresque su panel de administracion manualmente. </p>
 <h2 id="options-considered">Options Considered</h2>
 <ol>
-<li><strong>GraphQL + Subscriptions:</strong> ProveerÃ­a mÃ¡xima flexibilidad al Frontend y actualizaciones push. <strong>Rechazado.</strong> Introduce alta complejidad operativa. Obliga a mantener "TypeDefs" y "Resolvers", y el equipo tendrÃ­a que resolver manualmente los clÃ¡sicos problemas N+1 de base de datos.</li>
-<li><strong>REST puro (con Long-Polling):</strong> Usar solo REST e invocar periÃ³dicamente el backend desde el cliente. <strong>Rechazado.</strong> En una arquitectura Serverless (Vercel), cada invocaciÃ³n cuesta dinero (compute time). AgotarÃ­a cuotas rÃ¡pidamente y saturarÃ­a el Connection Pooler hacia PostgreSQL sin sentido.</li>
-<li><strong>REST + WebSockets (Supabase Realtime):</strong> Usar REST para escrituras/lecturas tradicionales y abrir un WebSocket pasivo gestionado por Supabase para recibir transmisiones (broadcasts) directas desde la base de datos. <strong>Aprobado.</strong> </li>
+<li><strong>GraphQL + Subscriptions:</strong> Proveeria maxima flexibilidad al Frontend y actualizaciones push. <strong>Rechazado.</strong> Introduce alta complejidad operativa. Obliga a mantener "TypeDefs" y "Resolvers", y el equipo tendria que resolver manualmente los clasicos problemas N+1 de base de datos.</li>
+<li><strong>REST puro (con Long-Polling):</strong> Usar solo REST e invocar periodicamente el backend desde el cliente. <strong>Rechazado.</strong> En una arquitectura Dockerizado en Railway/Render (Railway/Render), cada invocacion cuesta dinero (compute time). Agotaria cuotas rapidamente y saturaria el Connection Pooler hacia PostgreSQL sin sentido.</li>
+<li><strong>REST + WebSockets (WebSockets via Spring WebSocket):</strong> Usar REST para escrituras/lecturas tradicionales y abrir un WebSocket pasivo gestionado por PostgreSQL para recibir transmisiones (broadcasts) directas desde la base de datos. <strong>Aprobado.</strong> </li>
 </ol>
 <h2 id="decision">Decision</h2>
 <ul>
 <li><strong>Client-Server (Frontend â†” Backend):</strong> 
-  Se utilizarÃ¡ <strong>REST (JSON sobre HTTPS)</strong> como protocolo base para todas las operaciones sÃ­ncronas de lectura y mutaciÃ³n (implementado a travÃ©s de Next.js Server Actions y Route Handlers). 
-  Para eventos en tiempo real, el Frontend se suscribirÃ¡ a un canal de <strong>WebSockets</strong> utilizando <code>Supabase Realtime</code> (escuchando mutaciones SQL directamente desde el motor PostgreSQL).</li>
-<li><strong>Server-Server (MÃ³dulo Interno â†” MÃ³dulo Interno):</strong> 
-  <strong>N/A.</strong> Dado que el sistema es un Monolito Modular (D4), los mÃ³dulos no se comunicarÃ¡n por red. UtilizarÃ¡n comunicaciÃ³n <strong>In-Process</strong> (importaciÃ³n e invocaciÃ³n de funciones de TypeScript en la misma memoria).</li>
+  Se utilizara <strong>REST (JSON sobre HTTPS)</strong> como protocolo base para todas las operaciones sincronas de lectura y mutacion (implementado a traves de Spring Boot (Java) Spring MVC @Service + @RestController y Route Handlers). 
+  Para eventos en tiempo real, el Frontend se suscribira a un canal de <strong>WebSockets</strong> utilizando <code>WebSockets via Spring WebSocket</code> (escuchando mutaciones SQL directamente desde el motor PostgreSQL).</li>
+<li><strong>Server-Server (Modulo Interno â†” Modulo Interno):</strong> 
+  <strong>N/A.</strong> Dado que el sistema es un Monolito Modular (D4), los modulos no se comunicaran por red. Utilizaran comunicacion <strong>In-Process</strong> (importacion e invocacion de funciones de Java en la misma memoria).</li>
 <li><strong>Server-External (Backend â†” Terceros):</strong> 
-  Se utilizarÃ¡ <strong>REST AsÃ­ncrono (Webhooks HTTP POST)</strong> para integrarse con Wompi y WhatsApp.</li>
+  Se utilizara <strong>REST Asincrono (Webhooks HTTP POST)</strong> para integrarse con Wompi y WhatsApp.</li>
 </ul>
 <h2 id="consequences">Consequences</h2>
 <ul>
-<li><strong>Positive:</strong> Se aprovecha al 100% el SDK del ecosistema (Supabase). Se dota al sistema de caracterÃ­sticas Push-Notification de nivel empresarial sin configurar brokers, RabbitMQ ni Socket.io. Reduce los costos de Serverless al eliminar el polling.</li>
-<li><strong>Negative:</strong> Dado que no usamos GraphQL, si una pÃ¡gina futura requiere datos profundamente anidados (ej. Una finca con sus fotos, comentarios, detalles del host y ofertas), el Frontend deberÃ¡ realizar llamadas REST concurrentes, o el Backend deberÃ¡ escribir consultas SQL hechas a la medida para ese endpoint (sobre-fetching), reduciendo la agilidad del cliente.</li>
+<li><strong>Positive:</strong> Se aprovecha al 100% el SDK del ecosistema (PostgreSQL). Se dota al sistema de caracteristicas Push-Notification de nivel empresarial sin configurar brokers, RabbitMQ ni Socket.io. Reduce los costos de Dockerizado en Railway/Render al eliminar el polling.</li>
+<li><strong>Negative:</strong> Dado que no usamos GraphQL, si una pagina futura requiere datos profundamente anidados (ej. Una finca con sus fotos, comentarios, detalles del host y ofertas), el Frontend debera realizar llamadas REST concurrentes, o el Backend debera escribir consultas SQL hechas a la medida para ese endpoint (sobre-fetching), reduciendo la agilidad del cliente.</li>
 </ul>
 <hr />
 <h2 id="3-downstream-consumers">3. Downstream Consumers</h2>
 <p>Este entregable es input obligatorio para:
-- <strong>D8 (CI/CD &amp; Environments Strategy):</strong> Determina que las pruebas de integraciÃ³n deben validar estructuras JSON planas (REST) y simulaciones de Webhooks, sin requerir la validaciÃ³n de esquemas de Message Brokers (Kafka).
-- <strong>D9 (Component Diagram):</strong> En el diagrama C4 nivel Container, las flechas del navegador a Vercel estarÃ¡n etiquetadas como <code>[REST/HTTPS]</code>, las del navegador a Supabase como <code>[WebSockets]</code>, y la conexiÃ³n entre Vercel y Supabase como <code>[PostgREST]</code>.
-- <strong>D10 (ADR Consolidation):</strong> Se indexarÃ¡ en la bitÃ¡cora final de Fase 5.</p>
+- <strong>D8 (CI/CD &amp; Environments Strategy):</strong> Determina que las pruebas de integracion deben validar estructuras JSON planas (REST) y simulaciones de Webhooks, sin requerir la validacion de esquemas de Message Brokers (Kafka).
+- <strong>D9 (Component Diagram):</strong> En el diagrama C4 nivel Container, las flechas del navegador a Railway/Render estaran etiquetadas como <code>[REST/HTTPS]</code>, las del navegador a PostgreSQL como <code>[WebSockets]</code>, y la conexion entre Railway/Render y PostgreSQL como <code>[Spring MVC REST Controllers]</code>.
+- <strong>D10 (ADR Consolidation):</strong> Se indexara en la bitacora final de Fase 5.</p>
 
 
 

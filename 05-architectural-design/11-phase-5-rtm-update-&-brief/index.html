@@ -7296,10 +7296,10 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 4:</em> Este documento actualiza la Matriz de Trazabilidad original cerrada en el entregable <code>[[PHASE_4_SYSTEM_MODELING/15.Phase_4_RTM_Update/example_output_d15_rtm.md]]</code>, expandiÃ©ndola con la arquitectura definida en esta fase.</p>
+<p><em>Backlink a Fase 4:</em> Este documento actualiza la Matriz de Trazabilidad original cerrada en el entregable <code>[[PHASE_4_SYSTEM_MODELING/15.Phase_4_RTM_Update/example_output_d15_rtm.md]]</code>, expandiendola con la arquitectura definida en esta fase.</p>
 <hr />
 <h2 id="2-traceability-matrix-update-phase-3-a-4-a-5">2. Traceability Matrix Update (Phase 3 â†’ 4 â†’ 5)</h2>
-<p>La siguiente matriz asegura que cada requerimiento de negocio exigido (FR) tenga un contenedor arquitectÃ³nico (servidor o funciÃ³n) que se haga cargo de Ã©l. Como definimos un Monolito Modular en el <strong>D4</strong>, todos recaen en el mismo gran componente de Next.js.</p>
+<p>La siguiente matriz asegura que cada requerimiento de negocio exigido (FR) tenga un contenedor arquitectonico (servidor o funcion) que se haga cargo de el. Como definimos un Monolito Modular en el <strong>D4</strong>, todos recaen en el mismo gran componente de Spring Boot (Java).</p>
 <table>
 <thead>
 <tr>
@@ -7315,11 +7315,11 @@
 <tbody>
 <tr>
 <td>FR-001</td>
-<td>Buscar fincas por ubicaciÃ³n</td>
+<td>Buscar fincas por ubicacion</td>
 <td><code>/search</code></td>
 <td>Guestâ†’APIâ†’DB</td>
 <td><code>GET /properties?location=X</code></td>
-<td>Web Application (Next.js)</td>
+<td>Web Application (Spring Boot (Java))</td>
 <td>âœ… OK</td>
 </tr>
 <tr>
@@ -7328,7 +7328,7 @@
 <td><code>/property/{id}</code></td>
 <td>Guestâ†’APIâ†’Wompiâ†’DB</td>
 <td><code>POST /bookings</code></td>
-<td>Web Application (Next.js)</td>
+<td>Web Application (Spring Boot (Java))</td>
 <td>âœ… OK</td>
 </tr>
 <tr>
@@ -7337,16 +7337,16 @@
 <td><code>/guest/bookings</code></td>
 <td>Guestâ†’APIâ†’DB</td>
 <td><code>PATCH /bookings/{id}</code></td>
-<td>Web Application (Next.js)</td>
+<td>Web Application (Spring Boot (Java))</td>
 <td>âœ… OK</td>
 </tr>
 <tr>
 <td>FR-004</td>
-<td>Dashboard de AnfitriÃ³n</td>
+<td>Dashboard de Anfitrion</td>
 <td><code>/host/dashboard</code></td>
 <td>Hostâ†’APIâ†’DB</td>
 <td><code>GET /host/stats</code></td>
-<td>Web Application + Supabase Realtime</td>
+<td>Web Application + WebSockets via Spring WebSocket</td>
 <td>âœ… OK</td>
 </tr>
 <tr>
@@ -7355,7 +7355,7 @@
 <td><code>/auth/register</code></td>
 <td>Guestâ†’APIâ†’DB</td>
 <td><code>POST /auth/register</code></td>
-<td>Web Application + Supabase Auth</td>
+<td>Web Application + Spring Security + JWT</td>
 <td>âœ… OK</td>
 </tr>
 <tr>
@@ -7364,7 +7364,7 @@
 <td><code>/auth/login</code></td>
 <td>Guestâ†’APIâ†’DBâ†’JWT</td>
 <td><code>POST /auth/login</code></td>
-<td>Web Application + Supabase Auth</td>
+<td>Web Application + Spring Security + JWT</td>
 <td>âœ… OK</td>
 </tr>
 <tr>
@@ -7373,24 +7373,24 @@
 <td><code>/host/properties/new</code></td>
 <td>Hostâ†’APIâ†’S3â†’DB</td>
 <td><code>POST /properties</code></td>
-<td>Web Application + Supabase Storage</td>
+<td>Web Application + Cloudinary / S3 para imagenes</td>
 <td>âœ… OK</td>
 </tr>
 </tbody>
 </table>
-<p><strong>GAPs Detectados:</strong> 0 (Cero). NingÃºn requerimiento quedÃ³ huÃ©rfano.</p>
+<p><strong>GAPs Detectados:</strong> 0 (Cero). Ningun requerimiento quedo huerfano.</p>
 <hr />
 <h2 id="3-phase-5-execution-brief">3. Phase 5 Execution Brief</h2>
-<p>Durante la Fase 5 (<em>Architectural Design</em>), se transformÃ³ el modelado lÃ³gico de la aplicaciÃ³n en una topologÃ­a fÃ­sica e infraestructura tÃ©cnica concreta. Tras evaluar los NFRs (velocidad de carga &lt; 1.5s y notificaciones en tiempo real B2B), se descartÃ³ el uso de orquestaciÃ³n pesada (Kubernetes/IaaS), eligiendo una topologÃ­a basada en Vercel (PaaS) y Supabase (BaaS). A nivel de base de cÃ³digo, se rechazaron firmemente los microservicios a favor de un <strong>Monolito Modular</strong>, estructurado internamente de forma hÃ­brida: usando <em>Clean Architecture</em> para aislar y blindar las transacciones financieras y la mÃ¡quina de estados de reservas, y arquitectura en capas (<em>Layered MVC</em>) para flexibilizar la lectura del catÃ¡logo.</p>
-<p>El cruce final en la Matriz de Trazabilidad (RTM) de arriba confirma que <strong>todos</strong> los requerimientos y endpoints modelados en la Fase 4 encajan perfectamente dentro del Contenedor Web principal delineado en el Modelo C4 (D9). No se identificaron GAPs arquitectÃ³nicos. Los protocolos transversales (Auth JWT seguro, limitaciÃ³n de APIs, Caching mediante ISR y un pipeline de CI/CD Trunk-Based) estÃ¡n documentados, consolidados (D10) y listos para materializarse en cÃ³digo.</p>
+<p>Durante la Fase 5 (<em>Architectural Design</em>), se transformo el modelado logico de la aplicacion en una topologia fisica e infraestructura tecnica concreta. Tras evaluar los NFRs (velocidad de carga &lt; 1.5s y notificaciones en tiempo real B2B), se descarto el uso de orquestacion pesada (Kubernetes/IaaS), eligiendo una topologia basada en Railway/Render (PaaS) y PostgreSQL (PostgreSQL + Spring Boot). A nivel de base de codigo, se rechazaron firmemente los microservicios a favor de un <strong>Monolito Modular</strong>, estructurado internamente de forma hibrida: usando <em>Clean Architecture</em> para aislar y blindar las transacciones financieras y la maquina de estados de reservas, y arquitectura en capas (<em>Layered MVC</em>) para flexibilizar la lectura del catalogo.</p>
+<p>El cruce final en la Matriz de Trazabilidad (RTM) de arriba confirma que <strong>todos</strong> los requerimientos y endpoints modelados en la Fase 4 encajan perfectamente dentro del Contenedor Web principal delineado en el Modelo C4 (D9). No se identificaron GAPs arquitectonicos. Los protocolos transversales (Auth JWT seguro, limitacion de APIs, Caching mediante Spring Cache (@Cacheable) y un pipeline de CI/CD Trunk-Based) estan documentados, consolidados (D10) y listos para materializarse en codigo.</p>
 <blockquote>
-<p><strong>Dictamen Final:</strong> La Fase 5 (Architectural Design) estÃ¡ formalmente CERRADA. El proyecto "Nos Fuimos de Finca" estÃ¡ <strong>AUTORIZADO</strong> para iniciar la <strong>Fase 6: Development / Implementation</strong>.</p>
+<p><strong>Dictamen Final:</strong> La Fase 5 (Architectural Design) esta formalmente CERRADA. El proyecto "Nos Fuimos de Finca" esta <strong>AUTORIZADO</strong> para iniciar la <strong>Fase 6: Development / Implementation</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <p>Este entregable es la llave final y es input obligatorio para:
-- <strong>Phase 6 â€” D0 (Execution Order):</strong> Usa esta autorizaciÃ³n de cierre como el "Gate" oficial para permitir que los desarrolladores abran sus IDEs y empiecen a escribir el primer <code>npm init</code>.
-- <strong>Phase 7 â€” D1 (AI Task Breakdown &amp; Sprint Planning):</strong> UsarÃ¡ este mapeo FR â†’ Container como base matemÃ¡tica para crear los tickets en Jira o Github Projects.</p>
+- <strong>Phase 6 â€” D0 (Execution Order):</strong> Usa esta autorizacion de cierre como el "Gate" oficial para permitir que los desarrolladores abran sus IDEs y empiecen a escribir el primer <code>Maven init</code>.
+- <strong>Phase 7 â€” D1 (AI Task Breakdown &amp; Sprint Planning):</strong> Usara este mapeo FR â†’ Container como base matematica para crear los tickets en Jira o Github Projects.</p>
 
 
 

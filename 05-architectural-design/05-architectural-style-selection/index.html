@@ -7252,44 +7252,44 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 5 (D4):</em> Este ADR rige las convenciones internas de cÃ³digo para las 5 unidades modulares establecidas en la decisiÃ³n de descomposiciÃ³n (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>).</p>
+<p><em>Backlink a Fase 5 (D4):</em> Este ADR rige las convenciones internas de codigo para las 5 unidades modulares establecidas en la decision de descomposicion (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>).</p>
 <hr />
 <h2 id="2-architectural-decision-record-adr">2. Architectural Decision Record (ADR)</h2>
-<h1 id="adr-003-seleccia3n-de-estilos-habridos-clean-architecture-vs-layered-por-ma3dulo">ADR-003: SelecciÃ³n de Estilos HÃ­bridos (Clean Architecture vs Layered) por MÃ³dulo</h1>
+<h1 id="adr-003-seleccion-de-estilos-hibridos-clean-architecture-vs-layered-por-modulo">ADR-003: Seleccion de Estilos Hibridos (Clean Architecture vs Layered) por Modulo</h1>
 <h2 id="context">Context</h2>
-<p>Tras decidir desplegar un "Modular Monolith" en Vercel/Next.js (D4), necesitamos establecer las reglas de cÃ³mo estructurar el cÃ³digo fuente de cada mÃ³dulo internamente. SegÃºn el Domain Model (D6), no todos los mÃ³dulos tienen el mismo nivel de complejidad. 
-Forzar "Clean Architecture" globalmente genera un exceso de abstracciones (interfaces, mappers, puertos) que ralentiza el desarrollo inicial en dominios simples (como CatÃ¡logo o Notificaciones). Sin embargo, usar un modelo simple "MVC/Layered" en los mÃ³dulos de Reservas y Pagos expone las reglas financieras crÃ­ticas y la mÃ¡quina de estados a bugs catastrÃ³ficos si se mezclan accidentalmente con librerÃ­as de Next.js o consultas SQL de Supabase.</p>
+<p>Tras decidir desplegar un "Modular Monolith" en Railway/Render/Spring Boot (Java) (D4), necesitamos establecer las reglas de como estructurar el codigo fuente de cada modulo internamente. Segun el Domain Model (D6), no todos los modulos tienen el mismo nivel de complejidad. 
+Forzar "Clean Architecture" globalmente genera un exceso de abstracciones (interfaces, mappers, puertos) que ralentiza el desarrollo inicial en dominios simples (como Catalogo o Notificaciones). Sin embargo, usar un modelo simple "MVC/Layered" en los modulos de Reservas y Pagos expone las reglas financieras criticas y la maquina de estados a bugs catastroficos si se mezclan accidentalmente con librerias de Spring Boot (Java) o consultas SQL de PostgreSQL.</p>
 <h2 id="options-considered">Options Considered</h2>
 <ol>
-<li><strong>Clean Architecture / Hexagonal Global:</strong> Todos los mÃ³dulos aÃ­slan estrictamente su dominio mediante Puertos (Interfaces) y Adaptadores. <strong>Rechazado.</strong> AltÃ­simo coste inicial, fatiga cognitiva y "boilerplate" innecesario para leer un listado de fincas o enviar un email.</li>
-<li><strong>Layered Architecture / MVC Global:</strong> Todo el cÃ³digo usa un patrÃ³n simple de 3 capas (Controlador -&gt; Servicio -&gt; Repositorio). <strong>Rechazado.</strong> La lÃ³gica compleja de las transacciones (Booking) terminarÃ­a fuertemente acoplada a la infraestructura.</li>
-<li><strong>Hybrid Modular Styles (SelecciÃ³n HÃ­brida):</strong> Asignar un estilo arquitectÃ³nico basado en la complejidad real del dominio, protegiendo lo crÃ­tico con Clean Architecture y acelerando lo simple con Layered Architecture. <strong>Aprobado.</strong></li>
+<li><strong>Clean Architecture / Hexagonal Global:</strong> Todos los modulos aislan estrictamente su dominio mediante Puertos (Interfaces) y Adaptadores. <strong>Rechazado.</strong> Altisimo coste inicial, fatiga cognitiva y "boilerplate" innecesario para leer un listado de fincas o enviar un email.</li>
+<li><strong>Layered Architecture / MVC Global:</strong> Todo el codigo usa un patron simple de 3 capas (Controlador -&gt; Servicio -&gt; Repositorio). <strong>Rechazado.</strong> La logica compleja de las transacciones (Booking) terminaria fuertemente acoplada a la infraestructura.</li>
+<li><strong>Hybrid Modular Styles (Seleccion Hibrida):</strong> Asignar un estilo arquitectonico basado en la complejidad real del dominio, protegiendo lo critico con Clean Architecture y acelerando lo simple con Layered Architecture. <strong>Aprobado.</strong></li>
 </ol>
 <h2 id="decision">Decision</h2>
-<p>Cada mÃ³dulo lÃ³gico implementarÃ¡ su estilo arquitectÃ³nico interno de acuerdo a su criticidad, basÃ¡ndose en capas conceptuales puras (sin dictaminar rutas de sistema de archivos fÃ­sicos aÃºn):</p>
-<p><strong>A. MÃ³dulos de Alta Criticidad (Booking Engine, Billing &amp; Payouts)</strong>
+<p>Cada modulo logico implementara su estilo arquitectonico interno de acuerdo a su criticidad, basandose en capas conceptuales puras (sin dictaminar rutas de sistema de archivos fisicos aun):</p>
+<p><strong>A. Modulos de Alta Criticidad (Booking Engine, Billing &amp; Payouts)</strong>
 - <strong>Estilo:</strong> <code>Clean Architecture (Light)</code>
 - <strong>Capas Conceptuales:</strong>
-  - <code>Domain:</code> Entidades puras y reglas de negocio (TypeScript sin librerÃ­as de UI o BD).
-  - <code>Application:</code> Casos de uso (Use Cases) y orquestaciÃ³n.
-  - <code>Infrastructure:</code> Adaptadores para Supabase, Wompi y Webhooks.</p>
-<p><strong>B. MÃ³dulos de Baja/Media Criticidad (Catalog, Identity, Notification Service)</strong>
-- <strong>Estilo:</strong> <code>Layered Architecture</code> (Orientado a Server Actions)
+  - <code>Domain:</code> Entidades puras y reglas de negocio (Java sin librerias de UI o BD).
+  - <code>Application:</code> Casos de uso (Use Cases) y orquestacion.
+  - <code>Infrastructure:</code> Adaptadores para PostgreSQL, Wompi y Webhooks.</p>
+<p><strong>B. Modulos de Baja/Media Criticidad (Catalog, Identity, Notification Service)</strong>
+- <strong>Estilo:</strong> <code>Layered Architecture</code> (Orientado a Spring MVC @Service + @RestController)
 - <strong>Capas Conceptuales:</strong>
-  - <code>Application:</code> Puntos de entrada (Next.js Server Actions / API Routes).
-  - <code>Service:</code> LÃ³gica de negocio y orquestaciÃ³n mezcladas.
-  - <code>DataAccess:</code> Llamadas directas al SDK de Supabase.</p>
+  - <code>Application:</code> Puntos de entrada (Spring Boot (Java) Spring MVC @Service + @RestController / API Routes).
+  - <code>Service:</code> Logica de negocio y orquestacion mezcladas.
+  - <code>DataAccess:</code> Llamadas directas al SDK de PostgreSQL.</p>
 <h2 id="consequences">Consequences</h2>
 <ul>
-<li><strong>Positive:</strong> Se optimiza la velocidad del equipo (<em>Time-to-Market</em>). El equipo no pierde tiempo escribiendo abstracciones para leer el catÃ¡logo de fincas. Sin embargo, el cÃ³digo que procesa el dinero (Billing) o las aprobaciones B2B (Booking) estÃ¡ blindado, testeable de forma unitaria, e inmune a los cambios de librerÃ­as de infraestructura.</li>
-<li><strong>Negative:</strong> Los desarrolladores deben cambiar su modelo mental ("context switch") al moverse entre dominios. Si un programador asume que todo el proyecto usa <code>Layered</code> e inyecta una consulta SQL directamente en la mÃ¡quina de estados del <code>Booking Engine</code> sin respetar la capa de <code>Domain</code>, romperÃ¡ el aislamiento arquitectÃ³nico. RequerirÃ¡ code reviews estrictos.</li>
+<li><strong>Positive:</strong> Se optimiza la velocidad del equipo (<em>Time-to-Market</em>). El equipo no pierde tiempo escribiendo abstracciones para leer el catalogo de fincas. Sin embargo, el codigo que procesa el dinero (Billing) o las aprobaciones B2B (Booking) esta blindado, testeable de forma unitaria, e inmune a los cambios de librerias de infraestructura.</li>
+<li><strong>Negative:</strong> Los desarrolladores deben cambiar su modelo mental ("context switch") al moverse entre dominios. Si un programador asume que todo el proyecto usa <code>Layered</code> e inyecta una consulta SQL directamente en la maquina de estados del <code>Booking Engine</code> sin respetar la capa de <code>Domain</code>, rompera el aislamiento arquitectonico. Requerira code reviews estrictos.</li>
 </ul>
 <hr />
 <h2 id="3-downstream-consumers">3. Downstream Consumers</h2>
 <p>Este entregable es input obligatorio para:
-- <strong>Phase 6 â€” D1 (Codebase &amp; Folder Architecture):</strong> La Fase 6 deberÃ¡ mapear estas "capas conceptuales" abstractas a un Ã¡rbol de directorios fÃ­sico (carpetas reales) compatible con Next.js App Router (Ej. decidir si el <code>Domain</code> de Booking vive en <code>/src/modules/booking/domain</code>).
-- <strong>Phase 6 â€” D5 (Class &amp; Entity Diagrams):</strong> Dicta que las clases del Booking Engine deben separar sus entidades de dominio de sus modelos de base de datos, mientras que el CatÃ¡logo puede usar el mismo modelo para todo.
-- <strong>D10 (ADR Consolidation):</strong> Se agregarÃ¡ al Ã­ndice global de decisiones de la Fase 5.</p>
+- <strong>Phase 6 â€” D1 (Codebase &amp; Folder Architecture):</strong> La Fase 6 debera mapear estas "capas conceptuales" abstractas a un arbol de directorios fisico (carpetas reales) compatible con Spring Boot REST API (Ej. decidir si el <code>Domain</code> de Booking vive en <code>/com.nosfuimosdefinica.booking/domain</code>).
+- <strong>Phase 6 â€” D5 (Class &amp; Entity Diagrams):</strong> Dicta que las clases del Booking Engine deben separar sus entidades de dominio de sus modelos de base de datos, mientras que el Catalogo puede usar el mismo modelo para todo.
+- <strong>D10 (ADR Consolidation):</strong> Se agregara al indice global de decisiones de la Fase 5.</p>
 
 
 

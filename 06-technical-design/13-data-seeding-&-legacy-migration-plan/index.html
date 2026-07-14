@@ -7120,7 +7120,7 @@
   <a href="#1-catalogo-de-datos-inmutables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. CatÃ¡logo de Datos Inmutables
+        1. Catalogo de Datos Inmutables
       
     </span>
   </a>
@@ -7150,10 +7150,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-plan-de-migracia3n-legacy-etl" class="md-nav__link">
+  <a href="#4-plan-de-migracion-legacy-etl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Plan de MigraciÃ³n (Legacy ETL)
+        4. Plan de Migracion (Legacy ETL)
       
     </span>
   </a>
@@ -7234,7 +7234,7 @@
   <a href="#1-catalogo-de-datos-inmutables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. CatÃ¡logo de Datos Inmutables
+        1. Catalogo de Datos Inmutables
       
     </span>
   </a>
@@ -7264,10 +7264,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-plan-de-migracia3n-legacy-etl" class="md-nav__link">
+  <a href="#4-plan-de-migracion-legacy-etl" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Plan de MigraciÃ³n (Legacy ETL)
+        4. Plan de Migracion (Legacy ETL)
       
     </span>
   </a>
@@ -7293,39 +7293,39 @@
 
 <h1 id="deliverable-13-d13-data-seeding-legacy-migration-plan">Deliverable 13 (D13): Data Seeding &amp; Legacy Migration Plan</h1>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
-<strong>Fase:</strong> 6 â€” DiseÃ±o TÃ©cnico
+<strong>Fase:</strong> 6 â€” Diseno Tecnico
 <strong>Estado:</strong> Aprobado</p>
 <hr />
-<h2 id="1-catalogo-de-datos-inmutables">1. CatÃ¡logo de Datos Inmutables</h2>
-<p>Estas entidades serÃ¡n inyectadas vÃ­a script (<code>seed.ts</code> o <code>seed.sql</code>) durante el despliegue inicial a producciÃ³n. El sistema no puede funcionar sin ellas:</p>
+<h2 id="1-catalogo-de-datos-inmutables">1. Catalogo de Datos Inmutables</h2>
+<p>Estas entidades seran inyectadas via script (<code>seed.ts</code> o <code>seed.sql</code>) durante el despliegue inicial a produccion. El sistema no puede funcionar sin ellas:</p>
 <ul>
 <li><strong>Roles:</strong> <code>ADMIN</code>, <code>HOST</code>, <code>GUEST</code></li>
 <li><strong>Estados de Reserva (Booking Statuses):</strong> <code>PENDING</code>, <code>APPROVED</code>, <code>CANCELLED</code>, <code>COMPLETED</code></li>
-<li><strong>CategorÃ­as de Propiedad Principales:</strong> <code>FINCA_RECREATIVA</code>, <code>CABAÃ‘A</code>, <code>GLAMPING</code>, <code>CHALET</code></li>
+<li><strong>Categorias de Propiedad Principales:</strong> <code>FINCA_RECREATIVA</code>, <code>CABAÃ‘A</code>, <code>GLAMPING</code>, <code>CHALET</code></li>
 <li><strong>Comodidades Base (Amenities):</strong> <code>PISCINA</code>, <code>WIFI</code>, <code>BBQ</code>, <code>PET_FRIENDLY</code>, <code>AIRE_ACONDICIONADO</code>, <code>JACUZZI</code></li>
 </ul>
 <hr />
 <h2 id="2-bootstrapping-de-super-admin">2. Bootstrapping de Super-Admin</h2>
-<p>Para evitar un sistema inaccesible tras el primer despliegue, el script de inicializaciÃ³n crearÃ¡ obligatoriamente un usuario maestro con los siguientes datos:
+<p>Para evitar un sistema inaccesible tras el primer despliegue, el script de inicializacion creara obligatoriamente un usuario maestro con los siguientes datos:
 - <strong>Email:</strong> <code>admin@nosfuimosdefinca.com</code>
 - <strong>Rol:</strong> <code>ADMIN</code></p>
-<p><strong>RestricciÃ³n de Seguridad:</strong> La contraseÃ±a <strong>jamÃ¡s</strong> debe ser incluida en el script. El script de base de datos deberÃ¡ leer la variable de entorno <code>ADMIN_SEED_PASSWORD</code>. Si la variable no existe en el momento del despliegue, la migraciÃ³n de base de datos fallarÃ¡ explÃ­citamente y detendrÃ¡ el proceso.</p>
+<p><strong>Restriccion de Seguridad:</strong> La contrasena <strong>jamas</strong> debe ser incluida en el script. El script de base de datos debera leer la variable de entorno <code>ADMIN_SEED_PASSWORD</code>. Si la variable no existe en el momento del despliegue, la migracion de base de datos fallara explicitamente y detendra el proceso.</p>
 <hr />
 <h2 id="3-datos-simulados-mock-data-para-desarrollo">3. Datos Simulados (Mock Data) para Desarrollo</h2>
-<p>El equipo de Frontend (Fase 7) no puede desarrollar si el catÃ¡logo estÃ¡ vacÃ­o. Utilizaremos la librerÃ­a <code>faker.js</code> combinada con nuestro cliente de base de datos para poblar los entornos locales y de QA.</p>
+<p>El equipo de Frontend (Fase 7) no puede desarrollar si el catalogo esta vacio. Utilizaremos la libreria <code>faker.js</code> combinada con nuestro cliente de base de datos para poblar los entornos locales y de QA.</p>
 <ul>
-<li><strong>Herramienta:</strong> Script Typescript en <code>package.json</code> -&gt; <code>npm run db:seed:mock</code>.</li>
-<li><strong>VolÃºmenes Esperados:</strong></li>
+<li><strong>Herramienta:</strong> Script Typescript en <code>pom.xml</code> -&gt; <code>mvn db:seed:mock</code>.</li>
+<li><strong>Volumenes Esperados:</strong></li>
 <li>50 Usuarios falsos (20% Hosts, 80% Guests).</li>
 <li>200 Propiedades asignadas aleatoriamente a los Hosts.</li>
 <li>1000 Reservas simulando todo el abanico de estados.</li>
-<li>3000 ReseÃ±as (Reviews).</li>
-<li><strong>Convenio de Desarrollo:</strong> Todas las cuentas simuladas generadas por el script <code>faker.js</code> tendrÃ¡n la contraseÃ±a maestra temporal <code>password123</code>.</li>
+<li>3000 Resenas (Reviews).</li>
+<li><strong>Convenio de Desarrollo:</strong> Todas las cuentas simuladas generadas por el script <code>faker.js</code> tendran la contrasena maestra temporal <code>password123</code>.</li>
 </ul>
 <hr />
-<h2 id="4-plan-de-migracia3n-legacy-etl">4. Plan de MigraciÃ³n (Legacy ETL)</h2>
+<h2 id="4-plan-de-migracion-legacy-etl">4. Plan de Migracion (Legacy ETL)</h2>
 <p><strong>No Aplica.</strong> 
-El proyecto <em>Nos Fuimos de Finca</em> es un desarrollo Greenfield (Nuevo). No existen sistemas heredados (Legacy Systems), tablas de Excel maestras, ni bases de datos de clientes antiguos que requieran ser inyectados en la nueva arquitectura. Por lo tanto, no se diseÃ±arÃ¡n pipelines ETL.</p>
+El proyecto <em>Nos Fuimos de Finca</em> es un desarrollo Greenfield (Nuevo). No existen sistemas heredados (Legacy Systems), tablas de Excel maestras, ni bases de datos de clientes antiguos que requieran ser inyectados en la nueva arquitectura. Por lo tanto, no se disenaran pipelines ETL.</p>
 
 
 

@@ -7044,15 +7044,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-colas-asancronas-y-payloads-redisbullmq" class="md-nav__link">
+  <a href="#2-colas-asincronas-y-payloads-redisbullmq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Colas AsÃ­ncronas y Payloads (Redis/BullMQ)
+        2. Colas Asincronas y Payloads (Redis/BullMQ)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Colas AsÃ­ncronas y Payloads (Redis/BullMQ)">
+    <nav class="md-nav" aria-label="2. Colas Asincronas y Payloads (Redis/BullMQ)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7089,10 +7089,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-programacia3n-cron-scheduled-jobs" class="md-nav__link">
+  <a href="#3-programacion-cron-scheduled-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. ProgramaciÃ³n Cron (Scheduled Jobs)
+        3. Programacion Cron (Scheduled Jobs)
       
     </span>
   </a>
@@ -7276,15 +7276,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-colas-asancronas-y-payloads-redisbullmq" class="md-nav__link">
+  <a href="#2-colas-asincronas-y-payloads-redisbullmq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Colas AsÃ­ncronas y Payloads (Redis/BullMQ)
+        2. Colas Asincronas y Payloads (Redis/BullMQ)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Colas AsÃ­ncronas y Payloads (Redis/BullMQ)">
+    <nav class="md-nav" aria-label="2. Colas Asincronas y Payloads (Redis/BullMQ)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7321,10 +7321,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-programacia3n-cron-scheduled-jobs" class="md-nav__link">
+  <a href="#3-programacion-cron-scheduled-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. ProgramaciÃ³n Cron (Scheduled Jobs)
+        3. Programacion Cron (Scheduled Jobs)
       
     </span>
   </a>
@@ -7363,17 +7363,17 @@
 <h2 id="1-metadata-header">1. Metadata Header</h2>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
-<strong>MÃ³dulo:</strong> MOD-Booking
+<strong>Modulo:</strong> MOD-Booking
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 4:</em> Este entregable implementa los requisitos de eventos asÃ­ncronos y programaciÃ³n cronolÃ³gica definidos en la State Machine (<code>[[8.State_Machine_Diagrams.md]]</code>).</p>
+<p><em>Backlink a Fase 4:</em> Este entregable implementa los requisitos de eventos asincronos y programacion cronologica definidos en la State Machine (<code>[[8.State_Machine_Diagrams.md]]</code>).</p>
 <hr />
-<h2 id="2-colas-asancronas-y-payloads-redisbullmq">2. Colas AsÃ­ncronas y Payloads (Redis/BullMQ)</h2>
+<h2 id="2-colas-asincronas-y-payloads-redisbullmq">2. Colas Asincronas y Payloads (Redis/BullMQ)</h2>
 <blockquote>
 <p>[!WARNING]
-La latencia de la red es el enemigo de la experiencia de usuario. Tareas como mandar un correo de confirmaciÃ³n de reserva no deben realizarse sÃ­ncronamente en el mismo ciclo en el que se guarda la reserva en BD. Utilizaremos <strong>Inngest</strong> o <strong>Upstash Redis / BullMQ</strong> para delegar esto.</p>
+La latencia de la red es el enemigo de la experiencia de usuario. Tareas como mandar un correo de confirmacion de reserva no deben realizarse sincronamente en el mismo ciclo en el que se guarda la reserva en BD. Utilizaremos <strong>Inngest</strong> o <strong>Upstash Redis / BullMQ</strong> para delegar esto.</p>
 </blockquote>
 <h3 id="21-cola-booking-events-queue">2.1 Cola: <code>booking-events-queue</code></h3>
-<p><strong>PropÃ³sito:</strong> Procesar eventos derivados de las acciones del Turista y el Finquero.</p>
+<p><strong>Proposito:</strong> Procesar eventos derivados de las acciones del Turista y el Finquero.</p>
 <h4 id="worker-notifybookingstatuschange">Worker: NotifyBookingStatusChange</h4>
 <p><strong>Payload Esperado (JSON):</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -7383,47 +7383,47 @@ La latencia de la red es el enemigo de la experiencia de usuario. Tareas como ma
 <span class="w">  </span><span class="nt">&quot;propertyId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-prop&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-- <strong>Flujo LÃ³gico de EjecuciÃ³n:</strong>
+- <strong>Flujo Logico de Ejecucion:</strong>
   1. El worker recibe el Payload de la cola de Redis.
-  2. Consulta la base de datos para recuperar los nÃºmeros de telÃ©fono del Host y Guest.
-  3. Ejecuta el Dispatcher del Notification Service (envÃ­a SMS o WhatsApp usando la API externa).
-  4. Si la API de mensajerÃ­a falla temporalmente, ejecuta un reintento.
-- <strong>Retry Policy:</strong> 3 Reintentos. Backoff Exponencial (2s, 10s, 30s). No quemamos la API del proveedor de mensajerÃ­a incesantemente.
-- <strong>Dead-Letter Queue (DLQ):</strong> Si el proveedor externo se cae permanentemente o los datos del JSON estÃ¡n corruptos, tras el tercer reintento, el evento se mueve a la cola <code>booking-events-dlq</code>. 
-- <strong>Manejo de Alertas en DLQ:</strong> Todo evento que caiga aquÃ­ dispara inmediatamente una alerta crÃ­tica a un Webhook interno de Slack/Discord para que el equipo de DevOps/Soporte sepa que el Turista <strong>NO</strong> recibiÃ³ su notificaciÃ³n.</p>
+  2. Consulta la base de datos para recuperar los numeros de telefono del Host y Guest.
+  3. Ejecuta el Dispatcher del Notification Service (envia SMS o WhatsApp usando la API externa).
+  4. Si la API de mensajeria falla temporalmente, ejecuta un reintento.
+- <strong>Retry Policy:</strong> 3 Reintentos. Backoff Exponencial (2s, 10s, 30s). No quemamos la API del proveedor de mensajeria incesantemente.
+- <strong>Dead-Letter Queue (DLQ):</strong> Si el proveedor externo se cae permanentemente o los datos del JSON estan corruptos, tras el tercer reintento, el evento se mueve a la cola <code>booking-events-dlq</code>. 
+- <strong>Manejo de Alertas en DLQ:</strong> Todo evento que caiga aqui dispara inmediatamente una alerta critica a un Webhook interno de Slack/Discord para que el equipo de DevOps/Soporte sepa que el Turista <strong>NO</strong> recibio su notificacion.</p>
 <hr />
-<h2 id="3-programacia3n-cron-scheduled-jobs">3. ProgramaciÃ³n Cron (Scheduled Jobs)</h2>
-<p>Ciertas acciones de mantenimiento del inventario de reservas no son provocadas por clics, sino por el paso del tiempo. Estas tareas se ejecutarÃ¡n con precisiÃ³n matemÃ¡tica.</p>
+<h2 id="3-programacion-cron-scheduled-jobs">3. Programacion Cron (Scheduled Jobs)</h2>
+<p>Ciertas acciones de mantenimiento del inventario de reservas no son provocadas por clics, sino por el paso del tiempo. Estas tareas se ejecutaran con precision matematica.</p>
 <blockquote>
 <p>[!TIP]
-<strong>DefiniciÃ³n de Zona Horaria:</strong> Todos los CRON del proyecto deben evaluarse en base a <strong>UTC</strong>. Si apuntamos a que algo ocurra a las 2 de la tarde hora de Colombia (UTC-5), el CRON debe configurarse para las 19:00 horas UTC.</p>
+<strong>Definicion de Zona Horaria:</strong> Todos los CRON del proyecto deben evaluarse en base a <strong>UTC</strong>. Si apuntamos a que algo ocurra a las 2 de la tarde hora de Colombia (UTC-5), el CRON debe configurarse para las 19:00 horas UTC.</p>
 </blockquote>
 <table>
 <thead>
 <tr>
 <th>Nombre de Tarea Interna</th>
-<th>ExpresiÃ³n Cron (UTC)</th>
-<th>PropÃ³sito y LÃ³gica Interna</th>
+<th>Expresion Cron (UTC)</th>
+<th>Proposito y Logica Interna</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>CancelExpiredBookings</code></td>
 <td><code>0 * * * *</code> (Cada hora en punto)</td>
-<td><strong>LÃ³gica:</strong> Ejecuta un SELECT de reservas en estado <code>PENDING</code> cuyo <code>createdAt</code> supere las 24 horas. Las actualiza a <code>CANCELLED</code>, liberando inmediatamente las fechas de la Finca para que otros las arrienden.</td>
+<td><strong>Logica:</strong> Ejecuta un SELECT de reservas en estado <code>PENDING</code> cuyo <code>createdAt</code> supere las 24 horas. Las actualiza a <code>CANCELLED</code>, liberando inmediatamente las fechas de la Finca para que otros las arrienden.</td>
 </tr>
 <tr>
 <td><code>SendPreCheckinReminders</code></td>
 <td><code>0 19 * * *</code> (Diario a las 14:00 COT)</td>
-<td><strong>LÃ³gica:</strong> Busca reservas <code>APPROVED</code> cuyo check-in ocurra exactamente el dÃ­a siguiente. Encola eventos en <code>booking-events-queue</code> para enviar al Turista un WhatsApp de recordatorio con la direcciÃ³n GPS.</td>
+<td><strong>Logica:</strong> Busca reservas <code>APPROVED</code> cuyo check-in ocurra exactamente el dia siguiente. Encola eventos en <code>booking-events-queue</code> para enviar al Turista un WhatsApp de recordatorio con la direccion GPS.</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <ul>
-<li><strong>Phase 7 â€” D5 (Backend API Implementation):</strong> El desarrollador backend debe crear los ficheros <code>workers/</code> correspondientes y configurar las conexiones a Upstash Redis o el gestor serverless.</li>
-<li><strong>Phase 10 â€” D1 (Monitoring &amp; Alerting):</strong> DevOps mapearÃ¡ las Dead-Letter Queues nombradas aquÃ­ (<code>booking-events-dlq</code>) a un dashboard de Datadog / Sentry.</li>
+<li><strong>Phase 7 â€” D5 (Backend API Implementation):</strong> El desarrollador backend debe crear los ficheros <code>workers/</code> correspondientes y configurar las conexiones a Upstash Redis o el gestor dockerizado.</li>
+<li><strong>Phase 10 â€” D1 (Monitoring &amp; Alerting):</strong> DevOps mapeara las Dead-Letter Queues nombradas aqui (<code>booking-events-dlq</code>) a un dashboard de Datadog / Sentry.</li>
 </ul>
 
 

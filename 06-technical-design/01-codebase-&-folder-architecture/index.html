@@ -7274,62 +7274,62 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 5:</em> Este entregable obedece a las resoluciones arquitectÃ³nicas tomadas en <code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md\|System Decomposition]]</code> (Modular Monolith) y <code>[[PHASE_5_ARCHITECTURAL_DESIGN/5.Architectural_Style_Selection/example_output_d5_architectural_style.md\|Architectural Style]]</code> (Estilo HÃ­brido).</p>
+<p><em>Backlink a Fase 5:</em> Este entregable obedece a las resoluciones arquitectonicas tomadas en <code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md\|System Decomposition]]</code> (Modular Monolith) y <code>[[PHASE_5_ARCHITECTURAL_DESIGN/5.Architectural_Style_Selection/example_output_d5_architectural_style.md\|Architectural Style]]</code> (Estilo Hibrido).</p>
 <hr />
 <h2 id="2-estructura-unificada-del-repositorio-monolito-modular">2. Estructura Unificada del Repositorio (Monolito Modular)</h2>
-<p>Dado que la topologÃ­a elegida es Serverless en Vercel, <strong>Frontend y Backend comparten exactamente la misma base de cÃ³digo</strong> utilizando el framework Next.js. El patrÃ³n aplicado es <em>Feature-Sliced Design</em> a nivel raÃ­z (<code>src/modules</code>), permitiendo que el Frontend (<code>src/app</code>) consuma lÃ³gicas encapsuladas por Bounded Contexts.</p>
-<p>Se observa el cumplimiento estricto del Modelo HÃ­brido: los dominios crÃ­ticos (<code>booking</code>, <code>billing</code>) estÃ¡n protegidos con <em>Clean Architecture</em>, mientras los de lectura (<code>catalog</code>) utilizan un patrÃ³n mÃ¡s sencillo (<em>Layered MVC</em>).</p>
+<p>Dado que la topologia elegida es Dockerizado en Railway/Render, <strong>Frontend y Backend comparten exactamente la misma base de codigo</strong> utilizando el framework Spring Boot. El patron aplicado es <em>Feature-Sliced Design</em> a nivel raiz (<code>src/modules</code>), permitiendo que el Frontend (<code>src/app</code>) consuma logicas encapsuladas por Bounded Contexts.</p>
+<p>Se observa el cumplimiento estricto del Modelo Hibrido: los dominios criticos (<code>booking</code>, <code>billing</code>) estan protegidos con <em>Clean Architecture</em>, mientras los de lectura (<code>catalog</code>) utilizan un patron mas sencillo (<em>Layered MVC</em>).</p>
 <div class="highlight"><pre><span></span><code>nos-fuimos-de-finca/
 â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ app/                         # Frontend: Next.js App Router (Rutas Web y API Routes)
-â”‚   â”‚   â”œâ”€â”€ (public)/                # Grupo de rutas: Landing, CatÃ¡logo
-â”‚   â”‚   â”œâ”€â”€ (host)/                  # Grupo de rutas: Dashboard de Finquero
-â”‚   â”‚   â””â”€â”€ api/                     # Endpoints REST expuestos explÃ­citamente (Webhooks)
+â”‚   â”œâ”€â”€ app/                         # Frontend: Vite + JavaScript (SPA)
+â”‚   â”‚   â”œâ”€â”€ (public)/                # Paginas publicas: Landing, Catalogo
+â”‚   â”‚   â”œâ”€â”€ (host)/                  # Paginas privadas: Dashboard del Finquero
+â”‚   â”‚   â””â”€â”€ api/                     # Endpoints REST expuestos explicitamente (Webhooks)
 â”‚   â”‚
-â”‚   â”œâ”€â”€ components/                  # Frontend: React Components
-â”‚   â”‚   â”œâ”€â”€ ui/                      # Sistema de diseÃ±o genÃ©rico (Botones, Inputs)
-â”‚   â”‚   â””â”€â”€ shared/                  # Componentes reutilizables entre mÃ³dulos
+â”‚   â”œâ”€â”€ components/                  # Frontend: Componentes reutilizables Vite + JavaScript
+â”‚   â”‚   â”œâ”€â”€ ui/                      # Sistema de diseno generico (Botones, Inputs)
+â”‚   â”‚   â””â”€â”€ shared/                  # Componentes reutilizables entre modulos
 â”‚   â”‚
 â”‚   â”œâ”€â”€ modules/                     # Backend: Core del Monolito Modular
 â”‚   â”‚   â”œâ”€â”€ booking/                 # [Clean Architecture] Core Transaccional
 â”‚   â”‚   â”‚   â”œâ”€â”€ domain/              # Entidades (Booking, BookingStatus) y Reglas Puras
 â”‚   â”‚   â”‚   â”œâ”€â”€ application/         # Casos de uso (CreateBookingUseCase)
-â”‚   â”‚   â”‚   â””â”€â”€ infrastructure/      # Server Actions, Repositorios Supabase
+â”‚   â”‚   â”‚   â””â”€â”€ infrastructure/      # Spring @Service + JPA Repositories (PostgreSQL)
 â”‚   â”‚   â”‚
 â”‚   â”‚   â”œâ”€â”€ billing/                 # [Clean Architecture] Core Financiero
 â”‚   â”‚   â”‚   â”œâ”€â”€ domain/              # Entidades (Payment, Invoice)
 â”‚   â”‚   â”‚   â”œâ”€â”€ application/         # Casos de uso (ProcessPaymentWebhook)
-â”‚   â”‚   â”‚   â””â”€â”€ infrastructure/      # Wompi Adapter, Supabase Repositories
+â”‚   â”‚   â”‚   â””â”€â”€ infrastructure/      # Wompi Adapter, PostgreSQL Repositories
 â”‚   â”‚   â”‚
 â”‚   â”‚   â”œâ”€â”€ catalog/                 # [Layered MVC] Lectura de Fincas
-â”‚   â”‚   â”‚   â”œâ”€â”€ controllers/         # Server Actions para UI
-â”‚   â”‚   â”‚   â”œâ”€â”€ services/            # Fetching de Supabase (ISR/Caching)
-â”‚   â”‚   â”‚   â””â”€â”€ models/              # Interfaces TS
+â”‚   â”‚   â”‚   â”œâ”€â”€ controllers/         # Spring @RestController para UI
+â”‚   â”‚   â”‚   â”œâ”€â”€ services/            # Queries a PostgreSQL con Spring Cache (@Cacheable)
+â”‚   â”‚   â”‚   â””â”€â”€ models/              # Interfaces Java (DTOs)
 â”‚   â”‚   â”‚
 â”‚   â”‚   â”œâ”€â”€ iam/                     # [Layered MVC] Identidad y Acceso
-â”‚   â”‚   â”‚   â””â”€â”€ services/            # Supabase Auth wrappers
+â”‚   â”‚   â”‚   â””â”€â”€ services/            # Spring Security + JWT wrappers
 â”‚   â”‚   â”‚
-â”‚   â”‚   â””â”€â”€ notifications/           # [Layered MVC] MensajerÃ­a
+â”‚   â”‚   â””â”€â”€ notifications/           # [Layered MVC] Mensajeria
 â”‚   â”‚       â””â”€â”€ services/            # WhatsApp API, Push Realtime
 â”‚   â”‚
-â”‚   â”œâ”€â”€ shared/                      # CÃ³digo comÃºn tÃ©cnico (no ligado a un mÃ³dulo)
-â”‚   â”‚   â”œâ”€â”€ types/                   # Tipos globales de TypeScript
+â”‚   â”œâ”€â”€ shared/                      # Codigo comun tecnico (no ligado a un modulo)
+â”‚   â”‚   â”œâ”€â”€ types/                   # Clases de utilidad y tipos globales (Java POJOs)
 â”‚   â”‚   â”œâ”€â”€ utils/                   # Helpers generales
-â”‚   â”‚   â””â”€â”€ config/                  # InicializaciÃ³n de Supabase client, env vars
+â”‚   â”‚   â””â”€â”€ config/                  # Inicializacion de DataSource (JDBC/JPA), env vars
 â”‚   â”‚
-â”‚   â””â”€â”€ middleware.ts                # Next.js Middleware (Auth Edge guards, Rate Limiting)
+â”‚   â””â”€â”€ SecurityConfig.java                # Spring Security Filter (JWT Validation, Rate Limiting)
 â”‚
-â”œâ”€â”€ public/                          # Assets estÃ¡ticos
-â”œâ”€â”€ vercel.json                      # ConfiguraciÃ³n de IaC Serverless
-â”œâ”€â”€ .env.local                       # Secrets (No versionado)
-â””â”€â”€ package.json                     # Dependencias
+â”œâ”€â”€ public/                          # Assets estaticos
+â”œâ”€â”€ Dockerfile + railway.toml  # Imagen Docker y configuracion Railway/Render
+â”œâ”€â”€ application.yml                       # Secrets (No versionado)
+â””â”€â”€ pom.xml                     # Dependencias
 </code></pre></div>
 <hr />
 <h2 id="3-downstream-consumers">3. Downstream Consumers</h2>
-<p>Este entregable es la hoja de ruta fÃ­sica para los desarrolladores y es input obligatorio para:
-- <strong>Phase 7 â€” D2 (Project Scaffolding &amp; Setup):</strong> Los desarrolladores tomarÃ¡n este Ã¡rbol de carpetas exacto para crear los directorios con <code>mkdir</code> e inicializar el repositorio GitHub.
-- <strong>Phase 6 â€” D3 (Configuration &amp; Environment Secrets):</strong> MapearÃ¡ las claves secretas necesarias que deben residir en el <code>.env.local</code> raÃ­z de este proyecto unificado.
-- <strong>Phase 6 â€” D9 (Frontend Component &amp; State Architecture):</strong> ProfundizarÃ¡ en la gestiÃ³n del estado global que habitarÃ¡ en el directorio <code>src/app/</code> y <code>src/components/</code>.</p>
+<p>Este entregable es la hoja de ruta fisica para los desarrolladores y es input obligatorio para:
+- <strong>Phase 7 â€” D2 (Project Scaffolding &amp; Setup):</strong> Los desarrolladores tomaran este arbol de carpetas exacto para crear los directorios con <code>mkdir</code> e inicializar el repositorio GitHub.
+- <strong>Phase 6 â€” D3 (Configuration &amp; Environment Secrets):</strong> Mapeara las claves secretas necesarias que deben residir en el <code>application.yml</code> raiz de este proyecto unificado.
+- <strong>Phase 6 â€” D9 (Frontend Component &amp; State Architecture):</strong> Profundizara en la gestion del estado global que habitara en el directorio <code>src/main/java/com/nosfuimosdefinica/</code> y <code>src/components/</code>.</p>
 
 
 

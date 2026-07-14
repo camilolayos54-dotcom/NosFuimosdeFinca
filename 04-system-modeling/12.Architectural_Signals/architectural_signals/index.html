@@ -7370,7 +7370,7 @@
 <td><strong>NS-01</strong></td>
 <td>Real-Time Push: el Dashboard del Finquero debe recibir alertas de nueva reserva en tiempo real sin refrescar la pÃ¡gina.</td>
 <td><code>MOD-NOT</code> (D10)</td>
-<td>Implementar <strong>Supabase Realtime (PostgreSQL LISTEN/NOTIFY)</strong> sobre la tabla <code>bookings</code>. Elimina la necesidad de un servidor WebSocket/Redis PubSub custom.</td>
+<td>Implementar <strong>PostgreSQL Realtime (PostgreSQL LISTEN/NOTIFY)</strong> sobre la tabla <code>bookings</code>. Elimina la necesidad de un servidor WebSocket/Redis PubSub custom.</td>
 </tr>
 </tbody>
 </table>
@@ -7389,13 +7389,13 @@
 <td><strong>DS-01</strong></td>
 <td>ProporciÃ³n R/W de ~100:1 en el catÃ¡logo de fincas (<code>properties</code>). Todo Turista ejecuta <code>GET /api/v1/properties</code>.</td>
 <td><code>properties</code> + <code>GET /api/v1/properties</code></td>
-<td>Aprovechar cachÃ© de CDN estÃ¡tica para SSG/ISR (Next.js App Router) para el listado pÃºblico.</td>
+<td>Aprovechar cachÃ© de CDN estÃ¡tica para Spring Cache (@Cacheable) (Spring Boot) para el listado pÃºblico.</td>
 </tr>
 <tr>
 <td><strong>DS-02</strong></td>
 <td>Archivos binarios HD (hasta 10MB/foto, 5-20 fotos por finca). No pueden almacenarse en el disco local del servidor.</td>
 <td><code>property_images.url_hd</code></td>
-<td>Implementar <strong>Supabase Storage</strong>. El servidor Next.js sube el archivo al bucket y guarda la URL pÃºblica en BD.</td>
+<td>Implementar <strong>Cloudinary / S3</strong>. El servidor Spring Boot (Java) sube el archivo al bucket y guarda la URL pÃºblica en BD.</td>
 </tr>
 </tbody>
 </table>
@@ -7411,17 +7411,17 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>NS-01</strong> (Supabase Realtime)</td>
+<td><strong>NS-01</strong> (PostgreSQL Realtime)</td>
 <td>âœ… <code>RESUELTO</code></td>
-<td>Incluido en el stack de Supabase (SaaS). Evita montar websockets manuales.</td>
+<td>Incluido en el stack de PostgreSQL (SaaS). Evita montar websockets manuales.</td>
 </tr>
 <tr>
-<td><strong>DS-01</strong> (Next.js Cache)</td>
+<td><strong>DS-01</strong> (Spring Boot (Java) Cache)</td>
 <td>âœ… <code>RESUELTO</code></td>
-<td>Nativo en Next.js (App Router ISR).</td>
+<td>Nativo en Spring Boot (Java) (App Router ISR).</td>
 </tr>
 <tr>
-<td><strong>DS-02</strong> (Supabase Storage)</td>
+<td><strong>DS-02</strong> (Cloudinary / S3)</td>
 <td>âœ… <code>RESUELTO</code></td>
 <td>Integrado en la consola del proyecto.</td>
 </tr>
@@ -7432,13 +7432,13 @@
 <p><strong>Estado: <code>CLEARED</code> â€” Sin Blockers CrÃ­ticos No Resueltos.</strong></p>
 <p>Tras sintetizar las seÃ±ales de red y datos, y verificar su compatibilidad con la arquitectura acordada en Fase 2 (y revisada en los NFRs de <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/6.Non-Functional_Requirements.md]]</code>):</p>
 <blockquote>
-<p>El sistema <strong>PUEDE</strong> construirse exitosamente bajo un stack <strong>BaaS + Serverless</strong> (Next.js + Supabase). Las 3 seÃ±ales detectadas (NS-01, DS-01, DS-02) son resueltas de manera nativa por el ecosistema elegido, evitando la configuraciÃ³n manual de infraestructura tradicional.</p>
+<p>El sistema <strong>PUEDE</strong> construirse exitosamente bajo un stack <strong>BaaS + Serverless</strong> (Java Spring Boot + PostgreSQL). Las 3 seÃ±ales detectadas (NS-01, DS-01, DS-02) son resueltas de manera nativa por el ecosistema elegido, evitando la configuraciÃ³n manual de infraestructura tradicional.</p>
 </blockquote>
 <p><strong>Componentes de Infraestructura que Fase 5 debe contemplar:</strong>
-- <strong>Supabase PostgreSQL</strong> (BD relacional + RLS + GoTrue Auth)
-- <strong>Supabase Realtime</strong> (Suscripciones Websocket a la DB)
-- <strong>Supabase Storage</strong> (Buckets de imÃ¡genes)
-- <strong>Next.js Vercel/Node</strong> (Frontend React, Server Actions y Webhooks B2B)</p>
+- <strong>PostgreSQL PostgreSQL</strong> (BD relacional + RLS + GoTrue Auth)
+- <strong>PostgreSQL Realtime</strong> (Suscripciones Websocket a la DB)
+- <strong>Cloudinary / S3</strong> (Buckets de imÃ¡genes)
+- <strong>Spring Boot (Java) Vercel/Node</strong> (Frontend React, Server Actions y Webhooks B2B)</p>
 <hr />
 <h2 id="implicacia3n-de-fase">ImplicaciÃ³n de Fase</h2>
 <ul>

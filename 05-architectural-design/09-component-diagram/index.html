@@ -7318,10 +7318,10 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 5:</em> Este diagrama consolida y rinde cuentas exactas de las decisiones previas de infraestructura (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]</code>), particiÃ³n de cÃ³digo (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>), y protocolos de red (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/6.Communication_Pattern_Decision/example_output_d6_communication_pattern.md]]</code>).</p>
+<p><em>Backlink a Fase 5:</em> Este diagrama consolida y rinde cuentas exactas de las decisiones previas de infraestructura (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]</code>), particion de codigo (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>), y protocolos de red (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/6.Communication_Pattern_Decision/example_output_d6_communication_pattern.md]]</code>).</p>
 <hr />
 <h2 id="2-level-1-system-context-diagram">2. Level 1: System Context Diagram</h2>
-<p>El Nivel 1 muestra a "Nos Fuimos de Finca" como una caja negra (System), rodeada de los usuarios (Turista, Finquero) y las plataformas externas crÃ­ticas identificadas en la Fase 4.</p>
+<p>El Nivel 1 muestra a "Nos Fuimos de Finca" como una caja negra (System), rodeada de los usuarios (Turista, Finquero) y las plataformas externas criticas identificadas en la Fase 4.</p>
 <pre class="mermaid"><code>C4Context
 title System Context Diagram - Nos Fuimos de Finca
 
@@ -7331,18 +7331,18 @@ Person(host, "Finquero (Host)", "Publica fincas, aprueba reservas y recibe cobro
 System(marketplace, "Nos Fuimos de Finca", "Plataforma central (Marketplace B2C/B2B) para alquiler de fincas de recreo.")
 
 System_Ext(wompi, "Wompi (Bancolombia)", "Pasarela externa de pagos (Tarjetas, PSE).")
-System_Ext(whatsapp, "WhatsApp Business API", "Sistema de mensajerÃ­a para notificaciones push.")
-System_Ext(supabase_auth, "Supabase Auth/Storage", "Proveedor externo de Identidad (JWT) y CDN de imÃ¡genes.")
+System_Ext(whatsapp, "WhatsApp Business API", "Sistema de mensajeria para notificaciones push.")
+System_Ext(postgresql_auth, "Spring Security + JWT/Storage", "Proveedor externo de Identidad (JWT) y CDN de imagenes.")
 
 Rel(turista, marketplace, "Busca y reserva fincas", "HTTPS")
 Rel(host, marketplace, "Administra inventario y aprueba reservas", "HTTPS")
 
-Rel(marketplace, wompi, "Inicia transacciones de cobro y dispersiÃ³n", "API REST")
-Rel(marketplace, whatsapp, "EnvÃ­a notificaciones de reserva", "Webhooks / API")
-Rel(marketplace, supabase_auth, "Autentica usuarios y lee/escribe fotos", "API REST")</code></pre>
+Rel(marketplace, wompi, "Inicia transacciones de cobro y dispersion", "API REST")
+Rel(marketplace, whatsapp, "Envia notificaciones de reserva", "Webhooks / API")
+Rel(marketplace, postgresql_auth, "Autentica usuarios y lee/escribe fotos", "API REST")</code></pre>
 <hr />
 <h2 id="3-level-2-container-diagram">3. Level 2: Container Diagram</h2>
-<p>El Nivel 2 hace zoom dentro de la caja "Marketplace" y revela las unidades de software desplegables reales (Containers). AquÃ­ aplicamos estrictamente nuestra decisiÃ³n de <strong>Monolito Modular</strong> (1 solo ejecutable web) y etiquetamos cada flecha de red con el protocolo exacto.</p>
+<p>El Nivel 2 hace zoom dentro de la caja "Marketplace" y revela las unidades de software desplegables reales (Containers). Aqui aplicamos estrictamente nuestra decision de <strong>Monolito Modular</strong> (1 solo ejecutable web) y etiquetamos cada flecha de red con el protocolo exacto.</p>
 <pre class="mermaid"><code>C4Container
 title Container Diagram - Nos Fuimos de Finca (Modular Monolith)
 
@@ -7350,8 +7350,8 @@ Person(turista, "Turista", "Busca fincas y reserva.")
 Person(host, "Finquero (Host)", "Administra y aprueba.")
 
 System_Boundary(c1, "Marketplace (Nos Fuimos de Finca)") {
-    Container(webapp, "Web &amp; API Application", "Next.js (Vercel Serverless)", "Monolito Modular. Sirve la UI (React) y ejecuta la lÃ³gica de negocio (Server Actions/APIs) para Booking, Billing, Catalog e Identity.")
-    ContainerDb(database, "Primary Database &amp; Realtime", "Supabase (PostgreSQL + PgBouncer)", "Almacena el modelo relacional (15 entidades). Provee pooling y suscripciones a cambios (WebSockets).")
+    Container(webapp, "Web &amp; API Application", "Spring Boot (Java) (Railway/Render (Dockerizado))", "Monolito Modular. Sirve la UI (Vite + JavaScript (frontend)) y ejecuta la logica de negocio (Spring MVC @Service + @RestController/APIs) para Booking, Billing, Catalog e Identity.")
+    ContainerDb(database, "Primary Database &amp; Realtime", "PostgreSQL (PostgreSQL + HikariCP (Connection Pooling))", "Almacena el modelo relacional (15 entidades). Provee pooling y suscripciones a cambios (WebSockets).")
 }
 
 System_Ext(wompi, "Wompi", "Pasarela de Pagos")
@@ -7370,15 +7370,15 @@ Rel(database, whatsapp, "Notifica a finquero (Database Trigger)", "Webhooks (HTT
 <hr />
 <h2 id="4-consistency-notes">4. Consistency Notes</h2>
 <ul>
-<li><strong>VerificaciÃ³n contra D4 (System Decomposition):</strong> [OK]. Se muestra un solo contenedor ejecutable (<code>webapp</code>), honrando estrictamente la decisiÃ³n de desarrollar un Monolito Modular y descartar microservicios.</li>
-<li><strong>VerificaciÃ³n contra D3 (Deployment Topology) &amp; D6 (Communication):</strong> [OK]. Los protocolos (<code>WebSockets/WSS</code>) y las capacidades avanzadas de la base de datos (Database Webhooks / <code>pg_net</code> para llamar a WhatsApp) encajan al 100% con la topologÃ­a Supabase (BaaS) aprobada. No hay tecnologÃ­as inventadas en este diagrama.</li>
+<li><strong>Verificacion contra D4 (System Decomposition):</strong> [OK]. Se muestra un solo contenedor ejecutable (<code>webapp</code>), honrando estrictamente la decision de desarrollar un Monolito Modular y descartar microservicios.</li>
+<li><strong>Verificacion contra D3 (Deployment Topology) &amp; D6 (Communication):</strong> [OK]. Los protocolos (<code>WebSockets/WSS</code>) y las capacidades avanzadas de la base de datos (Database Webhooks / <code>Spring Scheduler / @Async</code> para llamar a WhatsApp) encajan al 100% con la topologia PostgreSQL (PostgreSQL + Spring Boot) aprobada. No hay tecnologias inventadas en este diagrama.</li>
 </ul>
 <hr />
 <h2 id="5-downstream-consumers">5. Downstream Consumers</h2>
-<p>Este entregable es la fotografÃ­a oficial arquitectÃ³nica y es input obligatorio para:
-- <strong>D11 (Phase 5 RTM Update &amp; Brief):</strong> Al mapear requerimientos contra el cÃ³digo real, utilizaremos estos "Containers" como destino.
-- <strong>Phase 6 â€” D1 (Codebase &amp; Folder Architecture):</strong> La Fase 6 debe tomar el contenedor <code>webapp</code> y estructurarlo fÃ­sicamente en un Ã¡rbol de directorios de Next.js, respetando sus mÃ³dulos internos.
-- <strong>Phase 7 â€” D3 (Walking Skeleton Implementation):</strong> El primer hito de cÃ³digo real deberÃ¡ trazar con Ã©xito la ruta: <code>[UI Turista] -&gt; [Next.js webapp] -&gt; [Supabase database]</code>, comprobando que la comunicaciÃ³n entre contenedores funciona en la nube antes de programar las reglas de negocio.</p>
+<p>Este entregable es la fotografia oficial arquitectonica y es input obligatorio para:
+- <strong>D11 (Phase 5 RTM Update &amp; Brief):</strong> Al mapear requerimientos contra el codigo real, utilizaremos estos "Containers" como destino.
+- <strong>Phase 6 â€” D1 (Codebase &amp; Folder Architecture):</strong> La Fase 6 debe tomar el contenedor <code>webapp</code> y estructurarlo fisicamente en un arbol de directorios de Spring Boot (Java), respetando sus modulos internos.
+- <strong>Phase 7 â€” D3 (Walking Skeleton Implementation):</strong> El primer hito de codigo real debera trazar con exito la ruta: <code>[UI Turista] -&gt; [Spring Boot (Java) webapp] -&gt; [PostgreSQL database]</code>, comprobando que la comunicacion entre contenedores funciona en la nube antes de programar las reglas de negocio.</p>
 
 
 

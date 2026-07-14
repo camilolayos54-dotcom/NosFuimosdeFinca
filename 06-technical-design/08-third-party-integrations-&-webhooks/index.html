@@ -7000,10 +7000,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-wompi-tokenizacia3n-y-cobros" class="md-nav__link">
+  <a href="#21-wompi-tokenizacion-y-cobros" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Wompi: TokenizaciÃ³n y Cobros
+        2.1 Wompi: Tokenizacion y Cobros
       
     </span>
   </a>
@@ -7051,10 +7051,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-validacia3n-de-firma-seguridad" class="md-nav__link">
+  <a href="#1-validacion-de-firma-seguridad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. ValidaciÃ³n de Firma (Seguridad)
+        1. Validacion de Firma (Seguridad)
       
     </span>
   </a>
@@ -7076,7 +7076,7 @@
   <a href="#3-payload-estandar-esperado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Payload EstÃ¡ndar Esperado
+        3. Payload Estandar Esperado
       
     </span>
   </a>
@@ -7338,10 +7338,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-wompi-tokenizacia3n-y-cobros" class="md-nav__link">
+  <a href="#21-wompi-tokenizacion-y-cobros" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Wompi: TokenizaciÃ³n y Cobros
+        2.1 Wompi: Tokenizacion y Cobros
       
     </span>
   </a>
@@ -7389,10 +7389,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-validacia3n-de-firma-seguridad" class="md-nav__link">
+  <a href="#1-validacion-de-firma-seguridad" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. ValidaciÃ³n de Firma (Seguridad)
+        1. Validacion de Firma (Seguridad)
       
     </span>
   </a>
@@ -7414,7 +7414,7 @@
   <a href="#3-payload-estandar-esperado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Payload EstÃ¡ndar Esperado
+        3. Payload Estandar Esperado
       
     </span>
   </a>
@@ -7463,49 +7463,49 @@
 <h2 id="1-metadata-header">1. Metadata Header</h2>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
-<strong>MÃ³dulo:</strong> MOD-Billing
+<strong>Modulo:</strong> MOD-Billing
 <strong>Estado:</strong> Approved</p>
-<p><em>Backlink a Fase 4 y Fase 6 (D3):</em> Este entregable documenta el mecanismo fÃ­sico de interacciÃ³n con las pasarelas externas que mueven el dinero, consumiendo los secretos que marcamos como pendientes en el D3 (Configuration &amp; Secrets).</p>
+<p><em>Backlink a Fase 4 y Fase 6 (D3):</em> Este entregable documenta el mecanismo fisico de interaccion con las pasarelas externas que mueven el dinero, consumiendo los secretos que marcamos como pendientes en el D3 (Configuration &amp; Secrets).</p>
 <hr />
 <h2 id="2-llamadas-salientes-apisdk-outbound">2. Llamadas Salientes API/SDK (Outbound)</h2>
-<p>Dado que la pasarela <strong>Wompi</strong> no cuenta con un SDK oficial moderno para Node.js, las integraciones se harÃ¡n mediante llamadas REST estÃ¡ndar con control de errores explÃ­cito.</p>
-<h3 id="21-wompi-tokenizacia3n-y-cobros">2.1 Wompi: TokenizaciÃ³n y Cobros</h3>
+<p>Dado que la pasarela <strong>Wompi</strong> no cuenta con un SDK oficial moderno para Node.js, las integraciones se haran mediante llamadas REST estandar con control de errores explicito.</p>
+<h3 id="21-wompi-tokenizacion-y-cobros">2.1 Wompi: Tokenizacion y Cobros</h3>
 <ul>
-<li><strong>Mecanismo:</strong> Llamada REST <code>POST /v1/transactions</code> (Client-side vÃ­a Widget o Server-side).</li>
-<li><strong>AutenticaciÃ³n:</strong> Requiere <code>WOMPI_PUBLISHABLE_KEY</code> (Cliente) o <code>WOMPI_PRIVATE_KEY</code> (Servidor).</li>
-<li><strong>Naturaleza:</strong> SÃ­ncrona y crÃ­tica. Determina si el flujo del <code>Booking Engine</code> avanza.</li>
-<li><strong>PolÃ­tica de Reintentos (Server-side):</strong></li>
-<li><strong>MÃ¡ximo Reintentos:</strong> 2</li>
+<li><strong>Mecanismo:</strong> Llamada REST <code>POST /v1/transactions</code> (Client-side via Widget o Server-side).</li>
+<li><strong>Autenticacion:</strong> Requiere <code>WOMPI_PUBLISHABLE_KEY</code> (Cliente) o <code>WOMPI_PRIVATE_KEY</code> (Servidor).</li>
+<li><strong>Naturaleza:</strong> Sincrona y critica. Determina si el flujo del <code>Booking Engine</code> avanza.</li>
+<li><strong>Politica de Reintentos (Server-side):</strong></li>
+<li><strong>Maximo Reintentos:</strong> 2</li>
 <li><strong>Estrategia Backoff:</strong> Exponencial (1000ms, 3000ms).</li>
-<li><strong>CondiciÃ³n:</strong> Solo reintentar ante Timeouts (<code>ECONNABORTED</code>) o Errores de Red de Wompi (<code>500</code>, <code>502</code>, <code>503</code>). </li>
-<li><strong>ExcepciÃ³n Estricta:</strong> Errores <code>4xx</code> (Tarjetas declinadas, sin fondos, bloqueadas por fraude) <strong>NO se reintentan</strong>, fallan instantÃ¡neamente y se devuelve el error al frontend.</li>
+<li><strong>Condicion:</strong> Solo reintentar ante Timeouts (<code>ECONNABORTED</code>) o Errores de Red de Wompi (<code>500</code>, <code>502</code>, <code>503</code>). </li>
+<li><strong>Excepcion Estricta:</strong> Errores <code>4xx</code> (Tarjetas declinadas, sin fondos, bloqueadas por fraude) <strong>NO se reintentan</strong>, fallan instantaneamente y se devuelve el error al frontend.</li>
 </ul>
 <h3 id="22-wompi-reembolsos-refunds">2.2 Wompi: Reembolsos (Refunds)</h3>
 <ul>
 <li><strong>Mecanismo:</strong> Llamada REST <code>POST /v1/transactions/{id}/refunds</code>.</li>
-<li><strong>AutenticaciÃ³n:</strong> Requiere <code>WOMPI_PRIVATE_KEY</code> estricto (Server-only).</li>
-<li><strong>Naturaleza:</strong> AsÃ­ncrona (Background Job). No bloquea al Finquero que estÃ¡ cancelando la reserva desde la UI.</li>
-<li><strong>PolÃ­tica de Reintentos:</strong> 3 reintentos con intervalo amplio (10s, 30s, 60s) en caso de fallos de la pasarela.</li>
+<li><strong>Autenticacion:</strong> Requiere <code>WOMPI_PRIVATE_KEY</code> estricto (Server-only).</li>
+<li><strong>Naturaleza:</strong> Asincrona (Background Job). No bloquea al Finquero que esta cancelando la reserva desde la UI.</li>
+<li><strong>Politica de Reintentos:</strong> 3 reintentos con intervalo amplio (10s, 30s, 60s) en caso de fallos de la pasarela.</li>
 </ul>
 <hr />
 <h2 id="3-definiciones-de-webhooks-entrantes-inbound">3. Definiciones de Webhooks Entrantes (Inbound)</h2>
-<p>Los Webhooks de Wompi informan al sistema de forma asÃ­ncrona cuando Nequi, PSE o las redes de tarjetas finalizan el proceso (ej. un pago en efectivo tarda minutos en ser confirmado).</p>
+<p>Los Webhooks de Wompi informan al sistema de forma asincrona cuando Nequi, PSE o las redes de tarjetas finalizan el proceso (ej. un pago en efectivo tarda minutos en ser confirmado).</p>
 <h3 id="31-webhook-transactionupdated">3.1 Webhook: <code>transaction.updated</code></h3>
 <p><strong>Endpoint de Captura:</strong> <code>POST /api/webhooks/wompi</code></p>
 <blockquote>
 <p>[!WARNING]
-Este endpoint es la puerta de entrada a la manipulaciÃ³n financiera del sistema. Las validaciones criptogrÃ¡ficas son obligatorias para evitar inyecciones (fraude).</p>
+Este endpoint es la puerta de entrada a la manipulacion financiera del sistema. Las validaciones criptograficas son obligatorias para evitar inyecciones (fraude).</p>
 </blockquote>
-<h4 id="1-validacia3n-de-firma-seguridad">1. ValidaciÃ³n de Firma (Seguridad)</h4>
-<p>No confiaremos en el cuerpo del webhook si no estÃ¡ firmado. 
+<h4 id="1-validacion-de-firma-seguridad">1. Validacion de Firma (Seguridad)</h4>
+<p>No confiaremos en el cuerpo del webhook si no esta firmado. 
 - Extraer <code>data.transaction.id</code>, <code>data.transaction.status</code>, <code>data.transaction.amount_in_cents</code>, el <code>timestamp</code> y combinarlos con la clave privada <code>WOMPI_WEBHOOK_SECRET</code>.
-- Ejecutar cÃ¡lculo local en SHA-256.
-- Comparar con la clave proveÃ­da en <code>signature.checksum</code>. Si el match es fallido, devolver <strong>HTTP 403 Forbidden</strong>.</p>
+- Ejecutar calculo local en SHA-256.
+- Comparar con la clave proveida en <code>signature.checksum</code>. Si el match es fallido, devolver <strong>HTTP 403 Forbidden</strong>.</p>
 <h4 id="2-regla-de-idempotencia">2. Regla de Idempotencia</h4>
 <p>Wompi advierte que la red puede demorarse y enviar el mismo evento dos veces.
 - Buscar en base de datos la reserva (<code>bookings</code>) o pago (<code>payments</code>) usando <code>data.transaction.reference</code>.
-- <strong>VerificaciÃ³n:</strong> Si la tabla ya indica que este pago estÃ¡ <code>APPROVED</code> y el webhook entrante dice <code>APPROVED</code>, abortar el proceso y retornar <strong>HTTP 200 OK</strong> para que Wompi deje de insistir, pero <strong>no ejecutar</strong> los gatillos secundarios (ej. no enviar el correo electrÃ³nico dos veces).</p>
-<h4 id="3-payload-estandar-esperado">3. Payload EstÃ¡ndar Esperado</h4>
+- <strong>Verificacion:</strong> Si la tabla ya indica que este pago esta <code>APPROVED</code> y el webhook entrante dice <code>APPROVED</code>, abortar el proceso y retornar <strong>HTTP 200 OK</strong> para que Wompi deje de insistir, pero <strong>no ejecutar</strong> los gatillos secundarios (ej. no enviar el correo electronico dos veces).</p>
+<h4 id="3-payload-estandar-esperado">3. Payload Estandar Esperado</h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;transaction.updated&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -7533,8 +7533,8 @@ Este endpoint es la puerta de entrada a la manipulaciÃ³n financiera del sistem
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <ul>
-<li><strong>Phase 6 â€” D10 (Async Workers &amp; Job Scheduling):</strong> UsarÃ¡ la definiciÃ³n del Reembolso (Refund) para programar las colas asÃ­ncronas de trabajo.</li>
-<li><strong>Phase 7 â€” D8 (External Integrations Implementation):</strong> El programador escribirÃ¡ el controlador <code>wompi.controller.ts</code> asegurÃ¡ndose de transcribir la lÃ³gica criptogrÃ¡fica de SHA-256 para los Webhooks.</li>
+<li><strong>Phase 6 â€” D10 (Async Workers &amp; Job Scheduling):</strong> Usara la definicion del Reembolso (Refund) para programar las colas asincronas de trabajo.</li>
+<li><strong>Phase 7 â€” D8 (External Integrations Implementation):</strong> El programador escribira el controlador <code>wompi.controller.ts</code> asegurandose de transcribir la logica criptografica de SHA-256 para los Webhooks.</li>
 </ul>
 
 

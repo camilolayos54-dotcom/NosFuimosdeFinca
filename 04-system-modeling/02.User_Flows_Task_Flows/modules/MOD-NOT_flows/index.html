@@ -7397,7 +7397,7 @@
     DetailUI[Pantalla de Detalles&lt;br&gt;Ruta Destino Específica]
 
     %% Nodos Asíncronos
-    DB((Supabase DB&lt;br&gt;Consultar Historial))
+    DB((PostgreSQL DB&lt;br&gt;Consultar Historial))
 
     %% Decisiones
     CountCheck{¿Hay&lt;br&gt;Notificaciones?}
@@ -7412,11 +7412,11 @@
     %% Acción posterior
     DropdownUI --&gt; |Clic en una Alerta| DetailUI</code></pre>
 <h3 id="32-user-flow-interrupcion-asincrona-websocket-toast">3.2. User Flow: Interrupción Asíncrona (WebSocket Toast)</h3>
-<p>Este flujo modela un evento del sistema que es empujado al Frontend sin que el usuario haga absolutamente nada (Real-time). Exige que el Frontend esté suscrito a un canal de Supabase/WebSocket.</p>
+<p>Este flujo modela un evento del sistema que es empujado al Frontend sin que el usuario haga absolutamente nada (Real-time). Exige que el Frontend esté suscrito a un canal de Spring WebSocket.</p>
 <pre class="mermaid"><code>flowchart TD
     %% Nodos Lógicos/Asíncronos
     ExternalTrigger((Evento Externo&lt;br&gt;Ej. Wompi Confirma Pago))
-    SupabaseRealtime((Supabase WebSocket&lt;br&gt;Canal: 'host_alerts'))
+    SpringWebSocket((Spring WebSocket&lt;br&gt;Canal: 'host_alerts'))
 
     %% Nodos UI
     CurrentUI[Cualquier Pantalla B2B&lt;br&gt;Ej. /dashboard/calendario]
@@ -7425,8 +7425,8 @@
     DestinationUI[Pantalla de Reserva&lt;br&gt;Ruta: /dashboard/reservas/id]
 
     %% Flujo Asíncrono Hacia el Cliente
-    ExternalTrigger -.-&gt; |Dispara Evento DB| SupabaseRealtime
-    SupabaseRealtime -.-&gt; |Push Data al Cliente| ToastUI
+    ExternalTrigger -.-&gt; |Dispara Evento DB| SpringWebSocket
+    SpringWebSocket -.-&gt; |Push Data al Cliente| ToastUI
 
     %% Interacción del Usuario
     CurrentUI --&gt; ToastUI

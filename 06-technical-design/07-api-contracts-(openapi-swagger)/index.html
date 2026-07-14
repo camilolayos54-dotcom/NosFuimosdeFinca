@@ -6960,10 +6960,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-especificacia3n-openapi-yaml" class="md-nav__link">
+  <a href="#2-especificacion-openapi-yaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. EspecificaciÃ³n OpenAPI YAML
+        2. Especificacion OpenAPI YAML
       
     </span>
   </a>
@@ -7231,10 +7231,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-especificacia3n-openapi-yaml" class="md-nav__link">
+  <a href="#2-especificacion-openapi-yaml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. EspecificaciÃ³n OpenAPI YAML
+        2. Especificacion OpenAPI YAML
       
     </span>
   </a>
@@ -7273,20 +7273,20 @@
 <h2 id="1-metadata-header">1. Metadata Header</h2>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 6 â€” Technical Design
-<strong>MÃ³dulo:</strong> MOD-Booking
+<strong>Modulo:</strong> MOD-Booking
 <strong>Estado:</strong> Approved</p>
 <p><em>Backlink a Fase 4 y 6:</em> Este documento fusiona las operaciones conceptuales del <code>[[PHASE_4_SYSTEM_MODELING/9.API_Conceptual_Design.md]]</code> con los DTOs estrictos definidos en el <code>[[PHASE_6_TECHNICAL_DESIGN/modules/MOD-Booking/6.Data_Access.md]]</code> y el mecanismo de seguridad de <code>[[PHASE_6_TECHNICAL_DESIGN/4.Security_Implementation.md]]</code>. </p>
 <hr />
-<h2 id="2-especificacia3n-openapi-yaml">2. EspecificaciÃ³n OpenAPI YAML</h2>
+<h2 id="2-especificacion-openapi-yaml">2. Especificacion OpenAPI YAML</h2>
 <blockquote>
 <p>[!TIP]
-<strong>Para el equipo Frontend:</strong> Todos los endpoints requieren que la cookie <code>sb-[project]-auth-token</code> viaje en la peticiÃ³n. Next.js y el navegador manejan esto automÃ¡ticamente (credentials: 'include'), no hace falta adjuntar un header <code>Authorization</code> manualmente.</p>
+<strong>Para el equipo Frontend:</strong> Todos los endpoints requieren que la cookie <code>sb-[project]-auth-token</code> viaje en la peticion. Spring Boot (Java) y el navegador manejan esto automaticamente (credentials: 'include'), no hace falta adjuntar un header <code>Authorization</code> manualmente.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.3</span>
 <span class="nt">info</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API â€” MÃ³dulo Booking Engine</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API â€” Modulo Booking Engine</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Contrato oficial para orquestar reservas, reseÃ±as y favoritos.</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Contrato oficial para orquestar reservas, resenas y favoritos.</span>
 
 <span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">/api/bookings</span><span class="p">:</span>
@@ -7311,7 +7311,7 @@
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SesiÃ³n invÃ¡lida o faltante.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sesion invalida o faltante.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -7329,14 +7329,14 @@
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> type</span><span class="p">:</span><span class="w"> </span><span class="nv">integer</span><span class="p p-Indicator">,</span><span class="nt"> default</span><span class="p">:</span><span class="w"> </span><span class="nv">20</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">        </span><span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Array de reservas (HistÃ³rico o Futuras).</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Array de reservas (Historico o Futuras).</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
 <span class="w">                </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/BookingResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SesiÃ³n invÃ¡lida.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sesion invalida.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -7363,12 +7363,12 @@
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/BookingResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SesiÃ³n invÃ¡lida.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sesion invalida.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="s">&#39;403&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prohibido. El usuario no es dueÃ±o de la propiedad ni administrador.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prohibido. El usuario no es dueno de la propiedad ni administrador.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -7376,7 +7376,7 @@
 <span class="w">  </span><span class="nt">/api/reviews</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">post</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Reviews</span><span class="p p-Indicator">]</span>
-<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Crear una reseÃ±a para una propiedad</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Crear una resena para una propiedad</span>
 <span class="w">      </span><span class="nt">operationId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">createReview</span>
 <span class="w">      </span><span class="nt">security</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="nt"> cookieAuth</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"> </span><span class="p p-Indicator">}]</span>
 <span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span>
@@ -7385,17 +7385,17 @@
 <span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/CreateReviewRequest&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">        </span><span class="s">&#39;201&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReseÃ±a guardada.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resena guardada.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ReviewResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="s">&#39;400&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Error de validaciÃ³n (ej. Rating fuera de rango 1-5).</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Error de validacion (ej. Rating fuera de rango 1-5).</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SesiÃ³n invÃ¡lida.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sesion invalida.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -7419,7 +7419,7 @@
 <span class="w">        </span><span class="s">&#39;201&#39;</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agregado.</span>
 <span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SesiÃ³n invÃ¡lida.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sesion invalida.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -7439,7 +7439,7 @@
 <span class="w">        </span><span class="s">&#39;204&#39;</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Eliminado exitosamente (Sin contenido).</span>
 <span class="w">        </span><span class="s">&#39;401&#39;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SesiÃ³n invÃ¡lida.</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sesion invalida.</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> $ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/ErrorResponse&#39;</span><span class="w"> </span><span class="p p-Indicator">}</span>
@@ -7450,7 +7450,7 @@
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiKey</span>
 <span class="w">      </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cookie</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sb-project-auth-token</span>
-<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Next.js SSR HttpOnly Cookie inyectada automÃ¡ticamente.</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Spring Boot (Java) SSR HttpOnly Cookie inyectada automaticamente.</span>
 
 <span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># --- REQUESTS ---</span>
@@ -7518,8 +7518,8 @@
 <hr />
 <h2 id="3-downstream-consumers">3. Downstream Consumers</h2>
 <ul>
-<li><strong>Phase 7 â€” D5 (Backend API Implementation):</strong> El desarrollador backend debe lograr que Next.js responda matemÃ¡ticamente idÃ©ntico a este YAML (mismos cÃ³digos HTTP, mismas keys en el JSON).</li>
-<li><strong>Phase 7 â€” D6 (Frontend UI):</strong> El desarrollador frontend usarÃ¡ este YAML (o generadores como <code>orval</code> / <code>openapi-typescript</code>) para crear las queries de <strong>React Query</strong> (<code>useMutation</code>, <code>useQuery</code>), logrando que el frontend estÃ© fuertemente tipado incluso antes de que el backend exista.</li>
+<li><strong>Phase 7 â€” D5 (Backend API Implementation):</strong> El desarrollador backend debe lograr que Spring Boot (Java) responda matematicamente identico a este YAML (mismos codigos HTTP, mismas keys en el JSON).</li>
+<li><strong>Phase 7 â€” D6 (Frontend UI):</strong> El desarrollador frontend usara este YAML (o generadores como <code>orval</code> / <code>openapi-java</code>) para crear las queries de <strong>Gestionado desde el Backend Java (Spring Boot)</strong> (<code>useMutation</code>, <code>useQuery</code>), logrando que el frontend este fuertemente tipado incluso antes de que el backend exista.</li>
 </ul>
 
 

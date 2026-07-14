@@ -7591,7 +7591,7 @@
 <li><strong>Actor:</strong> Turista (Anónimo o Logueado)</li>
 <li><strong>Trigger:</strong> Click en una finca desde el Buscador (<code>MOD-SRCH</code>) o link directo de WhatsApp.</li>
 <li><strong>Main Success Scenario:</strong></li>
-<li>Frontend (Next.js) solicita GET <code>/api/properties/slug/villa-sol-melgar-xyz</code>.</li>
+<li>Frontend (Vite + JS) solicita GET <code>/api/properties/slug/villa-sol-melgar-xyz</code>.</li>
 <li>Backend busca el registro ignorando el Middleware de Autenticación.</li>
 <li>Backend verifica <code>is_active == true</code>.</li>
 <li>Retorna HTTP 200 OK con el JSON de datos, reglas comerciales y URLs directas a la CDN.</li>

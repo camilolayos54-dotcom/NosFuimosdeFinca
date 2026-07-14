@@ -7296,33 +7296,33 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 4:</em> Las polÃ­ticas de IAM de este documento formalizan tÃ©cnicamente los requerimientos de la matriz de AutorizaciÃ³n (<code>[[PHASE_4_SYSTEM_MODELING/11.Authorization_and_Security/example_output_d11_security.md]]</code>).</p>
+<p><em>Backlink a Fase 4:</em> Las politicas de IAM de este documento formalizan tecnicamente los requerimientos de la matriz de Autorizacion (<code>[[PHASE_4_SYSTEM_MODELING/11.Authorization_and_Security/example_output_d11_security.md]]</code>).</p>
 <hr />
 <h2 id="2-iam-security-strategy">2. IAM &amp; Security Strategy</h2>
-<p>Las polÃ­ticas de gestiÃ³n de identidad y acceso perimetral para el Modular Monolith son:</p>
+<p>Las politicas de gestion de identidad y acceso perimetral para el Modular Monolith son:</p>
 <ul>
-<li><strong>Access Token:</strong> JWT estandarizado (Supabase GoTrue), con una duraciÃ³n corta obligatoria de 1 hora.</li>
-<li><strong>Refresh Token:</strong> RotaciÃ³n automÃ¡tica gestionada por el SDK de Supabase en cada uso. Si un token de refresco es interceptado, el intento de uso doble invalida inmediatamente la sesiÃ³n completa del usuario.</li>
-<li><strong>Almacenamiento en Frontend:</strong> Se usarÃ¡n estrictamente <strong>HttpOnly Cookies</strong> implementadas mediante <code>@supabase/ssr</code> en Next.js. El uso de <code>LocalStorage</code> queda prohibido debido al riesgo de ataques XSS (robo de JWT vÃ­a JavaScript).</li>
-<li><strong>PolÃ­tica CORS (Cross-Origin Resource Sharing):</strong> Dado que la aplicaciÃ³n es un monolito servido desde un Ãºnico dominio (Frontend y API viven juntos en Vercel), la polÃ­tica CORS base serÃ¡ <code>SAMEORIGIN</code>. Se rechazarÃ¡n peticiones de orÃ­genes externos para prevenir ataques CSRF. La Ãºnica excepciÃ³n explÃ­cita serÃ¡n las rutas <code>/api/webhooks/*</code> (Wompi y WhatsApp), las cuales tendrÃ¡n CORS abierto pero validaciÃ³n por firmas criptogrÃ¡ficas HMAC.</li>
-<li><strong>Rate-Limiting (ProtecciÃ³n Anti-DDoS/Abuso):</strong> </li>
-<li><em>Rutas PÃºblicas (CatÃ¡logo):</em> 100 peticiones / minuto por IP.</li>
-<li><em>Rutas CrÃ­ticas (Auth, Checkout):</em> 10 peticiones / minuto por IP.</li>
+<li><strong>Access Token:</strong> JWT estandarizado (PostgreSQL GoTrue), con una duracion corta obligatoria de 1 hora.</li>
+<li><strong>Refresh Token:</strong> Rotacion automatica gestionada por el SDK de PostgreSQL en cada uso. Si un token de refresco es interceptado, el intento de uso doble invalida inmediatamente la sesion completa del usuario.</li>
+<li><strong>Almacenamiento en Frontend:</strong> Se usaran estrictamente <strong>HttpOnly Cookies</strong> implementadas mediante <code>spring-security</code> en Spring Boot. El uso de <code>LocalStorage</code> queda prohibido debido al riesgo de ataques XSS (robo de JWT via JavaScript).</li>
+<li><strong>Politica CORS (Cross-Origin Resource Sharing):</strong> Dado que la aplicacion es un monolito servido desde un unico dominio (Frontend y API viven juntos en Railway/Render), la politica CORS base sera <code>SAMEORIGIN</code>. Se rechazaran peticiones de origenes externos para prevenir ataques CSRF. La unica excepcion explicita seran las rutas <code>/api/webhooks/*</code> (Wompi y WhatsApp), las cuales tendran CORS abierto pero validacion por firmas criptograficas HMAC.</li>
+<li><strong>Rate-Limiting (Proteccion Anti-DDoS/Abuso):</strong> </li>
+<li><em>Rutas Publicas (Catalogo):</em> 100 peticiones / minuto por IP.</li>
+<li><em>Rutas Criticas (Auth, Checkout):</em> 10 peticiones / minuto por IP.</li>
 <li><em>Respuesta:</em> HTTP <code>429 Too Many Requests</code> indicando el tiempo de espera en la cabecera <code>Retry-After</code>.</li>
 </ul>
 <hr />
 <h2 id="3-observability-error-handling-caching-strategy">3. Observability, Error Handling &amp; Caching Strategy</h2>
-<p>Para poder rastrear problemas transversales en el sistema, aplicaremos los siguientes estÃ¡ndares globales:</p>
+<p>Para poder rastrear problemas transversales en el sistema, aplicaremos los siguientes estandares globales:</p>
 <ul>
-<li><strong>Formato de Logs:</strong> Structured JSON Logging. Cada log emitido por la aplicaciÃ³n debe ser un objeto JSON parseable por mÃ¡quinas con, al menos, los campos: <code>timestamp</code> (ISO-8601), <code>level</code> (INFO, WARN, ERROR), <code>module</code> (Booking, Catalog, etc.), <code>message</code>, y <code>traceId</code> (UUID).</li>
-<li><strong>Captura de Excepciones (APM):</strong> Utilizaremos <strong>Sentry</strong> acoplado al Vercel Edge y a los Server Components de Next.js para atrapar errores 500 no capturados y reportar trazas de ejecuciÃ³n automÃ¡ticamente.</li>
+<li><strong>Formato de Logs:</strong> Structured JSON Logging. Cada log emitido por la aplicacion debe ser un objeto JSON parseable por maquinas con, al menos, los campos: <code>timestamp</code> (ISO-8601), <code>level</code> (INFO, WARN, ERROR), <code>module</code> (Booking, Catalog, etc.), <code>message</code>, y <code>traceId</code> (UUID).</li>
+<li><strong>Captura de Excepciones (APM):</strong> Utilizaremos <strong>Sentry</strong> acoplado al Railway/Render Edge y a los Spring MVC @RestController de Spring Boot (Java) para atrapar errores 500 no capturados y reportar trazas de ejecucion automaticamente.</li>
 <li>
-<p><strong>Estructura de Error API:</strong> Para garantizar que el Frontend reciba errores predecibles (y enlazando con la decisiÃ³n D9 de la Fase 4), todas las APIs deben retornar esta estructura exacta ante un fallo:
+<p><strong>Estructura de Error API:</strong> Para garantizar que el Frontend reciba errores predecibles (y enlazando con la decision D9 de la Fase 4), todas las APIs deben retornar esta estructura exacta ante un fallo:
   <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRING_CONST_CODE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mensaje legible en espaÃ±ol&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lista de errores de validaciÃ³n (opcional)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mensaje legible en espanol&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lista de errores de validacion (opcional)&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-for-sentry-correlation&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-07-13T12:00:00Z&quot;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -7330,20 +7330,20 @@
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>Capas de CachÃ© e InvalidaciÃ³n:</strong>
-  | Capa | Herramienta | QuÃ© cachea | Estrategia de InvalidaciÃ³n |
+<p><strong>Capas de Cache e Invalidacion:</strong>
+  | Capa | Herramienta | Que cachea | Estrategia de Invalidacion |
   |---|---|---|---|
-  | Assets / Media HD | Supabase Storage (CDN) | Fotos de fincas | Immutable: Cache-Control infinito. Se utiliza <em>versionado</em> en el nombre de archivo (ej. <code>finca_v2.jpg</code>) al cambiar la foto. |
-  | CatÃ¡logo y APIs | Vercel Data Cache (ISR) | Listado y detalles de Fincas | HÃ­brida: <em>On-Demand Revalidation</em> (por evento, cuando el Host modifica su finca) + <em>Time-based Revalidation</em> (TTL de 60s como respaldo seguro). |
-  | Base de Datos | PostgreSQL Shared Buffers | Consultas repetitivas | AutomÃ¡tica. (No se aÃ±ade Redis aÃºn para evitar sobrecarga operativa, priorizando Time-to-Market). |</p>
+  | Assets / Media HD | Cloudinary / S3 para imagenes (CDN) | Fotos de fincas | Immutable: Cache-Control infinito. Se utiliza <em>versionado</em> en el nombre de archivo (ej. <code>finca_v2.jpg</code>) al cambiar la foto. |
+  | Catalogo y APIs | Railway/Render Data Cache (Spring Cache (@Cacheable)) | Listado y detalles de Fincas | Hibrida: <em>On-Demand Revalidation</em> (por evento, cuando el Host modifica su finca) + <em>Time-based Revalidation</em> (TTL de 60s como respaldo seguro). |
+  | Base de Datos | PostgreSQL Shared Buffers | Consultas repetitivas | Automatica. (No se anade Redis aun para evitar sobrecarga operativa, priorizando Time-to-Market). |</p>
 </li>
 </ul>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <p>Este entregable es input obligatorio para:
-- <strong>Phase 6 â€” D4 (Security Implementation &amp; Middleware):</strong> Obliga a los desarrolladores a programar el Middleware de Next.js (<code>middleware.ts</code>) para inyectar los headers de CORS restrictivos, validar las HttpOnly Cookies y configurar el Rate-Limiting.
-- <strong>Phase 6 â€” D10 (Async Workers &amp; Job Scheduling):</strong> Establece cÃ³mo las funciones de invalidaciÃ³n (ISR On-Demand) se deben orquestar tras las escrituras en base de datos.
-- <strong>D8 (CI/CD &amp; Environments Strategy):</strong> Sentry debe ser configurado como paso obligatorio en el pipeline de CI/CD para cargar los Source Maps del cÃ³digo minificado en ProducciÃ³n.</p>
+- <strong>Phase 6 â€” D4 (Security Implementation &amp; Middleware):</strong> Obliga a los desarrolladores a programar el Middleware de Spring Boot (Java) (<code>SecurityConfig.java</code>) para inyectar los headers de CORS restrictivos, validar las HttpOnly Cookies y configurar el Rate-Limiting.
+- <strong>Phase 6 â€” D10 (Async Workers &amp; Job Scheduling):</strong> Establece como las funciones de invalidacion (Spring Cache (@Cacheable) On-Demand) se deben orquestar tras las escrituras en base de datos.
+- <strong>D8 (CI/CD &amp; Environments Strategy):</strong> Sentry debe ser configurado como paso obligatorio en el pipeline de CI/CD para cargar los Source Maps del codigo minificado en Produccion.</p>
 
 
 

@@ -6021,10 +6021,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-matriz-de-acceso-api-y-supabase-rls-backend" class="md-nav__link">
+  <a href="#3-matriz-de-acceso-api-y-spring-security-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Matriz de Acceso API y Supabase RLS (Backend)
+        3. Matriz de Acceso API y Spring Security (Backend)
       
     </span>
   </a>
@@ -7255,10 +7255,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-matriz-de-acceso-api-y-supabase-rls-backend" class="md-nav__link">
+  <a href="#3-matriz-de-acceso-api-y-spring-security-backend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Matriz de Acceso API y Supabase RLS (Backend)
+        3. Matriz de Acceso API y Spring Security (Backend)
       
     </span>
   </a>
@@ -7301,17 +7301,17 @@
 <h2 id="1-configuracia3n-global-de-seguridad-authn">1. ConfiguraciÃ³n Global de Seguridad (AuthN)</h2>
 <p><em>Backlink a Fase 3:</em> Estas polÃ­ticas de seguridad (incluyendo JWT, Roles de Usuario y RLS) implementan las directivas obligatorias de los NFRs y los Actores identificados en <code>[[PHASE_3_REQUIREMENTS_ENGINEERING/2.Actor_and_Role_Definition]]</code>.</p>
 <ul>
-<li><strong>Proveedor:</strong> Supabase Auth (GoTrue).</li>
-<li><strong>Mecanismo:</strong> Supabase JWT.</li>
-<li><strong>Cabecera HTTP:</strong> <code>Authorization: Bearer &lt;supabase_jwt&gt;</code></li>
-<li><strong>Access Token TTL:</strong> 1 hora (manejado por Supabase).</li>
-<li><strong>Refresh Token:</strong> Manejado automÃ¡ticamente por el SDK de Supabase.</li>
-<li><strong>RotaciÃ³n:</strong> Supabase rota los Refresh Tokens en cada uso.</li>
+<li><strong>Proveedor:</strong> Spring Security + JWT.</li>
+<li><strong>Mecanismo:</strong> JWT (gestionado por Spring Security).</li>
+<li><strong>Cabecera HTTP:</strong> <code>Authorization: Bearer &lt;postgresql_jwt&gt;</code></li>
+<li><strong>Access Token TTL:</strong> 1 hora (manejado por Spring Security).</li>
+<li><strong>Refresh Token:</strong> Manejado automÃ¡ticamente por el Spring Security.</li>
+<li><strong>RotaciÃ³n:</strong> PostgreSQL rota los Refresh Tokens en cada uso.</li>
 </ul>
 <p><strong>Whitelist â€” Rutas Exentas del RLS/Middleware:</strong>
 | Ruta | MÃ©todo | Mecanismo Alternativo |
 |---|---|---|
-| <code>/api/v1/auth/*</code> | POST | Supabase Client SDK Auth |
+| <code>/api/v1/auth/*</code> | POST | Spring Security REST Auth |
 | <code>/api/v1/properties</code> | GET | Ninguno â€” catÃ¡logo pÃºblico (Anon Key) |
 | <code>/api/v1/properties/*</code> | GET | Ninguno â€” catÃ¡logo pÃºblico (Anon Key) |
 | <code>/api/v1/webhooks/wompi</code> | POST | ValidaciÃ³n HMAC-SHA256 de Wompi |</p>
@@ -7394,9 +7394,9 @@
 </tbody>
 </table>
 <hr />
-<h2 id="3-matriz-de-acceso-api-y-supabase-rls-backend">3. Matriz de Acceso API y Supabase RLS (Backend)</h2>
+<h2 id="3-matriz-de-acceso-api-y-spring-security-backend">3. Matriz de Acceso API y Spring Security (Backend)</h2>
 <p><strong>Leyenda:</strong>
-- <code>Allow (OWN)</code>: Supabase RLS verifica que el <code>auth.uid()</code> coincide con el campo de propiedad.
+- <code>Allow (OWN)</code>: Spring Security verifica que el JWT <code>userId</code> coincide con el campo de propiedad.
 - <code>Allow (ALL)</code>: Sin verificaciÃ³n de RLS.
 - <code>Deny (403)</code>: PolÃ­tica RLS bloquea o middleware rechaza la peticiÃ³n.</p>
 <table>
@@ -7525,19 +7525,19 @@
 </tr>
 </tbody>
 </table>
-<p><strong>ImplementaciÃ³n de RLS (Row Level Security) en Supabase:</strong>
-- <code>bookings</code> (TOURIST / AGENCY_USER): <code>(auth.uid() = guest_id)</code>
-- <code>bookings</code> (OWNER_API): <code>(EXISTS (SELECT 1 FROM properties WHERE properties.id = bookings.property_id AND properties.host_id = auth.uid()))</code>
-- <code>properties</code> (OWNER_API): <code>(auth.uid() = host_id)</code>
-- <code>payouts</code> (OWNER_API): <code>(auth.uid() = host_id)</code>
-- <code>wishlists</code> (TOURIST): <code>(auth.uid() = user_id)</code>
-- <code>seasonal_prices</code> (OWNER_API): <code>(EXISTS (SELECT 1 FROM properties WHERE properties.id = seasonal_prices.property_id AND properties.host_id = auth.uid()))</code>
+<p><strong>ImplementaciÃ³n de RLS (Row Level Security) en PostgreSQL:</strong>
+- <code>bookings</code> (TOURIST / AGENCY_USER): <code>(userId del JWT = guest_id)</code>
+- <code>bookings</code> (OWNER_API): <code>(EXISTS (SELECT 1 FROM properties WHERE properties.id = bookings.property_id AND properties.host_id = userId del JWT))</code>
+- <code>properties</code> (OWNER_API): <code>(userId del JWT = host_id)</code>
+- <code>payouts</code> (OWNER_API): <code>(userId del JWT = host_id)</code>
+- <code>wishlists</code> (TOURIST): <code>(userId del JWT = user_id)</code>
+- <code>seasonal_prices</code> (OWNER_API): <code>(EXISTS (SELECT 1 FROM properties WHERE properties.id = seasonal_prices.property_id AND properties.host_id = userId del JWT))</code>
 - <code>coupons</code>: <code>(auth.role() = 'service_role')</code> (Solo admin puede crearlos, validaciÃ³n es vÃ­a Stored Procedure).</p>
 <hr />
 <h2 id="implicacia3n-de-fase">ImplicaciÃ³n de Fase</h2>
 <ul>
-<li>El equipo de Frontend (Track A) puede condicionar la navegaciÃ³n con Supabase SDK (ej. <code>supabase.auth.getUser()</code>) y proteger rutas B2B (Dashboard).</li>
-<li>El equipo de Base de Datos y Backend (Track B) no necesita programar middlewares manuales extensos; solo aplica las polÃ­ticas RLS directamente en la base de datos PostgreSQL de Supabase.</li>
+<li>El equipo de Frontend (Track A) puede condicionar la navegaciÃ³n con PostgreSQL SDK (ej. <code>jwtTokenUtil.getUser(request)</code>) y proteger rutas B2B (Dashboard).</li>
+<li>El equipo de Base de Datos y Backend (Track B) no necesita programar middlewares manuales extensos; solo aplica las polÃ­ticas RLS directamente en la base de datos PostgreSQL de PostgreSQL.</li>
 <li><strong>Proceder a D12:</strong> SÃ­ntesis de SeÃ±ales ArquitectÃ³nicas.</li>
 </ul>
 

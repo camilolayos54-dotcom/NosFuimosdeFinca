@@ -7252,49 +7252,49 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 4 y D1:</em> Esta topologÃ­a responde directamente a las necesidades de escalabilidad extrema (FCP &lt; 1.5s) establecidas en el Quality Attributes Map (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/1.Quality_Attributes_Map/example_output_d1_quality_attributes.md]]</code>) y al modelo relacional de datos masivos documentado en el Domain Model (<code>[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]</code>).</p>
+<p><em>Backlink a Fase 4 y D1:</em> Esta topologia responde directamente a las necesidades de escalabilidad extrema (FCP &lt; 1.5s) establecidas en el Quality Attributes Map (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/1.Quality_Attributes_Map/example_output_d1_quality_attributes.md]]</code>) y al modelo relacional de datos masivos documentado en el Domain Model (<code>[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]</code>).</p>
 <hr />
 <h2 id="2-architectural-decision-record-adr">2. Architectural Decision Record (ADR)</h2>
-<h1 id="adr-001-adopcia3n-de-topologaa-serverless-paas-vercel-y-baas-supabase">ADR-001: AdopciÃ³n de TopologÃ­a Serverless PaaS (Vercel) y BaaS (Supabase)</h1>
+<h1 id="adr-001-adopcion-de-topologia-railwayrender-paas-dockerizado-y-postgresql-spring-boot-postgresql">ADR-001: Adopcion de Topologia Railway/Render PaaS (Dockerizado) y PostgreSQL + Spring Boot (PostgreSQL)</h1>
 <h2 id="context">Context</h2>
-<p>El marketplace "Nos Fuimos de Finca" requiere altos picos de escalabilidad durante fines de semana y festividades, demandando tiempos de respuesta ultrarrÃ¡pidos para el catÃ¡logo de fincas (First Contentful Paint &lt; 1.5s, segÃºn D1 - Escenario 1). AdemÃ¡s, la interacciÃ³n B2B requiere sincronizaciÃ³n de interfaz en tiempo real (WebSockets, D1 - Escenario 5) para notificar a los finqueros en zonas rurales. Dado que el equipo inicial es pequeÃ±o, minimizar la carga de DevOps (gestiÃ³n de servidores, parches, clÃºsteres) es una prioridad de negocio absoluta para acelerar el Time-to-Market.</p>
+<p>El marketplace "Nos Fuimos de Finca" requiere altos picos de escalabilidad durante fines de semana y festividades, demandando tiempos de respuesta ultrarrapidos para el catalogo de fincas (First Contentful Paint &lt; 1.5s, segun D1 - Escenario 1). Ademas, la interaccion B2B requiere sincronizacion de interfaz en tiempo real (WebSockets, D1 - Escenario 5) para notificar a los finqueros en zonas rurales. Dado que el equipo inicial es pequeno, minimizar la carga de DevOps (gestion de servidores, parches, clusteres) es una prioridad de negocio absoluta para acelerar el Time-to-Market.</p>
 <h2 id="options-considered">Options Considered</h2>
 <ol>
-<li><strong>Container Orchestration (Kubernetes/EKS sobre AWS):</strong> Rechazado. Representa sobre-ingenierÃ­a para la fase actual, requiere configuraciÃ³n manual compleja (Load Balancers, CI/CD pipelines personalizados) y no aprovecha orgÃ¡nicamente la cachÃ© Edge (ISR) nativa de Next.js.</li>
-<li><strong>IaaS puro (EC2/VPS con Docker Compose):</strong> Rechazado. Carece de auto-escalado horizontal elÃ¡stico frente a picos de trÃ¡fico, no posee red CDN global nativa, y la administraciÃ³n de la base de datos (backups, pooling) restarÃ­a horas crÃ­ticas de desarrollo de producto.</li>
-<li><strong>Serverless PaaS (Vercel) + BaaS (Supabase Cloud):</strong> Aprobado. Vercel optimiza Next.js por defecto (CDN Edge global, Serverless Functions auto-escalables). Supabase provee PostgreSQL altamente optimizado y gestionado, incluyendo pgBouncer (connection pooling, vital para entornos Serverless) y WebSockets nativos listos para usar.</li>
+<li><strong>Container Orchestration (Kubernetes/EKS sobre AWS):</strong> Rechazado. Representa sobre-ingenieria para la fase actual, requiere configuracion manual compleja (Load Balancers, CI/CD pipelines personalizados) y no aprovecha organicamente la cache Edge (Spring Cache (@Cacheable) nativa de Spring Boot.</li>
+<li><strong>IaaS puro (EC2/VPS con Docker Compose):</strong> Rechazado. Carece de auto-escalado horizontal elastico frente a picos de trafico, no posee red CDN global nativa, y la administracion de la base de datos (backups, pooling) restaria horas criticas de desarrollo de producto.</li>
+<li><strong>Railway/Render PaaS (Dockerizado) + PostgreSQL gestionado en Railway:</strong> Aprobado. Railway/Render optimiza Spring Boot por defecto (Cloudflare CDN global, Spring Boot REST Endpoints auto-escalables). PostgreSQL provee PostgreSQL altamente optimizado y gestionado, incluyendo HikariCP (Connection Pooling) (connection pooling, vital para entornos Dockerizado en Railway/Render) y WebSockets nativos listos para usar.</li>
 </ol>
 <h2 id="decision">Decision</h2>
-<p>Desplegaremos la aplicaciÃ³n web como un <strong>Monolito Serverless en la plataforma PaaS de Vercel</strong>, y delegaremos la capa de persistencia, autenticaciÃ³n, almacenamiento de imÃ¡genes y notificaciones en tiempo real a <strong>Supabase Cloud (BaaS)</strong> en la regiÃ³n AWS mÃ¡s cercana (ej. <code>us-east-1</code>). No se aprovisionarÃ¡ ninguna mÃ¡quina virtual directa ni clÃºster de orquestaciÃ³n de contenedores.</p>
+<p>Desplegaremos la aplicacion web como un <strong>Monolito desplegado en Railway/Render PaaS</strong>, y delegaremos la capa de persistencia, autenticacion, almacenamiento de imagenes y notificaciones en tiempo real a <strong>PostgreSQL gestionado en Railway</strong> en la region AWS mas cercana (ej. <code>us-east-1</code>). No se aprovisionara ninguna maquina virtual directa ni cluster de orquestacion de contenedores.</p>
 <h2 id="consequences">Consequences</h2>
 <ul>
-<li><strong>Positive:</strong> Cero horas dedicadas a mantenimiento de servidores subyacentes. Escalabilidad horizontal casi infinita e instantÃ¡nea ante rÃ¡fagas de trÃ¡fico. IntegraciÃ³n continua (CI/CD) atÃ³mica ligada a GitHub por defecto. MÃ­nima latencia percibida en el catÃ¡logo gracias a la Vercel Edge Network.</li>
-<li><strong>Negative (Vendor Lock-in):</strong> Existe un alto acoplamiento a la infraestructura propietaria de Vercel (funciones serverless y Edge Middleware) y al SDK de Supabase (especialmente en polÃ­ticas RLS). En el improbable caso de requerir migraciÃ³n a otro proveedor cloud en el futuro, se deberÃ¡ reescribir parte de la capa de acceso a datos y enrutamiento perimetral.</li>
+<li><strong>Positive:</strong> Cero horas dedicadas a mantenimiento de servidores subyacentes. Escalabilidad horizontal casi infinita e instantanea ante rafagas de trafico. Integracion continua (CI/CD) atomica ligada a GitHub por defecto. Minima latencia percibida en el catalogo gracias a la Cloudflare CDN / Nginx Reverse Proxy.</li>
+<li><strong>Negative (Vendor Lock-in):</strong> Existe un alto acoplamiento a la infraestructura propietaria de Railway/Render (contenedores Dockerizados con Spring Security Filter Chain) y al SDK de PostgreSQL (especialmente en politicas Spring Security + Row-Level Filtering). En el improbable caso de requerir migracion a otro proveedor cloud en el futuro, se debera reescribir parte de la capa de acceso a datos y enrutamiento perimetral.</li>
 </ul>
 <hr />
 <h2 id="3-networkdeployment-diagram">3. Network/Deployment Diagram</h2>
-<p>El siguiente diagrama detalla el flujo de red fÃ­sico. NÃ³tese el uso obligatorio de <code>PgBouncer</code> para evitar el agotamiento de conexiones a la base de datos, un problema endÃ©mico cuando miles de Serverless Functions (Vercel) intentan conectarse simultÃ¡neamente a PostgreSQL.</p>
+<p>El siguiente diagrama detalla el flujo de red fisico. Notese el uso obligatorio de <code>HikariCP (Connection Pooling)</code> para evitar el agotamiento de conexiones a la base de datos, un problema endemico cuando miles de Spring Boot REST Endpoints en Railway/Render intentan conectarse simultaneamente a PostgreSQL.</p>
 <pre class="mermaid"><code>graph TD
     subgraph Internet
         U[Navegador / Mobile&lt;br/&gt;Turista &amp; Finquero]
     end
 
-    subgraph Vercel_PaaS ["Vercel PaaS (Serverless / Frontend)"]
-        CDN[Vercel Edge Network / CDN&lt;br/&gt;WAF + Cache ISR]
-        Mid[Edge Middleware&lt;br/&gt;JWT Check RÃ¡pido]
-        Srv[Next.js Serverless Functions&lt;br/&gt;Server Actions / Backend Logic]
+    subgraph Railway/Render_PaaS ["Railway/Render PaaS (Dockerizado en Railway/Render / Frontend)"]
+        CDN[Cloudflare CDN / Nginx Reverse Proxy / CDN&lt;br/&gt;WAF + Cache Spring Cache (@Cacheable)]
+        Mid[Spring Security Filter Chain&lt;br/&gt;JWT Check Rapido]
+        Srv[Spring Boot REST Endpoints (Dockerizados)&lt;br/&gt;Spring MVC @Service + @RestController / Backend Logic]
 
         CDN --&gt; Mid
         Mid --&gt; Srv
     end
 
-    subgraph Supabase_Cloud ["Supabase Cloud BaaS (RegiÃ³n AWS)"]
-        API[Supabase API Gateway&lt;br/&gt;Kong]
-        Auth[GoTrue Auth]
-        Stor[Supabase Storage&lt;br/&gt;S3 CDN Secundaria]
+    subgraph PostgreSQL_Cloud ["PostgreSQL gestionado en Railway PostgreSQL + Spring Boot (Region AWS)"]
+        API[Spring Boot API&lt;br/&gt;Spring Boot API Gateway]
+        Auth[Spring Security (JWT)]
+        Stor[Cloudinary / S3 para imagenes&lt;br/&gt;S3 CDN Secundaria]
         Real[Realtime WebSockets&lt;br/&gt;Elixir]
-        Pool[PgBouncer&lt;br/&gt;Connection Pooling]
-        DB[(PostgreSQL Database&lt;br/&gt;Privada, sin IP pÃºblica abierta)]
+        Pool[HikariCP (Connection Pooling)&lt;br/&gt;Connection Pooling]
+        DB[(PostgreSQL Database&lt;br/&gt;Privada, sin IP publica abierta)]
 
         API --&gt; Auth
         API --&gt; Stor
@@ -7308,26 +7308,26 @@
         WA[WhatsApp Business API]
     end
 
-    %% Trazado de TrÃ¡fico Frontend
-    U --&gt;|1. PeticiÃ³n Web| CDN
+    %% Trazado de Trafico Frontend
+    U --&gt;|1. Peticion Web| CDN
     U --&gt;|2. WebSockets| Real
     U --&gt;|3. Descarga Fotos HD| Stor
 
     %% Trazado Backend a DB
-    Srv --&gt;|REST / PostgREST| API
+    Srv --&gt;|REST / Spring MVC REST Controllers| API
 
     %% Trazado Financiero
-    Srv --&gt;|IntenciÃ³n de Cobro| Wompi
-    Wompi -.-&gt;|Webhook (AsÃ­ncrono)| Srv
+    Srv --&gt;|Intencion de Cobro| Wompi
+    Wompi -.-&gt;|Webhook (Asincrono)| Srv
 
     %% Trazado Notificaciones B2B
-    DB -.-&gt;|Database Webhook (pg_net)| WA</code></pre>
+    DB -.-&gt;|Database Webhook (Spring Scheduler / @Async)| WA</code></pre>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
 <p>Este entregable es input obligatorio para:
-- <strong>D4 (System Decomposition Decision):</strong> Esta topologÃ­a dicta que la aplicaciÃ³n se construirÃ¡ como un Monolito Serverless, descartando una arquitectura de Microservicios puros.
-- <strong>D8 (CI/CD &amp; Environments Strategy):</strong> Obliga a basar los flujos de despliegue en las integraciones nativas de GitHub-Vercel y en las migraciones CLI de Supabase, en lugar de pipelines de Docker a Kubernetes.
-- <strong>D9 (Component Diagram):</strong> El diagrama C4 Model Nivel 2 deberÃ¡ reflejar las cajas de Vercel y Supabase.</p>
+- <strong>D4 (System Decomposition Decision):</strong> Esta topologia dicta que la aplicacion se construira como un Monolito Dockerizado, descartando una arquitectura de Microservicios puros.
+- <strong>D8 (CI/CD &amp; Environments Strategy):</strong> Obliga a basar los flujos de despliegue en las integraciones nativas de GitHub-Railway/Render y en las migraciones CLI de PostgreSQL, en lugar de pipelines de Docker a Kubernetes.
+- <strong>D9 (Component Diagram):</strong> El diagrama C4 Model Nivel 2 debera reflejar las cajas de Railway/Render y PostgreSQL.</p>
 
 
 

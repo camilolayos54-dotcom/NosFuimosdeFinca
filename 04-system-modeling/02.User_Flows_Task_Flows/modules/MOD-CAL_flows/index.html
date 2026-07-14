@@ -7396,7 +7396,7 @@
     ToastUI[Toast Success&lt;br&gt;'Días Bloqueados']
 
     %% Nodos Asíncronos
-    DB((Supabase DB&lt;br&gt;Estado: HARD_LOCK))
+    DB((PostgreSQL DB&lt;br&gt;Estado: HARD_LOCK))
 
     %% Flujo Administrativo
     DashboardUI --&gt; |Selecciona Fechas| ConfirmModalUI
@@ -7414,7 +7414,7 @@
     ErrorToastUI[Componente Error&lt;br&gt;Fechas No Disponibles]
 
     %% Nodos Asíncronos
-    DB((Supabase DB&lt;br&gt;Validación Transaccional))
+    DB((PostgreSQL DB&lt;br&gt;Validación Transaccional))
     LockCron((Redis / CronJob&lt;br&gt;Timer de 90 Min))
 
     %% Decisiones

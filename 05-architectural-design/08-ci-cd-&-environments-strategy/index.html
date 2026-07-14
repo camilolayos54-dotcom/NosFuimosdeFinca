@@ -6660,10 +6660,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reglas-de-promocia3n" class="md-nav__link">
+  <a href="#reglas-de-promocion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reglas de PromociÃ³n
+        Reglas de Promocion
       
     </span>
   </a>
@@ -6671,10 +6671,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#integracia3n-continua-ci" class="md-nav__link">
+  <a href="#integracion-continua-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IntegraciÃ³n Continua (CI)
+        Integracion Continua (CI)
       
     </span>
   </a>
@@ -7337,10 +7337,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reglas-de-promocia3n" class="md-nav__link">
+  <a href="#reglas-de-promocion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reglas de PromociÃ³n
+        Reglas de Promocion
       
     </span>
   </a>
@@ -7348,10 +7348,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#integracia3n-continua-ci" class="md-nav__link">
+  <a href="#integracion-continua-ci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IntegraciÃ³n Continua (CI)
+        Integracion Continua (CI)
       
     </span>
   </a>
@@ -7418,45 +7418,45 @@
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
 <strong>Fase:</strong> 5 â€” Architectural Design
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 5:</em> Este entregable materializa el ciclo de vida del cÃ³digo para la infraestructura Serverless elegida en el Deployment Topology (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]</code>) y la base de cÃ³digo Ãºnica definida en el System Decomposition (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>).</p>
+<p><em>Backlink a Fase 5:</em> Este entregable materializa el ciclo de vida del codigo para la infraestructura Dockerizado en Railway/Render elegida en el Deployment Topology (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]</code>) y la base de codigo unica definida en el System Decomposition (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/4.System_Decomposition_Decision/example_output_d4_system_decomposition.md]]</code>).</p>
 <hr />
 <h2 id="2-devops-delivery-pipeline">2. DevOps &amp; Delivery Pipeline</h2>
 <h3 id="estrategia-de-branching">Estrategia de Branching</h3>
-<p>Dada la agilidad requerida para un producto B2B/B2C en etapa temprana y el tamaÃ±o reducido del equipo inicial, implementaremos <strong>Trunk-Based Development</strong> (descartando GitFlow).
-- Existe una Ãºnica rama perpetua de la verdad: <code>main</code>.
-- Los desarrolladores crean ramas efÃ­meras (<code>feature/nombre-corto</code>) que deben vivir un mÃ¡ximo de 48 horas antes de someterse a revisiÃ³n (Pull Request) e integrarse de vuelta a <code>main</code>.</p>
+<p>Dada la agilidad requerida para un producto B2B/B2C en etapa temprana y el tamano reducido del equipo inicial, implementaremos <strong>Trunk-Based Development</strong> (descartando GitFlow).
+- Existe una unica rama perpetua de la verdad: <code>main</code>.
+- Los desarrolladores crean ramas efimeras (<code>feature/nombre-corto</code>) que deben vivir un maximo de 48 horas antes de someterse a revision (Pull Request) e integrarse de vuelta a <code>main</code>.</p>
 <h3 id="ambientes-environments">Ambientes (Environments)</h3>
 <ol>
-<li><strong>Local:</strong> MÃ¡quina del desarrollador. Utiliza Next.js Development Server (<code>npm run dev</code>) y un contenedor Docker instanciado vÃ­a <code>Supabase CLI</code> para emular la base de datos sin afectar datos reales.</li>
-<li><strong>Staging (Preview):</strong> Entornos efÃ­meros y automÃ¡ticos por cada rama/PR abierto. Apuntan a un proyecto de base de datos de "Staging" aislado en Supabase Cloud.</li>
-<li><strong>Production:</strong> El ambiente pÃºblico frente a clientes. Vercel Production + Supabase Production (AWS Region).</li>
+<li><strong>Local:</strong> Maquina del desarrollador. Utiliza Spring Boot (Java) Development Server (<code>mvn dev</code>) y un contenedor Docker instanciado via <code>PostgreSQL CLI</code> para emular la base de datos sin afectar datos reales.</li>
+<li><strong>Staging (Preview):</strong> Entornos efimeros y automaticos por cada rama/PR abierto. Apuntan a un proyecto de base de datos de "Staging" aislado en PostgreSQL gestionado en Railway.</li>
+<li><strong>Production:</strong> El ambiente publico frente a clientes. Railway/Render Production + PostgreSQL Production (AWS Region).</li>
 </ol>
-<h3 id="reglas-de-promocia3n">Reglas de PromociÃ³n</h3>
+<h3 id="reglas-de-promocion">Reglas de Promocion</h3>
 <ul>
-<li><strong>PromociÃ³n a Staging:</strong> AutomÃ¡tica. Abrir un Pull Request contra <code>main</code> desencadena la creaciÃ³n de un URL Ãºnico en Vercel.</li>
-<li><strong>PromociÃ³n a Production:</strong> SemiautomÃ¡tica. Una vez aprobado y <em>mergeado</em> el cÃ³digo a <code>main</code>, el despliegue hacia el dominio de producciÃ³n ocurre de forma automÃ¡tica y atÃ³mica.</li>
+<li><strong>Promocion a Staging:</strong> Automatica. Abrir un Pull Request contra <code>main</code> desencadena la creacion de un URL unico en Railway/Render.</li>
+<li><strong>Promocion a Production:</strong> Semiautomatica. Una vez aprobado y <em>mergeado</em> el codigo a <code>main</code>, el despliegue hacia el dominio de produccion ocurre de forma automatica y atomica.</li>
 </ul>
-<h3 id="integracia3n-continua-ci">IntegraciÃ³n Continua (CI)</h3>
-<p>Todo cambio propuesto hacia <code>main</code> debe pasar este muro de protecciÃ³n (Pipeline de CI):
+<h3 id="integracion-continua-ci">Integracion Continua (CI)</h3>
+<p>Todo cambio propuesto hacia <code>main</code> debe pasar este muro de proteccion (Pipeline de CI):
 1. <strong>Type Check:</strong> <code>tsc --noEmit</code> (Vital en un Monolito Modular para no romper contratos entre dominios).
 2. <strong>Linting &amp; Formatting:</strong> <code>next lint</code> &amp; Prettier.
-3. <strong>Unit Tests:</strong> EjecuciÃ³n de suites (Jest/Vitest) centradas exclusivamente en los dominios de alta criticidad: <em>Booking Engine</em> y <em>Billing &amp; Payouts</em>.
-4. <strong>Build Check:</strong> EjecuciÃ³n de <code>next build</code> para simular la generaciÃ³n de rutas estÃ¡ticas (ISR) e interceptar errores de pre-renderizado.</p>
+3. <strong>Unit Tests:</strong> Ejecucion de suites (Jest/Vitest) centradas exclusivamente en los dominios de alta criticidad: <em>Booking Engine</em> y <em>Billing &amp; Payouts</em>.
+4. <strong>Build Check:</strong> Ejecucion de <code>next build</code> para simular la generacion de rutas estaticas (Spring Cache (@Cacheable)) e interceptar errores de pre-renderizado.</p>
 <h3 id="despliegue-continuo-cd">Despliegue Continuo (CD)</h3>
-<p>Dado que la topologÃ­a es Serverless (D3), descartamos la orquestaciÃ³n de contenedores (Kubernetes/Docker). El CD consta de:
-1. <strong>Database Migrations:</strong> AplicaciÃ³n de cambios SQL mediante <code>supabase db push</code> contra la base de datos destino.
-2. <strong>Edge Deployment:</strong> Vercel asume la responsabilidad del empaquetado del cÃ³digo (Monolito) y su distribuciÃ³n global a la Vercel Edge Network. No hay servidores web que reiniciar manualmente.</p>
+<p>Dado que la topologia es Dockerizado en Railway/Render (D3), descartamos la orquestacion de contenedores (Kubernetes/Docker). El CD consta de:
+1. <strong>Database Migrations:</strong> Aplicacion de cambios SQL mediante <code>postgresql db push</code> contra la base de datos destino.
+2. <strong>Edge Deployment:</strong> Railway/Render asume la responsabilidad del empaquetado del codigo (Monolito) y su distribucion global a la Cloudflare CDN / Nginx Reverse Proxy. No hay servidores web que reiniciar manualmente.</p>
 <h3 id="automation-tooling">Automation &amp; Tooling</h3>
 <ul>
-<li><strong>Plataforma CI/CD:</strong> <strong>GitHub Actions</strong> para orquestar la fase de CI y las migraciones. La fase de CD pura se delega a la integraciÃ³n nativa de <strong>Vercel for GitHub</strong>.</li>
-<li><strong>IaC (Infrastructure as Code):</strong> <strong>No aplica</strong> el uso de herramientas pesadas como Terraform o Pulumi. La infraestructura se gobierna mediante la configuraciÃ³n declarativa nativa (<code>vercel.json</code>) y el sistema de migraciones controladas por cÃ³digo de <code>Supabase CLI</code>.</li>
+<li><strong>Plataforma CI/CD:</strong> <strong>GitHub Actions</strong> para orquestar la fase de CI y las migraciones. La fase de CD pura se delega a la integracion nativa de <strong>Railway/Render for GitHub</strong>.</li>
+<li><strong>IaC (Infrastructure as Code):</strong> <strong>No aplica</strong> el uso de herramientas pesadas como Terraform o Pulumi. La infraestructura se gobierna mediante la configuracion declarativa nativa (<code>railway.toml / Dockerfile</code>) y el sistema de migraciones controladas por codigo de <code>PostgreSQL CLI</code>.</li>
 </ul>
 <hr />
 <h2 id="3-downstream-consumers">3. Downstream Consumers</h2>
 <p>Este entregable es input obligatorio para:
-- <strong>Phase 6 â€” D3 (Configuration &amp; Environment Secrets):</strong> Los 3 ambientes definidos aquÃ­ obligan a crear 3 sets de variables de entorno distintas (<code>.env.local</code>, <code>.env.preview</code>, <code>.env.production</code>).
-- <strong>Phase 7 â€” D2 (Project Scaffolding &amp; Setup):</strong> Inicializa el repositorio GitHub con los workflows <code>.github/workflows/ci.yml</code> basÃ¡ndose exactamente en los pasos definidos aquÃ­.
-- <strong>D10 (ADR Consolidation):</strong> Las elecciones de herramientas (Trunk-Based, GitHub Actions) quedarÃ¡n indexadas en el resumen final.</p>
+- <strong>Phase 6 â€” D3 (Configuration &amp; Environment Secrets):</strong> Los 3 ambientes definidos aqui obligan a crear 3 sets de variables de entorno distintas (<code>application.yml</code>, <code>.env.preview</code>, <code>.env.production</code>).
+- <strong>Phase 7 â€” D2 (Project Scaffolding &amp; Setup):</strong> Inicializa el repositorio GitHub con los workflows <code>.github/workflows/ci.yml</code> basandose exactamente en los pasos definidos aqui.
+- <strong>D10 (ADR Consolidation):</strong> Las elecciones de herramientas (Trunk-Based, GitHub Actions) quedaran indexadas en el resumen final.</p>
 
 
 

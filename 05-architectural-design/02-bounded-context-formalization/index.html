@@ -7416,43 +7416,43 @@
 <h1 id="entregable-2-d2-bounded-context-formalization">Entregable 2 (D2): Bounded Context Formalization</h1>
 <h2 id="1-metadata-header">1. Metadata Header</h2>
 <p><strong>Proyecto:</strong> Nos Fuimos de Finca
-<strong>Fase:</strong> 5 â€” DiseÃ±o ArquitectÃ³nico
+<strong>Fase:</strong> 5 â€” Diseno Arquitectonico
 <strong>Estado:</strong> Aprobado</p>
-<p><em>Backlink a Fase 4:</em> Este documento agrupa las 15 entidades resultantes de la expansiÃ³n del modelo de base de datos (<code>[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]</code>) bajo los principios formales de Domain-Driven Design (DDD).</p>
+<p><em>Backlink a Fase 4:</em> Este documento agrupa las 15 entidades resultantes de la expansion del modelo de base de datos (<code>[[PHASE_4_SYSTEM_MODELING/6.Domain_Model_and_ERD/example_output_d6_erd.md]]</code>) bajo los principios formales de Domain-Driven Design (DDD).</p>
 <hr />
 <h2 id="2-context-definitions">2. Context Definitions</h2>
 <h3 id="bounded-context-identity-profile">Bounded Context: Identity &amp; Profile</h3>
 <ul>
-<li><strong>ClasificaciÃ³n:</strong> Generic</li>
-<li><strong>Responsabilidad:</strong> Gestor maestro de autenticaciÃ³n (AuthN), perfiles, roles y datos financieros base (cuenta bancaria para payouts).</li>
+<li><strong>Clasificacion:</strong> Generic</li>
+<li><strong>Responsabilidad:</strong> Gestor maestro de autenticacion (AuthN), perfiles, roles y datos financieros base (cuenta bancaria para payouts).</li>
 <li><strong>Entidades que posee:</strong> <code>users</code>, <code>refresh_tokens</code>.</li>
-<li><strong>Excepciones (Shared Kernel):</strong> Los datos bÃ¡sicos de <code>users</code> (UID, Rol, Cuenta Bancaria) operan como <em>Shared Kernel</em>. Son inyectados globalmente por Supabase vÃ­a JWT y consumidos en modo solo lectura por Booking y Billing.</li>
+<li><strong>Excepciones (Shared Kernel):</strong> Los datos basicos de <code>users</code> (UID, Rol, Cuenta Bancaria) operan como <em>Shared Kernel</em>. Son inyectados globalmente por PostgreSQL via JWT y consumidos en modo solo lectura por Booking y Billing.</li>
 </ul>
 <h3 id="bounded-context-property-catalog">Bounded Context: Property Catalog</h3>
 <ul>
-<li><strong>ClasificaciÃ³n:</strong> Core</li>
-<li><strong>Responsabilidad:</strong> GestiÃ³n integral del inventario de fincas, atributos fÃ­sicos, amenidades, precios por temporada y bloqueos de disponibilidad en el calendario.</li>
+<li><strong>Clasificacion:</strong> Core</li>
+<li><strong>Responsabilidad:</strong> Gestion integral del inventario de fincas, atributos fisicos, amenidades, precios por temporada y bloqueos de disponibilidad en el calendario.</li>
 <li><strong>Entidades que posee:</strong> <code>properties</code>, <code>property_images</code>, <code>property_amenities</code>, <code>property_rules</code>, <code>property_availability</code>, <code>seasonal_prices</code>.</li>
-<li><strong>Excepciones:</strong> Ninguna. (Provee su estado sÃ­ncronamente al Booking Engine).</li>
+<li><strong>Excepciones:</strong> Ninguna. (Provee su estado sincronamente al Booking Engine).</li>
 </ul>
 <h3 id="bounded-context-booking-engine">Bounded Context: Booking Engine</h3>
 <ul>
-<li><strong>ClasificaciÃ³n:</strong> Core</li>
-<li><strong>Responsabilidad:</strong> Motor de orquestaciÃ³n de intenciones de reserva, flujos de aprobaciÃ³n B2B por parte del finquero, sistema de favoritos y reseÃ±as.</li>
+<li><strong>Clasificacion:</strong> Core</li>
+<li><strong>Responsabilidad:</strong> Motor de orquestacion de intenciones de reserva, flujos de aprobacion B2B por parte del finquero, sistema de favoritos y resenas.</li>
 <li><strong>Entidades que posee:</strong> <code>bookings</code>, <code>reviews</code>, <code>wishlists</code>.</li>
 <li><strong>Excepciones:</strong> Ninguna.</li>
 </ul>
 <h3 id="bounded-context-billing-payouts">Bounded Context: Billing &amp; Payouts</h3>
 <ul>
-<li><strong>ClasificaciÃ³n:</strong> Supporting</li>
+<li><strong>Clasificacion:</strong> Supporting</li>
 <li><strong>Responsabilidad:</strong> Manejo financiero con pasarelas externas. Ejecuta cobros (Payments) a turistas, valida descuentos (Coupons) y dispara liquidaciones (Payouts) a finqueros.</li>
 <li><strong>Entidades que posee:</strong> <code>payments</code>, <code>payouts</code>, <code>coupons</code>.</li>
 <li><strong>Excepciones:</strong> Ninguna.</li>
 </ul>
 <h3 id="bounded-context-notification-service">Bounded Context: Notification Service</h3>
 <ul>
-<li><strong>ClasificaciÃ³n:</strong> Generic</li>
-<li><strong>Responsabilidad:</strong> Despacho asÃ­ncrono y centralizado de alertas omnicanal (Email, Push, WhatsApp).</li>
+<li><strong>Clasificacion:</strong> Generic</li>
+<li><strong>Responsabilidad:</strong> Despacho asincrono y centralizado de alertas omnicanal (Email, Push, WhatsApp).</li>
 <li><strong>Entidades que posee:</strong> <code>notifications</code>.</li>
 <li><strong>Excepciones:</strong> Ninguna.</li>
 </ul>
@@ -7491,10 +7491,10 @@
     Notif -.-&gt;|ACL| WhatsApp((WhatsApp API))</code></pre>
 <hr />
 <h2 id="4-downstream-consumers">4. Downstream Consumers</h2>
-<p>Este entregable es input obligatorio para las siguientes decisiones arquitectÃ³nicas:
-- <strong>D4 (System Decomposition Decision):</strong> DeterminarÃ¡ si estos 5 contextos se despliegan como 5 Microservicios independientes, o si se agrupan en un Monolito Modular con Supabase.
-- <strong>D6 (Communication Pattern Decision):</strong> DeterminarÃ¡ cÃ³mo se implementan tÃ©cnicamente las lÃ­neas puente del Context Map (ej. Webhooks vs HTTP sÃ­ncrono vs Base de Datos Compartida).
-- <strong>D9 (Component Diagram):</strong> Las 5 cajas documentadas aquÃ­ formarÃ¡n los Contenedores Nivel 2 en el modelo C4.</p>
+<p>Este entregable es input obligatorio para las siguientes decisiones arquitectonicas:
+- <strong>D4 (System Decomposition Decision):</strong> Determinara si estos 5 contextos se despliegan como 5 Microservicios independientes, o si se agrupan en un Monolito Modular con PostgreSQL.
+- <strong>D6 (Communication Pattern Decision):</strong> Determinara como se implementan tecnicamente las lineas puente del Context Map (ej. Webhooks vs HTTP sincrono vs Base de Datos Compartida).
+- <strong>D9 (Component Diagram):</strong> Las 5 cajas documentadas aqui formaran los Contenedores Nivel 2 en el modelo C4.</p>
 
 
 
