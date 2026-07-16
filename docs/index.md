@@ -107,6 +107,7 @@ A continuacion se detalla el objetivo metodologico de cada artefacto documental 
 - **[13. Accessibility Standards](04-system-modeling/13.Accessibility_Standards/accessibility_standards.md)**: Estandares de accesibilidad WCAG.
 - **[14. Localization Strategy](04-system-modeling/14.Localization_Strategy/localization_strategy.md)**: Estrategia de internacionalizacion (i18n).
 - **[15. Phase 4 RTM Update](04-system-modeling/15.Phase_4_RTM_Update/phase_4_rtm_update.md)**: Matriz de trazabilidad de requisitos actualizada.
+- **[16. Mapa de Navegacion](04-system-modeling/16. mapa de navegación/mapa_de_navegacion.md)**: Inventario de nodos, jerarquía, diagrama visual y matriz RBAC de routing.
 
 ### 05. Diseno Arquitectonico (Architectural Design)
 **Objetivo de la Fase:** Definir la infraestructura, topologia y patrones de comunicacion del sistema base.
