@@ -6,6 +6,8 @@
 ---
 
 # RESULTADOS
+![Registro - Wireframe Mobile.png](Registro%20-%20Wireframe%20Mobile.png)
+![Registro - Wireframe Desktop.png](Registro%20-%20Wireframe%20Desktop.png)
 
 
 - **Diagnostico:** El usuario B2B o B2C necesita crear una cuenta de manera segura. Este paso tiene alta friccion, por lo que el diseno debe transmitir confianza y ser extremadamente claro.

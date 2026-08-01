@@ -5,6 +5,11 @@
 
 ---
 
+# RESULTADOS
+![Manejo de Errores - Wireframe Mobile.png](Manejo%20de%20Errores%20-%20Wireframe%20Mobile.png)
+![Manejo de Errores - Wireframe Desktop.png](Manejo%20de%20Errores%20-%20Wireframe%20Desktop.png)
+
+
 ## 1. Analisis Cognitivo y Patron UX Recomendado
 
 - **Diagnostico:** El usuario se ha topado con un muro tecnico (Ej. Se cayo la conexion, el servidor fallo o la pagina no existe). El nivel de frustracion es maximo. El diseno debe ser empatico, reducir la culpa del usuario y proveer salidas claras.

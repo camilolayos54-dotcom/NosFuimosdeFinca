@@ -1,6 +1,7 @@
 site_name: Nos Fuimos de Finca
 site_description: "Portal de Arquitectura y Diseño Técnico"
 site_author: "Julian"
+use_directory_urls: false
 
 theme:
   name: material
