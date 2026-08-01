@@ -13,24 +13,28 @@
       
       
       
+        <link rel="prev" href="03-deployment-topology-decision.html">
+      
+      
+        <link rel="next" href="05-architectural-style-selection.html">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Nos Fuimos de Finca</title>
+        <title>04 system decomposition decision - Nos Fuimos de Finca</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#1-metadata-header" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -85,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/index.html" title="Nos Fuimos de Finca" class="md-header__button md-logo" aria-label="Nos Fuimos de Finca" data-md-component="logo">
+    <a href="../index.html" title="Nos Fuimos de Finca" class="md-header__button md-logo" aria-label="Nos Fuimos de Finca" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -105,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              04 system decomposition decision
             
           </span>
         </div>
@@ -211,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/index.html" title="Nos Fuimos de Finca" class="md-nav__button md-logo" aria-label="Nos Fuimos de Finca" data-md-component="logo">
+    <a href="../index.html" title="Nos Fuimos de Finca" class="md-nav__button md-logo" aria-label="Nos Fuimos de Finca" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -229,7 +238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   
@@ -256,7 +265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/context.html" class="md-nav__link">
+      <a href="../context.html" class="md-nav__link">
         
   
   
@@ -330,7 +339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/01.%20Declaraci%C3%B3n%20del%20Problema.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/01.%20Declaraci%C3%B3n%20del%20Problema.html" class="md-nav__link">
         
   
   
@@ -358,7 +367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/02.%20Registro%20de%20Evidencias.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/02.%20Registro%20de%20Evidencias.html" class="md-nav__link">
         
   
   
@@ -386,7 +395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/03.%20An%C3%A1lisis%20de%20Soluciones%20Existentes.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/03.%20An%C3%A1lisis%20de%20Soluciones%20Existentes.html" class="md-nav__link">
         
   
   
@@ -414,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/04.%20Clasificaci%C3%B3n%20del%20Problema.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/04.%20Clasificaci%C3%B3n%20del%20Problema.html" class="md-nav__link">
         
   
   
@@ -442,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/05.%20Matriz%20de%20Impacto.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/05.%20Matriz%20de%20Impacto.html" class="md-nav__link">
         
   
   
@@ -470,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/06.%20Objetivos%20del%20Proyecto.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/06.%20Objetivos%20del%20Proyecto.html" class="md-nav__link">
         
   
   
@@ -498,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/07.%20Mapa%20de%20Interesados.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/07.%20Mapa%20de%20Interesados.html" class="md-nav__link">
         
   
   
@@ -526,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/08.%20Registro%20de%20Riesgos.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/08.%20Registro%20de%20Riesgos.html" class="md-nav__link">
         
   
   
@@ -554,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/09.%20Go%20No-Go%20Signal.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/09.%20Go%20No-Go%20Signal.html" class="md-nav__link">
         
   
   
@@ -582,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/00-reconocimiento-del-problema/10.%20Registro%20de%20Patrones.html" class="md-nav__link">
+      <a href="../00-reconocimiento-del-problema/10.%20Registro%20de%20Patrones.html" class="md-nav__link">
         
   
   
@@ -664,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/01.%20Perfil%20de%20Usuario.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/01.%20Perfil%20de%20Usuario.html" class="md-nav__link">
         
   
   
@@ -692,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/02.%20Validaci%C3%B3n%20de%20Mercado.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/02.%20Validaci%C3%B3n%20de%20Mercado.html" class="md-nav__link">
         
   
   
@@ -720,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/03.%20An%C3%A1lisis%20Competitivo.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/03.%20An%C3%A1lisis%20Competitivo.html" class="md-nav__link">
         
   
   
@@ -748,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/04.%20Mapa%20de%20Partes%20Interesadas.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/04.%20Mapa%20de%20Partes%20Interesadas.html" class="md-nav__link">
         
   
   
@@ -776,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/05.%20Registro%20de%20Factibilidad%20T%C3%A9cnica.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/05.%20Registro%20de%20Factibilidad%20T%C3%A9cnica.html" class="md-nav__link">
         
   
   
@@ -804,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/06.%20Accesibilidad%20de%20Datos.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/06.%20Accesibilidad%20de%20Datos.html" class="md-nav__link">
         
   
   
@@ -832,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/07.%20Despeje%20Legal%20y%20Regulatorio.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/07.%20Despeje%20Legal%20y%20Regulatorio.html" class="md-nav__link">
         
   
   
@@ -860,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/08.%20Capacidad%20del%20Equipo.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/08.%20Capacidad%20del%20Equipo.html" class="md-nav__link">
         
   
   
@@ -888,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/09.%20Viabilidad%20de%20la%20Solucion.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/09.%20Viabilidad%20de%20la%20Solucion.html" class="md-nav__link">
         
   
   
@@ -916,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/10.%20Registro%20de%20Riesgos.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/10.%20Registro%20de%20Riesgos.html" class="md-nav__link">
         
   
   
@@ -944,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/11.%20Supuestos%20Criticos.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/11.%20Supuestos%20Criticos.html" class="md-nav__link">
         
   
   
@@ -972,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/12.%20Definicion%20del%20MVP.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/12.%20Definicion%20del%20MVP.html" class="md-nav__link">
         
   
   
@@ -1000,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/13.%20Lean%20Canvas.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/13.%20Lean%20Canvas.html" class="md-nav__link">
         
   
   
@@ -1028,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/14.%20OKRs%20y%20Objetivos.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/14.%20OKRs%20y%20Objetivos.html" class="md-nav__link">
         
   
   
@@ -1056,7 +1065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/15.%20Plan%20Inicial%20de%20Proyecto.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/15.%20Plan%20Inicial%20de%20Proyecto.html" class="md-nav__link">
         
   
   
@@ -1084,7 +1093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/16.%20Proceso%20de%20Trabajo%20y%20Herramientas.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/16.%20Proceso%20de%20Trabajo%20y%20Herramientas.html" class="md-nav__link">
         
   
   
@@ -1112,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/17.%20Decision%20Go-NoGo.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/17.%20Decision%20Go-NoGo.html" class="md-nav__link">
         
   
   
@@ -1140,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/01-viabilidad-temprana/18.%20Resumen%20Ejecutivo%20Fase%201.html" class="md-nav__link">
+      <a href="../01-viabilidad-temprana/18.%20Resumen%20Ejecutivo%20Fase%201.html" class="md-nav__link">
         
   
   
@@ -1222,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/01.%20Identidad%20del%20Proyecto.html" class="md-nav__link">
+      <a href="../02-project-kickoff/01.%20Identidad%20del%20Proyecto.html" class="md-nav__link">
         
   
   
@@ -1250,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/02.%20Restricciones%20No%20Funcionales.html" class="md-nav__link">
+      <a href="../02-project-kickoff/02.%20Restricciones%20No%20Funcionales.html" class="md-nav__link">
         
   
   
@@ -1278,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/03.%20Decision%20de%20Stack.html" class="md-nav__link">
+      <a href="../02-project-kickoff/03.%20Decision%20de%20Stack.html" class="md-nav__link">
         
   
   
@@ -1306,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/04.%20Estructura%20del%20Repositorio.html" class="md-nav__link">
+      <a href="../02-project-kickoff/04.%20Estructura%20del%20Repositorio.html" class="md-nav__link">
         
   
   
@@ -1334,7 +1343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/05.%20Branching%20Strategy.html" class="md-nav__link">
+      <a href="../02-project-kickoff/05.%20Branching%20Strategy.html" class="md-nav__link">
         
   
   
@@ -1362,7 +1371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/06.%20Entornos.html" class="md-nav__link">
+      <a href="../02-project-kickoff/06.%20Entornos.html" class="md-nav__link">
         
   
   
@@ -1390,7 +1399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/07.%20Estandares%20de%20Codificacion.html" class="md-nav__link">
+      <a href="../02-project-kickoff/07.%20Estandares%20de%20Codificacion.html" class="md-nav__link">
         
   
   
@@ -1418,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/08.%20Estrategia%20de%20Pruebas.html" class="md-nav__link">
+      <a href="../02-project-kickoff/08.%20Estrategia%20de%20Pruebas.html" class="md-nav__link">
         
   
   
@@ -1446,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/09.%20Definition%20of%20Done.html" class="md-nav__link">
+      <a href="../02-project-kickoff/09.%20Definition%20of%20Done.html" class="md-nav__link">
         
   
   
@@ -1474,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/10.%20Tooling.html" class="md-nav__link">
+      <a href="../02-project-kickoff/10.%20Tooling.html" class="md-nav__link">
         
   
   
@@ -1502,7 +1511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/11.%20Protocolos%20de%20Comunicacion.html" class="md-nav__link">
+      <a href="../02-project-kickoff/11.%20Protocolos%20de%20Comunicacion.html" class="md-nav__link">
         
   
   
@@ -1530,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/12.%20Actualizacion%20Registro%20de%20Riesgos.html" class="md-nav__link">
+      <a href="../02-project-kickoff/12.%20Actualizacion%20Registro%20de%20Riesgos.html" class="md-nav__link">
         
   
   
@@ -1558,7 +1567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/02-project-kickoff/13.%20Resumen%20Ejecutivo%20Fase%202.html" class="md-nav__link">
+      <a href="../02-project-kickoff/13.%20Resumen%20Ejecutivo%20Fase%202.html" class="md-nav__link">
         
   
   
@@ -1640,7 +1649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/01.%20Diagrama%20de%20Contexto%20del%20Sistema.html" class="md-nav__link">
+      <a href="../03-requirements/01.%20Diagrama%20de%20Contexto%20del%20Sistema.html" class="md-nav__link">
         
   
   
@@ -1668,7 +1677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/02.%20Definicion%20de%20Actores%20y%20Roles.html" class="md-nav__link">
+      <a href="../03-requirements/02.%20Definicion%20de%20Actores%20y%20Roles.html" class="md-nav__link">
         
   
   
@@ -1696,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/03.%20Glosario%20de%20Dominio.html" class="md-nav__link">
+      <a href="../03-requirements/03.%20Glosario%20de%20Dominio.html" class="md-nav__link">
         
   
   
@@ -1724,7 +1733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/04.%20Elicitacion%20de%20Requerimientos.html" class="md-nav__link">
+      <a href="../03-requirements/04.%20Elicitacion%20de%20Requerimientos.html" class="md-nav__link">
         
   
   
@@ -1752,7 +1761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/05.%20Descomposicion%20Modular%20Funcional.html" class="md-nav__link">
+      <a href="../03-requirements/05.%20Descomposicion%20Modular%20Funcional.html" class="md-nav__link">
         
   
   
@@ -1780,7 +1789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/06.%20Requerimientos%20No%20Funcionales.html" class="md-nav__link">
+      <a href="../03-requirements/06.%20Requerimientos%20No%20Funcionales.html" class="md-nav__link">
         
   
   
@@ -1808,7 +1817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/08.%20System%20Requirements%20Specification.html" class="md-nav__link">
+      <a href="../03-requirements/08.%20System%20Requirements%20Specification.html" class="md-nav__link">
         
   
   
@@ -1930,7 +1939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-AUTH.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-AUTH.html" class="md-nav__link">
         
   
   
@@ -1958,7 +1967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-CAL.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-CAL.html" class="md-nav__link">
         
   
   
@@ -1986,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-DASH.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-DASH.html" class="md-nav__link">
         
   
   
@@ -2014,7 +2023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-NOT.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-NOT.html" class="md-nav__link">
         
   
   
@@ -2042,7 +2051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-PAY.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-PAY.html" class="md-nav__link">
         
   
   
@@ -2070,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-PROP.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-PROP.html" class="md-nav__link">
         
   
   
@@ -2098,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-RSV.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-RSV.html" class="md-nav__link">
         
   
   
@@ -2126,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/03-requirements/07.%20Module%20Specifications/modules/MOD-SRCH.html" class="md-nav__link">
+      <a href="../03-requirements/07.%20Module%20Specifications/modules/MOD-SRCH.html" class="md-nav__link">
         
   
   
@@ -2271,7 +2280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/01.Content_Strategy_Information_Architecture/1.Content_Strategy_Information_Architecture.html" class="md-nav__link">
+      <a href="../04-system-modeling/01.Content_Strategy_Information_Architecture/1.Content_Strategy_Information_Architecture.html" class="md-nav__link">
         
   
   
@@ -2401,7 +2410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-AUTH_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-AUTH_flows.html" class="md-nav__link">
         
   
   
@@ -2429,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-CAL_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-CAL_flows.html" class="md-nav__link">
         
   
   
@@ -2457,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-DASH_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-DASH_flows.html" class="md-nav__link">
         
   
   
@@ -2485,7 +2494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-NOT_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-NOT_flows.html" class="md-nav__link">
         
   
   
@@ -2513,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-PAY_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-PAY_flows.html" class="md-nav__link">
         
   
   
@@ -2541,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-PROP_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-PROP_flows.html" class="md-nav__link">
         
   
   
@@ -2569,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-RSV_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-RSV_flows.html" class="md-nav__link">
         
   
   
@@ -2597,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-SRCH_flows.html" class="md-nav__link">
+      <a href="../04-system-modeling/02.User_Flows_Task_Flows/modules/MOD-SRCH_flows.html" class="md-nav__link">
         
   
   
@@ -2688,7 +2697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/0.All_Pages_Index_MAP.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/0.All_Pages_Index_MAP.html" class="md-nav__link">
         
   
   
@@ -2763,7 +2772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/01.Home_Page/home_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/01.Home_Page/home_page.html" class="md-nav__link">
         
   
   
@@ -2846,7 +2855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/02.Search_Page/search_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/02.Search_Page/search_page.html" class="md-nav__link">
         
   
   
@@ -2929,7 +2938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/03.Property_Page/property_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/03.Property_Page/property_page.html" class="md-nav__link">
         
   
   
@@ -3012,7 +3021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/04.Checkout_Page/checkout_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/04.Checkout_Page/checkout_page.html" class="md-nav__link">
         
   
   
@@ -3095,7 +3104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/05.Checkout_Success_Page/checkout_success_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/05.Checkout_Success_Page/checkout_success_page.html" class="md-nav__link">
         
   
   
@@ -3178,7 +3187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/06.Host_Landing_Page/host_landing_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/06.Host_Landing_Page/host_landing_page.html" class="md-nav__link">
         
   
   
@@ -3261,7 +3270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/07.Login_Page/login_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/07.Login_Page/login_page.html" class="md-nav__link">
         
   
   
@@ -3344,7 +3353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/08.Registration_Page/registration_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/08.Registration_Page/registration_page.html" class="md-nav__link">
         
   
   
@@ -3427,7 +3436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/09.Error_Handler_Page/error_handler_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/09.Error_Handler_Page/error_handler_page.html" class="md-nav__link">
         
   
   
@@ -3510,7 +3519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/10.Onboarding_Page/onboarding_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/10.Onboarding_Page/onboarding_page.html" class="md-nav__link">
         
   
   
@@ -3593,7 +3602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/11.Dashboard_Home/dashboard_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/11.Dashboard_Home/dashboard_page.html" class="md-nav__link">
         
   
   
@@ -3676,7 +3685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/12.Dashboard_Properties/dashboard_properties_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/12.Dashboard_Properties/dashboard_properties_page.html" class="md-nav__link">
         
   
   
@@ -3759,7 +3768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/13.Dashboard_Calendar/dashboard_calendar_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/13.Dashboard_Calendar/dashboard_calendar_page.html" class="md-nav__link">
         
   
   
@@ -3842,7 +3851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/03.Wireframes/14.Dashboard_Bookings/dashboard_bookings_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/03.Wireframes/14.Dashboard_Bookings/dashboard_bookings_page.html" class="md-nav__link">
         
   
   
@@ -3933,7 +3942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/04.Design%20System%20UI%20Kit/Design%20System%20UI%20Kit.html" class="md-nav__link">
+      <a href="../04-system-modeling/04.Design%20System%20UI%20Kit/Design%20System%20UI%20Kit.html" class="md-nav__link">
         
   
   
@@ -3961,7 +3970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/04.Design%20System%20UI%20Kit/Taller%20sobre%20construcci%C3%B3n%20del%20prototipo%20del%20software.%20GA5-220501095-AA1-EV01..html" class="md-nav__link">
+      <a href="../04-system-modeling/04.Design%20System%20UI%20Kit/Taller%20sobre%20construcci%C3%B3n%20del%20prototipo%20del%20software.%20GA5-220501095-AA1-EV01..html" class="md-nav__link">
         
   
   
@@ -4044,7 +4053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/High%20Fidelity%20Mockups.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/High%20Fidelity%20Mockups.html" class="md-nav__link">
         
   
   
@@ -4166,7 +4175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/01.Home_Page/design_spec_home_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/01.Home_Page/design_spec_home_page.html" class="md-nav__link">
         
   
   
@@ -4249,7 +4258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/02.Search_Page/high_spec_search_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/02.Search_Page/high_spec_search_page.html" class="md-nav__link">
         
   
   
@@ -4332,7 +4341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/03.Property_Page/high_spec_property_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/03.Property_Page/high_spec_property_page.html" class="md-nav__link">
         
   
   
@@ -4415,7 +4424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/04.Checkout_Page/high_spec_checkout_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/04.Checkout_Page/high_spec_checkout_page.html" class="md-nav__link">
         
   
   
@@ -4498,7 +4507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/05.Checkout_Success_Page/high_spec_checkout_success_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/05.Checkout_Success_Page/high_spec_checkout_success_page.html" class="md-nav__link">
         
   
   
@@ -4581,7 +4590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/06.Host_Landing_Page/high_spec_host_landing_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/06.Host_Landing_Page/high_spec_host_landing_page.html" class="md-nav__link">
         
   
   
@@ -4664,7 +4673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/07.Login_Page/high_spec_login_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/07.Login_Page/high_spec_login_page.html" class="md-nav__link">
         
   
   
@@ -4747,7 +4756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/08.Registration_Page/high_spec_registration_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/08.Registration_Page/high_spec_registration_page.html" class="md-nav__link">
         
   
   
@@ -4830,7 +4839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/09.Error_Handler_Page/high_spec_error_handler_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/09.Error_Handler_Page/high_spec_error_handler_page.html" class="md-nav__link">
         
   
   
@@ -4913,7 +4922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/10.Onboarding_Page/high_spec_onboarding_page.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/10.Onboarding_Page/high_spec_onboarding_page.html" class="md-nav__link">
         
   
   
@@ -4996,7 +5005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/11.Dashboard_Home/high_spec_dashboard_home.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/11.Dashboard_Home/high_spec_dashboard_home.html" class="md-nav__link">
         
   
   
@@ -5079,7 +5088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/12.Dashboard_Properties/high_spec_dashboard_properties.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/12.Dashboard_Properties/high_spec_dashboard_properties.html" class="md-nav__link">
         
   
   
@@ -5162,7 +5171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/13.Dashboard_Calendar/high_spec_dashboard_calendar.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/13.Dashboard_Calendar/high_spec_dashboard_calendar.html" class="md-nav__link">
         
   
   
@@ -5245,7 +5254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/05.High%20Fidelity%20Mockups/pages/14.Dashboard_Bookings/high_spec_dashboard_bookings.html" class="md-nav__link">
+      <a href="../04-system-modeling/05.High%20Fidelity%20Mockups/pages/14.Dashboard_Bookings/high_spec_dashboard_bookings.html" class="md-nav__link">
         
   
   
@@ -5344,7 +5353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/06.Domain%20Model%20and%20ERD/domain_model_and_erd.html" class="md-nav__link">
+      <a href="../04-system-modeling/06.Domain%20Model%20and%20ERD/domain_model_and_erd.html" class="md-nav__link">
         
   
   
@@ -5427,7 +5436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/07.System%20Sequence%20Diagrams/system_sequence_diagrams.html" class="md-nav__link">
+      <a href="../04-system-modeling/07.System%20Sequence%20Diagrams/system_sequence_diagrams.html" class="md-nav__link">
         
   
   
@@ -5502,7 +5511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-AUTH.html" class="md-nav__link">
+      <a href="../04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-AUTH.html" class="md-nav__link">
         
   
   
@@ -5530,7 +5539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-BOOKING.html" class="md-nav__link">
+      <a href="../04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-BOOKING.html" class="md-nav__link">
         
   
   
@@ -5558,7 +5567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-CALENDAR.html" class="md-nav__link">
+      <a href="../04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-CALENDAR.html" class="md-nav__link">
         
   
   
@@ -5586,7 +5595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-HOSTING.html" class="md-nav__link">
+      <a href="../04-system-modeling/07.System%20Sequence%20Diagrams/MODS/MOD-HOSTING.html" class="md-nav__link">
         
   
   
@@ -5677,7 +5686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/08.State_Machine_Diagrams/state_machine_diagrams.html" class="md-nav__link">
+      <a href="../04-system-modeling/08.State_Machine_Diagrams/state_machine_diagrams.html" class="md-nav__link">
         
   
   
@@ -5760,7 +5769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/09.API_Conceptual_Design/api_conceptual_design.html" class="md-nav__link">
+      <a href="../04-system-modeling/09.API_Conceptual_Design/api_conceptual_design.html" class="md-nav__link">
         
   
   
@@ -5843,7 +5852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/10.Notification_Matrix/notification_matrix.html" class="md-nav__link">
+      <a href="../04-system-modeling/10.Notification_Matrix/notification_matrix.html" class="md-nav__link">
         
   
   
@@ -5926,7 +5935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/11.Authorization_and_Security/authorization_and_security.html" class="md-nav__link">
+      <a href="../04-system-modeling/11.Authorization_and_Security/authorization_and_security.html" class="md-nav__link">
         
   
   
@@ -6009,7 +6018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/12.Architectural_Signals/architectural_signals.html" class="md-nav__link">
+      <a href="../04-system-modeling/12.Architectural_Signals/architectural_signals.html" class="md-nav__link">
         
   
   
@@ -6092,7 +6101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/13.Accessibility_Standards/accessibility_standards.html" class="md-nav__link">
+      <a href="../04-system-modeling/13.Accessibility_Standards/accessibility_standards.html" class="md-nav__link">
         
   
   
@@ -6175,7 +6184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/14.Localization_Strategy/localization_strategy.html" class="md-nav__link">
+      <a href="../04-system-modeling/14.Localization_Strategy/localization_strategy.html" class="md-nav__link">
         
   
   
@@ -6258,7 +6267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/15.Phase_4_RTM_Update/phase_4_rtm_update.html" class="md-nav__link">
+      <a href="../04-system-modeling/15.Phase_4_RTM_Update/phase_4_rtm_update.html" class="md-nav__link">
         
   
   
@@ -6341,7 +6350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/04-system-modeling/16.%20mapa%20de%20navegaci%C3%B3n/mapa_de_navegacion.html" class="md-nav__link">
+      <a href="../04-system-modeling/16.%20mapa%20de%20navegaci%C3%B3n/mapa_de_navegacion.html" class="md-nav__link">
         
   
   
@@ -6381,18 +6390,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -6413,7 +6424,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -6431,7 +6442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/01-quality-attributes-map.html" class="md-nav__link">
+      <a href="01-quality-attributes-map.html" class="md-nav__link">
         
   
   
@@ -6459,7 +6470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/02-bounded-context-formalization.html" class="md-nav__link">
+      <a href="02-bounded-context-formalization.html" class="md-nav__link">
         
   
   
@@ -6487,7 +6498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/03-deployment-topology-decision.html" class="md-nav__link">
+      <a href="03-deployment-topology-decision.html" class="md-nav__link">
         
   
   
@@ -6512,10 +6523,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/05-architectural-design/04-system-decomposition-decision.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 system decomposition decision
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="04-system-decomposition-decision.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -6531,6 +6567,118 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-metadata-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Metadata Header
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-architectural-decision-record-adr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Architectural Decision Record (ADR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adr-002-adopcion-de-patron-modular-monolith-sobre-arquitectura-dockerizado-en-railwayrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADR-002: Adopcion de Patron "Modular Monolith" sobre Arquitectura Dockerizado en Railway/Render
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ADR-002: Adopcion de Patron &#34;Modular Monolith&#34; sobre Arquitectura Dockerizado en Railway/Render">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options-considered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options Considered
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consequences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-downstream-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Downstream Consumers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -6543,7 +6691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/05-architectural-style-selection.html" class="md-nav__link">
+      <a href="05-architectural-style-selection.html" class="md-nav__link">
         
   
   
@@ -6571,7 +6719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/06-communication-pattern-decision.html" class="md-nav__link">
+      <a href="06-communication-pattern-decision.html" class="md-nav__link">
         
   
   
@@ -6599,7 +6747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/07-cross-cutting-concerns.html" class="md-nav__link">
+      <a href="07-cross-cutting-concerns.html" class="md-nav__link">
         
   
   
@@ -6627,7 +6775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/08-ci-cd-%26-environments-strategy.html" class="md-nav__link">
+      <a href="08-ci-cd-%26-environments-strategy.html" class="md-nav__link">
         
   
   
@@ -6655,7 +6803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/09-component-diagram.html" class="md-nav__link">
+      <a href="09-component-diagram.html" class="md-nav__link">
         
   
   
@@ -6683,7 +6831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/10-adr-consolidation.html" class="md-nav__link">
+      <a href="10-adr-consolidation.html" class="md-nav__link">
         
   
   
@@ -6711,7 +6859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/05-architectural-design/11-phase-5-rtm-update-%26-brief.html" class="md-nav__link">
+      <a href="11-phase-5-rtm-update-%26-brief.html" class="md-nav__link">
         
   
   
@@ -6793,7 +6941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/01-codebase-%26-folder-architecture.html" class="md-nav__link">
+      <a href="../06-technical-design/01-codebase-%26-folder-architecture.html" class="md-nav__link">
         
   
   
@@ -6821,7 +6969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/02-physical-data-modeling.html" class="md-nav__link">
+      <a href="../06-technical-design/02-physical-data-modeling.html" class="md-nav__link">
         
   
   
@@ -6849,7 +6997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/03-configuration-%26-environment-secrets.html" class="md-nav__link">
+      <a href="../06-technical-design/03-configuration-%26-environment-secrets.html" class="md-nav__link">
         
   
   
@@ -6877,7 +7025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/04-security-implementation-%26-middleware.html" class="md-nav__link">
+      <a href="../06-technical-design/04-security-implementation-%26-middleware.html" class="md-nav__link">
         
   
   
@@ -6905,7 +7053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/05-class-%26-entity-diagrams.html" class="md-nav__link">
+      <a href="../06-technical-design/05-class-%26-entity-diagrams.html" class="md-nav__link">
         
   
   
@@ -6933,7 +7081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/06-data-access-%26-repositories.html" class="md-nav__link">
+      <a href="../06-technical-design/06-data-access-%26-repositories.html" class="md-nav__link">
         
   
   
@@ -6961,7 +7109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/07-api-contracts-%28openapi-swagger%29.html" class="md-nav__link">
+      <a href="../06-technical-design/07-api-contracts-%28openapi-swagger%29.html" class="md-nav__link">
         
   
   
@@ -6989,7 +7137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/08-third-party-integrations-%26-webhooks.html" class="md-nav__link">
+      <a href="../06-technical-design/08-third-party-integrations-%26-webhooks.html" class="md-nav__link">
         
   
   
@@ -7017,7 +7165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/09-frontend-component-%26-state-architecture.html" class="md-nav__link">
+      <a href="../06-technical-design/09-frontend-component-%26-state-architecture.html" class="md-nav__link">
         
   
   
@@ -7045,7 +7193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/10-async-workers-%26-job-scheduling.html" class="md-nav__link">
+      <a href="../06-technical-design/10-async-workers-%26-job-scheduling.html" class="md-nav__link">
         
   
   
@@ -7073,7 +7221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/11-semantic-html-%26-aria-contracts.html" class="md-nav__link">
+      <a href="../06-technical-design/11-semantic-html-%26-aria-contracts.html" class="md-nav__link">
         
   
   
@@ -7101,7 +7249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/12-i18n-technical-implementation.html" class="md-nav__link">
+      <a href="../06-technical-design/12-i18n-technical-implementation.html" class="md-nav__link">
         
   
   
@@ -7129,7 +7277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/13-data-seeding-%26-legacy-migration-plan.html" class="md-nav__link">
+      <a href="../06-technical-design/13-data-seeding-%26-legacy-migration-plan.html" class="md-nav__link">
         
   
   
@@ -7157,7 +7305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/06-technical-design/14-phase-6-rtm-update-%26-brief.html" class="md-nav__link">
+      <a href="../06-technical-design/14-phase-6-rtm-update-%26-brief.html" class="md-nav__link">
         
   
   
@@ -7203,6 +7351,108 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-metadata-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Metadata Header
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-architectural-decision-record-adr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Architectural Decision Record (ADR)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adr-002-adopcion-de-patron-modular-monolith-sobre-arquitectura-dockerizado-en-railwayrender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADR-002: Adopcion de Patron "Modular Monolith" sobre Arquitectura Dockerizado en Railway/Render
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ADR-002: Adopcion de Patron &#34;Modular Monolith&#34; sobre Arquitectura Dockerizado en Railway/Render">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#options-considered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Options Considered
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consequences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-downstream-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Downstream Consumers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7214,8 +7464,53 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<p># Entregable 4 (D4): System Decomposition Decision</p>
+<h2 id="1-metadata-header">1. Metadata Header</h2>
+<p><strong>Proyecto:</strong> Nos Fuimos de Finca
+<strong>Fase:</strong> 5 Architectural Design
+<strong>Estado:</strong> Aprobado</p>
+<p><em>Backlink a Fase 5 (D2 y D3):</em> Esta decision consolida los limites logicos identificados en el Bounded Context Formalization (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/2.Bounded_Context_Formalization/example_output_d2_bounded_contexts.md]]</code>) y los empaqueta para ser compatibles con la infraestructura Dockerizado en Railway/Render elegida en el Deployment Topology (<code>[[PHASE_5_ARCHITECTURAL_DESIGN/3.Deployment_Topology_Decision/example_output_d3_deployment_topology.md]]</code>).</p>
+<hr />
+<h2 id="2-architectural-decision-record-adr">2. Architectural Decision Record (ADR)</h2>
+<h1 id="adr-002-adopcion-de-patron-modular-monolith-sobre-arquitectura-dockerizado-en-railwayrender">ADR-002: Adopcion de Patron "Modular Monolith" sobre Arquitectura Dockerizado en Railway/Render</h1>
+<h2 id="context">Context</h2>
+<p>El sistema ha sido logicamente dividido en 5 Bounded Contexts (Identity, Catalog, Booking, Billing, Notifications). Actualmente, el equipo de desarrollo consta de un tamano reducido y la prioridad de negocio es el <em>Time-to-Market</em>. Adicionalmente, la topologia fisica ya elegida (Railway/Render (Dockerizado)) asume y optimiza el despliegue de repositorios unicos (Monorepos) construidos bajo el framework Spring Boot. Dividir la base de codigo en multiples repositorios, bases de datos o servicios fisicos separados en esta etapa temprana introduciria una friccion operativa masiva.</p>
+<h2 id="options-considered">Options Considered</h2>
+<ol>
+<li><strong>Microservices (Despliegue Independiente):</strong> Cada uno de los 5 Bounded Contexts vive en su propio repositorio con su propia base de datos, desplegados independientemente. <strong>Rechazado.</strong> Obligaria a implementar una red compleja (Service Mesh), forzaria a lidiar con problemas de consistencia eventual (ej. transacciones fallidas entre pagos y reservas) y destruiria la velocidad de desarrollo del equipo inicial. El equipo actual no tiene capacidad operacional para orquestar microservicios puros.</li>
+<li><strong>Monolito Tradicional ("Big Ball of Mud"):</strong> Todo el codigo de los 5 contextos convive sin reglas estrictas de separacion interna. <strong>Rechazado.</strong> Aunque es rapido al inicio, el acoplamiento descontrolado a mediano plazo causa que un cambio menor (ej. notificaciones) rompa logicas criticas (ej. cobros).</li>
+<li><strong>Modular Monolith (Monolito Modular):</strong> El codigo se despliega como una <strong>unica unidad atomica</strong> (un solo proyecto Spring Boot en Railway/Render), compartiendo la misma conexion a la base de datos (PostgreSQL). Sin embargo, internamente el codigo fuente esta rigidamente dividido en modulos logicos que reflejan los 5 Bounded Contexts, comunicandose a traves de interfaces formales (APIs internas), no leyendo directamente la base de datos del otro dominio. <strong>Aprobado.</strong></li>
+</ol>
+<h2 id="decision">Decision</h2>
+<p>Construiremos el sistema como un <strong>Modular Monolith</strong>. Toda la aplicacion (Frontend y Backend dockerizado) residira en un unico repositorio Git. El codigo fuente estara estructurado en espacios de nombres (namespaces) o carpetas estrictas (Ej. <code>com.nosfuimosdefinica.booking</code>, <code>com.nosfuimosdefinica.catalog</code>). Esta unica base de codigo sera desplegada de forma atomica en Railway/Render.</p>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li><strong>Positive:</strong> Simplicidad operativa inmejorable: un solo pipeline de CI/CD, un solo entorno local para los desarrolladores. Permite refactorizacion segura y rapida. Al compartir la base de datos (PostgreSQL), se pueden utilizar transacciones atomicas estandar (ACID Rollbacks) entre diferentes modulos (ej. cobrar en Billing y reservar en Booking en la misma transaccion SQL), garantizando la consistencia absoluta de los datos de pagos sin escribir codigo complejo de compensacion.</li>
+<li><strong>Negative:</strong> Requiere extrema disciplina tecnica por parte del equipo. Si los desarrolladores ignoran las fronteras logicas y comienzan a importar funciones o consultar directamente las tablas SQL de otros dominios saltandose las interfaces publicas de cada modulo, la arquitectura degenerara inevitablemente en un monolito acoplado (Big Ball of Mud), perdiendo todos los beneficios del Domain-Driven Design y haciendo imposible extraer un modulo a Microservicio en el futuro si el negocio crece masivamente.</li>
+</ul>
+<hr />
+<h2 id="3-downstream-consumers">3. Downstream Consumers</h2>
+<p>Este entregable es input obligatorio para las siguientes decisiones:
+- <strong>D5 (Architectural Style Selection):</strong> Al ser un Monolito Modular en Spring Boot, limitaremos los estilos arquitectonicos internos. No usaremos Clean Architecture pesada, sino estilos mas agiles adecuados para Spring MVC Controllers y Services.
+- <strong>D6 (Communication Pattern Decision):</strong> Simplifica la comunicacion. La comunicacion entre contextos sera "In-Process" (llamadas a funciones dentro del mismo servidor de memoria) en lugar de HTTP inter-servicio, salvo para sistemas externos.
+- <strong>D9 (Component Diagram):</strong> En el diagrama C4, veremos solo una gran caja de codigo (Web App Container), dividida visualmente en sub-modulos logicos, sin flechas de red entre ellos.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -7252,10 +7547,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["search.suggest", "search.highlight", "content.code.copy"], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.4.0/dist/mermaid.min.js"></script>
       
