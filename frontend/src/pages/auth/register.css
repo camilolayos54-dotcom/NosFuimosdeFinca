@@ -1,0 +1,327 @@
+/* Estructura de la pagina */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* =========================================
+   AUTH SPLIT LAYOUT
+========================================= */
+.auth-split {
+    display: flex;
+    min-height: calc(100vh - 85px);
+    width: 100%;
+}
+
+/* BACK ARROW */
+.back-arrow {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 40px;
+    height: 40px;
+    background-color: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.back-arrow:hover {
+    background-color: #e5e7eb;
+    transform: translateX(-3px);
+}
+
+/* LEFT SIDE - LOGIN */
+.auth-split-login {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    background-color: #fdfdfd;
+    position: relative;
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-logo {
+    margin-bottom: 1rem;
+}
+.login-logo img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #102a1e;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem; /* Modificado desde 0.95rem para evitar el auto-zoom en iOS Safari */
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.form-group input:focus {
+    border-color: #102a1e;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.password-wrapper input {
+    padding-right: 2.5rem;
+}
+.toggle-password {
+    position: absolute;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-password:hover {
+    color: #333;
+}
+
+.forgot-password {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #111;
+    text-decoration: underline;
+    align-self: flex-start;
+    text-underline-offset: 3px;
+    margin-top: 0.5rem;
+}
+
+.btn-submit {
+    margin-top: 1.5rem;
+    background-color: #1a2f24;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit:hover {
+    background-color: #101c15;
+}
+
+/* =========================================
+   RIGHT SIDE - MEDIA
+========================================= */
+.auth-split-media {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    display: flex;
+}
+
+.carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+/* Glassmorphism Card (Dark for Register) */
+.premium-card {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 480px;
+    background: rgba(30, 40, 30, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-card h3 {
+    margin: 0;
+}
+.premium-card p {
+    margin-bottom: 1rem;
+}
+
+/* Avatar Stack */
+.avatar-stack {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.avatars {
+    display: flex;
+}
+
+.avatars img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid rgba(30, 40, 30, 0.8);
+    margin-left: -10px;
+}
+
+.avatars img:first-child {
+    margin-left: 0;
+}
+
+.avatar-stack span {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Form Row Grid */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Redirect Link */
+.auth-redirect {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 1rem;
+}
+
+.auth-redirect a {
+    font-weight: 700;
+    color: #102a1e;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+
+.auth-redirect a:hover {
+    text-decoration: underline;
+}
+
+/* Omit card-icon and old card styles for register */
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+    .auth-split-media {
+        display: none; /* Hide image side on smaller screens */
+    }
+    .back-arrow {
+        top: 1rem;
+        left: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .auth-split-login {
+        padding: 2rem 1rem; /* Reducimos el padding lateral y vertical en pantallas pequeñas para dar más espacio al formulario */
+    }
+    
+    .login-title {
+        font-size: 2rem; /* Título ligeramente más pequeño para evitar desbordes */
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
